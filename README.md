@@ -1,1 +1,1 @@
-# lony.github.io
+# Simple self build static blog system based on Javascript
