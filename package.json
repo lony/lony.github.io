@@ -1,0 +1,22 @@
+{
+  "name": "lony.github.io",
+  "version": "1.0.0",
+  "description": "Static blog for lony",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lony/lony.github.io.git"
+  },
+  "author": "lony",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lony/lony.github.io/issues"
+  },
+  "homepage": "https://github.com/lony/lony.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.9",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-markdown": "^1.2.0",
+    "gulp-util": "^3.0.7"
+  }
+}
