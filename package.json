@@ -14,9 +14,14 @@
   "homepage": "https://github.com/lony/lony.github.io#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^2.0.9",
+    "gulp-concat": "^2.6.0",
+    "gulp-flatmap": "^1.0.0",
     "gulp-htmlmin": "^2.0.0",
     "gulp-markdown": "^1.2.0",
+    "gulp-order": "^1.1.1",
+    "gulp-print": "^2.0.1",
     "gulp-util": "^3.0.7"
   }
 }
