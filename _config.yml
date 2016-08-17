@@ -71,5 +71,6 @@ theme: Hacker
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: github
-  repository: https://github.com/lony/lony.github.io.git
+  type: git
+  repo:
+    github: git@github.com:lony/lony.github.io.git,gh-pages
