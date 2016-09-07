@@ -5,5 +5,5 @@ Source of my static [Hexo](https://hexo.io/) blog which is accessible [here](htt
 ## Usage
 
 1. To *write* a new post use `hexo new post <url-title>`.
-2. To *render* and preview your written post use `rm -rf db.json && hexo server` and then go to [http://localhost:4000](http://localhost:4000).
-3. To then *publish* the written post use `hexo deploy --generate`.
+2. To *render* and preview your written post use `rm -rf db.json && hexo clean && hexo server` and then go to [http://localhost:4000](http://localhost:4000).
+3. To then *publish* the written post use `hexo clean && hexo deploy --generate`.

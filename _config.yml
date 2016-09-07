@@ -4,7 +4,7 @@
 
 # Site
 title: Blog of lony
-subtitle: Site to contain info's about tech, politics and europe!
+subtitle: Site contain infos about tech, politics and europe!
 description:
 author: lony
 language: en
@@ -73,4 +73,4 @@ theme: Hacker
 deploy:
   type: git
   repo:
-    github: git@github.com:lony/lony.github.io.git,gh-pages
+    github: git@github.com:lony/lony.github.io.git,master
