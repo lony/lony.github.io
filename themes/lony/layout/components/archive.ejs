@@ -12,13 +12,15 @@ if (page.archive){
 
   <h2 class="article-title <% if (page.tag){ %> tag<% } else if (page.category){ %> category<% } %>"><%= title %></h2>
 
-  <div class="archive">
+  <ul class="archive list-group">
     <% page.posts.each(function(item){ %>
-      <div class="<%= item.layout %> archive">
+      <li class="<%= item.layout %> archive list-group-item">
         <div class="archive-post">
-          <time datetime="<%= item.date.toDate().toISOString() %>">
-            <a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a>
-          </time>
+          <span class="badge" style="float:right">
+            <time datetime="<%= item.date.toDate().toISOString() %>">
+              <a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a>
+            </time>
+          </span>
           <% if (item.link){ %>
             <% if (item.title){ %>
             <h3 class="archive-title"><a href="<%- item.link %>" target="_blank"><span><%= item.title %></span></a></h3>
@@ -29,9 +31,9 @@ if (page.archive){
             <h3 class="archive-title"><a href="<%- config.root %><%- item.path %>"><span><%= item.title %></span></a></h3>
           <% } %>
         </div>
-      </div>
+      </li>
     <% }); %>
     <%- partial('pagination') %>
-  </div>
+  </ul>
 
 </article>
