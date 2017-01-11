@@ -1,90 +1,121 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  <title>Setup Mac CLI | Blog of lony | Site contain infos about tech, politics and europe!</title>
+    <!-- Meta -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  
-  <meta name="author" content="lony">
-  
 
-  
-  <meta name="description" content="This post contains information about how I tweak a new Mac when I first get it.It first part covers UI optimisations as later the CLI setup.
-OS X user">
-  
+<meta name="author" content="lony">
 
-  
-  
-  <meta name="keywords" content="tech,it,cli,mac">
-  
 
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta property="og:title" content="Setup Mac CLI"/>
+<meta name="description" content="Private blog about tech, politics and europe">
 
-  <meta property="og:site_name" content="Blog of lony"/>
 
-  
-  <meta property="og:image" content="/favicon.ico"/>
-  
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Blog of lony" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+
+<meta name="keywords" content="tech,it,cli,mac">
+
+
+<!-- Open Graph -->
+
+<meta property="og:title" content="Setup Mac CLI"/>
+
+<meta property="og:site_name" content="Blog from lony"/>
+
+
+<meta property="og:image" content="/favicon.ico"/>
+
+
+<!-- Title -->
+
+
+<title>Setup Mac CLI | Blog from lony</title>
+
+<!-- Favicon, CSS, Scripts -->
+<link href="/favicon.ico" rel="icon">
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link rel="alternate" href="/atom.xml" title="Blog from lony" type="application/atom+xml">
+
 </head>
-
-
 <body>
-<div class="blog">
-  <div class="content">
+  <div class="container-fluid" role="main">
 
     <header>
-  <div class="site-branding">
-    <h1 class="site-title">
-      <a href="/">Blog of lony</a>
-    </h1>
-    <p class="site-description">Site contain infos about tech, politics and europe!</p>
-  </div>
-  <nav class="site-navigation">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-    </ul>
-  </nav>
+    <div class="title">
+        <h1>
+            <a href="/">Blog from lony</a>
+        </h1>
+        <p class="site-description">Site contain infos about tech, politics and europe!</p>
+    </div>
 </header>
 
-    <main class="site-main posts-loop">
-    <article>
+<div class="navigation">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
 
-  
-    
-    <h3 class="article-title"><span>Setup Mac CLI</span></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2016/10/01/mac-setup/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-10-01T18:00:00.000Z">
-          2016-10-01
-        </time>
-      </a>
-    </span>
-  </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    
+                    <li><a href="/">Home</a></li>
+                    
+                    <li><a href="/archives">Archives</a></li>
+                    
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
 
 
-  
+    <div class="content">
+      <article>
 
-  <div class="article-content">
-    <div class="entry">
+<div class="panel panel-info">
+    <div class="panel-heading">
+
+        <h1>
+
+          
+            
+            <span>Setup Mac CLI</span>
+            
+          
+        
+        </h1>
+
+        <p class="small">
+
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+          <a href="/2016/10/01/mac-setup/" rel="bookmark">
+            <time class="published" datetime="2016-10-01T16:00:00.000Z">
+              2016-10-01
+            </time>
+          </a>
+
+        </p>
+    </div>
+    <div class="panel-body">
+
       
-        <p>This post contains information about how I tweak a new Mac when I first get it.<br>It first part covers UI optimisations as later the CLI setup.</p>
+
+      <p>
+        
+          <p>This post contains information about how I tweak a new Mac when I first get it.<br>It first part covers UI optimisations as later the CLI setup.</p>
 <h1 id="OS-X-user-interface"><a href="#OS-X-user-interface" class="headerlink" title="OS X user interface"></a>OS X user interface</h1><p>Following the <a href="http://www.defaults-write.com/10-terminal-commands-to-speed-up-your-mac-in-os-x-el-capitan/" target="_blank" rel="external">defaults-write.com instructions</a> I first try to optimize the UX experience of OSX.</p>
 <p>To apply the following changes you have to reboot your machine. To undo use <code>defaults delete NSGlobalDomain KeyRepeat</code>.</p>
 <ul>
@@ -137,52 +168,64 @@ OS X user">
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew install jq</div><div class="line">brew install ipcalc</div></pre></td></tr></table></figure>
 
+        
+      </p>
+
+    </div>
+    <div class="panel-footer">
+
       
+      
+      <span class="tags">
+        <ul class="list-inline" style="display:inline;">
+          <li><i class="fa fa-tags" aria-hidden="true"></i></li>
+          <li><a href="/tags/tech/">tech</a></li><li><a href="/tags/it/">it</a></li><li><a href="/tags/cli/">cli</a></li><li><a href="/tags/mac/">mac</a></li>
+        </ul>
+      </span>
+      
+    
     </div>
+</div>
 
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/tech/">tech</a><a href="/tags/it/">it</a><a href="/tags/cli/">cli</a><a href="/tags/mac/">mac</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
 </article>
 
-  
+    </div>
 
-
-
-    </main>
-
-    <footer class="site-footer">
-  <p class="site-info">
-    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
-    </br>
-    
-    &copy; 2016 lony
-    
-  </p>
+    <footer class="footer">
+    <p class="text-muted">
+        Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> |
+        
+        &copy; 2017 lony
+        
+    </p>
 </footer>
-    
+
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.10/moment-timezone-with-data-2010-2020.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('time').each(function() {
+            var dateISO = $(this).attr('datetime'),
+                dateFromNow = moment.utc(dateISO).fromNow();
+            $(this).text(dateFromNow);
+        });
+    });
+</script>
+
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-83817537-1', 'auto');
@@ -190,7 +233,7 @@ OS X user">
 
 </script>
 
-  </div>
-</div>
+
+
 </body>
 </html>
