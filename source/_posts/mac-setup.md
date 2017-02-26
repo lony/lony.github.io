@@ -9,7 +9,7 @@ tags:
 ---
 
 This post contains information about how I tweak a new Mac when I first get it.
-It first part covers UI optimisations as later the CLI setup.
+The first part covers UI optimizations as the second my CLI setup.
 
 # OS X user interface
 
