@@ -16,9 +16,12 @@
 
 
 
+<meta name="keywords" content="tech,it,cli,linux">
+
+
 <!-- Open Graph -->
 
-
+<meta property="og:title" content="CLI commands"/>
 
 <meta property="og:site_name" content="Blog from lony"/>
 
@@ -29,7 +32,7 @@
 <!-- Title -->
 
 
-<title>Blog from lony</title>
+<title>CLI commands | Blog from lony</title>
 
 <!-- Favicon, CSS, Scripts -->
 <link href="/favicon.ico" rel="icon">
@@ -80,8 +83,7 @@
 
 
     <div class="content">
-      
-  <article>
+      <article>
 
 <div class="panel panel-info">
     <div class="panel-heading">
@@ -90,82 +92,7 @@
 
           
             
-            <a href="/2017/02/26/gui/"><span>Graphical user interface development</span></a>
-            
-          
-        
-        </h1>
-
-        <p class="small">
-
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <a href="/2017/02/26/gui/" rel="bookmark">
-            <time class="published" datetime="2017-02-26T13:00:00.000Z">
-              2017-02-26
-            </time>
-          </a>
-
-        </p>
-    </div>
-    <div class="panel-body">
-
-      
-
-      <p>
-        
-          <p>List of frameworks and tools for cross-platform development. Focusing on the following operating systems:</p>
-<ul>
-<li>Windows</li>
-<li>Linux</li>
-<li>Mac OSX</li>
-</ul>
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="Frameworks"><a href="#Frameworks" class="headerlink" title="Frameworks"></a>Frameworks</h2><ul>
-<li>AWT</li>
-<li>Swing</li>
-<li>SWT</li>
-<li>JavaFX</li>
-</ul>
-<h2 id="Builder"><a href="#Builder" class="headerlink" title="Builder"></a>Builder</h2><ul>
-<li>JFormDesigner <a href="https://www.formdev.com/jformdesigner/" target="_blank" rel="external">1</a></li>
-<li>Swing GUI Builder (aka Matisse) <a href="https://netbeans.org/features/java/swing.html" target="_blank" rel="external">1</a></li>
-</ul>
-<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><ul>
-<li>Electron <a href="http://electron.atom.io/" target="_blank" rel="external">1</a></li>
-<li>NW.js <a href="https://nwjs.io/" target="_blank" rel="external">1</a></li>
-</ul>
-
-        
-      </p>
-
-    </div>
-    <div class="panel-footer">
-
-      
-      
-      <span class="tags">
-        <ul class="list-inline" style="display:inline;">
-          <li><i class="fa fa-tags" aria-hidden="true"></i></li>
-          <li><a href="/tags/tech/">tech</a></li><li><a href="/tags/it/">it</a></li><li><a href="/tags/gui/">gui</a></li><li><a href="/tags/cross-platform/">cross-platform</a></li>
-        </ul>
-      </span>
-      
-    
-    </div>
-</div>
-
-</article>
-
-
-  <article>
-
-<div class="panel panel-info">
-    <div class="panel-heading">
-
-        <h1>
-
-          
-            
-            <a href="/2017/02/25/commands/"><span>CLI commands</span></a>
+            <span>CLI commands</span>
             
           
         
@@ -488,242 +415,6 @@
 
 </article>
 
-
-  <article>
-
-<div class="panel panel-info">
-    <div class="panel-heading">
-
-        <h1>
-
-          
-            
-            <a href="/2016/10/01/mac-setup/"><span>Setup Mac CLI</span></a>
-            
-          
-        
-        </h1>
-
-        <p class="small">
-
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <a href="/2016/10/01/mac-setup/" rel="bookmark">
-            <time class="published" datetime="2016-10-01T16:00:00.000Z">
-              2016-10-01
-            </time>
-          </a>
-
-        </p>
-    </div>
-    <div class="panel-body">
-
-      
-
-      <p>
-        
-          <p>This post contains information about how I tweak a new Mac when I first get it.<br>The first part covers UI optimizations as the second my CLI setup.</p>
-<h1 id="OS-X-user-interface"><a href="#OS-X-user-interface" class="headerlink" title="OS X user interface"></a>OS X user interface</h1><p>Following the <a href="http://www.defaults-write.com/10-terminal-commands-to-speed-up-your-mac-in-os-x-el-capitan/" target="_blank" rel="external">defaults-write.com instructions</a> I first try to optimize the UX experience of OSX.</p>
-<p>To apply the following changes you have to reboot your machine. To undo use <code>defaults delete NSGlobalDomain KeyRepeat</code>.</p>
-<ul>
-<li>Disable animations when opening and closing windows: <code>defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false</code></li>
-<li>Disable animations when opening a Quick Look window: <code>defaults write -g QLPanelAnimationDuration -float 0</code></li>
-<li>Accelerated playback when adjusting the window size (Cocoa applications): <code>defaults write NSGlobalDomain NSWindowResizeTime -float 0.001</code></li>
-<li>Disable animation when opening the Info window in OS X Finder (cmd⌘ + i): <code>defaults write com.apple.finder DisableAllAnimations -bool true</code></li>
-<li>Disable animations when you open an application from the Dock: <code>defaults write com.apple.dock launchanim -bool false</code></li>
-<li>Make all animations faster that are used by Mission Control: <code>defaults write com.apple.dock expose-animation-duration -float 0.1</code></li>
-<li>Disable the delay when you hide the Dock: <code>defaults write com.apple.Dock autohide-delay -float 0</code></li>
-<li>The keyboard react faster to keystrokes: <code>defaults write NSGlobalDomain KeyRepeat -int 0</code></li>
-</ul>
-<p>After applying this configuration changes through the terminal there are also some adjustments made via the settings interface. I extracted two of them from the following <a href="http://osxdaily.com/2014/10/24/speed-up-os-x-yosemite-mac/" target="_blank" rel="external">OSXDaily guide</a>.</p>
-<ul>
-<li>System Preferences &gt; Accessibility &gt; Display and there check <code>Reduce Transparency</code></li>
-<li>System Preferences &gt; Dock select <code>Scale effect</code> for Minimize windows using</li>
-</ul>
-<h1 id="Terminal"><a href="#Terminal" class="headerlink" title="Terminal"></a>Terminal</h1><p>To improve working with the CLI I install a couple of tools.</p>
-<ul>
-<li>Install <a href="http://brew.sh/index.html" target="_blank" rel="external">homebrew</a> the (missing) package manager, using the Terminal via <code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></li>
-<li>Install <a href="https://caskroom.github.io/" target="_blank" rel="external">homebrew Cask</a> the homebrew extension for GUI applications, using the Terminal via <code>brew tap caskroom/cask</code></li>
-<li>Install <a href="https://www.iterm2.com/" target="_blank" rel="external">iTerm2</a> a better Terminal, directly using the binary download</li>
-<li>Install <a href="https://www.spectacleapp.com/" target="_blank" rel="external">SpectacleApp</a> a window resizing helper, directly using the binary download</li>
-<li>Install <a href="https://justgetflux.com/" target="_blank" rel="external">f.lux</a> a helper to reduce monitor light, via <code>brew install flux</code></li>
-</ul>
-<p>After setting the field I now following <a href="https://danielmiessler.com/blog/first-10-things-new-mac/" target="_blank" rel="external">Daniel Miessler’s</a> recommendation and setup my bash.</p>
-<ul>
-<li>Switching to <a href="http://www.zsh.org/" target="_blank" rel="external">Zsh</a> the better bash using <code>chsh -s $(which zsh)</code></li>
-<li>Install (the latest) <a href="http://www.vim.org/" target="_blank" rel="external">vim</a> using <code>brew install vim</code></li>
-<li>Install GNU tool’s because OSX is based on BSD and has its tools installed as default<ul>
-<li>First run <code>brew tap homebrew/dupes</code> to add dupes repository to homebrew</li>
-<li>Then run the following lines to install each tool<ul>
-<li><strong>Hint</strong>: Interested in <code>tmux</code> read <a href="https://danielmiessler.com/study/tmux/" target="_blank" rel="external">Daniel Miessler’s post</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">brew install findutils --default-names</div><div class="line">brew install gnu-sed --default-names</div><div class="line">brew install gnu-tar --default-names</div><div class="line">brew install gnu-which --default-names</div><div class="line">brew install gnutls --default-names</div><div class="line">brew install grep --default-names</div><div class="line">brew install coreutils</div><div class="line">brew install binutils</div><div class="line">brew install diffutils</div><div class="line">brew install gzip</div><div class="line">brew install xz</div><div class="line">brew install watch</div><div class="line">brew install tmux </div><div class="line">brew install wget</div><div class="line">brew install nmap</div><div class="line">brew install gpg</div><div class="line">brew install htop</div></pre></td></tr></table></figure>
-<ul>
-<li><p>Installing my dotFiles from <a href="https://github.com/lony/dotFiles" target="_blank" rel="external">here</a> into my home folder</p>
-<ul>
-<li>Adjusting the <code>.rc_secret</code> adding at least a valid Github token</li>
-<li>Open vim and run <code>:PlugInstall</code> installing set plugins in my <code>.vimrc</code> see <a href="http://vimawesome.com/" target="_blank" rel="external">VimAwesome.com</a> for more</li>
-<li><strong>Hint</strong>: To jump from the CLI to a vim editing mode <a href="http://nuclearsquid.com/writings/edit-long-commands/" target="_blank" rel="external">as configured</a> use <code>ESC v</code></li>
-</ul>
-</li>
-<li><p>Interesting for developers may also be the following packages</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">brew install jq</div><div class="line">brew install ipcalc</div></pre></td></tr></table></figure>
-
-        
-      </p>
-
-    </div>
-    <div class="panel-footer">
-
-      
-      
-      <span class="tags">
-        <ul class="list-inline" style="display:inline;">
-          <li><i class="fa fa-tags" aria-hidden="true"></i></li>
-          <li><a href="/tags/tech/">tech</a></li><li><a href="/tags/it/">it</a></li><li><a href="/tags/cli/">cli</a></li><li><a href="/tags/mac/">mac</a></li>
-        </ul>
-      </span>
-      
-    
-    </div>
-</div>
-
-</article>
-
-
-  <article>
-
-<div class="panel panel-info">
-    <div class="panel-heading">
-
-        <h1>
-
-          
-            
-            <a href="/2016/08/31/bash/"><span>bash file pasting</span></a>
-            
-          
-        
-        </h1>
-
-        <p class="small">
-
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <a href="/2016/08/31/bash/" rel="bookmark">
-            <time class="published" datetime="2016-08-31T21:06:30.000Z">
-              2016-08-31
-            </time>
-          </a>
-
-        </p>
-    </div>
-    <div class="panel-body">
-
-      
-
-      <p>
-        
-          <p>Wanted to build a template engine using bash, asked yourself: How to paste my fancy file using bash?<br>Here is the answer!</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># With parameter expanding</span></div><div class="line">cat &lt;&lt;EOF &gt;&gt; bash-paste_expanding</div><div class="line"><span class="built_in">export</span> ME=`whoami`</div><div class="line">EOF</div><div class="line"><span class="comment">## Result: export ME=lony</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Without parameter expanding (look at the ')</span></div><div class="line">cat &lt;&lt;<span class="string">'EOF'</span> &gt;&gt; bash-paste_not-expanding</div><div class="line"><span class="built_in">export</span> ME=`whoami`</div><div class="line">EOF</div><div class="line"><span class="comment">## Result: export ME=`whoami`</span></div></pre></td></tr></table></figure>
-
-        
-      </p>
-
-    </div>
-    <div class="panel-footer">
-
-      
-      
-      <span class="tags">
-        <ul class="list-inline" style="display:inline;">
-          <li><i class="fa fa-tags" aria-hidden="true"></i></li>
-          <li><a href="/tags/tech/">tech</a></li><li><a href="/tags/it/">it</a></li><li><a href="/tags/cli/">cli</a></li><li><a href="/tags/bash/">bash</a></li>
-        </ul>
-      </span>
-      
-    
-    </div>
-</div>
-
-</article>
-
-
-  <article>
-
-<div class="panel panel-info">
-    <div class="panel-heading">
-
-        <h1>
-
-          
-            
-            <a href="/2016/06/06/why-this-started/"><span>Why this started</span></a>
-            
-          
-        
-        </h1>
-
-        <p class="small">
-
-          <i class="fa fa-calendar" aria-hidden="true"></i>
-          <a href="/2016/06/06/why-this-started/" rel="bookmark">
-            <time class="published" datetime="2016-06-06T16:06:30.000Z">
-              2016-06-06
-            </time>
-          </a>
-
-        </p>
-    </div>
-    <div class="panel-body">
-
-      
-
-      <p>
-        
-          <p>Working as a client I got to know <a href="https://github.com/codeofzen" target="_blank" rel="external">Michael Muckel</a>. He is a head of software division at a company I consulted.</p>
-<p>One day we worked with an open source tool and he stated:</p>
-<blockquote>
-<p>We should give something back after using so many open source tools.</p>
-</blockquote>
-<p>That’s basically why I started this blog.</p>
-<p>Over the years learning computer science, private as professionally I used a lot of public information.</p>
-<p>Today I want to start giving back some of my findings as well!</p>
-
-        
-      </p>
-
-    </div>
-    <div class="panel-footer">
-
-      
-      
-      <span class="tags">
-        <ul class="list-inline" style="display:inline;">
-          <li><i class="fa fa-tags" aria-hidden="true"></i></li>
-          <li><a href="/tags/meta/">meta</a></li>
-        </ul>
-      </span>
-      
-    
-    </div>
-</div>
-
-</article>
-
-
-
-<nav aria-label="Page navigation">
-  <ul class="pagination">
-    
-    
- </ul>
-</nav>
     </div>
 
     <footer class="footer">
