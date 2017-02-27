@@ -37,6 +37,16 @@ rm in
 
 ## Package management
 
+* apt [1](http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install), [2](http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get) - Debian/Ubuntu package manager (including dependencies)
+	* `apt-get install --only-upgrade linux-generic`
+	* `apt-get autoremove --purge`
+	* `apt-get upgrade --dry-run` [1](http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update)
+
+* aptitude [1](http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig) - cli GUI for package management
+
+* dpkg - Debian/Ubuntu package manager (without dependencies)
+	* `dpkg -l`
+
 * pip - Python package manager
 
 	* `pip install ansible` - Install package
@@ -229,6 +239,8 @@ rm in
 
 	* `find / -type d -name "lony.github.io"` - Search for lony... folder in root
 	* `find download/ -mtime +60  -delete` - Search in download-folder for files last modified before +60 and delete
+	* `find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name "*.tmp" -print` [1](http://unix.stackexchange.com/questions/194863/delete-files-older-than-x-days), [2](http://askubuntu.com/questions/413529/delete-files-older-than-one-year-on-linux), [3](http://stackoverflow.com/questions/5927369/recursively-look-for-files-with-a-specific-extension)
+		then `find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name "*.tmp" -delete`
 
 * grep [1](https://www.cyberciti.biz/faq/grep-regular-expressions/)
 
@@ -263,6 +275,14 @@ ERRORLEVEL TIME USER@HOST PATH #
 2 [14:03:07] lony@hobbes /var/log/upstart # echo $PS1
 $? \[\e[01;34m\][$(date "+%H:%M:%S")] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;34m\] \w # \[\e[0m\]
 ```
+
+### Distribution
+
+* `uname -a` - Show kernel version and private system information
+
+#### Ubuntu
+
+* `lsb_release -a` - Print version 
 
 # Meta
 
