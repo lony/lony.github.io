@@ -142,6 +142,20 @@
 </li>
 </ul>
 <h2 id="Package-management"><a href="#Package-management" class="headerlink" title="Package management"></a>Package management</h2><ul>
+<li><p>apt <a href="http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install" target="_blank" rel="external">1</a>, <a href="http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get" target="_blank" rel="external">2</a> - Debian/Ubuntu package manager (including dependencies)</p>
+<ul>
+<li><code>apt-get install --only-upgrade linux-generic</code></li>
+<li><code>apt-get autoremove --purge</code></li>
+<li><code>apt-get upgrade --dry-run</code> <a href="http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update" target="_blank" rel="external">1</a></li>
+</ul>
+</li>
+<li><p>aptitude <a href="http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig" target="_blank" rel="external">1</a> - cli GUI for package management</p>
+</li>
+<li><p>dpkg - Debian/Ubuntu package manager (without dependencies)</p>
+<ul>
+<li><code>dpkg -l</code></li>
+</ul>
+</li>
 <li><p>pip - Python package manager</p>
 <ul>
 <li><code>pip install ansible</code> - Install package</li>
@@ -357,6 +371,7 @@
 <ul>
 <li><code>find / -type d -name &quot;lony.github.io&quot;</code> - Search for lony… folder in root</li>
 <li><code>find download/ -mtime +60  -delete</code> - Search in download-folder for files last modified before +60 and delete</li>
+<li><code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;*.tmp&quot; -print</code> <a href="http://unix.stackexchange.com/questions/194863/delete-files-older-than-x-days" target="_blank" rel="external">1</a>, <a href="http://askubuntu.com/questions/413529/delete-files-older-than-one-year-on-linux" target="_blank" rel="external">2</a>, <a href="http://stackoverflow.com/questions/5927369/recursively-look-for-files-with-a-specific-extension" target="_blank" rel="external">3</a><br>  then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;*.tmp&quot; -delete</code></li>
 </ul>
 </li>
 <li><p>grep <a href="https://www.cyberciti.biz/faq/grep-regular-expressions/" target="_blank" rel="external">1</a></p>
@@ -386,6 +401,12 @@
 </li>
 </ul>
 <h2 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h2><h3 id="Prompt"><a href="#Prompt" class="headerlink" title="Prompt"></a>Prompt</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ERRORLEVEL TIME USER@HOST PATH #</div><div class="line">2 [14:03:07] lony@hobbes /var/log/upstart # echo $PS1</div><div class="line">$? \[\e[01;34m\][$(date &quot;+%H:%M:%S&quot;)] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;34m\] \w # \[\e[0m\]</div></pre></td></tr></table></figure>
+<h3 id="Distribution"><a href="#Distribution" class="headerlink" title="Distribution"></a>Distribution</h3><ul>
+<li><code>uname -a</code> - Show kernel version and private system information</li>
+</ul>
+<h4 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h4><ul>
+<li><code>lsb_release -a</code> - Print version </li>
+</ul>
 <h1 id="Meta"><a href="#Meta" class="headerlink" title="Meta"></a>Meta</h1><ul>
 <li>How to structure this document? <strong>Answer</strong>: as the UNIX wikipedia <ul>
 <li><a href="https://en.wikipedia.org/wiki/List_of_Unix_commands" target="_blank" rel="external">article</a></li>
