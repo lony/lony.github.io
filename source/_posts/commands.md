@@ -108,7 +108,7 @@ rm in
 	* `sudo lsof | grep jre`
 	* `sudo lsof -i -n -P | grep LISTEN`
 
-* ps [1](https://en.wikipedia.org/wiki/Ps_(Unix)) - Static process monitor 
+* ps [1](https://en.wikipedia.org/w/index.php?oldid=765270359) - Static process monitor 
 
 * screen [1](https://en.wikipedia.org/wiki/GNU_Screen) - terminal multiplexer
 	
@@ -120,8 +120,8 @@ rm in
 
 * `sudo service apache restart` - Restart command for System V (using /etc/init.d)
 
-* top [1](https://en.wikipedia.org/wiki/Top_(software)) - Real-time task manager
-* tree [1](https://en.wikipedia.org/wiki/Tree_(Unix)) - Recursive directory listing program
+* top [1](https://en.wikipedia.org/w/index.php?oldid=758781701) - Real-time task manager
+* tree [1](https://en.wikipedia.org/w/index.php?oldid=766877590) - Recursive directory listing program
 
 	* `tree -d -L 2`
 
