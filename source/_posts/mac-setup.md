@@ -77,9 +77,11 @@ brew install htop
     * Open vim and run `:PlugInstall` installing set plugins in my `.vimrc` see [VimAwesome.com](http://vimawesome.com/) for more
     * **Hint**: To jump from the CLI to a vim editing mode [as configured](http://nuclearsquid.com/writings/edit-long-commands/) use `ESC v`
 
-* Interesting for developers may also be the following packages
+# Python
 
-```
-brew install jq
-brew install ipcalc
-```
+1. Install gcc using way from [this guide](http://docs.python-guide.org/en/latest/starting/install/osx/).
+
+    * Downloading the Command Line Tools from [here](https://developer.apple.com/downloads/) (requires Apple-Account). The file you need is called `Command_Line_Tools_OS_X_10.XX_for_Xcode_7.2.dmg`. *The XX depends on your OSX-Version.*
+    * Then install the downloaded dmg
+
+2. Execute `brew install python`
