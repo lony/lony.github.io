@@ -39,6 +39,11 @@ To improve working with the CLI I install a couple of tools.
 * Install [homebrew](http://brew.sh/index.html) the (missing) package manager, using the Terminal via `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 * Install [homebrew Cask](https://caskroom.github.io/) the homebrew extension for GUI applications, using the Terminal via `brew tap caskroom/cask`
 * Install [iTerm2](https://www.iterm2.com/) a better Terminal, directly using the binary download
+
+    * Configuration
+
+        * To let iTerm2 fill the complete screen after a resize change the following: Turn on Preferences>Advanced>Terminal windows resize smoothly
+
 * Install [SpectacleApp](https://www.spectacleapp.com/) a window resizing helper, directly using the binary download
 * Install [f.lux](https://justgetflux.com/) a helper to reduce monitor light, via `brew install flux`
 

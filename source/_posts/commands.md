@@ -31,9 +31,22 @@ ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT <in | nc -l LOCAL_PORT >
 rm in
 ```
 
+* tar
+
+	* `tar cvzf - 2017-02-11_T430s_Windows8.tib | split -b 4294967295 -  ../win-bu.tar.gz.` [1](http://unix.stackexchange.com/questions/61774/create-a-tar-archive-split-into-blocks-of-a-maximum-size) - Create gzip tar archiv in multiple chunks
+
+	* `cat win-bu.tar.gz.aa win-bu.tar.gz.ab > combined.tar.gz \
+		gunzip combined.tar.gz \
+		tar -xvf combined.tar` [1](http://stackoverflow.com/questions/27491606/how-to-create-a-linux-compatible-zip-archive-of-a-directory-on-a-mac) - Unzip multi-chunk gunziped tar archive
+
 * virtualenv - Virtual environments for python
 
 	* `virtualenv -p /usr/bin/python2.7 venv --no-site-packages` - Create a virtual python2.7 environment inside *venv* 
+
+* zip
+
+	* `zip -r <TARGET_.zip> <SOURCE_FOLDER>/` [1](http://unix.stackexchange.com/questions/57013/zip-all-files-in-directory) - Zip folder recursively
+	* `zip -r -s 3g archive.zip FolderName/` [1](http://www.addictivetips.com/mac-os/how-to-create-a-split-zipped-archive-from-mac-os-x-terminal/) - Split into multiple chunks
 
 ## Package management
 
@@ -125,15 +138,12 @@ rm in
 
 	* `tree -d -L 2`
 
-* zip
-
-	* `zip -r <TARGET_.zip> <SOURCE_FOLDER>/` [1](http://unix.stackexchange.com/questions/57013/zip-all-files-in-directory) - Zip folder recursively
-
 ## Docker
 
 * `docker pull jenkins:2.32.1` - Download docker image from registry
 * `docker build` - Build an image from a Dockerfile
 * `docker run -p 8080:8080 jenkins:2.32.1` - Starts existing docker image and maps port
+* `docker run -it -d shykes/pybuilder /bin/bash` [1](http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container) - Run image and start bash
 * `docker exec -it f151aff2b21e /bin/bash` - Starts docker image f151aff2b21e and open interactive shell
 * `docker ps -a` - List instances (derived from images)
 * `docker rm -f 2247780d0b39` - Delete instance
@@ -143,6 +153,9 @@ rm in
 ## Vagrant
 
 * `vagrant global-status` - Show existing VMs
+	
+	* `vagrant global-status --prune` - [1](http://stackoverflow.com/questions/24611902/remove-vagrant-box-from-global-status-after-deleting-it-from-filesystem) Update vagrant cache
+
 * `vagrant up` - Create VM from scratch
 
 	* `export VAGRANT_LOG=debug; vagrant up` - Change vagrant log level
@@ -158,6 +171,14 @@ rm in
 
 * `vagrant plugin list` - Show vagrant plugins
 * `vagrant plugin install vagrant-vbguest vagrant-cachier vagrant-share vagrant-triggers` - Install vagrant plugins
+
+## VirtualBox
+
+* `VBoxManage list runningvms | awk '{print $2;}' | xargs -I {} VBoxManage controlvm {} poweroff` - [1](http://stackoverflow.com/questions/15408969/how-do-i-destroy-a-vm-when-i-deleted-the-vagrant-file) Halt all running virtual boxes 
+
+* `VBoxManage list vms | awk '{print $2;}' | xargs -I {} VBoxManage unregistervm {}` - Clean ALL virtual boxes
+
+* `VBoxManage setproperty machinefolder ${BASE_TMP_FOLDER}` - [1](http://superuser.com/questions/599421/how-to-move-the-default-folder-for-headless-virtualbox) Switch vagrant box folder
 
 # User environment
 
@@ -241,6 +262,7 @@ rm in
 	* `find download/ -mtime +60  -delete` - Search in download-folder for files last modified before +60 and delete
 	* `find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name "*.tmp" -print` [1](http://unix.stackexchange.com/questions/194863/delete-files-older-than-x-days), [2](http://askubuntu.com/questions/413529/delete-files-older-than-one-year-on-linux), [3](http://stackoverflow.com/questions/5927369/recursively-look-for-files-with-a-specific-extension)
 		then `find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name "*.tmp" -delete`
+	* `find /path/to/directory/ -mindepth 1 -maxdepth 1 -mtime +365 -type d -print -exec rm -r "{}" \;` - [1](http://unix.stackexchange.com/questions/89925/how-to-delete-directories-based-on-find-output), [2](http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di) Delete directories recursivly
 
 * grep [1](https://www.cyberciti.biz/faq/grep-regular-expressions/)
 
@@ -264,7 +286,20 @@ rm in
 	* `for i in "ci" "stage" "prod"; do (export ENVI=$i; echo $ENVI); done` [1](http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash),[2](https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/),[3](http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second)
 
 * read
+
 	* `read -p "Enter username to check:" USERNAME && echo $USERNAME`
+
+* if
+
+	* Bash version => 4 [1](http://unix.stackexchange.com/questions/250778/should-i-check-bash-version)
+
+````
+if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
+  echo "This script requires bash version > 4. Currently running is ${BASH_VERSION%%.*}"
+  exit 1
+fi
+````
+
 
 ## Setup
 
