@@ -31,6 +31,13 @@ ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT <in | nc -l LOCAL_PORT >
 rm in
 ```
 
+* openssl [1](http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/), [2](http://www.czeskis.com/random/openssl-encrypt-file.html), [3](https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs) - SSL encryption library
+
+	* `openssl enc -aes-256-cbc -e -in {path-in} -out {path-out}` - Encrypt file with password (aes-256)
+	* `openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}` - Decrypt file with password (aes-256)
+	* `openssl rsa -des3 -in {path-in} -out {path-out}` - Encrypt key with password (rsa)
+	* `openssl rsa -in {path-in} -out {path-out}` - Decrypt key with password (rsa)
+
 * tar
 
 	* `tar cvzf - 2017-02-11_T430s_Windows8.tib | split -b 4294967295 -  ../win-bu.tar.gz.` [1](http://unix.stackexchange.com/questions/61774/create-a-tar-archive-split-into-blocks-of-a-maximum-size) - Create gzip tar archiv in multiple chunks
@@ -51,9 +58,12 @@ rm in
 ## Package management
 
 * apt [1](http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install), [2](http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get) - Debian/Ubuntu package manager (including dependencies)
+	* `apt-get update` -  Update is used to re-synchronize the package index files from their sources via Internet
+	* `apt-get upgrade` - Upgrade is used to install the newest versions of all packages currently installed on the system
 	* `apt-get install --only-upgrade linux-generic`
 	* `apt-get autoremove --purge`
 	* `apt-get upgrade --dry-run` [1](http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update)
+	* `apt-get dist-upgrade` [1](https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software) - Update newer version of distribution
 
 * aptitude [1](http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig) - cli GUI for package management
 
@@ -130,6 +140,7 @@ rm in
 	* Press (Strg + a + d) - Detach running session [1](https://nathan.chantrell.net/linux/an-introduction-to-screen/)
 	* `screen -r` - Resume last running screen session
 	* `screen -r -d 30608` - Resume already attached session [1](http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached)
+	* `screen -dmS <SESSION_NAME> <COMMAND>` - Starts screen in detached mode using the given session name and command
 
 * `sudo service apache restart` - Restart command for System V (using /etc/init.d)
 
@@ -205,7 +216,7 @@ rm in
 
 * dig - DNS querying tool using OS resolver
 
-	* `dig +short myip.opendns.com @resolver1.opendns.com` [1](http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-a-shell-script)
+	* `dig +short myip.opendns.com @resolver1.opendns.com` [1](http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-a-shell-script) - Retrieve your external IP address using DNS
 
 * httpie [1](https://httpie.org/),[2](https://github.com/jkbrzt/httpie) - Better curl with JSON support
 

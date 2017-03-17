@@ -25,6 +25,7 @@ To apply the following changes you have to reboot your machine. To undo use `def
 * Make all animations faster that are used by Mission Control: `defaults write com.apple.dock expose-animation-duration -float 0.1`
 * Disable the delay when you hide the Dock: `defaults write com.apple.Dock autohide-delay -float 0`
 * The keyboard react faster to keystrokes: `defaults write NSGlobalDomain KeyRepeat -int 0`
+* To change the screenshot format to jpg `defaults write com.apple.screencapture type jpg`
 
 After applying this configuration changes through the terminal there are also some adjustments made via the settings interface. I extracted two of them from the following [OSXDaily guide](http://osxdaily.com/2014/10/24/speed-up-os-x-yosemite-mac/).
 
