@@ -342,6 +342,14 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mkfifo in </div><div class="line">ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT &lt;in | nc -l LOCAL_PORT &gt;in</div><div class="line">rm in</div></pre></td></tr></table></figure>
 <ul>
+<li><p>openssl <a href="http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/" target="_blank" rel="external">1</a>, <a href="http://www.czeskis.com/random/openssl-encrypt-file.html" target="_blank" rel="external">2</a>, <a href="https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs" target="_blank" rel="external">3</a> - SSL encryption library</p>
+<ul>
+<li><code>openssl enc -aes-256-cbc -e -in {path-in} -out {path-out}</code> - Encrypt file with password (aes-256)</li>
+<li><code>openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}</code> - Decrypt file with password (aes-256)</li>
+<li><code>openssl rsa -des3 -in {path-in} -out {path-out}</code> - Encrypt key with password (rsa)</li>
+<li><code>openssl rsa -in {path-in} -out {path-out}</code> - Decrypt key with password (rsa)</li>
+</ul>
+</li>
 <li><p>tar</p>
 <ul>
 <li><p><code>tar cvzf - 2017-02-11_T430s_Windows8.tib | split -b 4294967295 -  ../win-bu.tar.gz.</code> <a href="http://unix.stackexchange.com/questions/61774/create-a-tar-archive-split-into-blocks-of-a-maximum-size" target="_blank" rel="external">1</a> - Create gzip tar archiv in multiple chunks</p>
@@ -367,9 +375,12 @@
 <h2 id="Package-management"><a href="#Package-management" class="headerlink" title="Package management"></a>Package management</h2><ul>
 <li><p>apt <a href="http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install" target="_blank" rel="external">1</a>, <a href="http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get" target="_blank" rel="external">2</a> - Debian/Ubuntu package manager (including dependencies)</p>
 <ul>
+<li><code>apt-get update</code> -  Update is used to re-synchronize the package index files from their sources via Internet</li>
+<li><code>apt-get upgrade</code> - Upgrade is used to install the newest versions of all packages currently installed on the system</li>
 <li><code>apt-get install --only-upgrade linux-generic</code></li>
 <li><code>apt-get autoremove --purge</code></li>
 <li><code>apt-get upgrade --dry-run</code> <a href="http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update" target="_blank" rel="external">1</a></li>
+<li><code>apt-get dist-upgrade</code> <a href="https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software" target="_blank" rel="external">1</a> - Update newer version of distribution</li>
 </ul>
 </li>
 <li><p>aptitude <a href="http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig" target="_blank" rel="external">1</a> - cli GUI for package management</p>
@@ -460,6 +471,7 @@
 <li>Press (Strg + a + d) - Detach running session <a href="https://nathan.chantrell.net/linux/an-introduction-to-screen/" target="_blank" rel="external">1</a></li>
 <li><code>screen -r</code> - Resume last running screen session</li>
 <li><code>screen -r -d 30608</code> - Resume already attached session <a href="http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached" target="_blank" rel="external">1</a></li>
+<li><code>screen -dmS &lt;SESSION_NAME&gt; &lt;COMMAND&gt;</code> - Starts screen in detached mode using the given session name and command</li>
 </ul>
 </li>
 <li><p><code>sudo service apache restart</code> - Restart command for System V (using /etc/init.d)</p>
@@ -541,7 +553,7 @@
 </li>
 <li><p>dig - DNS querying tool using OS resolver</p>
 <ul>
-<li><code>dig +short myip.opendns.com @resolver1.opendns.com</code> <a href="http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-a-shell-script" target="_blank" rel="external">1</a></li>
+<li><code>dig +short myip.opendns.com @resolver1.opendns.com</code> <a href="http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-a-shell-script" target="_blank" rel="external">1</a> - Retrieve your external IP address using DNS</li>
 </ul>
 </li>
 <li><p>httpie <a href="https://httpie.org/" target="_blank" rel="external">1</a>,<a href="https://github.com/jkbrzt/httpie" target="_blank" rel="external">2</a> - Better curl with JSON support</p>
@@ -719,6 +731,7 @@
 <li>Make all animations faster that are used by Mission Control: <code>defaults write com.apple.dock expose-animation-duration -float 0.1</code></li>
 <li>Disable the delay when you hide the Dock: <code>defaults write com.apple.Dock autohide-delay -float 0</code></li>
 <li>The keyboard react faster to keystrokes: <code>defaults write NSGlobalDomain KeyRepeat -int 0</code></li>
+<li>To change the screenshot format to jpg <code>defaults write com.apple.screencapture type jpg</code></li>
 </ul>
 <p>After applying this configuration changes through the terminal there are also some adjustments made via the settings interface. I extracted two of them from the following <a href="http://osxdaily.com/2014/10/24/speed-up-os-x-yosemite-mac/" target="_blank" rel="external">OSXDaily guide</a>.</p>
 <ul>
