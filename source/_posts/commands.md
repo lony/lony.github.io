@@ -23,6 +23,11 @@ Collection of useful command line commands for unix like operating systems. This
 	* `l='ls -1A'`
 	* `ll='ls -lh'`
 
+* ln - Link files [1](http://stackoverflow.com/questions/9587445/how-to-create-a-link-to-a-directory)
+
+	* `ln -s /foo/bar /home/lony/bar` - Creates symbolic link
+	* `ln /foo/bar /home/lony/bar` - Creates hard link (files only)
+	
 * mkfifo - Create named pipe
 
 ```
@@ -37,6 +42,34 @@ rm in
 	* `openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}` - Decrypt file with password (aes-256)
 	* `openssl rsa -des3 -in {path-in} -out {path-out}` - Encrypt key with password (rsa)
 	* `openssl rsa -in {path-in} -out {path-out}` - Decrypt key with password (rsa)
+
+* rsync [1](https://en.wikipedia.org/wiki/Rsync), [2](http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs) - Data synchronization tool
+
+	* `rsync -rlptzvn rsync://USER@foo.bar.de/home/lony_src/ /home/lony_dest/` - Synchronize data from source to destination preserving source and not deleting anything
+
+		* `-r` - Recurs into folders
+		* `-l` - Copy also symlinks
+		* `-p` - Preserve permissions
+		* `-t` - Preserve modification times
+		* `-z` - Compress during transfer
+		* `-v` - Verbosity ++
+		* `-n` or `--dry-run` - Perform trial run
+
+	* `rsync -aivh --progress --delete source/ dest/` [1](http://askubuntu.com/questions/476041/how-do-i-make-rsync-delete-files-that-have-been-deleted-from-the-source-folder) - Synchronize files and even delete irrelevant files on destination
+
+		* `-a` - Archive mode; equals `-rlptgoD`
+		* `-g` - Preserve group
+		* `-o` - Preserve owner
+		* `-D` - Preserve devices and special files
+		* `-h` - Numbers in human-readable format
+		* `-i` [1](http://serverfault.com/questions/618735/can-i-use-rsync-to-create-a-list-of-only-changed-files) - Change summary for all updates
+		* `--progress` - Show progress of transfer
+		* `--delete` - Deletes irrelevant files from destination
+
+	* `rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs source/ dest/` [1](https://superuser.com/questions/676671/rsync-does-not-delete-source-directories), [2](http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync), [3](http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories) - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)
+
+		* `--remove-source-files` - Remove synchronized files from source
+		* `--prune-empty-dirs` - Ignore empty directories for transfer
 
 * tar
 
@@ -54,28 +87,6 @@ rm in
 
 	* `zip -r <TARGET_.zip> <SOURCE_FOLDER>/` [1](http://unix.stackexchange.com/questions/57013/zip-all-files-in-directory) - Zip folder recursively
 	* `zip -r -s 3g archive.zip FolderName/` [1](http://www.addictivetips.com/mac-os/how-to-create-a-split-zipped-archive-from-mac-os-x-terminal/) - Split into multiple chunks
-
-## Package management
-
-* apt [1](http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install), [2](http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get) - Debian/Ubuntu package manager (including dependencies)
-	* `apt-get update` -  Update is used to re-synchronize the package index files from their sources via Internet
-	* `apt-get upgrade` - Upgrade is used to install the newest versions of all packages currently installed on the system
-	* `apt-get install --only-upgrade linux-generic`
-	* `apt-get autoremove --purge`
-	* `apt-get upgrade --dry-run` [1](http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update)
-	* `apt-get dist-upgrade` [1](https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software) - Update newer version of distribution
-
-* aptitude [1](http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig) - cli GUI for package management
-
-* dpkg - Debian/Ubuntu package manager (without dependencies)
-	* `dpkg -l`
-
-* pip - Python package manager
-
-	* `pip install ansible` - Install package
-	* `pip install -r requirements.txt` - Install all packages listed in requirements.txt
-
-* `sudo update-alternatives --config java` - Set default Java version on system
 
 ## Configuration management
 
@@ -109,6 +120,35 @@ rm in
 	* `kitchen test` - Does all togehter and at the end drops container
 	* `kitchen login` - Opens shell into instance/container
 	* `kitchen list` - Lists instance/container
+
+## Package management
+
+* apt [1](http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install), [2](http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get) - Debian/Ubuntu package manager (including dependencies)
+	* `apt-get update` -  Update is used to re-synchronize the package index files from their sources via Internet
+	* `apt-get upgrade` - Upgrade is used to install the newest versions of all packages currently installed on the system
+	* `apt-get install --only-upgrade linux-generic`
+	* `apt-get autoremove --purge`
+	* `apt-get upgrade --dry-run` [1](http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update)
+	* `apt-get dist-upgrade` [1](https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software) - Update newer version of distribution
+
+* aptitude [1](http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig) - cli GUI for package management
+
+* dpkg - Debian/Ubuntu package manager (without dependencies)
+	* `dpkg -l`
+
+* pip - Python package manager
+
+	* `pip install ansible` - Install package
+	* `pip install -r requirements.txt` - Install all packages listed in requirements.txt
+
+* `sudo update-alternatives --config java` - Set default Java version on system
+
+## [Version control systems](https://en.wikipedia.org/wiki/Version_control) (VCS)
+
+* git [1](https://git-scm.com/) - Distributed VCS
+
+	* `git update-index --assume-unchanged FILE_NAME` [1](http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes) - Ignore file for comparison (HINT: only set locally on repository)
+	* `git update-index --no-assume-unchanged FILE_NAME` - Regard file again for comparison
 
 # Processes
 
