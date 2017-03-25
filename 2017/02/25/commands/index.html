@@ -130,6 +130,12 @@
 <li><code>ll=&#39;ls -lh&#39;</code></li>
 </ul>
 </li>
+<li><p>ln - Link files <a href="http://stackoverflow.com/questions/9587445/how-to-create-a-link-to-a-directory" target="_blank" rel="external">1</a></p>
+<ul>
+<li><code>ln -s /foo/bar /home/lony/bar</code> - Creates symbolic link</li>
+<li><code>ln /foo/bar /home/lony/bar</code> - Creates hard link (files only)</li>
+</ul>
+</li>
 <li><p>mkfifo - Create named pipe</p>
 </li>
 </ul>
@@ -141,6 +147,39 @@
 <li><code>openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}</code> - Decrypt file with password (aes-256)</li>
 <li><code>openssl rsa -des3 -in {path-in} -out {path-out}</code> - Encrypt key with password (rsa)</li>
 <li><code>openssl rsa -in {path-in} -out {path-out}</code> - Decrypt key with password (rsa)</li>
+</ul>
+</li>
+<li><p>rsync <a href="https://en.wikipedia.org/wiki/Rsync" target="_blank" rel="external">1</a>, <a href="http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs" target="_blank" rel="external">2</a> - Data synchronization tool</p>
+<ul>
+<li><p><code>rsync -rlptzvn rsync://USER@foo.bar.de/home/lony_src/ /home/lony_dest/</code> - Synchronize data from source to destination preserving source and not deleting anything</p>
+<ul>
+<li><code>-r</code> - Recurs into folders</li>
+<li><code>-l</code> - Copy also symlinks</li>
+<li><code>-p</code> - Preserve permissions</li>
+<li><code>-t</code> - Preserve modification times</li>
+<li><code>-z</code> - Compress during transfer</li>
+<li><code>-v</code> - Verbosity ++</li>
+<li><code>-n</code> or <code>--dry-run</code> - Perform trial run</li>
+</ul>
+</li>
+<li><p><code>rsync -aivh --progress --delete source/ dest/</code> <a href="http://askubuntu.com/questions/476041/how-do-i-make-rsync-delete-files-that-have-been-deleted-from-the-source-folder" target="_blank" rel="external">1</a> - Synchronize files and even delete irrelevant files on destination</p>
+<ul>
+<li><code>-a</code> - Archive mode; equals <code>-rlptgoD</code></li>
+<li><code>-g</code> - Preserve group</li>
+<li><code>-o</code> - Preserve owner</li>
+<li><code>-D</code> - Preserve devices and special files</li>
+<li><code>-h</code> - Numbers in human-readable format</li>
+<li><code>-i</code> <a href="http://serverfault.com/questions/618735/can-i-use-rsync-to-create-a-list-of-only-changed-files" target="_blank" rel="external">1</a> - Change summary for all updates</li>
+<li><code>--progress</code> - Show progress of transfer</li>
+<li><code>--delete</code> - Deletes irrelevant files from destination</li>
+</ul>
+</li>
+<li><p><code>rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs source/ dest/</code> <a href="https://superuser.com/questions/676671/rsync-does-not-delete-source-directories" target="_blank" rel="external">1</a>, <a href="http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync" target="_blank" rel="external">2</a>, <a href="http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories" target="_blank" rel="external">3</a> - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)</p>
+<ul>
+<li><code>--remove-source-files</code> - Remove synchronized files from source</li>
+<li><code>--prune-empty-dirs</code> - Ignore empty directories for transfer</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><p>tar</p>
@@ -163,33 +202,6 @@
 <li><code>zip -r &lt;TARGET_.zip&gt; &lt;SOURCE_FOLDER&gt;/</code> <a href="http://unix.stackexchange.com/questions/57013/zip-all-files-in-directory" target="_blank" rel="external">1</a> - Zip folder recursively</li>
 <li><code>zip -r -s 3g archive.zip FolderName/</code> <a href="http://www.addictivetips.com/mac-os/how-to-create-a-split-zipped-archive-from-mac-os-x-terminal/" target="_blank" rel="external">1</a> - Split into multiple chunks</li>
 </ul>
-</li>
-</ul>
-<h2 id="Package-management"><a href="#Package-management" class="headerlink" title="Package management"></a>Package management</h2><ul>
-<li><p>apt <a href="http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install" target="_blank" rel="external">1</a>, <a href="http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get" target="_blank" rel="external">2</a> - Debian/Ubuntu package manager (including dependencies)</p>
-<ul>
-<li><code>apt-get update</code> -  Update is used to re-synchronize the package index files from their sources via Internet</li>
-<li><code>apt-get upgrade</code> - Upgrade is used to install the newest versions of all packages currently installed on the system</li>
-<li><code>apt-get install --only-upgrade linux-generic</code></li>
-<li><code>apt-get autoremove --purge</code></li>
-<li><code>apt-get upgrade --dry-run</code> <a href="http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update" target="_blank" rel="external">1</a></li>
-<li><code>apt-get dist-upgrade</code> <a href="https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software" target="_blank" rel="external">1</a> - Update newer version of distribution</li>
-</ul>
-</li>
-<li><p>aptitude <a href="http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig" target="_blank" rel="external">1</a> - cli GUI for package management</p>
-</li>
-<li><p>dpkg - Debian/Ubuntu package manager (without dependencies)</p>
-<ul>
-<li><code>dpkg -l</code></li>
-</ul>
-</li>
-<li><p>pip - Python package manager</p>
-<ul>
-<li><code>pip install ansible</code> - Install package</li>
-<li><code>pip install -r requirements.txt</code> - Install all packages listed in requirements.txt</li>
-</ul>
-</li>
-<li><p><code>sudo update-alternatives --config java</code> - Set default Java version on system</p>
 </li>
 </ul>
 <h2 id="Configuration-management"><a href="#Configuration-management" class="headerlink" title="Configuration management"></a>Configuration management</h2><h3 id="Ansible"><a href="#Ansible" class="headerlink" title="Ansible"></a>Ansible</h3><ul>
@@ -229,6 +241,41 @@
 <li><code>kitchen test</code> - Does all togehter and at the end drops container</li>
 <li><code>kitchen login</code> - Opens shell into instance/container</li>
 <li><code>kitchen list</code> - Lists instance/container</li>
+</ul>
+</li>
+</ul>
+<h2 id="Package-management"><a href="#Package-management" class="headerlink" title="Package management"></a>Package management</h2><ul>
+<li><p>apt <a href="http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install" target="_blank" rel="external">1</a>, <a href="http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get" target="_blank" rel="external">2</a> - Debian/Ubuntu package manager (including dependencies)</p>
+<ul>
+<li><code>apt-get update</code> -  Update is used to re-synchronize the package index files from their sources via Internet</li>
+<li><code>apt-get upgrade</code> - Upgrade is used to install the newest versions of all packages currently installed on the system</li>
+<li><code>apt-get install --only-upgrade linux-generic</code></li>
+<li><code>apt-get autoremove --purge</code></li>
+<li><code>apt-get upgrade --dry-run</code> <a href="http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update" target="_blank" rel="external">1</a></li>
+<li><code>apt-get dist-upgrade</code> <a href="https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software" target="_blank" rel="external">1</a> - Update newer version of distribution</li>
+</ul>
+</li>
+<li><p>aptitude <a href="http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig" target="_blank" rel="external">1</a> - cli GUI for package management</p>
+</li>
+<li><p>dpkg - Debian/Ubuntu package manager (without dependencies)</p>
+<ul>
+<li><code>dpkg -l</code></li>
+</ul>
+</li>
+<li><p>pip - Python package manager</p>
+<ul>
+<li><code>pip install ansible</code> - Install package</li>
+<li><code>pip install -r requirements.txt</code> - Install all packages listed in requirements.txt</li>
+</ul>
+</li>
+<li><p><code>sudo update-alternatives --config java</code> - Set default Java version on system</p>
+</li>
+</ul>
+<h2 id="Version-control-systems-VCS"><a href="#Version-control-systems-VCS" class="headerlink" title="Version control systems (VCS)"></a><a href="https://en.wikipedia.org/wiki/Version_control" target="_blank" rel="external">Version control systems</a> (VCS)</h2><ul>
+<li><p>git <a href="https://git-scm.com/" target="_blank" rel="external">1</a> - Distributed VCS</p>
+<ul>
+<li><code>git update-index --assume-unchanged FILE_NAME</code> <a href="http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes" target="_blank" rel="external">1</a> - Ignore file for comparison (HINT: only set locally on repository)</li>
+<li><code>git update-index --no-assume-unchanged FILE_NAME</code> - Regard file again for comparison</li>
 </ul>
 </li>
 </ul>
