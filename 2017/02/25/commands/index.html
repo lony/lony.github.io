@@ -414,6 +414,8 @@
 <li><code>sudo netstat -an | grep 8080 | grep ESTABLISHED</code></li>
 </ul>
 </li>
+<li><p>ngrep <a href="https://en.wikipedia.org/wiki/Ngrep" target="_blank" rel="external">1</a> - Similar to tcpdump</p>
+</li>
 <li><p>nmap <a href="https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump" target="_blank" rel="external">1</a> - Network mapping and port scanning tool</p>
 </li>
 <li><p><code>nscd -i hosts</code> <a href="http://serverfault.com/questions/16299/how-do-i-flush-the-dns-cache-on-win-mac-linux-computers" target="_blank" rel="external">1</a> - Flush DNS cache</p>
@@ -438,10 +440,26 @@
 <li><code>ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N</code> - Tunnel port using a bastian host</li>
 </ul>
 </li>
-<li><p>tcpdump - Packet analyzer</p>
+<li><p>tcpdump <a href="http://packetpushers.net/masterclass-tcpdump-interpreting-output/" target="_blank" rel="external">1</a> - Packet analyzer</p>
 <ul>
-<li><code>tcpdump -ni eth0 -w ~/SYN_CONNECTION_OUTPUT.pcap tcp[13] == 2 and src host &lt;MY_IP_SEE_DIG&gt;</code> <a href="http://unix.stackexchange.com/questions/101522/tcp-dump-outgoing-connection-packets" target="_blank" rel="external">1</a></li>
-<li><code>tcpdump -i eth0 -n -p &quot;tcp[tcpflags] &amp; (tcp-syn) != 0&quot; and &quot;tcp[tcpflags] &amp; (tcp-ack) == 0&quot; or udp</code></li>
+<li><p><code>tcpdump -nvvvp -i any -c 100 -s 1500 -w /tmp/capture.file.pcap</code> <a href="http://bencane.com/2014/10/13/quick-and-practical-reference-for-tcpdump/" target="_blank" rel="external">1</a> - Write first 1500 bytes of the first 100 packages to PCAP file which are coming from any device</p>
+<ul>
+<li><code>-n</code> - Do not translate hostnames (use ips)</li>
+<li><code>-v</code> - Verbosity (max. vvv)</li>
+<li><code>-p</code> - Don’t put the interface into promiscuous mode</li>
+<li><code>-i</code> - Interface to use (any for all)</li>
+<li><code>-c</code> - Exit after amount of packets</li>
+<li><code>-s</code> - Truncates bytes of data for each package</li>
+<li><code>-w</code> - Store PCAP file of dump</li>
+</ul>
+</li>
+<li><p><code>tcpdump -A &#39;port 80 and host 192.168.0.1&#39;</code> <a href="https://danielmiessler.com/study/tcpdump/" target="_blank" rel="external">1</a> - Print package output in ANSII format</p>
+</li>
+<li><code>tcpdump host 10.0.3.1</code> - Capture only if source and destination ip is 10.0.3.1</li>
+<li><code>tcpdump src host 10.0.3.1</code> - Capture only if source ip is 10.0.3.1</li>
+<li><code>tcpdump dst port 80</code> - Caputre only if destination port is 80</li>
+<li><code>tcpdump &#39;tcp[tcpflags] &amp; tcp-syn != 0&#39;</code> <a href="http://www.tcpdump.org/manpages/pcap-filter.7.html" target="_blank" rel="external">1</a>, <a href="https://syedali.net/2014/12/29/tcp-flags-explained/" target="_blank" rel="external">2</a>, <a href="https://danielmiessler.com/study/tcpflags/" target="_blank" rel="external">3</a> - Use PCAP-filters to capture start (SYN) packets of TCP conversation</li>
+<li><code>tcpdump &#39;tcp[tcpflags] &amp; (tcp-syn) != 0 and tcp[tcpflags] &amp; (tcp-ack) == 0 or udp&#39;</code> - Capture tcp SYN but not SYN-ACK and also udp packets</li>
 </ul>
 </li>
 <li><p>trace aka traceroute <a href="https://en.wikipedia.org/wiki/Traceroute" target="_blank" rel="external">1</a> - Display route for transit of packets across IP network</p>
