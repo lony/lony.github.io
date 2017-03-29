@@ -1,0 +1,1 @@
+Scripts are stolen from https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/
