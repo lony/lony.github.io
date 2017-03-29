@@ -7,14 +7,3 @@ Thumbs.db
 # IntelliJ
 .idea
 *.iml
-
-#
-# Node
-*.log
-node_modules/
-
-#
-# Hexo
-db.json
-public/
-.deploy*/

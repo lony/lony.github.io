@@ -1,12 +1,9 @@
----
-title: CLI commands
-date: 2017-02-25 18:00:00
-tags:
-- tech
-- it
-- cli
-- linux
----
++++
+title = "CLI commands"
+tags = [ "programming", "cli", "linux", "commands" ]
+date = "2017-02-25T18:02:52+02:00"
+slug = "cli-commands"
++++
 
 Collection of useful command line commands for unix like operating systems. This list is constantly updated.
 

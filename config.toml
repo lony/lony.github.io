@@ -1,0 +1,34 @@
+baseurl = "https://lony.github.io/"
+languageCode = "en"
+title = "[x]"
+description = "Private blog about tech, politics and europe"
+keywords = ["tech", "it", "politics", "europe"]
+copyright = "&copy; <a href=\"https://github.com/lony\">Goetz Epperlein</a> 2016"
+googleAnalytics = "UA-83817537-1"
+theme = "hemingway2"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params]
+
+[params.highlight]
+style = "github"
+languages = ["go", "dockerfile"]
+
+[[params.social]]
+url = "https://github.com/lony"
+fa_icon = "fa-github"
+
+[[params.social]]
+url = "https://www.xing.com/profile/Goetz_Epperlein"
+fa_icon = "fa-xing"
+
+[[params.social]]
+url = "https://de.linkedin.com/in/goetzepperlein"
+fa_icon = "fa-linkedin"
+
+[[params.social]]
+url = "/index.xml"
+fa_icon = "fa-rss"

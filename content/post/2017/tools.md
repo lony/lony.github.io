@@ -1,18 +1,13 @@
----
-title: List of tools
-date: 2017-02-27 08:00:00
-tags:
-- tech
-- it
-- tooling
-- devops
----
-List of tools
-=====
++++
+title = "List of monitoring tools"
+tags = [ "programming", "tool", "list", "monitoring" ]
+date = "2017-02-27T08:02:52+02:00"
+slug = "dev-tool-list-monitoring"
++++
 
 Curated list of resources for system development and maintenance. Copycatted from awesome [sysadmin](https://github.com/kahun/awesome-sysadmin) and [DevOps](https://github.com/AcalephStorage/awesome-devops).
 
-## Metric & Metric Collection
+# Metric & Metric Collection
 
 *Metric gathering and display software.*
 
@@ -74,7 +69,7 @@ Curated list of resources for system development and maintenance. Copycatted fro
 
 * [OMD](http://omdistro.org/) - The Open Monitoring Distribution.
 
-## Service Discovery
+# Service Discovery
 
 Before you start please consider reading [HumaneRegistry from Martin Fowler](https://martinfowler.com/bliki/HumaneRegistry.html).
 
@@ -82,7 +77,7 @@ Before you start please consider reading [HumaneRegistry from Martin Fowler](htt
 * [Doozerd](https://github.com/ha/doozerd) - Doozer is a highly-available, completely consistent store for small amounts of extremely important data.
 * [ZooKeeper](http://zookeeper.apache.org/) - ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.
 
-## Log Management
+# Log Management
 
 *Log management tools: collect, parse, visualize ...*
 

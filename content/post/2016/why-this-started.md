@@ -1,9 +1,10 @@
----
-title: Why this started
-date: 2016-06-06 18:06:30
-tags:
-- meta
----
++++
+title = "Why this started!"
+tags = [ "blog", "init" ]
+date = "2016-06-06T18:06:30+02:00"
+slug = "why-started"
++++
+
 Working as a client I got to know [Michael Muckel](https://github.com/codeofzen). He is a head of software division at a company I consulted.
 
 One day we worked with an open source tool and he stated:

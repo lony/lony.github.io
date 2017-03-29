@@ -1,12 +1,9 @@
----
-title: Setup Mac CLI
-date: 2016-10-01 18:00:00
-tags:
-- tech
-- it
-- cli
-- mac
----
++++
+title = "Mac OS X Setup"
+tags = [ "programming", "mac", "setup" ]
+date = "2016-10-01T18:02:52+02:00"
+slug = "mac-osx-setup"
++++
 
 This post contains information about how I tweak a new Mac when I first get it.
 The first part covers UI optimizations as the second my CLI setup.

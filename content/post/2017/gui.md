@@ -1,12 +1,9 @@
----
-title: Graphical user interface development
-date: 2017-02-26 14:00:00
-tags:
-- tech
-- it
-- gui
-- cross-platform
----
++++
+title = "Graphical user interface developments"
+tags = [ "programming", "gui", "cross-platform" ]
+date = "2017-02-26T14:02:52+02:00"
+slug = "gui-development-cross-platform"
++++
 
 List of frameworks and tools for cross-platform development. Focusing on the following operating systems:
 
