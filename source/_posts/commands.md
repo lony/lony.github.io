@@ -274,6 +274,8 @@ rm in
 	* `sudo netstat -tulpn | grep LISTEN`
 	* `sudo netstat -an | grep 8080 | grep ESTABLISHED`
 
+* ngrep [1](https://en.wikipedia.org/wiki/Ngrep) - Similar to tcpdump
+
 * nmap [1](https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump) - Network mapping and port scanning tool
 
 * `nscd -i hosts` [1](http://serverfault.com/questions/16299/how-do-i-flush-the-dns-cache-on-win-mac-linux-computers) - Flush DNS cache
@@ -296,10 +298,24 @@ rm in
 	* `ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com` [1](https://www.howtoforge.com/reverse-ssh-tunneling) - Tunnel Mongo port from local machine to ec2 machine using SSH
 	* `ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N` - Tunnel port using a bastian host
 
-* tcpdump - Packet analyzer
+* tcpdump [1](http://packetpushers.net/masterclass-tcpdump-interpreting-output/) - Packet analyzer
 
-	* `tcpdump -ni eth0 -w ~/SYN_CONNECTION_OUTPUT.pcap tcp[13] == 2 and src host <MY_IP_SEE_DIG>` [1](http://unix.stackexchange.com/questions/101522/tcp-dump-outgoing-connection-packets)
-	* `tcpdump -i eth0 -n -p "tcp[tcpflags] & (tcp-syn) != 0" and "tcp[tcpflags] & (tcp-ack) == 0" or udp`
+	* `tcpdump -nvvvp -i any -c 100 -s 1500 -w /tmp/capture.file.pcap` [1](http://bencane.com/2014/10/13/quick-and-practical-reference-for-tcpdump/) - Write first 1500 bytes of the first 100 packages to PCAP file which are coming from any device
+
+		* `-n` - Do not translate hostnames (use ips)
+		* `-v` - Verbosity (max. vvv)
+		* `-p` - Don't put the interface into promiscuous mode
+		* `-i` - Interface to use (any for all)
+		* `-c` - Exit after amount of packets
+		* `-s` - Truncates bytes of data for each package
+		* `-w` - Store PCAP file of dump
+
+	* `tcpdump -A 'port 80 and host 192.168.0.1'` [1](https://danielmiessler.com/study/tcpdump/) - Print package output in ANSII format
+	* `tcpdump host 10.0.3.1` - Capture only if source and destination ip is 10.0.3.1
+	* `tcpdump src host 10.0.3.1` - Capture only if source ip is 10.0.3.1
+	* `tcpdump dst port 80` - Caputre only if destination port is 80
+	* `tcpdump 'tcp[tcpflags] & tcp-syn != 0'` [1](http://www.tcpdump.org/manpages/pcap-filter.7.html), [2](https://syedali.net/2014/12/29/tcp-flags-explained/), [3](https://danielmiessler.com/study/tcpflags/) - Use PCAP-filters to capture start (SYN) packets of TCP conversation
+	* `tcpdump 'tcp[tcpflags] & (tcp-syn) != 0 and tcp[tcpflags] & (tcp-ack) == 0 or udp'` - Capture tcp SYN but not SYN-ACK and also udp packets
 
 * trace aka traceroute [1](https://en.wikipedia.org/wiki/Traceroute) - Display route for transit of packets across IP network
 
