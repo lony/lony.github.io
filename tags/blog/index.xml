@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on [x]</title>
+    <link>https://lony.github.io/tags/blog/index.xml</link>
+    <description>Recent content in Blog on [x]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016</copyright>
+    <atom:link href="https://lony.github.io/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Why this started!</title>
+      <link>https://lony.github.io/post/2016/why-started/</link>
+      <pubDate>Mon, 06 Jun 2016 18:06:30 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2016/why-started/</guid>
+      <description>&lt;p&gt;Working as a client I got to know &lt;a href=&#34;https://github.com/codeofzen&#34;&gt;Michael Muckel&lt;/a&gt;. He is a head of software division at a company I consulted.&lt;/p&gt;
+
+&lt;p&gt;One day we worked with an open source tool and he stated:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;We should give something back after using so many open source tools.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That&amp;rsquo;s basically why I started this blog.&lt;/p&gt;
+
+&lt;p&gt;Over the years learning computer science, private as professionally I used a lot of public information.&lt;/p&gt;
+
+&lt;p&gt;Today I want to start giving back some of my findings as well!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

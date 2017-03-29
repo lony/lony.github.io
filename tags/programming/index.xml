@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on [x]</title>
+    <link>https://lony.github.io/tags/programming/index.xml</link>
+    <description>Recent content in Programming on [x]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016</copyright>
+    <atom:link href="https://lony.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>List of monitoring tools</title>
+      <link>https://lony.github.io/post/2017/dev-tool-list-monitoring/</link>
+      <pubDate>Mon, 27 Feb 2017 08:02:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2017/dev-tool-list-monitoring/</guid>
+      <description>
+
+&lt;p&gt;Curated list of resources for system development and maintenance. Copycatted from awesome &lt;a href=&#34;https://github.com/kahun/awesome-sysadmin&#34;&gt;sysadmin&lt;/a&gt; and &lt;a href=&#34;https://github.com/AcalephStorage/awesome-devops&#34;&gt;DevOps&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;metric-metric-collection&#34;&gt;Metric &amp;amp; Metric Collection&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Metric gathering and display software.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://collectd.org/&#34;&gt;Collectd&lt;/a&gt; - System statistic collection daemon.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://collectl.sourceforge.net/&#34;&gt;Collectl&lt;/a&gt; - High precision system performance metrics collecting tool.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dashing.io/&#34;&gt;Dashing&lt;/a&gt; - Ruby gem that allows for rapid statistical dashboard development. An all HTML5 approach allows for big screen displays in data centers or conference rooms.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/BrightcoveOS/Diamond&#34;&gt;Diamond&lt;/a&gt; - Python based statistic collection daemon.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://facette.io&#34;&gt;Facette&lt;/a&gt; - Time series data visualization and graphing software written in Go.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Freeboard/freeboard&#34;&gt;Freeboard&lt;/a&gt; - A damn-sexy front-end real-time dashboard. Transforms raw JSON into delicious UI.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ganglia.sourceforge.net/&#34;&gt;Ganglia&lt;/a&gt; - High performance, scalable RRD based monitoring for grids and/or clusters of servers. Compatible with Graphite using a single collection process.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://grafana.org/&#34;&gt;Grafana&lt;/a&gt; - A Graphite &amp;amp; InfluxDB Dashboard and Graph Editor.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://graphite.readthedocs.org/en/latest/&#34;&gt;Graphite&lt;/a&gt; - Open source scalable graphing server.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://influxdb.com/&#34;&gt;InfluxDB&lt;/a&gt; - Open source distributed time series database with no external dependencies.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.google.com/p/kairosdb/&#34;&gt;KairosDB&lt;/a&gt; - Fast distributed scalable time series database, fork of OpenTSDB 1.x.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://opentsdb.net/&#34;&gt;OpenTSDB&lt;/a&gt; - Store and server massive amounts of time series data without losing granularity.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://packetbeat.com/&#34;&gt;Packetbeat&lt;/a&gt; - Captures network traffic and displays it in a custom Kibana dashboard for easy viewing.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://prometheus.io/&#34;&gt;Prometheus&lt;/a&gt; - Service monitoring system and time series database.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://oss.oetiker.ch/rrdtool/&#34;&gt;RRDtool&lt;/a&gt; - Open source industry standard, high performance data logging and graphing system for time series data.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/etsy/statsd/&#34;&gt;Statsd&lt;/a&gt; - Application statistic listener.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Monitoring software.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/guardian/alerta&#34;&gt;Alerta&lt;/a&gt; - Distributed, scaleable and flexible monitoring system.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cacti.net&#34;&gt;Cacti&lt;/a&gt; - Web-based network monitoring and graphing tool.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cabotapp.com/&#34;&gt;Cabot&lt;/a&gt; - Monitoring and alerts, similar to PagerDuty.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.centreon.com&#34;&gt;Centreon&lt;/a&gt; - IT infrastructure and application monitoring for service performance.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mathias-kettner.com/check_mk.html&#34;&gt;check_mk&lt;/a&gt; - Collection of extensions for Nagios.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://flapjack.io/&#34;&gt;Flapjack&lt;/a&gt; - Monitoring notification routing &amp;amp; event processing system.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/librenms/librenms/&#34;&gt;LibreNMS&lt;/a&gt; - fork of Observium.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mmonit.com/monit/#home&#34;&gt;Monit&lt;/a&gt; - Small Open Source utility for managing and monitoring Unix systems.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://munin-monitoring.org/&#34;&gt;Munin&lt;/a&gt; - Networked resource monitoring tool.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.naemon.org/&#34;&gt;Naemon&lt;/a&gt; - Network monitoring tool based on the Nagios 4 core with performance enhancements and new features.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.nagios.org/&#34;&gt;Nagios&lt;/a&gt; - Computer system, network and infrastructure monitoring software application.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.icinga.org/&#34;&gt;Icinga2&lt;/a&gt; - Fork of Nagios.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/eleme/node-bell&#34;&gt;Node-Bell&lt;/a&gt; &lt;em&gt;not maintained&lt;/em&gt; - Real-time anomalies detection for periodic time series, metrics monitor.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.observium.org/&#34;&gt;Observium&lt;/a&gt; - SNMP monitoring for servers and networking devices. Runs on linux.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.opsview.com/solutions/core&#34;&gt;Opsview&lt;/a&gt; - Based on Nagios 4, Opsview Core is ideal for small IT and test environments.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://riemann.io/&#34;&gt;Riemann&lt;/a&gt; - Flexible and fast events processor allowing complex events/metrics analysis.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://sensuapp.org/&#34;&gt;Sensu&lt;/a&gt; - Open source monitoring framework.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://getsentry.com/&#34;&gt;Sentry&lt;/a&gt; - Application monitoring, event logging and aggregation.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/scobal/seyren&#34;&gt;Seyren&lt;/a&gt; - An alerting dashboard for Graphite.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.shinken-monitoring.org/&#34;&gt;Shinken&lt;/a&gt; - Another monitoring framework.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.xymon.com/&#34;&gt;Xymon&lt;/a&gt; - Network monitoring inspired by Big Brother.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.zabbix.com/&#34;&gt;Zabbix&lt;/a&gt; - Enterprise-class software for monitoring of networks and applications.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://community.zenoss.org&#34;&gt;Zenoss&lt;/a&gt; - Application, server, and network management platform based on Zope.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.datadoghq.com/&#34;&gt;DataDog&lt;/a&gt; [Commercial] - Cloud based monitoring as a service.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/de/cloudwatch/&#34;&gt;AWS CloudWatch&lt;/a&gt; [Commercial] - AWS monitoring as a service.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://newrelic.com/&#34;&gt;New Relic&lt;/a&gt; [Commercial] - Monitoring as a service.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.weave.works/products/weave-scope/&#34;&gt;Wave Scope&lt;/a&gt; [Commercial] - Container monitoring.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Monitoring dashboards.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://adagios.org/&#34;&gt;Adagios&lt;/a&gt; - Web based Nagios configuration interface.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/afaqurk/linux-dash&#34;&gt;Dash&lt;/a&gt; - A low-overhead monitoring web dashboard for a GNU/Linux machine.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.thruk.org/&#34;&gt;Thruk&lt;/a&gt; - Multibackend monitoring web interface with support for Naemon, Nagios, Icinga and Shinken.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://uchiwa.io&#34;&gt;Uchiwa&lt;/a&gt; - Simple dashboard for the Sensu monitoring framework.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;Monitoring distributions.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://omdistro.org/&#34;&gt;OMD&lt;/a&gt; - The Open Monitoring Distribution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;service-discovery&#34;&gt;Service Discovery&lt;/h1&gt;
+
+&lt;p&gt;Before you start please consider reading &lt;a href=&#34;https://martinfowler.com/bliki/HumaneRegistry.html&#34;&gt;HumaneRegistry from Martin Fowler&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.consul.io/&#34;&gt;Consul&lt;/a&gt; - Consul is a tool for service discovery, monitoring and configuration.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ha/doozerd&#34;&gt;Doozerd&lt;/a&gt; - Doozer is a highly-available, completely consistent store for small amounts of extremely important data.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://zookeeper.apache.org/&#34;&gt;ZooKeeper&lt;/a&gt; - ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;log-management&#34;&gt;Log Management&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Log management tools: collect, parse, visualize &amp;hellip;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.echothrust.com/projects/echofish&#34;&gt;Echofish&lt;/a&gt; - A web based real-time event log aggregation, analysis, monitoring and management system.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.elasticsearch.org/&#34;&gt;Elasticsearch&lt;/a&gt; - A Lucene Based Document store mainly used for log indexing, storage and analysis.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.fluentd.org/&#34;&gt;Fluentd&lt;/a&gt; - Log Collector and Shipper.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://flume.apache.org/&#34;&gt;Flume&lt;/a&gt; - Distributed log collection and aggregation system.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://graylog2.org/&#34;&gt;Graylog2&lt;/a&gt; - Pluggable Log and Event Analysis Server with Alerting options.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://hekad.readthedocs.org/en/latest/&#34;&gt;Heka&lt;/a&gt; - Stream processing system which may be used for log aggregation.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.elasticsearch.org/overview/kibana/&#34;&gt;Kibana&lt;/a&gt; - Visualize logs and time-stamped data.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://logstash.net/&#34;&gt;Logstash&lt;/a&gt; - Tool for managing events and logs.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.octopussy.pm&#34;&gt;Octopussy&lt;/a&gt; - Log Management Solution (Visualize / Alert / Report).&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Graphical user interface developments</title>
+      <link>https://lony.github.io/post/2017/gui-development-cross-platform/</link>
+      <pubDate>Sun, 26 Feb 2017 14:02:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2017/gui-development-cross-platform/</guid>
+      <description>
+
+&lt;p&gt;List of frameworks and tools for cross-platform development. Focusing on the following operating systems:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Windows&lt;/li&gt;
+&lt;li&gt;Linux&lt;/li&gt;
+&lt;li&gt;Mac OSX&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;java&#34;&gt;Java&lt;/h1&gt;
+
+&lt;h2 id=&#34;frameworks&#34;&gt;Frameworks&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AWT&lt;/li&gt;
+&lt;li&gt;Swing&lt;/li&gt;
+&lt;li&gt;SWT&lt;/li&gt;
+&lt;li&gt;JavaFX&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;builder&#34;&gt;Builder&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JFormDesigner &lt;a href=&#34;https://www.formdev.com/jformdesigner/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Swing GUI Builder (aka Matisse) &lt;a href=&#34;https://netbeans.org/features/java/swing.html&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;javascript&#34;&gt;JavaScript&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Electron &lt;a href=&#34;http://electron.atom.io/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NW.js &lt;a href=&#34;https://nwjs.io/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CLI commands</title>
+      <link>https://lony.github.io/post/2017/cli-commands/</link>
+      <pubDate>Sat, 25 Feb 2017 18:02:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2017/cli-commands/</guid>
+      <description>
+
+&lt;p&gt;Collection of useful command line commands for unix like operating systems. This list is constantly updated.&lt;/p&gt;
+
+&lt;h1 id=&#34;file-system&#34;&gt;File system&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;cat&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cat /etc/issue&lt;/code&gt; - Show ubuntu system version&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ls&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ls -R&lt;/code&gt; - Recursive list of directory and files within&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ls=&#39;ls -Fh -G&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;l=&#39;ls -1A&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ll=&#39;ls -lh&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ln - Link files &lt;a href=&#34;http://stackoverflow.com/questions/9587445/how-to-create-a-link-to-a-directory&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ln -s /foo/bar /home/lony/bar&lt;/code&gt; - Creates symbolic link&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln /foo/bar /home/lony/bar&lt;/code&gt; - Creates hard link (files only)
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;mkfifo - Create named pipe&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;mkfifo in 
+ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT &amp;lt;in | nc -l LOCAL_PORT &amp;gt;in
+rm in
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;openssl &lt;a href=&#34;http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://www.czeskis.com/random/openssl-encrypt-file.html&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs&#34;&gt;3&lt;/a&gt; - SSL encryption library&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;openssl enc -aes-256-cbc -e -in {path-in} -out {path-out}&lt;/code&gt; - Encrypt file with password (aes-256)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}&lt;/code&gt; - Decrypt file with password (aes-256)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl rsa -des3 -in {path-in} -out {path-out}&lt;/code&gt; - Encrypt key with password (rsa)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl rsa -in {path-in} -out {path-out}&lt;/code&gt; - Decrypt key with password (rsa)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;rsync &lt;a href=&#34;https://en.wikipedia.org/wiki/Rsync&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs&#34;&gt;2&lt;/a&gt; - Data synchronization tool&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -rlptzvn rsync://USER@foo.bar.de/home/lony_src/ /home/lony_dest/&lt;/code&gt; - Synchronize data from source to destination preserving source and not deleting anything&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-r&lt;/code&gt; - Recurs into folders&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-l&lt;/code&gt; - Copy also symlinks&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt; - Preserve permissions&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-t&lt;/code&gt; - Preserve modification times&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-z&lt;/code&gt; - Compress during transfer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; - Verbosity ++&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; or &lt;code&gt;--dry-run&lt;/code&gt; - Perform trial run&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -aivh --progress --delete source/ dest/&lt;/code&gt; &lt;a href=&#34;http://askubuntu.com/questions/476041/how-do-i-make-rsync-delete-files-that-have-been-deleted-from-the-source-folder&#34;&gt;1&lt;/a&gt; - Synchronize files and even delete irrelevant files on destination&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-a&lt;/code&gt; - Archive mode; equals &lt;code&gt;-rlptgoD&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-g&lt;/code&gt; - Preserve group&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-o&lt;/code&gt; - Preserve owner&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-D&lt;/code&gt; - Preserve devices and special files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-h&lt;/code&gt; - Numbers in human-readable format&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-i&lt;/code&gt; &lt;a href=&#34;http://serverfault.com/questions/618735/can-i-use-rsync-to-create-a-list-of-only-changed-files&#34;&gt;1&lt;/a&gt; - Change summary for all updates&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--progress&lt;/code&gt; - Show progress of transfer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--delete&lt;/code&gt; - Deletes irrelevant files from destination&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs source/ dest/&lt;/code&gt; &lt;a href=&#34;https://superuser.com/questions/676671/rsync-does-not-delete-source-directories&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories&#34;&gt;3&lt;/a&gt; - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--remove-source-files&lt;/code&gt; - Remove synchronized files from source&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--prune-empty-dirs&lt;/code&gt; - Ignore empty directories for transfer&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;tar&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tar cvzf - 2017-02-11_T430s_Windows8.tib | split -b 4294967295 -  ../win-bu.tar.gz.&lt;/code&gt; &lt;a href=&#34;http://unix.stackexchange.com/questions/61774/create-a-tar-archive-split-into-blocks-of-a-maximum-size&#34;&gt;1&lt;/a&gt; - Create gzip tar archiv in multiple chunks&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;cat win-bu.tar.gz.aa win-bu.tar.gz.ab &amp;gt; combined.tar.gz \
+gunzip combined.tar.gz \
+tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/27491606/how-to-create-a-linux-compatible-zip-archive-of-a-directory-on-a-mac&#34;&gt;1&lt;/a&gt; - Unzip multi-chunk gunziped tar archive&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;virtualenv - Virtual environments for python&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;virtualenv -p /usr/bin/python2.7 venv --no-site-packages&lt;/code&gt; - Create a virtual python2.7 environment inside &lt;em&gt;venv&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;zip&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zip -r &amp;lt;TARGET_.zip&amp;gt; &amp;lt;SOURCE_FOLDER&amp;gt;/&lt;/code&gt; &lt;a href=&#34;http://unix.stackexchange.com/questions/57013/zip-all-files-in-directory&#34;&gt;1&lt;/a&gt; - Zip folder recursively&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;zip -r -s 3g archive.zip FolderName/&lt;/code&gt; &lt;a href=&#34;http://www.addictivetips.com/mac-os/how-to-create-a-split-zipped-archive-from-mac-os-x-terminal/&#34;&gt;1&lt;/a&gt; - Split into multiple chunks&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;configuration-management&#34;&gt;Configuration management&lt;/h2&gt;
+
+&lt;h3 id=&#34;ansible&#34;&gt;Ansible&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ansible-playbook - Runs Ansible playbooks&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ansible-playbook site.yml -i localhost, --connection=local&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;chef&#34;&gt;Chef&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;chef-client&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chef-client -W&lt;/code&gt; - Test run without actually changing anything&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;chef-server-ctl&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chef-server-ctl org-user-add -a &amp;lt;ORGA&amp;gt; &amp;lt;USER&amp;gt;&lt;/code&gt; - Create user in organization using chef ACL&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;knife&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;knife node list&lt;/code&gt; - Show systems&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife node from file nodes/&amp;lt;MASCHINE_NAME&amp;gt;.rb&lt;/code&gt; - Loads local node configuration to Chef server&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife data bag list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nife data bag show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt;&lt;/code&gt; &amp;ndash;format=json&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife vault list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife vault show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife cookbook download -s &amp;quot;https://&amp;lt;SERVER_URL&amp;gt;&amp;quot; &amp;lt;COOKBOOK_NAME&amp;gt; 0.3.0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;kitchen&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;kitchen create&lt;/code&gt; - Create instance/container using provisioner&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen converge&lt;/code&gt; - Runs chef on the instance/container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen verify&lt;/code&gt; -  Runs tests on the instance/container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen test&lt;/code&gt; - Does all togehter and at the end drops container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen login&lt;/code&gt; - Opens shell into instance/container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen list&lt;/code&gt; - Lists instance/container&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;package-management&#34;&gt;Package management&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;apt &lt;a href=&#34;http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get&#34;&gt;2&lt;/a&gt; - Debian/Ubuntu package manager (including dependencies)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get update&lt;/code&gt; -  Update is used to re-synchronize the package index files from their sources via Internet&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get upgrade&lt;/code&gt; - Upgrade is used to install the newest versions of all packages currently installed on the system&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get install --only-upgrade linux-generic&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get autoremove --purge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get upgrade --dry-run&lt;/code&gt; &lt;a href=&#34;http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get dist-upgrade&lt;/code&gt; &lt;a href=&#34;https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software&#34;&gt;1&lt;/a&gt; - Update newer version of distribution&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;aptitude &lt;a href=&#34;http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig&#34;&gt;1&lt;/a&gt; - cli GUI for package management&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dpkg - Debian/Ubuntu package manager (without dependencies)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dpkg -l&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;pip - Python package manager&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install ansible&lt;/code&gt; - Install package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip install -r requirements.txt&lt;/code&gt; - Install all packages listed in requirements.txt&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;sudo update-alternatives --config java&lt;/code&gt; - Set default Java version on system&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;version-control-systems-https-en-wikipedia-org-wiki-version-control-vcs&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Version_control&#34;&gt;Version control systems&lt;/a&gt; (VCS)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;git &lt;a href=&#34;https://git-scm.com/&#34;&gt;1&lt;/a&gt; - Distributed VCS&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git update-index --assume-unchanged FILE_NAME&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes&#34;&gt;1&lt;/a&gt; - Ignore file for comparison (HINT: only set locally on repository)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git update-index --no-assume-unchanged FILE_NAME&lt;/code&gt; - Regard file again for comparison&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;processes&#34;&gt;Processes&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;df - Display free disk space&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;df -h&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;du&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;du -h --max-depth=1 /&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;du -a /var | sort -n -r | head -n 10&lt;/code&gt; &lt;a href=&#34;https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/&#34;&gt;1&lt;/a&gt; - List 10 biggest folders or files in /var&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;htop &lt;a href=&#34;https://codeahoy.com/2017/01/20/hhtop-explained-visually&#34;&gt;1&lt;/a&gt; - Interactive process monitor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;sudo initctl restart apache&lt;/code&gt; &lt;a href=&#34;https://wiki.ubuntu.com/SystemdForUpstartUsers&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;http://upstart.ubuntu.com/&#34;&gt;2&lt;/a&gt; - Restart command for upstart (using /etc/init)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;lsof &lt;a href=&#34;https://en.wikipedia.org/wiki/Lsof&#34;&gt;1&lt;/a&gt; - list of open files&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo lsof -i&lt;/code&gt; - All internal network files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo lsof | grep jre&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo lsof -i -n -P | grep LISTEN&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ps &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=765270359&#34;&gt;1&lt;/a&gt; - Static process monitor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;screen &lt;a href=&#34;https://en.wikipedia.org/wiki/GNU_Screen&#34;&gt;1&lt;/a&gt; - terminal multiplexer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;screen &amp;lt;COMMAND&amp;gt;&lt;/code&gt; - Start command in screen session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -ls&lt;/code&gt; - List screen sessions&lt;/li&gt;
+&lt;li&gt;Press (Strg + a + d) - Detach running session &lt;a href=&#34;https://nathan.chantrell.net/linux/an-introduction-to-screen/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -r&lt;/code&gt; - Resume last running screen session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -r -d 30608&lt;/code&gt; - Resume already attached session &lt;a href=&#34;http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -dmS &amp;lt;SESSION_NAME&amp;gt; &amp;lt;COMMAND&amp;gt;&lt;/code&gt; - Starts screen in detached mode using the given session name and command&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;sudo service apache restart&lt;/code&gt; - Restart command for System V (using /etc/init.d)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;top &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=758781701&#34;&gt;1&lt;/a&gt; - Real-time task manager&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;tree &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=766877590&#34;&gt;1&lt;/a&gt; - Recursive directory listing program&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tree -d -L 2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker pull jenkins:2.32.1&lt;/code&gt; - Download docker image from registry&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker build&lt;/code&gt; - Build an image from a Dockerfile&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -p 8080:8080 jenkins:2.32.1&lt;/code&gt; - Starts existing docker image and maps port&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -it -d shykes/pybuilder /bin/bash&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container&#34;&gt;1&lt;/a&gt; - Run image and start bash&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker exec -it f151aff2b21e /bin/bash&lt;/code&gt; - Starts docker image f151aff2b21e and open interactive shell&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker ps -a&lt;/code&gt; - List instances (derived from images)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rm -f 2247780d0b39&lt;/code&gt; - Delete instance&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker images&lt;/code&gt; - List images&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rmi ae12afb99714 a78344b99ebc&lt;/code&gt; - Delete images&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;vagrant&#34;&gt;Vagrant&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant global-status&lt;/code&gt; - Show existing VMs&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vagrant global-status --prune&lt;/code&gt; - &lt;a href=&#34;http://stackoverflow.com/questions/24611902/remove-vagrant-box-from-global-status-after-deleting-it-from-filesystem&#34;&gt;1&lt;/a&gt; Update vagrant cache&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant up&lt;/code&gt; - Create VM from scratch&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;export VAGRANT_LOG=debug; vagrant up&lt;/code&gt; - Change vagrant log level&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant provision&lt;/code&gt; - Create VM using existing Vagrantfile&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant destroy -f 1f7d3b6&lt;/code&gt;  - Delete VM&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vagrant destroy -f&lt;/code&gt; - Destroy without confirmation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant ssh&lt;/code&gt; - SSH into the VM&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vagrant ssh-config &amp;lt;NAME_OR_ID_OF_VM&amp;gt; | awk -v ORS=&#39; &#39; &#39;{print &amp;quot;-o &amp;quot; $1 &amp;quot;=&amp;quot; $2}&#39;&lt;/code&gt; - Get parameter to scp into VM&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant plugin list&lt;/code&gt; - Show vagrant plugins&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant plugin install vagrant-vbguest vagrant-cachier vagrant-share vagrant-triggers&lt;/code&gt; - Install vagrant plugins&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;virtualbox&#34;&gt;VirtualBox&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;VBoxManage list runningvms | awk &#39;{print $2;}&#39; | xargs -I {} VBoxManage controlvm {} poweroff&lt;/code&gt; - &lt;a href=&#34;http://stackoverflow.com/questions/15408969/how-do-i-destroy-a-vm-when-i-deleted-the-vagrant-file&#34;&gt;1&lt;/a&gt; Halt all running virtual boxes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;VBoxManage list vms | awk &#39;{print $2;}&#39; | xargs -I {} VBoxManage unregistervm {}&lt;/code&gt; - Clean ALL virtual boxes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;VBoxManage setproperty machinefolder ${BASE_TMP_FOLDER}&lt;/code&gt; - &lt;a href=&#34;http://superuser.com/questions/599421/how-to-move-the-default-folder-for-headless-virtualbox&#34;&gt;1&lt;/a&gt; Switch vagrant box folder&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;user-environment&#34;&gt;User environment&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;ldapsearch -H ldap://&amp;lt;SERVER_URL&amp;gt; -w &amp;lt;PASSWORD&amp;gt; -D cn=readonly,dc=lony &amp;quot;(&amp;amp;(objectClass=user)(cn=prod))&amp;quot;&lt;/code&gt; - Command to query LDAP server&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;shutdown -rf now&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;who &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=731053985&#34;&gt;1&lt;/a&gt; - Display users logged in&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;who -r&lt;/code&gt; - Show runlevel&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;text-processing&#34;&gt;Text processing&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;jq &lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;1&lt;/a&gt; - CLI JSON processor&lt;/li&gt;
+&lt;li&gt;xargs &lt;a href=&#34;https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/&#34;&gt;1&lt;/a&gt; - Sub-list generator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;shell-bulletins&#34;&gt;Shell bulletins&lt;/h1&gt;
+
+&lt;h1 id=&#34;networking&#34;&gt;Networking&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;curl - Client for URLs&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl -X POST -H &amp;quot;Content-Type: application/json&amp;quot; -H &amp;quot;Cache-Control: no-cache&amp;quot; -d &#39;{ &amp;quot;username&amp;quot; : &amp;quot;xxx&amp;quot;, &amp;quot;pw&amp;quot; : &amp;quot;xxx&amp;quot;}&#39; &amp;quot;http://localhost:8080/user/authenticate&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dig - DNS querying tool using OS resolver&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dig +short myip.opendns.com @resolver1.opendns.com&lt;/code&gt; &lt;a href=&#34;http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-a-shell-script&#34;&gt;1&lt;/a&gt; - Retrieve your external IP address using DNS&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;httpie &lt;a href=&#34;https://httpie.org/&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;https://github.com/jkbrzt/httpie&#34;&gt;2&lt;/a&gt; - Better curl with JSON support&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ipcalc &lt;a href=&#34;https://pypi.python.org/pypi/ipcalc&#34;&gt;1&lt;/a&gt; - IP subnet calculator&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;iptraf &lt;a href=&#34;http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic&#34;&gt;1&lt;/a&gt; - Network statistic tool&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;netcat aka nc - Tool to read and write from network connections&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nc -vz external.host 6379&lt;/code&gt; - Just test Redis port with verbose output&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;netcat -vv localhost 3306&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;netstat - Host based network statistic tool&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo netstat -tulpn | grep LISTEN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo netstat -an | grep 8080 | grep ESTABLISHED&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ngrep &lt;a href=&#34;https://en.wikipedia.org/wiki/Ngrep&#34;&gt;1&lt;/a&gt; - Similar to tcpdump&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;nmap &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump&#34;&gt;1&lt;/a&gt; - Network mapping and port scanning tool&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;nscd -i hosts&lt;/code&gt; &lt;a href=&#34;http://serverfault.com/questions/16299/how-do-i-flush-the-dns-cache-on-win-mac-linux-computers&#34;&gt;1&lt;/a&gt; - Flush DNS cache&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;nslookup &lt;a href=&#34;https://en.wikipedia.org/wiki/Nslookup&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;http://unix.stackexchange.com/questions/93808/dig-vs-nslookup&#34;&gt;2&lt;/a&gt; - DNS querying tool incl. own resolver&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ntop &lt;a href=&#34;https://en.wikipedia.org/wiki/Ntop&#34;&gt;1&lt;/a&gt; - Interactive network monitor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ntpdate&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ntpdate -q de.pool.ntp.org&lt;/code&gt; - Query NTP service without changing something&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;route &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=749414632&#34;&gt;1&lt;/a&gt; - View IP routing table of host (replaced with &lt;code&gt;iproute2&lt;/code&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;scp - secure copy&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ssh - Secure Shell commands (more on how to setup &lt;a href=&#34;https://github.com/lony/dotFiles/tree/master/.ssh&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ssh -vT git@github.com&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/2643502/git-permission-denied-publickey&#34;&gt;1&lt;/a&gt; - Testing GIT via SSH connection using verbose mode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com&lt;/code&gt; &lt;a href=&#34;https://www.howtoforge.com/reverse-ssh-tunneling&#34;&gt;1&lt;/a&gt; - Tunnel Mongo port from local machine to ec2 machine using SSH&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N&lt;/code&gt; - Tunnel port using a bastian host&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;tcpdump &lt;a href=&#34;http://packetpushers.net/masterclass-tcpdump-interpreting-output/&#34;&gt;1&lt;/a&gt; - Packet analyzer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump -nvvvp -i any -c 100 -s 1500 -w /tmp/capture.file.pcap&lt;/code&gt; &lt;a href=&#34;http://bencane.com/2014/10/13/quick-and-practical-reference-for-tcpdump/&#34;&gt;1&lt;/a&gt; - Write first 1500 bytes of the first 100 packages to PCAP file which are coming from any device&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; - Do not translate hostnames (use ips)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; - Verbosity (max. vvv)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt; - Don&amp;rsquo;t put the interface into promiscuous mode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-i&lt;/code&gt; - Interface to use (any for all)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-c&lt;/code&gt; - Exit after amount of packets&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-s&lt;/code&gt; - Truncates bytes of data for each package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-w&lt;/code&gt; - Store PCAP file of dump&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump -A &#39;port 80 and host 192.168.0.1&#39;&lt;/code&gt; &lt;a href=&#34;https://danielmiessler.com/study/tcpdump/&#34;&gt;1&lt;/a&gt; - Print package output in ANSII format&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump host 10.0.3.1&lt;/code&gt; - Capture only if source and destination ip is 10.0.3.1&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump src host 10.0.3.1&lt;/code&gt; - Capture only if source ip is 10.0.3.1&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump dst port 80&lt;/code&gt; - Caputre only if destination port is 80&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump &#39;tcp[tcpflags] &amp;amp; tcp-syn != 0&#39;&lt;/code&gt; &lt;a href=&#34;http://www.tcpdump.org/manpages/pcap-filter.7.html&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;https://syedali.net/2014/12/29/tcp-flags-explained/&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;https://danielmiessler.com/study/tcpflags/&#34;&gt;3&lt;/a&gt; - Use PCAP-filters to capture start (SYN) packets of TCP conversation&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump &#39;tcp[tcpflags] &amp;amp; (tcp-syn) != 0 and tcp[tcpflags] &amp;amp; (tcp-ack) == 0 or udp&#39;&lt;/code&gt; - Capture tcp SYN but not SYN-ACK and also udp packets&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;trace aka traceroute &lt;a href=&#34;https://en.wikipedia.org/wiki/Traceroute&#34;&gt;1&lt;/a&gt; - Display route for transit of packets across IP network&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;vnstat &lt;a href=&#34;https://wiki.ubuntuusers.de/vnStat/&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;http://www.thegeekstuff.com/2011/11/vnstat-network-traffic-monitor/&#34;&gt;2&lt;/a&gt; - Network traffic monitor&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;searching&#34;&gt;Searching&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;find&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;find / -type d -name &amp;quot;lony.github.io&amp;quot;&lt;/code&gt; - Search for lony&amp;hellip; folder in root&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find download/ -mtime +60  -delete&lt;/code&gt; - Search in download-folder for files last modified before +60 and delete&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &amp;quot;*.tmp&amp;quot; -print&lt;/code&gt; &lt;a href=&#34;http://unix.stackexchange.com/questions/194863/delete-files-older-than-x-days&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://askubuntu.com/questions/413529/delete-files-older-than-one-year-on-linux&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/5927369/recursively-look-for-files-with-a-specific-extension&#34;&gt;3&lt;/a&gt;
+then &lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &amp;quot;*.tmp&amp;quot; -delete&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find /path/to/directory/ -mindepth 1 -maxdepth 1 -mtime +365 -type d -print -exec rm -r &amp;quot;{}&amp;quot; \;&lt;/code&gt; - &lt;a href=&#34;http://unix.stackexchange.com/questions/89925/how-to-delete-directories-based-on-find-output&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di&#34;&gt;2&lt;/a&gt; Delete directories recursivly&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;grep &lt;a href=&#34;https://www.cyberciti.biz/faq/grep-regular-expressions/&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;grep foo /home/lony/bar&lt;/code&gt; - Search for foo in bar&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep -r foo /home/lony/bar&lt;/code&gt; - Search recursively for foo in bar&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep -nr &#39;foo*&#39; .&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder&#34;&gt;1&lt;/a&gt; - Search for foo* in &lt;code&gt;.&lt;/code&gt; showing relative line number&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;zgrep foo /home/lony/log.1.gz | less&lt;/code&gt; - Search inside gzip log file for foo&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;documentation&#34;&gt;Documentation&lt;/h1&gt;
+
+&lt;h1 id=&#34;miscellaneous&#34;&gt;Miscellaneous&lt;/h1&gt;
+
+&lt;h2 id=&#34;programming-shell-bash-sh&#34;&gt;Programming (shell|bash|sh)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;until&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;until ssh aws-host; do echo &amp;quot;Try again&amp;quot;; sleep 2; done&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;for&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;for i in &amp;quot;ci&amp;quot; &amp;quot;stage&amp;quot; &amp;quot;prod&amp;quot;; do (export ENVI=$i; echo $ENVI); done&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/&#34;&gt;2&lt;/a&gt;,&lt;a href=&#34;http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second&#34;&gt;3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;read&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;read -p &amp;quot;Enter username to check:&amp;quot; USERNAME &amp;amp;&amp;amp; echo $USERNAME&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;if&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bash version =&amp;gt; 4 &lt;a href=&#34;http://unix.stackexchange.com/questions/250778/should-i-check-bash-version&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
+  echo &amp;quot;This script requires bash version &amp;gt; 4. Currently running is ${BASH_VERSION%%.*}&amp;quot;
+  exit 1
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
+
+&lt;h3 id=&#34;prompt&#34;&gt;Prompt&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;ERRORLEVEL TIME USER@HOST PATH #
+2 [14:03:07] lony@hobbes /var/log/upstart # echo $PS1
+$? \[\e[01;34m\][$(date &amp;quot;+%H:%M:%S&amp;quot;)] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;34m\] \w # \[\e[0m\]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;distribution&#34;&gt;Distribution&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;uname -a&lt;/code&gt; - Show kernel version and private system information&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;ubuntu&#34;&gt;Ubuntu&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;lsb_release -a&lt;/code&gt; - Print version&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;meta&#34;&gt;Meta&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How to structure this document? &lt;strong&gt;Answer&lt;/strong&gt;: as the UNIX wikipedia
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_Unix_commands&#34;&gt;article&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Book:Unix_Commands&#34;&gt;book&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Mac OS X Setup</title>
+      <link>https://lony.github.io/post/2016/mac-osx-setup/</link>
+      <pubDate>Sat, 01 Oct 2016 18:02:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2016/mac-osx-setup/</guid>
+      <description>
+
+&lt;p&gt;This post contains information about how I tweak a new Mac when I first get it.
+The first part covers UI optimizations as the second my CLI setup.&lt;/p&gt;
+
+&lt;h1 id=&#34;os-x-user-interface&#34;&gt;OS X user interface&lt;/h1&gt;
+
+&lt;p&gt;Following the &lt;a href=&#34;http://www.defaults-write.com/10-terminal-commands-to-speed-up-your-mac-in-os-x-el-capitan/&#34;&gt;defaults-write.com instructions&lt;/a&gt; I first try to optimize the UX experience of OSX.&lt;/p&gt;
+
+&lt;p&gt;To apply the following changes you have to reboot your machine. To undo use &lt;code&gt;defaults delete NSGlobalDomain KeyRepeat&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Disable animations when opening and closing windows: &lt;code&gt;defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Disable animations when opening a Quick Look window: &lt;code&gt;defaults write -g QLPanelAnimationDuration -float 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Accelerated playback when adjusting the window size (Cocoa applications): &lt;code&gt;defaults write NSGlobalDomain NSWindowResizeTime -float 0.001&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Disable animation when opening the Info window in OS X Finder (cmd⌘ + i): &lt;code&gt;defaults write com.apple.finder DisableAllAnimations -bool true&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Disable animations when you open an application from the Dock: &lt;code&gt;defaults write com.apple.dock launchanim -bool false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Make all animations faster that are used by Mission Control: &lt;code&gt;defaults write com.apple.dock expose-animation-duration -float 0.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Disable the delay when you hide the Dock: &lt;code&gt;defaults write com.apple.Dock autohide-delay -float 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The keyboard react faster to keystrokes: &lt;code&gt;defaults write NSGlobalDomain KeyRepeat -int 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;To change the screenshot format to jpg &lt;code&gt;defaults write com.apple.screencapture type jpg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After applying this configuration changes through the terminal there are also some adjustments made via the settings interface. I extracted two of them from the following &lt;a href=&#34;http://osxdaily.com/2014/10/24/speed-up-os-x-yosemite-mac/&#34;&gt;OSXDaily guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;System Preferences &amp;gt; Accessibility &amp;gt; Display and there check &lt;code&gt;Reduce Transparency&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;System Preferences &amp;gt; Dock select &lt;code&gt;Scale effect&lt;/code&gt; for Minimize windows using&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;terminal&#34;&gt;Terminal&lt;/h1&gt;
+
+&lt;p&gt;To improve working with the CLI I install a couple of tools.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install &lt;a href=&#34;http://brew.sh/index.html&#34;&gt;homebrew&lt;/a&gt; the (missing) package manager, using the Terminal via &lt;code&gt;/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&#34;https://caskroom.github.io/&#34;&gt;homebrew Cask&lt;/a&gt; the homebrew extension for GUI applications, using the Terminal via &lt;code&gt;brew tap caskroom/cask&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://www.iterm2.com/&#34;&gt;iTerm2&lt;/a&gt; a better Terminal, directly using the binary download&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Configuration&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To let iTerm2 fill the complete screen after a resize change the following: Turn on Preferences&amp;gt;Advanced&amp;gt;Terminal windows resize smoothly&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://www.spectacleapp.com/&#34;&gt;SpectacleApp&lt;/a&gt; a window resizing helper, directly using the binary download&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://justgetflux.com/&#34;&gt;f.lux&lt;/a&gt; a helper to reduce monitor light, via &lt;code&gt;brew install flux&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After setting the field I now following &lt;a href=&#34;https://danielmiessler.com/blog/first-10-things-new-mac/&#34;&gt;Daniel Miessler&amp;rsquo;s&lt;/a&gt; recommendation and setup my bash.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Switching to &lt;a href=&#34;http://www.zsh.org/&#34;&gt;Zsh&lt;/a&gt; the better bash using &lt;code&gt;chsh -s $(which zsh)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install (the latest) &lt;a href=&#34;http://www.vim.org/&#34;&gt;vim&lt;/a&gt; using &lt;code&gt;brew install vim&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install GNU tool&amp;rsquo;s because OSX is based on BSD and has its tools installed as default
+
+&lt;ul&gt;
+&lt;li&gt;First run &lt;code&gt;brew tap homebrew/dupes&lt;/code&gt; to add dupes repository to homebrew&lt;/li&gt;
+&lt;li&gt;Then run the following lines to install each tool
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hint&lt;/strong&gt;: Interested in &lt;code&gt;tmux&lt;/code&gt; read &lt;a href=&#34;https://danielmiessler.com/study/tmux/&#34;&gt;Daniel Miessler&amp;rsquo;s post&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;brew install findutils --default-names
+brew install gnu-sed --default-names
+brew install gnu-tar --default-names
+brew install gnu-which --default-names
+brew install gnutls --default-names
+brew install grep --default-names
+brew install coreutils
+brew install binutils
+brew install diffutils
+brew install gzip
+brew install xz
+brew install watch
+brew install tmux 
+brew install wget
+brew install nmap
+brew install gpg
+brew install htop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installing my dotFiles from &lt;a href=&#34;https://github.com/lony/dotFiles&#34;&gt;here&lt;/a&gt; into my home folder
+
+&lt;ul&gt;
+&lt;li&gt;Adjusting the &lt;code&gt;.rc_secret&lt;/code&gt; adding at least a valid Github token&lt;/li&gt;
+&lt;li&gt;Open vim and run &lt;code&gt;:PlugInstall&lt;/code&gt; installing set plugins in my &lt;code&gt;.vimrc&lt;/code&gt; see &lt;a href=&#34;http://vimawesome.com/&#34;&gt;VimAwesome.com&lt;/a&gt; for more&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hint&lt;/strong&gt;: To jump from the CLI to a vim editing mode &lt;a href=&#34;http://nuclearsquid.com/writings/edit-long-commands/&#34;&gt;as configured&lt;/a&gt; use &lt;code&gt;ESC v&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;python&#34;&gt;Python&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Install gcc using way from &lt;a href=&#34;http://docs.python-guide.org/en/latest/starting/install/osx/&#34;&gt;this guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Downloading the Command Line Tools from &lt;a href=&#34;https://developer.apple.com/downloads/&#34;&gt;here&lt;/a&gt; (requires Apple-Account). The file you need is called &lt;code&gt;Command_Line_Tools_OS_X_10.XX_for_Xcode_7.2.dmg&lt;/code&gt;. &lt;em&gt;The XX depends on your OSX-Version.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Then install the downloaded dmg&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Execute &lt;code&gt;brew install python&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>bash file pasting</title>
+      <link>https://lony.github.io/post/2016/bash-pasting/</link>
+      <pubDate>Wed, 31 Aug 2016 23:54:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2016/bash-pasting/</guid>
+      <description>&lt;p&gt;Wanted to build a template engine using bash, asked yourself: How to paste my fancy file using bash?
+Here is the answer!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bash
+# With parameter expanding
+cat &amp;lt;&amp;lt;EOF &amp;gt;&amp;gt; bash-paste_expanding
+export ME=`whoami`
+EOF
+## Result: export ME=lony
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;bash
+# Without parameter expanding (look at the &#39;)
+cat &amp;lt;&amp;lt;&#39;EOF&#39; &amp;gt;&amp;gt; bash-paste_not-expanding
+export ME=`whoami`
+EOF
+## Result: export ME=`whoami`
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cli on [x]</title>
+    <link>https://lony.github.io/tags/cli/index.xml</link>
+    <description>Recent content in Cli on [x]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016</copyright>
+    <atom:link href="https://lony.github.io/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>CLI commands</title>
+      <link>https://lony.github.io/post/2017/cli-commands/</link>
+      <pubDate>Sat, 25 Feb 2017 18:02:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2017/cli-commands/</guid>
+      <description>
+
+&lt;p&gt;Collection of useful command line commands for unix like operating systems. This list is constantly updated.&lt;/p&gt;
+
+&lt;h1 id=&#34;file-system&#34;&gt;File system&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;cat&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cat /etc/issue&lt;/code&gt; - Show ubuntu system version&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ls&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ls -R&lt;/code&gt; - Recursive list of directory and files within&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ls=&#39;ls -Fh -G&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;l=&#39;ls -1A&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ll=&#39;ls -lh&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ln - Link files &lt;a href=&#34;http://stackoverflow.com/questions/9587445/how-to-create-a-link-to-a-directory&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ln -s /foo/bar /home/lony/bar&lt;/code&gt; - Creates symbolic link&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln /foo/bar /home/lony/bar&lt;/code&gt; - Creates hard link (files only)
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;mkfifo - Create named pipe&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;mkfifo in 
+ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT &amp;lt;in | nc -l LOCAL_PORT &amp;gt;in
+rm in
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;openssl &lt;a href=&#34;http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://www.czeskis.com/random/openssl-encrypt-file.html&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs&#34;&gt;3&lt;/a&gt; - SSL encryption library&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;openssl enc -aes-256-cbc -e -in {path-in} -out {path-out}&lt;/code&gt; - Encrypt file with password (aes-256)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}&lt;/code&gt; - Decrypt file with password (aes-256)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl rsa -des3 -in {path-in} -out {path-out}&lt;/code&gt; - Encrypt key with password (rsa)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl rsa -in {path-in} -out {path-out}&lt;/code&gt; - Decrypt key with password (rsa)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;rsync &lt;a href=&#34;https://en.wikipedia.org/wiki/Rsync&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs&#34;&gt;2&lt;/a&gt; - Data synchronization tool&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -rlptzvn rsync://USER@foo.bar.de/home/lony_src/ /home/lony_dest/&lt;/code&gt; - Synchronize data from source to destination preserving source and not deleting anything&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-r&lt;/code&gt; - Recurs into folders&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-l&lt;/code&gt; - Copy also symlinks&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt; - Preserve permissions&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-t&lt;/code&gt; - Preserve modification times&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-z&lt;/code&gt; - Compress during transfer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; - Verbosity ++&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; or &lt;code&gt;--dry-run&lt;/code&gt; - Perform trial run&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -aivh --progress --delete source/ dest/&lt;/code&gt; &lt;a href=&#34;http://askubuntu.com/questions/476041/how-do-i-make-rsync-delete-files-that-have-been-deleted-from-the-source-folder&#34;&gt;1&lt;/a&gt; - Synchronize files and even delete irrelevant files on destination&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-a&lt;/code&gt; - Archive mode; equals &lt;code&gt;-rlptgoD&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-g&lt;/code&gt; - Preserve group&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-o&lt;/code&gt; - Preserve owner&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-D&lt;/code&gt; - Preserve devices and special files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-h&lt;/code&gt; - Numbers in human-readable format&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-i&lt;/code&gt; &lt;a href=&#34;http://serverfault.com/questions/618735/can-i-use-rsync-to-create-a-list-of-only-changed-files&#34;&gt;1&lt;/a&gt; - Change summary for all updates&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--progress&lt;/code&gt; - Show progress of transfer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--delete&lt;/code&gt; - Deletes irrelevant files from destination&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs source/ dest/&lt;/code&gt; &lt;a href=&#34;https://superuser.com/questions/676671/rsync-does-not-delete-source-directories&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories&#34;&gt;3&lt;/a&gt; - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--remove-source-files&lt;/code&gt; - Remove synchronized files from source&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--prune-empty-dirs&lt;/code&gt; - Ignore empty directories for transfer&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;tar&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tar cvzf - 2017-02-11_T430s_Windows8.tib | split -b 4294967295 -  ../win-bu.tar.gz.&lt;/code&gt; &lt;a href=&#34;http://unix.stackexchange.com/questions/61774/create-a-tar-archive-split-into-blocks-of-a-maximum-size&#34;&gt;1&lt;/a&gt; - Create gzip tar archiv in multiple chunks&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;cat win-bu.tar.gz.aa win-bu.tar.gz.ab &amp;gt; combined.tar.gz \
+gunzip combined.tar.gz \
+tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/27491606/how-to-create-a-linux-compatible-zip-archive-of-a-directory-on-a-mac&#34;&gt;1&lt;/a&gt; - Unzip multi-chunk gunziped tar archive&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;virtualenv - Virtual environments for python&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;virtualenv -p /usr/bin/python2.7 venv --no-site-packages&lt;/code&gt; - Create a virtual python2.7 environment inside &lt;em&gt;venv&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;zip&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zip -r &amp;lt;TARGET_.zip&amp;gt; &amp;lt;SOURCE_FOLDER&amp;gt;/&lt;/code&gt; &lt;a href=&#34;http://unix.stackexchange.com/questions/57013/zip-all-files-in-directory&#34;&gt;1&lt;/a&gt; - Zip folder recursively&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;zip -r -s 3g archive.zip FolderName/&lt;/code&gt; &lt;a href=&#34;http://www.addictivetips.com/mac-os/how-to-create-a-split-zipped-archive-from-mac-os-x-terminal/&#34;&gt;1&lt;/a&gt; - Split into multiple chunks&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;configuration-management&#34;&gt;Configuration management&lt;/h2&gt;
+
+&lt;h3 id=&#34;ansible&#34;&gt;Ansible&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ansible-playbook - Runs Ansible playbooks&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ansible-playbook site.yml -i localhost, --connection=local&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;chef&#34;&gt;Chef&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;chef-client&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chef-client -W&lt;/code&gt; - Test run without actually changing anything&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;chef-server-ctl&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;chef-server-ctl org-user-add -a &amp;lt;ORGA&amp;gt; &amp;lt;USER&amp;gt;&lt;/code&gt; - Create user in organization using chef ACL&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;knife&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;knife node list&lt;/code&gt; - Show systems&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife node from file nodes/&amp;lt;MASCHINE_NAME&amp;gt;.rb&lt;/code&gt; - Loads local node configuration to Chef server&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife data bag list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nife data bag show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt;&lt;/code&gt; &amp;ndash;format=json&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife vault list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife vault show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife cookbook download -s &amp;quot;https://&amp;lt;SERVER_URL&amp;gt;&amp;quot; &amp;lt;COOKBOOK_NAME&amp;gt; 0.3.0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;kitchen&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;kitchen create&lt;/code&gt; - Create instance/container using provisioner&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen converge&lt;/code&gt; - Runs chef on the instance/container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen verify&lt;/code&gt; -  Runs tests on the instance/container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen test&lt;/code&gt; - Does all togehter and at the end drops container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen login&lt;/code&gt; - Opens shell into instance/container&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;kitchen list&lt;/code&gt; - Lists instance/container&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;package-management&#34;&gt;Package management&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;apt &lt;a href=&#34;http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get&#34;&gt;2&lt;/a&gt; - Debian/Ubuntu package manager (including dependencies)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get update&lt;/code&gt; -  Update is used to re-synchronize the package index files from their sources via Internet&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get upgrade&lt;/code&gt; - Upgrade is used to install the newest versions of all packages currently installed on the system&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get install --only-upgrade linux-generic&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get autoremove --purge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get upgrade --dry-run&lt;/code&gt; &lt;a href=&#34;http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-get dist-upgrade&lt;/code&gt; &lt;a href=&#34;https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software&#34;&gt;1&lt;/a&gt; - Update newer version of distribution&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;aptitude &lt;a href=&#34;http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig&#34;&gt;1&lt;/a&gt; - cli GUI for package management&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dpkg - Debian/Ubuntu package manager (without dependencies)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dpkg -l&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;pip - Python package manager&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install ansible&lt;/code&gt; - Install package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip install -r requirements.txt&lt;/code&gt; - Install all packages listed in requirements.txt&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;sudo update-alternatives --config java&lt;/code&gt; - Set default Java version on system&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;version-control-systems-https-en-wikipedia-org-wiki-version-control-vcs&#34;&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Version_control&#34;&gt;Version control systems&lt;/a&gt; (VCS)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;git &lt;a href=&#34;https://git-scm.com/&#34;&gt;1&lt;/a&gt; - Distributed VCS&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git update-index --assume-unchanged FILE_NAME&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes&#34;&gt;1&lt;/a&gt; - Ignore file for comparison (HINT: only set locally on repository)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git update-index --no-assume-unchanged FILE_NAME&lt;/code&gt; - Regard file again for comparison&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;processes&#34;&gt;Processes&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;df - Display free disk space&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;df -h&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;du&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;du -h --max-depth=1 /&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;du -a /var | sort -n -r | head -n 10&lt;/code&gt; &lt;a href=&#34;https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/&#34;&gt;1&lt;/a&gt; - List 10 biggest folders or files in /var&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;htop &lt;a href=&#34;https://codeahoy.com/2017/01/20/hhtop-explained-visually&#34;&gt;1&lt;/a&gt; - Interactive process monitor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;sudo initctl restart apache&lt;/code&gt; &lt;a href=&#34;https://wiki.ubuntu.com/SystemdForUpstartUsers&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;http://upstart.ubuntu.com/&#34;&gt;2&lt;/a&gt; - Restart command for upstart (using /etc/init)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;lsof &lt;a href=&#34;https://en.wikipedia.org/wiki/Lsof&#34;&gt;1&lt;/a&gt; - list of open files&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo lsof -i&lt;/code&gt; - All internal network files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo lsof | grep jre&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo lsof -i -n -P | grep LISTEN&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ps &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=765270359&#34;&gt;1&lt;/a&gt; - Static process monitor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;screen &lt;a href=&#34;https://en.wikipedia.org/wiki/GNU_Screen&#34;&gt;1&lt;/a&gt; - terminal multiplexer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;screen &amp;lt;COMMAND&amp;gt;&lt;/code&gt; - Start command in screen session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -ls&lt;/code&gt; - List screen sessions&lt;/li&gt;
+&lt;li&gt;Press (Strg + a + d) - Detach running session &lt;a href=&#34;https://nathan.chantrell.net/linux/an-introduction-to-screen/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -r&lt;/code&gt; - Resume last running screen session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -r -d 30608&lt;/code&gt; - Resume already attached session &lt;a href=&#34;http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;screen -dmS &amp;lt;SESSION_NAME&amp;gt; &amp;lt;COMMAND&amp;gt;&lt;/code&gt; - Starts screen in detached mode using the given session name and command&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;sudo service apache restart&lt;/code&gt; - Restart command for System V (using /etc/init.d)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;top &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=758781701&#34;&gt;1&lt;/a&gt; - Real-time task manager&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;tree &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=766877590&#34;&gt;1&lt;/a&gt; - Recursive directory listing program&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tree -d -L 2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;docker pull jenkins:2.32.1&lt;/code&gt; - Download docker image from registry&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker build&lt;/code&gt; - Build an image from a Dockerfile&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -p 8080:8080 jenkins:2.32.1&lt;/code&gt; - Starts existing docker image and maps port&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -it -d shykes/pybuilder /bin/bash&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container&#34;&gt;1&lt;/a&gt; - Run image and start bash&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker exec -it f151aff2b21e /bin/bash&lt;/code&gt; - Starts docker image f151aff2b21e and open interactive shell&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker ps -a&lt;/code&gt; - List instances (derived from images)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rm -f 2247780d0b39&lt;/code&gt; - Delete instance&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker images&lt;/code&gt; - List images&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rmi ae12afb99714 a78344b99ebc&lt;/code&gt; - Delete images&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;vagrant&#34;&gt;Vagrant&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant global-status&lt;/code&gt; - Show existing VMs&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vagrant global-status --prune&lt;/code&gt; - &lt;a href=&#34;http://stackoverflow.com/questions/24611902/remove-vagrant-box-from-global-status-after-deleting-it-from-filesystem&#34;&gt;1&lt;/a&gt; Update vagrant cache&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant up&lt;/code&gt; - Create VM from scratch&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;export VAGRANT_LOG=debug; vagrant up&lt;/code&gt; - Change vagrant log level&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant provision&lt;/code&gt; - Create VM using existing Vagrantfile&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant destroy -f 1f7d3b6&lt;/code&gt;  - Delete VM&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vagrant destroy -f&lt;/code&gt; - Destroy without confirmation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant ssh&lt;/code&gt; - SSH into the VM&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vagrant ssh-config &amp;lt;NAME_OR_ID_OF_VM&amp;gt; | awk -v ORS=&#39; &#39; &#39;{print &amp;quot;-o &amp;quot; $1 &amp;quot;=&amp;quot; $2}&#39;&lt;/code&gt; - Get parameter to scp into VM&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant plugin list&lt;/code&gt; - Show vagrant plugins&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;vagrant plugin install vagrant-vbguest vagrant-cachier vagrant-share vagrant-triggers&lt;/code&gt; - Install vagrant plugins&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;virtualbox&#34;&gt;VirtualBox&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;VBoxManage list runningvms | awk &#39;{print $2;}&#39; | xargs -I {} VBoxManage controlvm {} poweroff&lt;/code&gt; - &lt;a href=&#34;http://stackoverflow.com/questions/15408969/how-do-i-destroy-a-vm-when-i-deleted-the-vagrant-file&#34;&gt;1&lt;/a&gt; Halt all running virtual boxes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;VBoxManage list vms | awk &#39;{print $2;}&#39; | xargs -I {} VBoxManage unregistervm {}&lt;/code&gt; - Clean ALL virtual boxes&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;VBoxManage setproperty machinefolder ${BASE_TMP_FOLDER}&lt;/code&gt; - &lt;a href=&#34;http://superuser.com/questions/599421/how-to-move-the-default-folder-for-headless-virtualbox&#34;&gt;1&lt;/a&gt; Switch vagrant box folder&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;user-environment&#34;&gt;User environment&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;ldapsearch -H ldap://&amp;lt;SERVER_URL&amp;gt; -w &amp;lt;PASSWORD&amp;gt; -D cn=readonly,dc=lony &amp;quot;(&amp;amp;(objectClass=user)(cn=prod))&amp;quot;&lt;/code&gt; - Command to query LDAP server&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;shutdown -rf now&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;who &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=731053985&#34;&gt;1&lt;/a&gt; - Display users logged in&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;who -r&lt;/code&gt; - Show runlevel&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;text-processing&#34;&gt;Text processing&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;jq &lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;1&lt;/a&gt; - CLI JSON processor&lt;/li&gt;
+&lt;li&gt;xargs &lt;a href=&#34;https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/&#34;&gt;1&lt;/a&gt; - Sub-list generator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;shell-bulletins&#34;&gt;Shell bulletins&lt;/h1&gt;
+
+&lt;h1 id=&#34;networking&#34;&gt;Networking&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;curl - Client for URLs&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl -X POST -H &amp;quot;Content-Type: application/json&amp;quot; -H &amp;quot;Cache-Control: no-cache&amp;quot; -d &#39;{ &amp;quot;username&amp;quot; : &amp;quot;xxx&amp;quot;, &amp;quot;pw&amp;quot; : &amp;quot;xxx&amp;quot;}&#39; &amp;quot;http://localhost:8080/user/authenticate&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;dig - DNS querying tool using OS resolver&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dig +short myip.opendns.com @resolver1.opendns.com&lt;/code&gt; &lt;a href=&#34;http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-a-shell-script&#34;&gt;1&lt;/a&gt; - Retrieve your external IP address using DNS&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;httpie &lt;a href=&#34;https://httpie.org/&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;https://github.com/jkbrzt/httpie&#34;&gt;2&lt;/a&gt; - Better curl with JSON support&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ipcalc &lt;a href=&#34;https://pypi.python.org/pypi/ipcalc&#34;&gt;1&lt;/a&gt; - IP subnet calculator&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;iptraf &lt;a href=&#34;http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic&#34;&gt;1&lt;/a&gt; - Network statistic tool&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;netcat aka nc - Tool to read and write from network connections&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nc -vz external.host 6379&lt;/code&gt; - Just test Redis port with verbose output&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;netcat -vv localhost 3306&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;netstat - Host based network statistic tool&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo netstat -tulpn | grep LISTEN&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo netstat -an | grep 8080 | grep ESTABLISHED&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ngrep &lt;a href=&#34;https://en.wikipedia.org/wiki/Ngrep&#34;&gt;1&lt;/a&gt; - Similar to tcpdump&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;nmap &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump&#34;&gt;1&lt;/a&gt; - Network mapping and port scanning tool&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;nscd -i hosts&lt;/code&gt; &lt;a href=&#34;http://serverfault.com/questions/16299/how-do-i-flush-the-dns-cache-on-win-mac-linux-computers&#34;&gt;1&lt;/a&gt; - Flush DNS cache&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;nslookup &lt;a href=&#34;https://en.wikipedia.org/wiki/Nslookup&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;http://unix.stackexchange.com/questions/93808/dig-vs-nslookup&#34;&gt;2&lt;/a&gt; - DNS querying tool incl. own resolver&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ntop &lt;a href=&#34;https://en.wikipedia.org/wiki/Ntop&#34;&gt;1&lt;/a&gt; - Interactive network monitor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ntpdate&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ntpdate -q de.pool.ntp.org&lt;/code&gt; - Query NTP service without changing something&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;route &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=749414632&#34;&gt;1&lt;/a&gt; - View IP routing table of host (replaced with &lt;code&gt;iproute2&lt;/code&gt;)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;scp - secure copy&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ssh - Secure Shell commands (more on how to setup &lt;a href=&#34;https://github.com/lony/dotFiles/tree/master/.ssh&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ssh -vT git@github.com&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/2643502/git-permission-denied-publickey&#34;&gt;1&lt;/a&gt; - Testing GIT via SSH connection using verbose mode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com&lt;/code&gt; &lt;a href=&#34;https://www.howtoforge.com/reverse-ssh-tunneling&#34;&gt;1&lt;/a&gt; - Tunnel Mongo port from local machine to ec2 machine using SSH&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N&lt;/code&gt; - Tunnel port using a bastian host&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;tcpdump &lt;a href=&#34;http://packetpushers.net/masterclass-tcpdump-interpreting-output/&#34;&gt;1&lt;/a&gt; - Packet analyzer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump -nvvvp -i any -c 100 -s 1500 -w /tmp/capture.file.pcap&lt;/code&gt; &lt;a href=&#34;http://bencane.com/2014/10/13/quick-and-practical-reference-for-tcpdump/&#34;&gt;1&lt;/a&gt; - Write first 1500 bytes of the first 100 packages to PCAP file which are coming from any device&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; - Do not translate hostnames (use ips)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; - Verbosity (max. vvv)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt; - Don&amp;rsquo;t put the interface into promiscuous mode&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-i&lt;/code&gt; - Interface to use (any for all)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-c&lt;/code&gt; - Exit after amount of packets&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-s&lt;/code&gt; - Truncates bytes of data for each package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-w&lt;/code&gt; - Store PCAP file of dump&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump -A &#39;port 80 and host 192.168.0.1&#39;&lt;/code&gt; &lt;a href=&#34;https://danielmiessler.com/study/tcpdump/&#34;&gt;1&lt;/a&gt; - Print package output in ANSII format&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump host 10.0.3.1&lt;/code&gt; - Capture only if source and destination ip is 10.0.3.1&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump src host 10.0.3.1&lt;/code&gt; - Capture only if source ip is 10.0.3.1&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump dst port 80&lt;/code&gt; - Caputre only if destination port is 80&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump &#39;tcp[tcpflags] &amp;amp; tcp-syn != 0&#39;&lt;/code&gt; &lt;a href=&#34;http://www.tcpdump.org/manpages/pcap-filter.7.html&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;https://syedali.net/2014/12/29/tcp-flags-explained/&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;https://danielmiessler.com/study/tcpflags/&#34;&gt;3&lt;/a&gt; - Use PCAP-filters to capture start (SYN) packets of TCP conversation&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump &#39;tcp[tcpflags] &amp;amp; (tcp-syn) != 0 and tcp[tcpflags] &amp;amp; (tcp-ack) == 0 or udp&#39;&lt;/code&gt; - Capture tcp SYN but not SYN-ACK and also udp packets&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;trace aka traceroute &lt;a href=&#34;https://en.wikipedia.org/wiki/Traceroute&#34;&gt;1&lt;/a&gt; - Display route for transit of packets across IP network&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;vnstat &lt;a href=&#34;https://wiki.ubuntuusers.de/vnStat/&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;http://www.thegeekstuff.com/2011/11/vnstat-network-traffic-monitor/&#34;&gt;2&lt;/a&gt; - Network traffic monitor&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;searching&#34;&gt;Searching&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;find&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;find / -type d -name &amp;quot;lony.github.io&amp;quot;&lt;/code&gt; - Search for lony&amp;hellip; folder in root&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find download/ -mtime +60  -delete&lt;/code&gt; - Search in download-folder for files last modified before +60 and delete&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &amp;quot;*.tmp&amp;quot; -print&lt;/code&gt; &lt;a href=&#34;http://unix.stackexchange.com/questions/194863/delete-files-older-than-x-days&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://askubuntu.com/questions/413529/delete-files-older-than-one-year-on-linux&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/5927369/recursively-look-for-files-with-a-specific-extension&#34;&gt;3&lt;/a&gt;
+then &lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &amp;quot;*.tmp&amp;quot; -delete&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;find /path/to/directory/ -mindepth 1 -maxdepth 1 -mtime +365 -type d -print -exec rm -r &amp;quot;{}&amp;quot; \;&lt;/code&gt; - &lt;a href=&#34;http://unix.stackexchange.com/questions/89925/how-to-delete-directories-based-on-find-output&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di&#34;&gt;2&lt;/a&gt; Delete directories recursivly&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;grep &lt;a href=&#34;https://www.cyberciti.biz/faq/grep-regular-expressions/&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;grep foo /home/lony/bar&lt;/code&gt; - Search for foo in bar&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep -r foo /home/lony/bar&lt;/code&gt; - Search recursively for foo in bar&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep -nr &#39;foo*&#39; .&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder&#34;&gt;1&lt;/a&gt; - Search for foo* in &lt;code&gt;.&lt;/code&gt; showing relative line number&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;zgrep foo /home/lony/log.1.gz | less&lt;/code&gt; - Search inside gzip log file for foo&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;documentation&#34;&gt;Documentation&lt;/h1&gt;
+
+&lt;h1 id=&#34;miscellaneous&#34;&gt;Miscellaneous&lt;/h1&gt;
+
+&lt;h2 id=&#34;programming-shell-bash-sh&#34;&gt;Programming (shell|bash|sh)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;until&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;until ssh aws-host; do echo &amp;quot;Try again&amp;quot;; sleep 2; done&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;for&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;for i in &amp;quot;ci&amp;quot; &amp;quot;stage&amp;quot; &amp;quot;prod&amp;quot;; do (export ENVI=$i; echo $ENVI); done&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/&#34;&gt;2&lt;/a&gt;,&lt;a href=&#34;http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second&#34;&gt;3&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;read&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;read -p &amp;quot;Enter username to check:&amp;quot; USERNAME &amp;amp;&amp;amp; echo $USERNAME&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;if&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bash version =&amp;gt; 4 &lt;a href=&#34;http://unix.stackexchange.com/questions/250778/should-i-check-bash-version&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
+  echo &amp;quot;This script requires bash version &amp;gt; 4. Currently running is ${BASH_VERSION%%.*}&amp;quot;
+  exit 1
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
+
+&lt;h3 id=&#34;prompt&#34;&gt;Prompt&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;ERRORLEVEL TIME USER@HOST PATH #
+2 [14:03:07] lony@hobbes /var/log/upstart # echo $PS1
+$? \[\e[01;34m\][$(date &amp;quot;+%H:%M:%S&amp;quot;)] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;34m\] \w # \[\e[0m\]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;distribution&#34;&gt;Distribution&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;uname -a&lt;/code&gt; - Show kernel version and private system information&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;ubuntu&#34;&gt;Ubuntu&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;lsb_release -a&lt;/code&gt; - Print version&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;meta&#34;&gt;Meta&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How to structure this document? &lt;strong&gt;Answer&lt;/strong&gt;: as the UNIX wikipedia
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_Unix_commands&#34;&gt;article&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Book:Unix_Commands&#34;&gt;book&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>bash file pasting</title>
+      <link>https://lony.github.io/post/2016/bash-pasting/</link>
+      <pubDate>Wed, 31 Aug 2016 23:54:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2016/bash-pasting/</guid>
+      <description>&lt;p&gt;Wanted to build a template engine using bash, asked yourself: How to paste my fancy file using bash?
+Here is the answer!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bash
+# With parameter expanding
+cat &amp;lt;&amp;lt;EOF &amp;gt;&amp;gt; bash-paste_expanding
+export ME=`whoami`
+EOF
+## Result: export ME=lony
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;bash
+# Without parameter expanding (look at the &#39;)
+cat &amp;lt;&amp;lt;&#39;EOF&#39; &amp;gt;&amp;gt; bash-paste_not-expanding
+export ME=`whoami`
+EOF
+## Result: export ME=`whoami`
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cross Platform on [x]</title>
+    <link>https://lony.github.io/tags/cross-platform/index.xml</link>
+    <description>Recent content in Cross Platform on [x]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016</copyright>
+    <atom:link href="https://lony.github.io/tags/cross-platform/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Graphical user interface developments</title>
+      <link>https://lony.github.io/post/2017/gui-development-cross-platform/</link>
+      <pubDate>Sun, 26 Feb 2017 14:02:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2017/gui-development-cross-platform/</guid>
+      <description>
+
+&lt;p&gt;List of frameworks and tools for cross-platform development. Focusing on the following operating systems:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Windows&lt;/li&gt;
+&lt;li&gt;Linux&lt;/li&gt;
+&lt;li&gt;Mac OSX&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;java&#34;&gt;Java&lt;/h1&gt;
+
+&lt;h2 id=&#34;frameworks&#34;&gt;Frameworks&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AWT&lt;/li&gt;
+&lt;li&gt;Swing&lt;/li&gt;
+&lt;li&gt;SWT&lt;/li&gt;
+&lt;li&gt;JavaFX&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;builder&#34;&gt;Builder&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;JFormDesigner &lt;a href=&#34;https://www.formdev.com/jformdesigner/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Swing GUI Builder (aka Matisse) &lt;a href=&#34;https://netbeans.org/features/java/swing.html&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;javascript&#34;&gt;JavaScript&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Electron &lt;a href=&#34;http://electron.atom.io/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;NW.js &lt;a href=&#34;https://nwjs.io/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

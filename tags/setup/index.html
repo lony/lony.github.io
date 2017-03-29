@@ -3,8 +3,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta content="" name="keywords">
-<meta content="Linux - [x]" property="og:title">
-<title>Linux | [x]</title>
+<meta content="Setup - [x]" property="og:title">
+<title>Setup | [x]</title>
 <link rel="stylesheet" href="https://lony.github.io//css/style.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -54,30 +54,27 @@
   <div class="container">
     
     <article>
-      <h2 class="subtitle is-6">February 25, 2017</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2017/cli-commands/">CLI commands</a></h1>
+      <h2 class="subtitle is-6">October 1, 2016</h2>
+      <h1 class="title"><a href="https://lony.github.io/post/2016/mac-osx-setup/">Mac OS X Setup</a></h1>
       
         <div class="tags">
     
         <a class="button is-link" href="/tags/programming">programming</a>
     
-        <a class="button is-link" href="/tags/cli">cli</a>
+        <a class="button is-link" href="/tags/mac">mac</a>
     
-        <a class="button is-link" href="/tags/linux">linux</a>
-    
-        <a class="button is-link" href="/tags/commands">commands</a>
+        <a class="button is-link" href="/tags/setup">setup</a>
     
 </div>
 
       
       <div class="content">
-        Collection of useful command line commands for unix like operating systems. This list is constantly updated.
-File system  cat
- cat /etc/issue - Show ubuntu system version  ls
- ls -R - Recursive list of directory and files within ls='ls -Fh -G' l='ls -1A' ll='ls -lh'  ln - Link files 1
- ln -s /foo/bar /home/lony/bar - Creates symbolic link ln /foo/bar /home/lony/bar - Creates hard link (files only)   mkfifo - Create named pipe
+        This post contains information about how I tweak a new Mac when I first get it. The first part covers UI optimizations as the second my CLI setup.
+OS X user interface Following the defaults-write.com instructions I first try to optimize the UX experience of OSX.
+To apply the following changes you have to reboot your machine. To undo use defaults delete NSGlobalDomain KeyRepeat.
+ Disable animations when opening and closing windows: defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false Disable animations when opening a Quick Look window: defaults write -g QLPanelAnimationDuration -float 0 Accelerated playback when adjusting the window size (Cocoa applications): defaults write NSGlobalDomain NSWindowResizeTime -float 0.
         
-        ...<a class="button is-link" href="https://lony.github.io/post/2017/cli-commands/" style="height:28px">
+        ...<a class="button is-link" href="https://lony.github.io/post/2016/mac-osx-setup/" style="height:28px">
           Read more
           <span class="icon is-small">
             <i class="fa fa-angle-double-right"></i>

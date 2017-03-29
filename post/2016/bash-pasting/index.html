@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta content="" name="keywords">
-<meta content="Linux - [x]" property="og:title">
-<title>Linux | [x]</title>
+<meta content="bash file pasting - [x]" property="og:title">
+<title>bash file pasting | [x]</title>
 <link rel="stylesheet" href="https://lony.github.io//css/style.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -52,73 +53,44 @@
 
 <section class="section">
   <div class="container">
+    <h2 class="subtitle is-6">August 31, 2016</h2>
+    <h1 class="title">bash file pasting</h1>
     
-    <article>
-      <h2 class="subtitle is-6">February 25, 2017</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2017/cli-commands/">CLI commands</a></h1>
-      
-        <div class="tags">
+      <div class="tags">
     
         <a class="button is-link" href="/tags/programming">programming</a>
     
+        <a class="button is-link" href="/tags/bash">bash</a>
+    
         <a class="button is-link" href="/tags/cli">cli</a>
-    
-        <a class="button is-link" href="/tags/linux">linux</a>
-    
-        <a class="button is-link" href="/tags/commands">commands</a>
     
 </div>
 
-      
-      <div class="content">
-        Collection of useful command line commands for unix like operating systems. This list is constantly updated.
-File system  cat
- cat /etc/issue - Show ubuntu system version  ls
- ls -R - Recursive list of directory and files within ls='ls -Fh -G' l='ls -1A' ll='ls -lh'  ln - Link files 1
- ln -s /foo/bar /home/lony/bar - Creates symbolic link ln /foo/bar /home/lony/bar - Creates hard link (files only)   mkfifo - Create named pipe
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2017/cli-commands/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
     
+    <div class="content">
+      <p>Wanted to build a template engine using bash, asked yourself: How to paste my fancy file using bash?
+Here is the answer!</p>
+
+<pre><code>bash
+# With parameter expanding
+cat &lt;&lt;EOF &gt;&gt; bash-paste_expanding
+export ME=`whoami`
+EOF
+## Result: export ME=lony
+</code></pre>
+
+<pre><code>bash
+# Without parameter expanding (look at the ')
+cat &lt;&lt;'EOF' &gt;&gt; bash-paste_not-expanding
+export ME=`whoami`
+EOF
+## Result: export ME=`whoami`
+</code></pre>
+
+    </div>
   </div>
 </section>
-<section class="section">
-  <div class="container">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
-          
-          <a class="button is-disabled">
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-left"></i>
-            </span>
-            Newer
-          </a>
-          
-        </div>
-      </div>
-      <div class="level-right is-marginless">
-        <div class="level-item">
-          
-          <a class="button is-disabled">
-            Older
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </div>
-    </nav>
-  </div>
-</section>
+
 
 <section class="section">
   <div class="container has-text-centered">

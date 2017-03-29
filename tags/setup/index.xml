@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Setup on [x]</title>
+    <link>https://lony.github.io/tags/setup/index.xml</link>
+    <description>Recent content in Setup on [x]</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016</copyright>
+    <atom:link href="https://lony.github.io/tags/setup/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Mac OS X Setup</title>
+      <link>https://lony.github.io/post/2016/mac-osx-setup/</link>
+      <pubDate>Sat, 01 Oct 2016 18:02:52 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2016/mac-osx-setup/</guid>
+      <description>
+
+&lt;p&gt;This post contains information about how I tweak a new Mac when I first get it.
+The first part covers UI optimizations as the second my CLI setup.&lt;/p&gt;
+
+&lt;h1 id=&#34;os-x-user-interface&#34;&gt;OS X user interface&lt;/h1&gt;
+
+&lt;p&gt;Following the &lt;a href=&#34;http://www.defaults-write.com/10-terminal-commands-to-speed-up-your-mac-in-os-x-el-capitan/&#34;&gt;defaults-write.com instructions&lt;/a&gt; I first try to optimize the UX experience of OSX.&lt;/p&gt;
+
+&lt;p&gt;To apply the following changes you have to reboot your machine. To undo use &lt;code&gt;defaults delete NSGlobalDomain KeyRepeat&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Disable animations when opening and closing windows: &lt;code&gt;defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Disable animations when opening a Quick Look window: &lt;code&gt;defaults write -g QLPanelAnimationDuration -float 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Accelerated playback when adjusting the window size (Cocoa applications): &lt;code&gt;defaults write NSGlobalDomain NSWindowResizeTime -float 0.001&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Disable animation when opening the Info window in OS X Finder (cmd⌘ + i): &lt;code&gt;defaults write com.apple.finder DisableAllAnimations -bool true&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Disable animations when you open an application from the Dock: &lt;code&gt;defaults write com.apple.dock launchanim -bool false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Make all animations faster that are used by Mission Control: &lt;code&gt;defaults write com.apple.dock expose-animation-duration -float 0.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Disable the delay when you hide the Dock: &lt;code&gt;defaults write com.apple.Dock autohide-delay -float 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The keyboard react faster to keystrokes: &lt;code&gt;defaults write NSGlobalDomain KeyRepeat -int 0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;To change the screenshot format to jpg &lt;code&gt;defaults write com.apple.screencapture type jpg&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After applying this configuration changes through the terminal there are also some adjustments made via the settings interface. I extracted two of them from the following &lt;a href=&#34;http://osxdaily.com/2014/10/24/speed-up-os-x-yosemite-mac/&#34;&gt;OSXDaily guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;System Preferences &amp;gt; Accessibility &amp;gt; Display and there check &lt;code&gt;Reduce Transparency&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;System Preferences &amp;gt; Dock select &lt;code&gt;Scale effect&lt;/code&gt; for Minimize windows using&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;terminal&#34;&gt;Terminal&lt;/h1&gt;
+
+&lt;p&gt;To improve working with the CLI I install a couple of tools.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install &lt;a href=&#34;http://brew.sh/index.html&#34;&gt;homebrew&lt;/a&gt; the (missing) package manager, using the Terminal via &lt;code&gt;/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install &lt;a href=&#34;https://caskroom.github.io/&#34;&gt;homebrew Cask&lt;/a&gt; the homebrew extension for GUI applications, using the Terminal via &lt;code&gt;brew tap caskroom/cask&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://www.iterm2.com/&#34;&gt;iTerm2&lt;/a&gt; a better Terminal, directly using the binary download&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Configuration&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;To let iTerm2 fill the complete screen after a resize change the following: Turn on Preferences&amp;gt;Advanced&amp;gt;Terminal windows resize smoothly&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://www.spectacleapp.com/&#34;&gt;SpectacleApp&lt;/a&gt; a window resizing helper, directly using the binary download&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Install &lt;a href=&#34;https://justgetflux.com/&#34;&gt;f.lux&lt;/a&gt; a helper to reduce monitor light, via &lt;code&gt;brew install flux&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After setting the field I now following &lt;a href=&#34;https://danielmiessler.com/blog/first-10-things-new-mac/&#34;&gt;Daniel Miessler&amp;rsquo;s&lt;/a&gt; recommendation and setup my bash.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Switching to &lt;a href=&#34;http://www.zsh.org/&#34;&gt;Zsh&lt;/a&gt; the better bash using &lt;code&gt;chsh -s $(which zsh)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install (the latest) &lt;a href=&#34;http://www.vim.org/&#34;&gt;vim&lt;/a&gt; using &lt;code&gt;brew install vim&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Install GNU tool&amp;rsquo;s because OSX is based on BSD and has its tools installed as default
+
+&lt;ul&gt;
+&lt;li&gt;First run &lt;code&gt;brew tap homebrew/dupes&lt;/code&gt; to add dupes repository to homebrew&lt;/li&gt;
+&lt;li&gt;Then run the following lines to install each tool
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hint&lt;/strong&gt;: Interested in &lt;code&gt;tmux&lt;/code&gt; read &lt;a href=&#34;https://danielmiessler.com/study/tmux/&#34;&gt;Daniel Miessler&amp;rsquo;s post&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;brew install findutils --default-names
+brew install gnu-sed --default-names
+brew install gnu-tar --default-names
+brew install gnu-which --default-names
+brew install gnutls --default-names
+brew install grep --default-names
+brew install coreutils
+brew install binutils
+brew install diffutils
+brew install gzip
+brew install xz
+brew install watch
+brew install tmux 
+brew install wget
+brew install nmap
+brew install gpg
+brew install htop
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Installing my dotFiles from &lt;a href=&#34;https://github.com/lony/dotFiles&#34;&gt;here&lt;/a&gt; into my home folder
+
+&lt;ul&gt;
+&lt;li&gt;Adjusting the &lt;code&gt;.rc_secret&lt;/code&gt; adding at least a valid Github token&lt;/li&gt;
+&lt;li&gt;Open vim and run &lt;code&gt;:PlugInstall&lt;/code&gt; installing set plugins in my &lt;code&gt;.vimrc&lt;/code&gt; see &lt;a href=&#34;http://vimawesome.com/&#34;&gt;VimAwesome.com&lt;/a&gt; for more&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hint&lt;/strong&gt;: To jump from the CLI to a vim editing mode &lt;a href=&#34;http://nuclearsquid.com/writings/edit-long-commands/&#34;&gt;as configured&lt;/a&gt; use &lt;code&gt;ESC v&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;python&#34;&gt;Python&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Install gcc using way from &lt;a href=&#34;http://docs.python-guide.org/en/latest/starting/install/osx/&#34;&gt;this guide&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Downloading the Command Line Tools from &lt;a href=&#34;https://developer.apple.com/downloads/&#34;&gt;here&lt;/a&gt; (requires Apple-Account). The file you need is called &lt;code&gt;Command_Line_Tools_OS_X_10.XX_for_Xcode_7.2.dmg&lt;/code&gt;. &lt;em&gt;The XX depends on your OSX-Version.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Then install the downloaded dmg&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Execute &lt;code&gt;brew install python&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
