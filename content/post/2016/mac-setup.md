@@ -5,10 +5,19 @@ date = "2016-10-01T18:02:52+02:00"
 slug = "mac-osx-setup"
 +++
 
-This post contains information about how I tweak a new Mac when I first get it.
-The first part covers UI optimizations as the second my CLI setup.
+This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an [issue](https://github.com/lony/lony.github.io/issues) and help me get better. - Thank you!
 
-# OS X user interface
+# TOC
+
+* [User interface](#user-interface)
+* [Terminal](#terminal)
+    * [Python](#python)
+* [Apps](#apps)
+    * [iTerm2](#iterm2)
+
+----
+
+# User interface
 
 Following the [defaults-write.com instructions](http://www.defaults-write.com/10-terminal-commands-to-speed-up-your-mac-in-os-x-el-capitan/) I first try to optimize the UX experience of OSX.
 
@@ -32,59 +41,207 @@ After applying this configuration changes through the terminal there are also so
 
 # Terminal
 
-To improve working with the CLI I install a couple of tools.
+To prepare for development I first install a couple of tools. As OS X has no package manager I first install - [homebrew](http://brew.sh/index.html) the (missing) package manager.
 
-* Install [homebrew](http://brew.sh/index.html) the (missing) package manager, using the Terminal via `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-* Install [homebrew Cask](https://caskroom.github.io/) the homebrew extension for GUI applications, using the Terminal via `brew tap caskroom/cask`
-* Install [iTerm2](https://www.iterm2.com/) a better Terminal, directly using the binary download
+After the package manager is working I use it to install a bunch of packages for ease of use, as development, as also preparation for incidents e.g. network analysis.
 
-    * Configuration
+I also set the stage for my [dotFiles](https://github.com/lony/dotFiles), which need some perquisites to work. As there development is currently ongoing, the way to use them is described [here](https://github.com/lony/dotFiles/blob/master/README.md) only.
 
-        * To let iTerm2 fill the complete screen after a resize change the following: Turn on Preferences>Advanced>Terminal windows resize smoothly
+The first thing my dotFiles need are GNU tools. As OS X is a BSD successor, the default tools are all from the BSD project and if you use Linux often, some things are different. The way to change that is stolen from [this guide](https://danielmiessler.com/blog/first-10-things-new-mac/), and maybe a good read for you too!
 
-* Install [SpectacleApp](https://www.spectacleapp.com/) a window resizing helper, directly using the binary download
-* Install [f.lux](https://justgetflux.com/) a helper to reduce monitor light, via `brew install flux`
-
-After setting the field I now following [Daniel Miessler's](https://danielmiessler.com/blog/first-10-things-new-mac/) recommendation and setup my bash.
-
-* Switching to [Zsh](http://www.zsh.org/) the better bash using `chsh -s $(which zsh)`
-* Install (the latest) [vim](http://www.vim.org/) using `brew install vim`
-* Install GNU tool's because OSX is based on BSD and has its tools installed as default
-    * First run `brew tap homebrew/dupes` to add dupes repository to homebrew
-    * Then run the following lines to install each tool
-        * **Hint**: Interested in `tmux` read [Daniel Miessler's post](https://danielmiessler.com/study/tmux/)
-
+The following snipped let you dive into the details of the installation process. Enjoy.
 
 ```
-brew install findutils --default-names
-brew install gnu-sed --default-names
-brew install gnu-tar --default-names
-brew install gnu-which --default-names
-brew install gnutls --default-names
-brew install grep --default-names
-brew install coreutils
-brew install binutils
-brew install diffutils
-brew install gzip
-brew install xz
-brew install watch
-brew install tmux 
-brew install wget
-brew install nmap
-brew install gpg
-brew install htop
+# Install homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Add GNU tap
+brew tap homebrew/dupes     # GNU tap for brew
+
+# Prepare array of cli packages
+brew_packages=(
+findutils --default-names   # GNU find, xargs, and locate
+gnu-sed --default-names
+gnu-tar --default-names
+gnu-which --default-names
+gnutls --default-names      # GNU TLS
+openssl                     # SSL/TLS cryptography library
+grep --default-names
+coreutils                   # GNU File, Shell, and Text utilities
+binutils                    # FSF Binutils for native development
+diffutils                   # File comparison utilities
+
+unrar
+gzip
+pigz                        # Parallel gzip
+xz                          # General-purpose data compression with high compression ratio
+p7zip                       # 7-Zip (high compression file archiver) implementation
+
+bash
+fish
+vim
+screen
+tmux
+z                           # Tracks most-used directories to make cd smarter
+diff-so-fancy               # Good-lookin' diffs with diff-highlight and more
+
+nmap                        # Port scanning utility for large networks
+netcat                      # Utility for managing network connections
+ipcalc                      # Calculate various network masks
+wget --with-iri             # Internet file retriever
+curl
+httpie                      # User-friendly cURL replacement (command-line HTTP client)
+lynx                        # Text-based web browser
+
+watch                       # Executes a program periodically, showing output fullscreen
+htop                        # Improved top (interactive process viewer)
+tree                        # Display directories as trees
+
+gd                          # Graphics library to dynamically manipulate images
+imagemagick                 # Tools and libraries to manipulate images in many formats
+gs                          # Interpreter for PostScript and PDF
+
+jq                          # Lightweight and flexible command-line JSON processor
+pv                          # Monitor data's progress through a pipe
+
+ansible
+go
+
+git
+packer
+utf8proc                    # Clean C library for processing UTF-8 Unicode data
+docker-completion
+docker-compose-completion
+)
+
+# Array of considered packages - NOT INSTALLED
+brew_packages_consider=(
+moreutils                   # Collection of tools that nobody wrote when UNIX was young
+ack                         # Search tool like grep, but optimized for programmers
+ag                          # Code-search similar to ack
+rename
+speedtest_cli
+testssl
+ssh-copy-id
+vbindiff
+webkit2png
+grc
+fasd
+mc
+pandoc
+pwgen
+git-extras
+
+apache-spark
+maven
+scala
+)
+
+# Install cli packages
+brew install "${brew_packages[@]}"
+
+# Switch to zsh
+chsh -s $(which zsh)
 ```
 
-* Installing my dotFiles from [here](https://github.com/lony/dotFiles) into my home folder
-    * Adjusting the `.rc_secret` adding at least a valid Github token
-    * Open vim and run `:PlugInstall` installing set plugins in my `.vimrc` see [VimAwesome.com](http://vimawesome.com/) for more
-    * **Hint**: To jump from the CLI to a vim editing mode [as configured](http://nuclearsquid.com/writings/edit-long-commands/) use `ESC v`
+The packages that I normally not install by default, but still like or want to look into are listed in the `brew_packages_consider` array. For you they may be interesting, please feel free to also install them by default.
 
-# Python
+## Python
 
-1. Install gcc using way from [this guide](http://docs.python-guide.org/en/latest/starting/install/osx/).
+If for any reason, you also need a running python installation on your Mac, this is how I install it following the [Hitchhiker's guide](http://docs.python-guide.org/en/latest/starting/install/osx/). This will setup a separate installation and should keep your existing python intact. Still everything you open a shell your newly installed python should be referenced.
+
+1. Install gcc
 
     * Downloading the Command Line Tools from [here](https://developer.apple.com/downloads/) (requires Apple-Account). The file you need is called `Command_Line_Tools_OS_X_10.XX_for_Xcode_7.2.dmg`. *The XX depends on your OSX-Version.*
     * Then install the downloaded dmg
 
 2. Execute `brew install python`
+
+# Apps
+
+Having all the necessities for command line life at the pipe, now is the time for applications. Homebrew wouldn't be THE missing package manager if it could not install also binary packages. Still, to do this there is another tap required - [homebrew Cask](https://caskroom.github.io/) a homebrew extension for GUI and binary applications.
+
+The following snipped - as before - installs all packages together. The comments should help me understand for what the package was and were to look if there are questions.
+
+```
+# Add cask tap
+brew tap caskroom/cask
+
+# Prepare array of cask packages
+brew_cask_packages=(
+anki
+apache-directory-studio     # LDAP GUI http://directory.apache.org/studio
+calibre                     # E-Book manager https://calibre-ebook.com
+charles                     # HTTP proxy https://www.charlesproxy.com
+docker
+dropbox
+fiddler
+filezilla
+firefox
+flux                        # Reduce bright light https://justgetflux.com
+franz
+freemind
+gimp
+gmvault
+google-chrome
+google-drive
+iterm2                      # A better Terminal https://www.iterm2.com
+java
+keepassx
+mysqlworkbench
+netbeans
+osxfuse
+pencil
+postico
+postman
+rescuetime
+sequel-pro
+sourcetree
+spectacle                   # Resize OS X windows https://www.spectacleapp.com
+sublime-text
+teamviewer
+tomighty
+unetbootin
+vagrant
+vagrant-bar
+vagrant-manager
+virtualbox
+virtualbox-extension-pack
+visual-studio-code
+wireshark
+xmind
+)
+
+# Array of considered packages - NOT INSTALLED
+brew_cask_packages_consider=(
+freecad
+karabiner
+kitematic               # Docker search https://kitematic.com
+mongodb-compass         # Mongo GUI https://www.mongodb.com/products/compass
+mono-mdk                # Mono SDK
+skype
+slack
+soundflower             # Virtual audio output device https://rogueamoeba.com/freebies/soundflower/
+vimr
+keka                    # Archiver GUI for p7zip http://www.kekaosx.com
+nvalt                   # Note taking app http://brettterpstra.com/projects/nvalt
+tagspaces               # Evernote alternative https://www.tagspaces.org
+vlc
+anaconda                # Python data science environment https://www.continuum.io
+)
+
+# Install cask packages
+brew cask install "${brew_cask_packages[@]}"
+```
+
+Now you should have not only cli tools installed but also all your favorite binary tools running. Some more bare then others, but still its close to done!
+
+## iTerm2
+
+To make your favorite terminal emulator a bit more fantastic as it already is, you can adjust the following settings.
+
+* To let iTerm2 fill the complete screen after a resize: Turn on `Preferences> Advanced> Terminal windows resize smoothly`
+
+----
+
+Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an [issue](https://github.com/lony/lony.github.io/issues) and help me get better!

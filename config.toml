@@ -1,17 +1,18 @@
 baseurl = "https://lony.github.io/"
 languageCode = "en"
 title = "[x]"
-description = "Private blog about tech, politics and europe"
-keywords = ["tech", "it", "politics", "europe"]
 copyright = "&copy; <a href=\"https://github.com/lony\">Goetz Epperlein</a> 2016"
 googleAnalytics = "UA-83817537-1"
-theme = "hemingway2"
+theme = "hemingway3"
 
 [taxonomies]
 tag = "tags"
 category = "categories"
 
-[params]
+[params.meta]
+keywords = [ "tech", "it", "politics", "europe" ]
+description = "Private blog about tech, politics and europe"
+name = "Goetz Epperlein"
 
 [params.highlight]
 style = "github"

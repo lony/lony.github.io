@@ -5,7 +5,44 @@ date = "2017-02-25T18:02:52+02:00"
 slug = "cli-commands"
 +++
 
-Collection of useful command line commands for unix like operating systems. This list is constantly updated.
+Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for `you`. 
+
+The collection is divided into different sections under which the commands are explained. For each commands there are examples how to use them, as links - from which information about the command can be gathered. For the most commands there is also a short explanation what it does.
+
+If you find a bug or want to recommend something, please feel free to open an [issue](https://github.com/lony/lony.github.io/issues) and help me get better. - Thank you!
+
+# TOC
+
+* [File system](#file-system)
+	* [Configuration management](#configuration-management)
+		* [Ansible](#ansible)
+		* [Chef](#chef)
+	* [Package management](#package-management)
+* [Processes](#processes)
+	* [Docker](#docker)
+	* [Vagrant](#vagrant)
+	* [VirtualBox](#virtualbox)
+* [User environment](#user-environment)
+* [Text processing](#text-processing)
+* [Shell bulletins](#shell-bulletins)
+* [Networking](#networking)
+* [Searching](#searching)
+* [Documentation](#documentation)
+* [Miscellaneous](#miscellaneous)
+	* [Programming sh](#programming-sh)
+		* [array](#array)
+		* [for](#for)
+		* [if](#if)
+		* [until](#until)
+		* [pasting](#pasting)
+		* [pipe](#pipe)
+		* [read](#read)		
+	* [Setup](#setup)
+		* [Prompt](#prompt)
+		* [Distribution](#distribution)
+* [Meta](#meta)
+
+----
 
 # File system
 
@@ -39,6 +76,7 @@ rm in
 	* `openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}` - Decrypt file with password (aes-256)
 	* `openssl rsa -des3 -in {path-in} -out {path-out}` - Encrypt key with password (rsa)
 	* `openssl rsa -in {path-in} -out {path-out}` - Decrypt key with password (rsa)
+	* `echo | openssl s_client -host IP_OF_TARGET -port 443 2>&1 | openssl x509 -noout -subject` - Get SSL certificate subject of target machine
 
 * rsync [1](https://en.wikipedia.org/wiki/Rsync), [2](http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs) - Data synchronization tool
 
@@ -63,10 +101,13 @@ rm in
 		* `--progress` - Show progress of transfer
 		* `--delete` - Deletes irrelevant files from destination
 
-	* `rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs source/ dest/` [1](https://superuser.com/questions/676671/rsync-does-not-delete-source-directories), [2](http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync), [3](http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories) - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)
+	* `rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs --ignore-errors source/ dest/` [1](https://superuser.com/questions/676671/rsync-does-not-delete-source-directories), [2](http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync), [3](http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories) - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)
 
 		* `--remove-source-files` - Remove synchronized files from source
 		* `--prune-empty-dirs` - Ignore empty directories for transfer
+		* `--ignore-errors` - Ignore errors
+	
+	* `rsync -vzi -e ssh server:source/ dest/` [1](https://kyup.com/tutorials/copy-files-rsync-ssh/) - Use rsync via ssh
 
 * tar
 
@@ -149,6 +190,8 @@ rm in
 
 # Processes
 
+* atop [1](http://www.tecmint.com/how-to-install-atop-to-monitor-logging-activity-of-linux-system-processes/) - System & Process Monitor like top or htop
+
 * df - Display free disk space
 
 	* `df -h`
@@ -158,7 +201,11 @@ rm in
 	* `du -h --max-depth=1 /`
 	* `du -a /var | sort -n -r | head -n 10` [1](https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/) - List 10 biggest folders or files in /var
 
+* glances [1](https://nicolargo.github.io/glances/) - A top/htop alternative
+
 * htop [1](https://codeahoy.com/2017/01/20/hhtop-explained-visually) - Interactive process monitor
+
+* iotop [1](http://guichaz.free.fr/iotop/), [2](http://www.tecmint.com/iotop-monitor-linux-disk-io-activity-per-process/) - System I/O monitor like top
 
 * `sudo initctl restart apache` [1](https://wiki.ubuntu.com/SystemdForUpstartUsers),[2](http://upstart.ubuntu.com/) - Restart command for upstart (using /etc/init)
 
@@ -173,8 +220,10 @@ rm in
 * screen [1](https://en.wikipedia.org/wiki/GNU_Screen) - terminal multiplexer
 	
 	* `screen <COMMAND>` - Start command in screen session
+
+		* Press (Strg + a + d) - Detach running session [1](https://nathan.chantrell.net/linux/an-introduction-to-screen/)
+
 	* `screen -ls` - List screen sessions
-	* Press (Strg + a + d) - Detach running session [1](https://nathan.chantrell.net/linux/an-introduction-to-screen/)
 	* `screen -r` - Resume last running screen session
 	* `screen -r -d 30608` - Resume already attached session [1](http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached)
 	* `screen -dmS <SESSION_NAME> <COMMAND>` - Starts screen in detached mode using the given session name and command
@@ -289,6 +338,8 @@ rm in
 
 * scp - secure copy
 
+	* `scp server:source/ dest/` - Copy from external server to local
+
 * ssh - Secure Shell commands (more on how to setup [here](https://github.com/lony/dotFiles/tree/master/.ssh))
 
 	* `ssh -vT git@github.com` [1](http://stackoverflow.com/questions/2643502/git-permission-denied-publickey) - Testing GIT via SSH connection using verbose mode
@@ -339,23 +390,35 @@ rm in
 
 # Miscellaneous
 
-## Programming (shell|bash|sh)
+* watch [1](https://en.wikipedia.org/w/index.php?oldid=725168377)
 
-* until
+	* `watch -d=cumulative -n 5 'ls -lah | grep data.pcap'` [1](http://askubuntu.com/questions/430382/repeat-a-command-every-x-interval-of-time-in-terminal) - Runs ls every 5s and highlighting changes
 
-	* `until ssh aws-host; do echo "Try again"; sleep 2; done`
+		* `-d=cumulative` - Highlight differences that ever changed since start
+		* `-n <SECONDS>` - Run every X seconds (default=2s)
 
-* for
+## Programming sh
 
-	* `for i in "ci" "stage" "prod"; do (export ENVI=$i; echo $ENVI); done` [1](http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash),[2](https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/),[3](http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second)
+### array
 
-* read
+* Concat array [1](http://stackoverflow.com/questions/9522631/how-to-put-line-comment-for-a-multi-line-command), [2](http://stackoverflow.com/questions/18599711/how-can-i-split-a-shell-command-over-multiple-lines-when-using-an-if-statement)
 
-	* `read -p "Enter username to check:" USERNAME && echo $USERNAME`
+```
+brew_packages=(
+	ansible		# Comment1
+	go		# Comment2
+)
 
-* if
+brew install "${brew_packages[@]}"
+```
 
-	* Bash version => 4 [1](http://unix.stackexchange.com/questions/250778/should-i-check-bash-version)
+### for
+
+* `for i in "ci" "stage" "prod"; do (export ENVI=$i; echo $ENVI); done` [1](http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash),[2](https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/),[3](http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second)
+
+### if
+
+* Bash version => 4 [1](http://unix.stackexchange.com/questions/250778/should-i-check-bash-version)
 
 ````
 if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
@@ -364,6 +427,38 @@ if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
 fi
 ````
 
+### until
+
+* `until ssh aws-host; do echo "Try again"; sleep 2; done`
+
+### pasting
+
+```
+# With parameter expanding
+cat <<EOF >> bash-paste_expanding
+export ME=`whoami`
+EOF
+## Result: export ME=lony
+```
+
+```
+# Without parameter expanding (look at the ')
+cat <<'EOF' >> bash-paste_not-expanding
+export ME=`whoami`
+EOF
+## Result: export ME=`whoami`
+```
+
+
+### pipe
+
+* `> FILE` same as `1> FILE` - Pipe standard out (stdout) into file and overwrites content
+* `2> FILE` [1](http://stackoverflow.com/questions/818255/in-the-shell-what-does-21-mean) - Pipe errors (stderr) into file and overwrites content
+* `2>&1 >> FILE` [1](http://serverfault.com/questions/196734/bash-difference-between-and-operator) - Pipe errors (stderr) and standard out (stdout) into file and append content
+
+### read
+
+* `read -p "Enter username to check:" USERNAME && echo $USERNAME`
 
 ## Setup
 
@@ -388,3 +483,7 @@ $? \[\e[01;34m\][$(date "+%H:%M:%S")] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h
 * How to structure this document? __Answer__: as the UNIX wikipedia 
 	* [article](https://en.wikipedia.org/wiki/List_of_Unix_commands)
 	* [book](https://en.wikipedia.org/wiki/Book:Unix_Commands)
+
+----
+
+Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an [issue](https://github.com/lony/lony.github.io/issues) and help me get better!
