@@ -3,9 +3,12 @@
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="" name="keywords">
-<meta content="Mac OS X Setup - [x]" property="og:title">
+<meta name="author" content="Goetz Epperlein">
+<meta name="keywords" content="programming,mac,setup">
+<meta property="og:title" content="Mac OS X Setup - [x]">
+<meta property="og:description" content="Mac OS X Setup">
 <title>Mac OS X Setup | [x]</title>
+
 <link rel="stylesheet" href="https://lony.github.io//css/style.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -70,10 +73,27 @@
     <div class="content">
       
 
-<p>This post contains information about how I tweak a new Mac when I first get it.
-The first part covers UI optimizations as the second my CLI setup.</p>
+<p>This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an <a href="https://github.com/lony/lony.github.io/issues">issue</a> and help me get better. - Thank you!</p>
 
-<h1 id="os-x-user-interface">OS X user interface</h1>
+<h1 id="toc">TOC</h1>
+
+<ul>
+<li><a href="#user-interface">User interface</a></li>
+<li><a href="#terminal">Terminal</a>
+
+<ul>
+<li><a href="#python">Python</a></li>
+</ul></li>
+<li><a href="#apps">Apps</a>
+
+<ul>
+<li><a href="#iterm2">iTerm2</a></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h1 id="user-interface">User interface</h1>
 
 <p>Following the <a href="http://www.defaults-write.com/10-terminal-commands-to-speed-up-your-mac-in-os-x-el-capitan/">defaults-write.com instructions</a> I first try to optimize the UX experience of OSX.</p>
 
@@ -100,77 +120,116 @@ The first part covers UI optimizations as the second my CLI setup.</p>
 
 <h1 id="terminal">Terminal</h1>
 
-<p>To improve working with the CLI I install a couple of tools.</p>
+<p>To prepare for development I first install a couple of tools. As OS X has no package manager I first install - <a href="http://brew.sh/index.html">homebrew</a> the (missing) package manager.</p>
 
-<ul>
-<li>Install <a href="http://brew.sh/index.html">homebrew</a> the (missing) package manager, using the Terminal via <code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></li>
-<li>Install <a href="https://caskroom.github.io/">homebrew Cask</a> the homebrew extension for GUI applications, using the Terminal via <code>brew tap caskroom/cask</code></li>
+<p>After the package manager is working I use it to install a bunch of packages for ease of use, as development, as also preparation for incidents e.g. network analysis.</p>
 
-<li><p>Install <a href="https://www.iterm2.com/">iTerm2</a> a better Terminal, directly using the binary download</p>
+<p>I also set the stage for my <a href="https://github.com/lony/dotFiles">dotFiles</a>, which need some perquisites to work. As there development is currently ongoing, the way to use them is described <a href="https://github.com/lony/dotFiles/blob/master/README.md">here</a> only.</p>
 
-<ul>
-<li><p>Configuration</p>
+<p>The first thing my dotFiles need are GNU tools. As OS X is a BSD successor, the default tools are all from the BSD project and if you use Linux often, some things are different. The way to change that is stolen from <a href="https://danielmiessler.com/blog/first-10-things-new-mac/">this guide</a>, and maybe a good read for you too!</p>
 
-<ul>
-<li>To let iTerm2 fill the complete screen after a resize change the following: Turn on Preferences&gt;Advanced&gt;Terminal windows resize smoothly</li>
-</ul></li>
-</ul></li>
+<p>The following snipped let you dive into the details of the installation process. Enjoy.</p>
 
-<li><p>Install <a href="https://www.spectacleapp.com/">SpectacleApp</a> a window resizing helper, directly using the binary download</p></li>
+<pre><code># Install homebrew
+/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
 
-<li><p>Install <a href="https://justgetflux.com/">f.lux</a> a helper to reduce monitor light, via <code>brew install flux</code></p></li>
-</ul>
+# Add GNU tap
+brew tap homebrew/dupes     # GNU tap for brew
 
-<p>After setting the field I now following <a href="https://danielmiessler.com/blog/first-10-things-new-mac/">Daniel Miessler&rsquo;s</a> recommendation and setup my bash.</p>
+# Prepare array of cli packages
+brew_packages=(
+findutils --default-names   # GNU find, xargs, and locate
+gnu-sed --default-names
+gnu-tar --default-names
+gnu-which --default-names
+gnutls --default-names      # GNU TLS
+openssl                     # SSL/TLS cryptography library
+grep --default-names
+coreutils                   # GNU File, Shell, and Text utilities
+binutils                    # FSF Binutils for native development
+diffutils                   # File comparison utilities
 
-<ul>
-<li>Switching to <a href="http://www.zsh.org/">Zsh</a> the better bash using <code>chsh -s $(which zsh)</code></li>
-<li>Install (the latest) <a href="http://www.vim.org/">vim</a> using <code>brew install vim</code></li>
-<li>Install GNU tool&rsquo;s because OSX is based on BSD and has its tools installed as default
+unrar
+gzip
+pigz                        # Parallel gzip
+xz                          # General-purpose data compression with high compression ratio
+p7zip                       # 7-Zip (high compression file archiver) implementation
 
-<ul>
-<li>First run <code>brew tap homebrew/dupes</code> to add dupes repository to homebrew</li>
-<li>Then run the following lines to install each tool
+bash
+fish
+vim
+screen
+tmux
+z                           # Tracks most-used directories to make cd smarter
+diff-so-fancy               # Good-lookin' diffs with diff-highlight and more
 
-<ul>
-<li><strong>Hint</strong>: Interested in <code>tmux</code> read <a href="https://danielmiessler.com/study/tmux/">Daniel Miessler&rsquo;s post</a></li>
-</ul></li>
-</ul></li>
-</ul>
+nmap                        # Port scanning utility for large networks
+netcat                      # Utility for managing network connections
+ipcalc                      # Calculate various network masks
+wget --with-iri             # Internet file retriever
+curl
+httpie                      # User-friendly cURL replacement (command-line HTTP client)
+lynx                        # Text-based web browser
 
-<pre><code>brew install findutils --default-names
-brew install gnu-sed --default-names
-brew install gnu-tar --default-names
-brew install gnu-which --default-names
-brew install gnutls --default-names
-brew install grep --default-names
-brew install coreutils
-brew install binutils
-brew install diffutils
-brew install gzip
-brew install xz
-brew install watch
-brew install tmux 
-brew install wget
-brew install nmap
-brew install gpg
-brew install htop
+watch                       # Executes a program periodically, showing output fullscreen
+htop                        # Improved top (interactive process viewer)
+tree                        # Display directories as trees
+
+gd                          # Graphics library to dynamically manipulate images
+imagemagick                 # Tools and libraries to manipulate images in many formats
+gs                          # Interpreter for PostScript and PDF
+
+jq                          # Lightweight and flexible command-line JSON processor
+pv                          # Monitor data's progress through a pipe
+
+ansible
+go
+
+git
+packer
+utf8proc                    # Clean C library for processing UTF-8 Unicode data
+docker-completion
+docker-compose-completion
+)
+
+# Array of considered packages - NOT INSTALLED
+brew_packages_consider=(
+moreutils                   # Collection of tools that nobody wrote when UNIX was young
+ack                         # Search tool like grep, but optimized for programmers
+ag                          # Code-search similar to ack
+rename
+speedtest_cli
+testssl
+ssh-copy-id
+vbindiff
+webkit2png
+grc
+fasd
+mc
+pandoc
+pwgen
+git-extras
+
+apache-spark
+maven
+scala
+)
+
+# Install cli packages
+brew install &quot;${brew_packages[@]}&quot;
+
+# Switch to zsh
+chsh -s $(which zsh)
 </code></pre>
 
-<ul>
-<li>Installing my dotFiles from <a href="https://github.com/lony/dotFiles">here</a> into my home folder
+<p>The packages that I normally not install by default, but still like or want to look into are listed in the <code>brew_packages_consider</code> array. For you they may be interesting, please feel free to also install them by default.</p>
 
-<ul>
-<li>Adjusting the <code>.rc_secret</code> adding at least a valid Github token</li>
-<li>Open vim and run <code>:PlugInstall</code> installing set plugins in my <code>.vimrc</code> see <a href="http://vimawesome.com/">VimAwesome.com</a> for more</li>
-<li><strong>Hint</strong>: To jump from the CLI to a vim editing mode <a href="http://nuclearsquid.com/writings/edit-long-commands/">as configured</a> use <code>ESC v</code></li>
-</ul></li>
-</ul>
+<h2 id="python">Python</h2>
 
-<h1 id="python">Python</h1>
+<p>If for any reason, you also need a running python installation on your Mac, this is how I install it following the <a href="http://docs.python-guide.org/en/latest/starting/install/osx/">Hitchhiker&rsquo;s guide</a>. This will setup a separate installation and should keep your existing python intact. Still everything you open a shell your newly installed python should be referenced.</p>
 
 <ol>
-<li><p>Install gcc using way from <a href="http://docs.python-guide.org/en/latest/starting/install/osx/">this guide</a>.</p>
+<li><p>Install gcc</p>
 
 <ul>
 <li>Downloading the Command Line Tools from <a href="https://developer.apple.com/downloads/">here</a> (requires Apple-Account). The file you need is called <code>Command_Line_Tools_OS_X_10.XX_for_Xcode_7.2.dmg</code>. <em>The XX depends on your OSX-Version.</em></li>
@@ -179,6 +238,96 @@ brew install htop
 
 <li><p>Execute <code>brew install python</code></p></li>
 </ol>
+
+<h1 id="apps">Apps</h1>
+
+<p>Having all the necessities for command line life at the pipe, now is the time for applications. Homebrew wouldn&rsquo;t be THE missing package manager if it could not install also binary packages. Still, to do this there is another tap required - <a href="https://caskroom.github.io/">homebrew Cask</a> a homebrew extension for GUI and binary applications.</p>
+
+<p>The following snipped - as before - installs all packages together. The comments should help me understand for what the package was and were to look if there are questions.</p>
+
+<pre><code># Add cask tap
+brew tap caskroom/cask
+
+# Prepare array of cask packages
+brew_cask_packages=(
+anki
+apache-directory-studio     # LDAP GUI http://directory.apache.org/studio
+calibre                     # E-Book manager https://calibre-ebook.com
+charles                     # HTTP proxy https://www.charlesproxy.com
+docker
+dropbox
+fiddler
+filezilla
+firefox
+flux                        # Reduce bright light https://justgetflux.com
+franz
+freemind
+gimp
+gmvault
+google-chrome
+google-drive
+iterm2                      # A better Terminal https://www.iterm2.com
+java
+keepassx
+mysqlworkbench
+netbeans
+osxfuse
+pencil
+postico
+postman
+rescuetime
+sequel-pro
+sourcetree
+spectacle                   # Resize OS X windows https://www.spectacleapp.com
+sublime-text
+teamviewer
+tomighty
+unetbootin
+vagrant
+vagrant-bar
+vagrant-manager
+virtualbox
+virtualbox-extension-pack
+visual-studio-code
+wireshark
+xmind
+)
+
+# Array of considered packages - NOT INSTALLED
+brew_cask_packages_consider=(
+freecad
+karabiner
+kitematic               # Docker search https://kitematic.com
+mongodb-compass         # Mongo GUI https://www.mongodb.com/products/compass
+mono-mdk                # Mono SDK
+skype
+slack
+soundflower             # Virtual audio output device https://rogueamoeba.com/freebies/soundflower/
+vimr
+keka                    # Archiver GUI for p7zip http://www.kekaosx.com
+nvalt                   # Note taking app http://brettterpstra.com/projects/nvalt
+tagspaces               # Evernote alternative https://www.tagspaces.org
+vlc
+anaconda                # Python data science environment https://www.continuum.io
+)
+
+# Install cask packages
+brew cask install &quot;${brew_cask_packages[@]}&quot;
+</code></pre>
+
+<p>Now you should have not only cli tools installed but also all your favorite binary tools running. Some more bare then others, but still its close to done!</p>
+
+<h2 id="iterm2">iTerm2</h2>
+
+<p>To make your favorite terminal emulator a bit more fantastic as it already is, you can adjust the following settings.</p>
+
+<ul>
+<li>To let iTerm2 fill the complete screen after a resize: Turn on <code>Preferences&gt; Advanced&gt; Terminal windows resize smoothly</code></li>
+</ul>
+
+<hr />
+
+<p>Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an <a href="https://github.com/lony/lony.github.io/issues">issue</a> and help me get better!</p>
 
     </div>
   </div>

@@ -2,9 +2,12 @@
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="" name="keywords">
-<meta content="[x]" property="og:title">
+<meta name="author" content="Goetz Epperlein">
+<meta name="keywords" content=" tech,it,politics,europe">
+<meta property="og:title" content="[x]">
+<meta property="og:description" content="Private blog about tech, politics and europe">
 <title>[x]</title>
+
 <link rel="stylesheet" href="https://lony.github.io//css/style.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -54,38 +57,6 @@
   <div class="container">
     
     <article>
-      <h2 class="subtitle is-6">February 27, 2017</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2017/dev-tool-list-monitoring/">List of monitoring tools</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/tool">tool</a>
-    
-        <a class="button is-link" href="/tags/list">list</a>
-    
-        <a class="button is-link" href="/tags/monitoring">monitoring</a>
-    
-</div>
-
-      
-      <div class="content">
-        Curated list of resources for system development and maintenance. Copycatted from awesome sysadmin and DevOps.
-Metric &amp; Metric Collection Metric gathering and display software.
- Collectd - System statistic collection daemon. Collectl - High precision system performance metrics collecting tool. Dashing - Ruby gem that allows for rapid statistical dashboard development. An all HTML5 approach allows for big screen displays in data centers or conference rooms. Diamond - Python based statistic collection daemon.
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2017/dev-tool-list-monitoring/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
       <h2 class="subtitle is-6">February 26, 2017</h2>
       <h1 class="title"><a href="https://lony.github.io/post/2017/gui-development-cross-platform/">Graphical user interface developments</a></h1>
       
@@ -101,8 +72,15 @@ Metric &amp; Metric Collection Metric gathering and display software.
 
       
       <div class="content">
-         List of frameworks and tools for cross-platform development. Focusing on the following operating systems:
- Windows Linux Mac OSX  Java Frameworks  AWT Swing SWT JavaFX  Builder  JFormDesigner 1 Swing GUI Builder (aka Matisse) 1  JavaScript  Electron 1 NW.js 1  
+        This list was started in search for the right architecture to develop a cross-platform tool, which I needed badly for myself. As I&rsquo;m working private and commercially with the tool, I need support for all three mayor operating systems Linux, Windows and OS X.
+First of all there is always a Wikipedia list around. Next I then started by researching how tools I liked are developed. I looked for my favorite apps and how they are build for example the all famous Sublime Text editor, which is developed in C++ as stated here.
+        
+        ...<a class="button is-link" href="https://lony.github.io/post/2017/gui-development-cross-platform/" style="height:28px">
+          Read more
+          <span class="icon is-small">
+            <i class="fa fa-angle-double-right"></i>
+          </span>
+        </a>
         
       </div>
     </article>
@@ -125,11 +103,8 @@ Metric &amp; Metric Collection Metric gathering and display software.
 
       
       <div class="content">
-        Collection of useful command line commands for unix like operating systems. This list is constantly updated.
-File system  cat
- cat /etc/issue - Show ubuntu system version  ls
- ls -R - Recursive list of directory and files within ls='ls -Fh -G' l='ls -1A' ll='ls -lh'  ln - Link files 1
- ln -s /foo/bar /home/lony/bar - Creates symbolic link ln /foo/bar /home/lony/bar - Creates hard link (files only)   mkfifo - Create named pipe
+        Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for you.
+The collection is divided into different sections under which the commands are explained. For each commands there are examples how to use them, as links - from which information about the command can be gathered. For the most commands there is also a short explanation what it does.
         
         ...<a class="button is-link" href="https://lony.github.io/post/2017/cli-commands/" style="height:28px">
           Read more
@@ -157,10 +132,8 @@ File system  cat
 
       
       <div class="content">
-        This post contains information about how I tweak a new Mac when I first get it. The first part covers UI optimizations as the second my CLI setup.
-OS X user interface Following the defaults-write.com instructions I first try to optimize the UX experience of OSX.
-To apply the following changes you have to reboot your machine. To undo use defaults delete NSGlobalDomain KeyRepeat.
- Disable animations when opening and closing windows: defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false Disable animations when opening a Quick Look window: defaults write -g QLPanelAnimationDuration -float 0 Accelerated playback when adjusting the window size (Cocoa applications): defaults write NSGlobalDomain NSWindowResizeTime -float 0.
+        This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better. - Thank you!
+TOC  User interface Terminal  Python  Apps  iTerm2   User interface Following the defaults-write.
         
         ...<a class="button is-link" href="https://lony.github.io/post/2016/mac-osx-setup/" style="height:28px">
           Read more
@@ -168,28 +141,6 @@ To apply the following changes you have to reboot your machine. To undo use defa
             <i class="fa fa-angle-double-right"></i>
           </span>
         </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <h2 class="subtitle is-6">August 31, 2016</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2016/bash-pasting/">bash file pasting</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/bash">bash</a>
-    
-        <a class="button is-link" href="/tags/cli">cli</a>
-    
-</div>
-
-      
-      <div class="content">
-        Wanted to build a template engine using bash, asked yourself: How to paste my fancy file using bash? Here is the answer!
-bash # With parameter expanding cat &lt;&lt;EOF &gt;&gt; bash-paste_expanding export ME=`whoami` EOF ## Result: export ME=lony  bash # Without parameter expanding (look at the ') cat &lt;&lt;'EOF' &gt;&gt; bash-paste_not-expanding export ME=`whoami` EOF ## Result: export ME=`whoami`  
         
       </div>
     </article>

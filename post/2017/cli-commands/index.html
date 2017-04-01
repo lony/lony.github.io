@@ -3,9 +3,12 @@
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="" name="keywords">
-<meta content="CLI commands - [x]" property="og:title">
+<meta name="author" content="Goetz Epperlein">
+<meta name="keywords" content="programming,cli,linux,commands">
+<meta property="og:title" content="CLI commands - [x]">
+<meta property="og:description" content="CLI commands">
 <title>CLI commands | [x]</title>
+
 <link rel="stylesheet" href="https://lony.github.io//css/style.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -72,7 +75,64 @@
     <div class="content">
       
 
-<p>Collection of useful command line commands for unix like operating systems. This list is constantly updated.</p>
+<p>Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for <code>you</code>.</p>
+
+<p>The collection is divided into different sections under which the commands are explained. For each commands there are examples how to use them, as links - from which information about the command can be gathered. For the most commands there is also a short explanation what it does.</p>
+
+<p>If you find a bug or want to recommend something, please feel free to open an <a href="https://github.com/lony/lony.github.io/issues">issue</a> and help me get better. - Thank you!</p>
+
+<h1 id="toc">TOC</h1>
+
+<ul>
+<li><a href="#file-system">File system</a>
+
+<ul>
+<li><a href="#configuration-management">Configuration management</a>
+
+<ul>
+<li><a href="#ansible">Ansible</a></li>
+<li><a href="#chef">Chef</a></li>
+</ul></li>
+<li><a href="#package-management">Package management</a></li>
+</ul></li>
+<li><a href="#processes">Processes</a>
+
+<ul>
+<li><a href="#docker">Docker</a></li>
+<li><a href="#vagrant">Vagrant</a></li>
+<li><a href="#virtualbox">VirtualBox</a></li>
+</ul></li>
+<li><a href="#user-environment">User environment</a></li>
+<li><a href="#text-processing">Text processing</a></li>
+<li><a href="#shell-bulletins">Shell bulletins</a></li>
+<li><a href="#networking">Networking</a></li>
+<li><a href="#searching">Searching</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#miscellaneous">Miscellaneous</a>
+
+<ul>
+<li><a href="#programming-sh">Programming sh</a>
+
+<ul>
+<li><a href="#array">array</a></li>
+<li><a href="#for">for</a></li>
+<li><a href="#if">if</a></li>
+<li><a href="#until">until</a></li>
+<li><a href="#pasting">pasting</a></li>
+<li><a href="#pipe">pipe</a></li>
+<li><a href="#read">read</a><br /></li>
+</ul></li>
+<li><a href="#setup">Setup</a>
+
+<ul>
+<li><a href="#prompt">Prompt</a></li>
+<li><a href="#distribution">Distribution</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#meta">Meta</a></li>
+</ul>
+
+<hr />
 
 <h1 id="file-system">File system</h1>
 
@@ -116,6 +176,7 @@ rm in
 <li><code>openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}</code> - Decrypt file with password (aes-256)</li>
 <li><code>openssl rsa -des3 -in {path-in} -out {path-out}</code> - Encrypt key with password (rsa)</li>
 <li><code>openssl rsa -in {path-in} -out {path-out}</code> - Decrypt key with password (rsa)</li>
+<li><code>echo | openssl s_client -host IP_OF_TARGET -port 443 2&gt;&amp;1 | openssl x509 -noout -subject</code> - Get SSL certificate subject of target machine</li>
 </ul></li>
 
 <li><p>rsync <a href="https://en.wikipedia.org/wiki/Rsync">1</a>, <a href="http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs">2</a> - Data synchronization tool</p>
@@ -146,12 +207,16 @@ rm in
 <li><code>--delete</code> - Deletes irrelevant files from destination</li>
 </ul></li>
 
-<li><p><code>rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs source/ dest/</code> <a href="https://superuser.com/questions/676671/rsync-does-not-delete-source-directories">1</a>, <a href="http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync">2</a>, <a href="http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories">3</a> - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)</p>
+<li><p><code>rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs --ignore-errors source/ dest/</code> <a href="https://superuser.com/questions/676671/rsync-does-not-delete-source-directories">1</a>, <a href="http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync">2</a>, <a href="http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories">3</a> - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)</p>
 
 <ul>
 <li><code>--remove-source-files</code> - Remove synchronized files from source</li>
 <li><code>--prune-empty-dirs</code> - Ignore empty directories for transfer</li>
+<li><code>--ignore-errors</code> - Ignore errors
+<br /></li>
 </ul></li>
+
+<li><p><code>rsync -vzi -e ssh server:source/ dest/</code> <a href="https://kyup.com/tutorials/copy-files-rsync-ssh/">1</a> - Use rsync via ssh</p></li>
 </ul></li>
 
 <li><p>tar</p>
@@ -275,6 +340,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <h1 id="processes">Processes</h1>
 
 <ul>
+<li><p>atop <a href="http://www.tecmint.com/how-to-install-atop-to-monitor-logging-activity-of-linux-system-processes/">1</a> - System &amp; Process Monitor like top or htop</p></li>
+
 <li><p>df - Display free disk space</p>
 
 <ul>
@@ -288,7 +355,11 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><code>du -a /var | sort -n -r | head -n 10</code> <a href="https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/">1</a> - List 10 biggest folders or files in /var</li>
 </ul></li>
 
+<li><p>glances <a href="https://nicolargo.github.io/glances/">1</a> - A top/htop alternative</p></li>
+
 <li><p>htop <a href="https://codeahoy.com/2017/01/20/hhtop-explained-visually">1</a> - Interactive process monitor</p></li>
+
+<li><p>iotop <a href="http://guichaz.free.fr/iotop/">1</a>, <a href="http://www.tecmint.com/iotop-monitor-linux-disk-io-activity-per-process/">2</a> - System I/O monitor like top</p></li>
 
 <li><p><code>sudo initctl restart apache</code> <a href="https://wiki.ubuntu.com/SystemdForUpstartUsers">1</a>,<a href="http://upstart.ubuntu.com/">2</a> - Restart command for upstart (using /etc/init)</p></li>
 
@@ -305,12 +376,19 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p>screen <a href="https://en.wikipedia.org/wiki/GNU_Screen">1</a> - terminal multiplexer</p>
 
 <ul>
-<li><code>screen &lt;COMMAND&gt;</code> - Start command in screen session</li>
-<li><code>screen -ls</code> - List screen sessions</li>
+<li><p><code>screen &lt;COMMAND&gt;</code> - Start command in screen session</p>
+
+<ul>
 <li>Press (Strg + a + d) - Detach running session <a href="https://nathan.chantrell.net/linux/an-introduction-to-screen/">1</a></li>
-<li><code>screen -r</code> - Resume last running screen session</li>
-<li><code>screen -r -d 30608</code> - Resume already attached session <a href="http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached">1</a></li>
-<li><code>screen -dmS &lt;SESSION_NAME&gt; &lt;COMMAND&gt;</code> - Starts screen in detached mode using the given session name and command</li>
+</ul></li>
+
+<li><p><code>screen -ls</code> - List screen sessions</p></li>
+
+<li><p><code>screen -r</code> - Resume last running screen session</p></li>
+
+<li><p><code>screen -r -d 30608</code> - Resume already attached session <a href="http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached">1</a></p></li>
+
+<li><p><code>screen -dmS &lt;SESSION_NAME&gt; &lt;COMMAND&gt;</code> - Starts screen in detached mode using the given session name and command</p></li>
 </ul></li>
 
 <li><p><code>sudo service apache restart</code> - Restart command for System V (using /etc/init.d)</p></li>
@@ -458,7 +536,11 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <li><p>route <a href="https://en.wikipedia.org/w/index.php?oldid=749414632">1</a> - View IP routing table of host (replaced with <code>iproute2</code>)</p></li>
 
-<li><p>scp - secure copy</p></li>
+<li><p>scp - secure copy</p>
+
+<ul>
+<li><code>scp server:source/ dest/</code> - Copy from external server to local</li>
+</ul></li>
 
 <li><p>ssh - Secure Shell commands (more on how to setup <a href="https://github.com/lony/dotFiles/tree/master/.ssh">here</a>)</p>
 
@@ -528,32 +610,45 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
 
 <h1 id="miscellaneous">Miscellaneous</h1>
 
-<h2 id="programming-shell-bash-sh">Programming (shell|bash|sh)</h2>
+<ul>
+<li><p>watch <a href="https://en.wikipedia.org/w/index.php?oldid=725168377">1</a></p>
 
 <ul>
-<li><p>until</p>
+<li><p><code>watch -d=cumulative -n 5 'ls -lah | grep data.pcap'</code> <a href="http://askubuntu.com/questions/430382/repeat-a-command-every-x-interval-of-time-in-terminal">1</a> - Runs ls every 5s and highlighting changes</p>
 
 <ul>
-<li><code>until ssh aws-host; do echo &quot;Try again&quot;; sleep 2; done</code></li>
+<li><code>-d=cumulative</code> - Highlight differences that ever changed since start</li>
+<li><code>-n &lt;SECONDS&gt;</code> - Run every X seconds (default=2s)</li>
 </ul></li>
+</ul></li>
+</ul>
 
-<li><p>for</p>
+<h2 id="programming-sh">Programming sh</h2>
+
+<h3 id="array">array</h3>
+
+<ul>
+<li>Concat array <a href="http://stackoverflow.com/questions/9522631/how-to-put-line-comment-for-a-multi-line-command">1</a>, <a href="http://stackoverflow.com/questions/18599711/how-can-i-split-a-shell-command-over-multiple-lines-when-using-an-if-statement">2</a></li>
+</ul>
+
+<pre><code>brew_packages=(
+	ansible		# Comment1
+	go		# Comment2
+)
+
+brew install &quot;${brew_packages[@]}&quot;
+</code></pre>
+
+<h3 id="for">for</h3>
 
 <ul>
 <li><code>for i in &quot;ci&quot; &quot;stage&quot; &quot;prod&quot;; do (export ENVI=$i; echo $ENVI); done</code> <a href="http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash">1</a>,<a href="https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/">2</a>,<a href="http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second">3</a></li>
-</ul></li>
+</ul>
 
-<li><p>read</p>
-
-<ul>
-<li><code>read -p &quot;Enter username to check:&quot; USERNAME &amp;&amp; echo $USERNAME</code></li>
-</ul></li>
-
-<li><p>if</p>
+<h3 id="if">if</h3>
 
 <ul>
 <li>Bash version =&gt; 4 <a href="http://unix.stackexchange.com/questions/250778/should-i-check-bash-version">1</a></li>
-</ul></li>
 </ul>
 
 <pre><code>if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
@@ -561,6 +656,42 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
   exit 1
 fi
 </code></pre>
+
+<h3 id="until">until</h3>
+
+<ul>
+<li><code>until ssh aws-host; do echo &quot;Try again&quot;; sleep 2; done</code></li>
+</ul>
+
+<h3 id="pasting">pasting</h3>
+
+<pre><code># With parameter expanding
+cat &lt;&lt;EOF &gt;&gt; bash-paste_expanding
+export ME=`whoami`
+EOF
+## Result: export ME=lony
+</code></pre>
+
+<pre><code># Without parameter expanding (look at the ')
+cat &lt;&lt;'EOF' &gt;&gt; bash-paste_not-expanding
+export ME=`whoami`
+EOF
+## Result: export ME=`whoami`
+</code></pre>
+
+<h3 id="pipe">pipe</h3>
+
+<ul>
+<li><code>&gt; FILE</code> same as <code>1&gt; FILE</code> - Pipe standard out (stdout) into file and overwrites content</li>
+<li><code>2&gt; FILE</code> <a href="http://stackoverflow.com/questions/818255/in-the-shell-what-does-21-mean">1</a> - Pipe errors (stderr) into file and overwrites content</li>
+<li><code>2&gt;&amp;1 &gt;&gt; FILE</code> <a href="http://serverfault.com/questions/196734/bash-difference-between-and-operator">1</a> - Pipe errors (stderr) and standard out (stdout) into file and append content</li>
+</ul>
+
+<h3 id="read">read</h3>
+
+<ul>
+<li><code>read -p &quot;Enter username to check:&quot; USERNAME &amp;&amp; echo $USERNAME</code></li>
+</ul>
 
 <h2 id="setup">Setup</h2>
 
@@ -593,6 +724,10 @@ $? \[\e[01;34m\][$(date &quot;+%H:%M:%S&quot;)] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e
 <li><a href="https://en.wikipedia.org/wiki/Book:Unix_Commands">book</a></li>
 </ul></li>
 </ul>
+
+<hr />
+
+<p>Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an <a href="https://github.com/lony/lony.github.io/issues">issue</a> and help me get better!</p>
 
     </div>
   </div>

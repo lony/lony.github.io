@@ -3,9 +3,12 @@
 <html lang="en">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="" name="keywords">
-<meta content="Graphical user interface developments - [x]" property="og:title">
+<meta name="author" content="Goetz Epperlein">
+<meta name="keywords" content="programming,gui,cross-platform">
+<meta property="og:title" content="Graphical user interface developments - [x]">
+<meta property="og:description" content="Graphical user interface developments">
 <title>Graphical user interface developments | [x]</title>
+
 <link rel="stylesheet" href="https://lony.github.io//css/style.css">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -70,38 +73,50 @@
     <div class="content">
       
 
-<p>List of frameworks and tools for cross-platform development. Focusing on the following operating systems:</p>
+<p>This list was started in search for the right architecture to develop a cross-platform tool, which I needed badly for myself. As I&rsquo;m working private and commercially with the tool, I need support for all three mayor operating systems <code>Linux, Windows and OS X</code>.</p>
+
+<p>First of all there is always a <a href="https://en.wikipedia.org/wiki/List_of_platform-independent_GUI_libraries">Wikipedia list</a> around. Next I then started by researching how tools I liked are developed. I looked for my favorite apps and how they are build for example the all famous Sublime Text editor, which is developed in C++ as stated <a href="http://stackoverflow.com/questions/7102378/what-gui-library-is-used-by-sublime-text-editor">here</a>. Another big one these days it Slack and Franz which are both made with JavaScript and <a href="https://electron.atom.io/apps/">Electron</a>. Last but not least there is the obvious choice of using Java.</p>
+
+<p>After a bit of research I cam up with the following list:</p>
+
+<h1 id="c">C++</h1>
 
 <ul>
-<li>Windows</li>
-<li>Linux</li>
-<li>Mac OSX</li>
+<li><a href="https://www.qt.io/">Qt</a> [Commercial] - Best and most feature</li>
+<li><a href="https://www.gtk.org/">GTK+</a></li>
+<li><a href="http://www.wxwidgets.org/">wxwidgets</a></li>
+<li><a href="https://www.juce.com">JUCE</a> [Commercial]</li>
+<li><a href="http://nanapro.org">nana</a></li>
 </ul>
 
 <h1 id="java">Java</h1>
 
-<h2 id="frameworks">Frameworks</h2>
+<ul>
+<li><a href="http://docs.oracle.com/javase/8/docs/technotes/guides/awt/">AWT</a> - Very old but fast</li>
+<li><a href="https://docs.oracle.com/javase/tutorial/uiswing/">Swing</a> - Based on AWT but easier
 
 <ul>
-<li>AWT</li>
-<li>Swing</li>
-<li>SWT</li>
-<li>JavaFX</li>
-</ul>
-
-<h2 id="builder">Builder</h2>
+<li>Builder
 
 <ul>
-<li>JFormDesigner <a href="https://www.formdev.com/jformdesigner/">1</a></li>
-<li>Swing GUI Builder (aka Matisse) <a href="https://netbeans.org/features/java/swing.html">1</a></li>
+<li><a href="https://www.formdev.com/jformdesigner/">JFormDesigner</a></li>
+<li><a href="https://netbeans.org/features/java/swing.html">Swing GUI Builder (aka Matisse)</a></li>
+</ul></li>
+</ul></li>
+<li><a href="https://www.eclipse.org/swt/">SWT</a> - Uses more native UI components, developed for eclipse</li>
+<li><a href="http://docs.oracle.com/javase/8/javase-clienttechnologies.htm">JavaFX</a> - Successor of Swing, better for visualizations and animations</li>
 </ul>
 
 <h1 id="javascript">JavaScript</h1>
 
 <ul>
-<li>Electron <a href="http://electron.atom.io/">1</a></li>
-<li>NW.js <a href="https://nwjs.io/">1</a></li>
+<li><a href="http://electron.atom.io/">Electro</a> - Successor of NW.js and used for Franz and Slack, JavaScript inside Chromium</li>
+<li><a href="https://nwjs.io/">NW.js</a></li>
 </ul>
+
+<hr />
+
+<p>Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an <a href="https://github.com/lony/lony.github.io/issues">issue</a> and help me get better!</p>
 
     </div>
   </div>

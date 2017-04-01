@@ -17,7 +17,64 @@
       <guid>https://lony.github.io/post/2017/cli-commands/</guid>
       <description>
 
-&lt;p&gt;Collection of useful command line commands for unix like operating systems. This list is constantly updated.&lt;/p&gt;
+&lt;p&gt;Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for &lt;code&gt;you&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The collection is divided into different sections under which the commands are explained. For each commands there are examples how to use them, as links - from which information about the command can be gathered. For the most commands there is also a short explanation what it does.&lt;/p&gt;
+
+&lt;p&gt;If you find a bug or want to recommend something, please feel free to open an &lt;a href=&#34;https://github.com/lony/lony.github.io/issues&#34;&gt;issue&lt;/a&gt; and help me get better. - Thank you!&lt;/p&gt;
+
+&lt;h1 id=&#34;toc&#34;&gt;TOC&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#file-system&#34;&gt;File system&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#configuration-management&#34;&gt;Configuration management&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ansible&#34;&gt;Ansible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#chef&#34;&gt;Chef&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#package-management&#34;&gt;Package management&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#processes&#34;&gt;Processes&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#docker&#34;&gt;Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#vagrant&#34;&gt;Vagrant&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#virtualbox&#34;&gt;VirtualBox&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#user-environment&#34;&gt;User environment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#text-processing&#34;&gt;Text processing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shell-bulletins&#34;&gt;Shell bulletins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#networking&#34;&gt;Networking&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#searching&#34;&gt;Searching&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#documentation&#34;&gt;Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#miscellaneous&#34;&gt;Miscellaneous&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#programming-sh&#34;&gt;Programming sh&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#array&#34;&gt;array&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#for&#34;&gt;for&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#if&#34;&gt;if&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#until&#34;&gt;until&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#pasting&#34;&gt;pasting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#pipe&#34;&gt;pipe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#read&#34;&gt;read&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#setup&#34;&gt;Setup&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#prompt&#34;&gt;Prompt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#distribution&#34;&gt;Distribution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#meta&#34;&gt;Meta&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
 
 &lt;h1 id=&#34;file-system&#34;&gt;File system&lt;/h1&gt;
 
@@ -61,6 +118,7 @@ rm in
 &lt;li&gt;&lt;code&gt;openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}&lt;/code&gt; - Decrypt file with password (aes-256)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openssl rsa -des3 -in {path-in} -out {path-out}&lt;/code&gt; - Encrypt key with password (rsa)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openssl rsa -in {path-in} -out {path-out}&lt;/code&gt; - Decrypt key with password (rsa)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;echo | openssl s_client -host IP_OF_TARGET -port 443 2&amp;gt;&amp;amp;1 | openssl x509 -noout -subject&lt;/code&gt; - Get SSL certificate subject of target machine&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;rsync &lt;a href=&#34;https://en.wikipedia.org/wiki/Rsync&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs&#34;&gt;2&lt;/a&gt; - Data synchronization tool&lt;/p&gt;
@@ -91,12 +149,16 @@ rm in
 &lt;li&gt;&lt;code&gt;--delete&lt;/code&gt; - Deletes irrelevant files from destination&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs source/ dest/&lt;/code&gt; &lt;a href=&#34;https://superuser.com/questions/676671/rsync-does-not-delete-source-directories&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories&#34;&gt;3&lt;/a&gt; - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -rlptzvhn --progress --remove-source-files --prune-empty-dirs --ignore-errors source/ dest/&lt;/code&gt; &lt;a href=&#34;https://superuser.com/questions/676671/rsync-does-not-delete-source-directories&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://unix.stackexchange.com/questions/78375/move-files-and-delete-directories-with-rsync&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;http://serverfault.com/questions/598662/copy-directory-tree-without-empty-directories&#34;&gt;3&lt;/a&gt; - Copy files from source to destination deleting them at the source afterwards (empty folders will be kept)&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;--remove-source-files&lt;/code&gt; - Remove synchronized files from source&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;--prune-empty-dirs&lt;/code&gt; - Ignore empty directories for transfer&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--ignore-errors&lt;/code&gt; - Ignore errors
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;rsync -vzi -e ssh server:source/ dest/&lt;/code&gt; &lt;a href=&#34;https://kyup.com/tutorials/copy-files-rsync-ssh/&#34;&gt;1&lt;/a&gt; - Use rsync via ssh&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;tar&lt;/p&gt;
@@ -220,6 +282,8 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;h1 id=&#34;processes&#34;&gt;Processes&lt;/h1&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;atop &lt;a href=&#34;http://www.tecmint.com/how-to-install-atop-to-monitor-logging-activity-of-linux-system-processes/&#34;&gt;1&lt;/a&gt; - System &amp;amp; Process Monitor like top or htop&lt;/p&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;df - Display free disk space&lt;/p&gt;
 
 &lt;ul&gt;
@@ -233,7 +297,11 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;li&gt;&lt;code&gt;du -a /var | sort -n -r | head -n 10&lt;/code&gt; &lt;a href=&#34;https://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/&#34;&gt;1&lt;/a&gt; - List 10 biggest folders or files in /var&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
+&lt;li&gt;&lt;p&gt;glances &lt;a href=&#34;https://nicolargo.github.io/glances/&#34;&gt;1&lt;/a&gt; - A top/htop alternative&lt;/p&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;htop &lt;a href=&#34;https://codeahoy.com/2017/01/20/hhtop-explained-visually&#34;&gt;1&lt;/a&gt; - Interactive process monitor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;iotop &lt;a href=&#34;http://guichaz.free.fr/iotop/&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://www.tecmint.com/iotop-monitor-linux-disk-io-activity-per-process/&#34;&gt;2&lt;/a&gt; - System I/O monitor like top&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;sudo initctl restart apache&lt;/code&gt; &lt;a href=&#34;https://wiki.ubuntu.com/SystemdForUpstartUsers&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;http://upstart.ubuntu.com/&#34;&gt;2&lt;/a&gt; - Restart command for upstart (using /etc/init)&lt;/p&gt;&lt;/li&gt;
 
@@ -250,12 +318,19 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;li&gt;&lt;p&gt;screen &lt;a href=&#34;https://en.wikipedia.org/wiki/GNU_Screen&#34;&gt;1&lt;/a&gt; - terminal multiplexer&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;screen &amp;lt;COMMAND&amp;gt;&lt;/code&gt; - Start command in screen session&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;screen -ls&lt;/code&gt; - List screen sessions&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;screen &amp;lt;COMMAND&amp;gt;&lt;/code&gt; - Start command in screen session&lt;/p&gt;
+
+&lt;ul&gt;
 &lt;li&gt;Press (Strg + a + d) - Detach running session &lt;a href=&#34;https://nathan.chantrell.net/linux/an-introduction-to-screen/&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;screen -r&lt;/code&gt; - Resume last running screen session&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;screen -r -d 30608&lt;/code&gt; - Resume already attached session &lt;a href=&#34;http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;screen -dmS &amp;lt;SESSION_NAME&amp;gt; &amp;lt;COMMAND&amp;gt;&lt;/code&gt; - Starts screen in detached mode using the given session name and command&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;screen -ls&lt;/code&gt; - List screen sessions&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;screen -r&lt;/code&gt; - Resume last running screen session&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;screen -r -d 30608&lt;/code&gt; - Resume already attached session &lt;a href=&#34;http://unix.stackexchange.com/questions/240444/cant-resume-screen-says-i-am-already-attached&#34;&gt;1&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;screen -dmS &amp;lt;SESSION_NAME&amp;gt; &amp;lt;COMMAND&amp;gt;&lt;/code&gt; - Starts screen in detached mode using the given session name and command&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;sudo service apache restart&lt;/code&gt; - Restart command for System V (using /etc/init.d)&lt;/p&gt;&lt;/li&gt;
@@ -403,7 +478,11 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 
 &lt;li&gt;&lt;p&gt;route &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=749414632&#34;&gt;1&lt;/a&gt; - View IP routing table of host (replaced with &lt;code&gt;iproute2&lt;/code&gt;)&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;scp - secure copy&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;scp - secure copy&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;scp server:source/ dest/&lt;/code&gt; - Copy from external server to local&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;ssh - Secure Shell commands (more on how to setup &lt;a href=&#34;https://github.com/lony/dotFiles/tree/master/.ssh&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
 
@@ -473,32 +552,45 @@ then &lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name 
 
 &lt;h1 id=&#34;miscellaneous&#34;&gt;Miscellaneous&lt;/h1&gt;
 
-&lt;h2 id=&#34;programming-shell-bash-sh&#34;&gt;Programming (shell|bash|sh)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;watch &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=725168377&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;until&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;watch -d=cumulative -n 5 &#39;ls -lah | grep data.pcap&#39;&lt;/code&gt; &lt;a href=&#34;http://askubuntu.com/questions/430382/repeat-a-command-every-x-interval-of-time-in-terminal&#34;&gt;1&lt;/a&gt; - Runs ls every 5s and highlighting changes&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;until ssh aws-host; do echo &amp;quot;Try again&amp;quot;; sleep 2; done&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-d=cumulative&lt;/code&gt; - Highlight differences that ever changed since start&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-n &amp;lt;SECONDS&amp;gt;&lt;/code&gt; - Run every X seconds (default=2s)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;for&lt;/p&gt;
+&lt;h2 id=&#34;programming-sh&#34;&gt;Programming sh&lt;/h2&gt;
+
+&lt;h3 id=&#34;array&#34;&gt;array&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Concat array &lt;a href=&#34;http://stackoverflow.com/questions/9522631/how-to-put-line-comment-for-a-multi-line-command&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/18599711/how-can-i-split-a-shell-command-over-multiple-lines-when-using-an-if-statement&#34;&gt;2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;brew_packages=(
+	ansible		# Comment1
+	go		# Comment2
+)
+
+brew install &amp;quot;${brew_packages[@]}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;for&#34;&gt;for&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;for i in &amp;quot;ci&amp;quot; &amp;quot;stage&amp;quot; &amp;quot;prod&amp;quot;; do (export ENVI=$i; echo $ENVI); done&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/&#34;&gt;2&lt;/a&gt;,&lt;a href=&#34;http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second&#34;&gt;3&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;li&gt;&lt;p&gt;read&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;read -p &amp;quot;Enter username to check:&amp;quot; USERNAME &amp;amp;&amp;amp; echo $USERNAME&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;if&lt;/p&gt;
+&lt;h3 id=&#34;if&#34;&gt;if&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Bash version =&amp;gt; 4 &lt;a href=&#34;http://unix.stackexchange.com/questions/250778/should-i-check-bash-version&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;pre&gt;&lt;code&gt;if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
@@ -506,6 +598,42 @@ then &lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name 
   exit 1
 fi
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;until&#34;&gt;until&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;until ssh aws-host; do echo &amp;quot;Try again&amp;quot;; sleep 2; done&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;pasting&#34;&gt;pasting&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;# With parameter expanding
+cat &amp;lt;&amp;lt;EOF &amp;gt;&amp;gt; bash-paste_expanding
+export ME=`whoami`
+EOF
+## Result: export ME=lony
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;# Without parameter expanding (look at the &#39;)
+cat &amp;lt;&amp;lt;&#39;EOF&#39; &amp;gt;&amp;gt; bash-paste_not-expanding
+export ME=`whoami`
+EOF
+## Result: export ME=`whoami`
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;pipe&#34;&gt;pipe&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;gt; FILE&lt;/code&gt; same as &lt;code&gt;1&amp;gt; FILE&lt;/code&gt; - Pipe standard out (stdout) into file and overwrites content&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2&amp;gt; FILE&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/818255/in-the-shell-what-does-21-mean&#34;&gt;1&lt;/a&gt; - Pipe errors (stderr) into file and overwrites content&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;2&amp;gt;&amp;amp;1 &amp;gt;&amp;gt; FILE&lt;/code&gt; &lt;a href=&#34;http://serverfault.com/questions/196734/bash-difference-between-and-operator&#34;&gt;1&lt;/a&gt; - Pipe errors (stderr) and standard out (stdout) into file and append content&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;read&#34;&gt;read&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;read -p &amp;quot;Enter username to check:&amp;quot; USERNAME &amp;amp;&amp;amp; echo $USERNAME&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
 
@@ -538,6 +666,10 @@ $? \[\e[01;34m\][$(date &amp;quot;+%H:%M:%S&amp;quot;)] \[\e[01;31m\]\u\[\e[1;34
 &lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Book:Unix_Commands&#34;&gt;book&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an &lt;a href=&#34;https://github.com/lony/lony.github.io/issues&#34;&gt;issue&lt;/a&gt; and help me get better!&lt;/p&gt;
 </description>
     </item>
     
