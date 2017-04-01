@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{ with .Site.Params.Meta.Name }}<meta name="author" content="{{ . }}">{{ end }}
-<meta name="keywords" content="{{ if .Params.Tags }}{{ delimit .Params.Tags "," " and " }}{{ else }} {{ delimit .Site.Params.Meta.Keywords "," " and " }}{{ end }}">
+<meta name="keywords" content="{{ if .Params.Tags }}{{ delimit .Params.Tags "," }}{{ else }} {{ delimit .Site.Params.Meta.Keywords "," }}{{ end }}">
 <meta property="og:title" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
 <meta property="og:description" content="{{ if eq .Title .Site.Title }}{{ .Site.Params.Meta.Description }}{{ else }}{{ .Title }}{{ end }}">
 <title>{{ .Title }}{{ if eq .IsHome false }} | {{ .Site.Title }}{{ end }}</title>
