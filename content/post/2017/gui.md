@@ -1,5 +1,5 @@
 +++
-title = "Graphical user interface developments"
+title = "Graphical user interface development"
 tags = [ "programming", "gui", "cross-platform" ]
 date = "2017-02-26T14:02:52+02:00"
 slug = "gui-development-cross-platform"
