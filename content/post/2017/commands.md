@@ -64,11 +64,11 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	
 * mkfifo - Create named pipe
 
-```
-mkfifo in 
-ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT <in | nc -l LOCAL_PORT >in
-rm in
-```
+	```
+	mkfifo in 
+	ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT <in | nc -l LOCAL_PORT >in
+	rm in
+	```
 
 * openssl [1](http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/), [2](http://www.czeskis.com/random/openssl-encrypt-file.html), [3](https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs) - SSL encryption library
 
@@ -146,7 +146,13 @@ rm in
 	* `knife node list` - Show systems
 	* `knife node from file nodes/<MASCHINE_NAME>.rb` - Loads local node configuration to Chef server
 	* `knife data bag list`
-	* `nife data bag show <DATA_BAG_FOLDer> <DATA_BAG_FILE>` --format=json
+	* `knife data bag show <DATA_BAG_FOLDer> <DATA_BAG_FILE> --format=json`
+	* `knife data bag show <DATA_BAG_FOLDer> <DATA_BAG_FILE> -z --secret-file <SYMMETRIC_SECRET_KEY> -Fjson` - Shows locally stored encrypted data bag
+		* `-z` - Local chef mode, uses local files
+			* HINT: Needs chef-repo structure as on the server
+		* `--secret-file` - Specifies symmetric key used to encrypted and decrypted
+		* `-Fjson` same as `--format=jso` - Output data as JSON
+
 	* `knife vault list`
 	* `knife vault show <DATA_BAG_FOLDer> <DATA_BAG_FILE>`
 	* `knife cookbook download -s "https://<SERVER_URL>" <COOKBOOK_NAME> 0.3.0`
@@ -306,7 +312,63 @@ rm in
 
 * httpie [1](https://httpie.org/),[2](https://github.com/jkbrzt/httpie) - Better curl with JSON support
 
+* ifconfig [1](https://en.wikipedia.org/wiki/Ifconfig) - Display network interface configuration for Unix-systems
+
 * ipcalc [1](https://pypi.python.org/pypi/ipcalc) - IP subnet calculator
+
+* iptables [1](https://en.wikipedia.org/wiki/Iptables), [2](https://manpages.debian.org/jessie/iptables/iptables.8.en.html), [3](https://wiki.archlinux.org/index.php/iptables) - IPv4 firewall interface for Linux
+
+	* Overview of packet traversing (or [graph](http://jekor.com/gressgraph/) your own), Source: [Pencil file](/img/2017/commands/iptables.ep)
+	![iptables overview](/img/2017/commands/iptables.png)	
+
+	* `iptables -nvL` [1](https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules) - Show existing rules
+
+		* `-n` - Numeric output, do not resolve host names
+		* `-v` - Verbose output
+		* `-L [CHAIN]` - List all rules in optional chain
+
+	* `iptables -F` or `iptables --flush` - Delete all existing rules
+	* `iptables -P OUTPUT DROP` - DROP all outgoing traffic
+
+		* `-P CHAIN TARGET` - Set policy for chain to given target (e.g. ACCEPT, REJECT, DROP or RETURN)
+
+	* `iptables -A OUTPUT -d 192.30.0.0/17 -j DROP` - Drop only outgoing traffic to specified subnet
+
+		* `-A OUTPUT` - Append rule to OUTPUT chain
+		* `-d DEST` - Destination e.g. address, hostname, network name
+		* `-j TARGET` - Specifies target of rule; i.e. what to do if packet matches.
+
+	* `iptables -A OUTPUT -s 192.20.0.1 -j DROP` [1](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables) - Drop outgoing traffic only to specified IP address
+
+		* `-s SRC` - Source e.g. address, hostname, network name
+
+	* `iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT` [1](https://crm.vpscheap.net/knowledgebase.php?action=displayarticle&id=29) - Prevent DoS Attack
+
+		* `-m limit` - Use limit iptables extension
+		* `–limit 25/minute` - Limit to only 25 connections per minute
+		* `–limit-burst 100` - The limit per minute will only be enforced if the total number of connections have reached this burst limit
+
+	* Allow incoming SSH connections only from specified subnet
+
+		```
+		iptables -A INPUT -i eth0 -p tcp -s 192.168.100.0/24 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+		iptables -A OUTPUT -o eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+		```
+	
+	* Combine rules using multiport
+
+		```
+		iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+		iptables -A OUTPUT -o eth0 -p tcp -m multiport --sports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
+		```
+
+	* Load balance incoming traffic
+
+		```
+		iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 0 -j DNAT --to-destination 192.168.1.101:443
+		iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 1 -j DNAT --to-destination 192.168.1.102:443
+		iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
+		```
 
 * iptraf [1](http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic) - Network statistic tool
 
@@ -362,6 +424,8 @@ rm in
 	* `tcpdump host 10.0.3.1` - Capture only if source and destination ip is 10.0.3.1
 	* `tcpdump src host 10.0.3.1` - Capture only if source ip is 10.0.3.1
 	* `tcpdump dst port 80` - Caputre only if destination port is 80
+	* `tcpdump (src net 10.0.0.144/28) and not(dst host 10.20.0.251)` [1](http://serverfault.com/questions/354102/tcpdump-filter-on-network-and-subnet-mask)  - Captue only traffic which is from specific network and not going to a specific host
+		* Hint: Use lowest IP for range to avoid `tcpdump: non-network bits set in “10.0.0.145/28"` error [1](http://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump)
 	* `tcpdump 'tcp[tcpflags] & tcp-syn != 0'` [1](http://www.tcpdump.org/manpages/pcap-filter.7.html), [2](https://syedali.net/2014/12/29/tcp-flags-explained/), [3](https://danielmiessler.com/study/tcpflags/) - Use PCAP-filters to capture start (SYN) packets of TCP conversation
 	* `tcpdump 'tcp[tcpflags] & (tcp-syn) != 0 and tcp[tcpflags] & (tcp-ack) == 0 or udp'` - Capture tcp SYN but not SYN-ACK and also udp packets
 
@@ -403,14 +467,14 @@ rm in
 
 * Concat array [1](http://stackoverflow.com/questions/9522631/how-to-put-line-comment-for-a-multi-line-command), [2](http://stackoverflow.com/questions/18599711/how-can-i-split-a-shell-command-over-multiple-lines-when-using-an-if-statement)
 
-```
-brew_packages=(
-	ansible		# Comment1
-	go		# Comment2
-)
+	```
+	brew_packages=(
+		ansible		# Comment1
+		go		# Comment2
+	)
 
-brew install "${brew_packages[@]}"
-```
+	brew install "${brew_packages[@]}"
+	```
 
 ### for
 
@@ -420,12 +484,12 @@ brew install "${brew_packages[@]}"
 
 * Bash version => 4 [1](http://unix.stackexchange.com/questions/250778/should-i-check-bash-version)
 
-````
-if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
-  echo "This script requires bash version > 4. Currently running is ${BASH_VERSION%%.*}"
-  exit 1
-fi
-````
+	````
+	if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
+	echo "This script requires bash version > 4. Currently running is ${BASH_VERSION%%.*}"
+	exit 1
+	fi
+	````
 
 ### until
 
