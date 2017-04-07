@@ -157,15 +157,13 @@
 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;mkfifo - Create named pipe&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;mkfifo - Create named pipe&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;mkfifo in 
 ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT &amp;lt;in | nc -l LOCAL_PORT &amp;gt;in
 rm in
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
-&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;openssl &lt;a href=&#34;http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://www.czeskis.com/random/openssl-encrypt-file.html&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs&#34;&gt;3&lt;/a&gt; - SSL encryption library&lt;/p&gt;
 
 &lt;ul&gt;
@@ -273,10 +271,25 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;li&gt;&lt;code&gt;knife node list&lt;/code&gt; - Show systems&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;knife node from file nodes/&amp;lt;MASCHINE_NAME&amp;gt;.rb&lt;/code&gt; - Loads local node configuration to Chef server&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;knife data bag list&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;nife data bag show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt;&lt;/code&gt; &amp;ndash;format=json&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;knife vault list&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;knife vault show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;knife cookbook download -s &amp;quot;https://&amp;lt;SERVER_URL&amp;gt;&amp;quot; &amp;lt;COOKBOOK_NAME&amp;gt; 0.3.0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;knife data bag show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt; --format=json&lt;/code&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;knife data bag show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt; -z --secret-file &amp;lt;SYMMETRIC_SECRET_KEY&amp;gt; -Fjson&lt;/code&gt; - Shows locally stored encrypted data bag&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-z&lt;/code&gt; - Local chef mode, uses local files
+
+&lt;ul&gt;
+&lt;li&gt;HINT: Needs chef-repo structure as on the server&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--secret-file&lt;/code&gt; - Specifies symmetric key used to encrypted and decrypted&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-Fjson&lt;/code&gt; same as &lt;code&gt;--format=jso&lt;/code&gt; - Output data as JSON&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;knife vault list&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;knife vault show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;knife cookbook download -s &amp;quot;https://&amp;lt;SERVER_URL&amp;gt;&amp;quot; &amp;lt;COOKBOOK_NAME&amp;gt; 0.3.0&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;kitchen&lt;/p&gt;
@@ -497,7 +510,73 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 
 &lt;li&gt;&lt;p&gt;httpie &lt;a href=&#34;https://httpie.org/&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;https://github.com/jkbrzt/httpie&#34;&gt;2&lt;/a&gt; - Better curl with JSON support&lt;/p&gt;&lt;/li&gt;
 
+&lt;li&gt;&lt;p&gt;ifconfig &lt;a href=&#34;https://en.wikipedia.org/wiki/Ifconfig&#34;&gt;1&lt;/a&gt; - Display network interface configuration for Unix-systems&lt;/p&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;ipcalc &lt;a href=&#34;https://pypi.python.org/pypi/ipcalc&#34;&gt;1&lt;/a&gt; - IP subnet calculator&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;iptables &lt;a href=&#34;https://en.wikipedia.org/wiki/Iptables&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;https://manpages.debian.org/jessie/iptables/iptables.8.en.html&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;https://wiki.archlinux.org/index.php/iptables&#34;&gt;3&lt;/a&gt; - IPv4 firewall interface for Linux&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Overview of packet traversing (or &lt;a href=&#34;http://jekor.com/gressgraph/&#34;&gt;graph&lt;/a&gt; your own), Source: &lt;a href=&#34;https://lony.github.io/img/2017/commands/iptables.ep&#34;&gt;Pencil file&lt;/a&gt;
+&lt;img src=&#34;https://lony.github.io/img/2017/commands/iptables.png&#34; alt=&#34;iptables overview&#34; /&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;iptables -nvL&lt;/code&gt; &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules&#34;&gt;1&lt;/a&gt; - Show existing rules&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-n&lt;/code&gt; - Numeric output, do not resolve host names&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; - Verbose output&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-L [CHAIN]&lt;/code&gt; - List all rules in optional chain&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;iptables -F&lt;/code&gt; or &lt;code&gt;iptables --flush&lt;/code&gt; - Delete all existing rules&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;iptables -P OUTPUT DROP&lt;/code&gt; - DROP all outgoing traffic&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-P CHAIN TARGET&lt;/code&gt; - Set policy for chain to given target (e.g. ACCEPT, REJECT, DROP or RETURN)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;iptables -A OUTPUT -d 192.30.0.0/17 -j DROP&lt;/code&gt; - Drop only outgoing traffic to specified subnet&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-A OUTPUT&lt;/code&gt; - Append rule to OUTPUT chain&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-d DEST&lt;/code&gt; - Destination e.g. address, hostname, network name&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-j TARGET&lt;/code&gt; - Specifies target of rule; i.e. what to do if packet matches.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;iptables -A OUTPUT -s 192.20.0.1 -j DROP&lt;/code&gt; &lt;a href=&#34;https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables&#34;&gt;1&lt;/a&gt; - Drop outgoing traffic only to specified IP address&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-s SRC&lt;/code&gt; - Source e.g. address, hostname, network name&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT&lt;/code&gt; &lt;a href=&#34;https://crm.vpscheap.net/knowledgebase.php?action=displayarticle&amp;amp;id=29&#34;&gt;1&lt;/a&gt; - Prevent DoS Attack&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-m limit&lt;/code&gt; - Use limit iptables extension&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;–limit 25/minute&lt;/code&gt; - Limit to only 25 connections per minute&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;–limit-burst 100&lt;/code&gt; - The limit per minute will only be enforced if the total number of connections have reached this burst limit&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Allow incoming SSH connections only from specified subnet&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;iptables -A INPUT -i eth0 -p tcp -s 192.168.100.0/24 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Combine rules using multiport&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -m multiport --sports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Load balance incoming traffic&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 0 -j DNAT --to-destination 192.168.1.101:443
+iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 1 -j DNAT --to-destination 192.168.1.102:443
+iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;iptraf &lt;a href=&#34;http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic&#34;&gt;1&lt;/a&gt; - Network statistic tool&lt;/p&gt;&lt;/li&gt;
 
@@ -570,6 +649,12 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump dst port 80&lt;/code&gt; - Caputre only if destination port is 80&lt;/p&gt;&lt;/li&gt;
 
+&lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump (src net 10.0.0.144/28) and not(dst host 10.20.0.251)&lt;/code&gt; &lt;a href=&#34;http://serverfault.com/questions/354102/tcpdump-filter-on-network-and-subnet-mask&#34;&gt;1&lt;/a&gt;  - Captue only traffic which is from specific network and not going to a specific host&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hint: Use lowest IP for range to avoid &lt;code&gt;tcpdump: non-network bits set in “10.0.0.145/28&amp;quot;&lt;/code&gt; error &lt;a href=&#34;http://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump &#39;tcp[tcpflags] &amp;amp; tcp-syn != 0&#39;&lt;/code&gt; &lt;a href=&#34;http://www.tcpdump.org/manpages/pcap-filter.7.html&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;https://syedali.net/2014/12/29/tcp-flags-explained/&#34;&gt;2&lt;/a&gt;, &lt;a href=&#34;https://danielmiessler.com/study/tcpflags/&#34;&gt;3&lt;/a&gt; - Use PCAP-filters to capture start (SYN) packets of TCP conversation&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;tcpdump &#39;tcp[tcpflags] &amp;amp; (tcp-syn) != 0 and tcp[tcpflags] &amp;amp; (tcp-ack) == 0 or udp&#39;&lt;/code&gt; - Capture tcp SYN but not SYN-ACK and also udp packets&lt;/p&gt;&lt;/li&gt;
@@ -625,16 +710,16 @@ then &lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name 
 &lt;h3 id=&#34;array&#34;&gt;array&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Concat array &lt;a href=&#34;http://stackoverflow.com/questions/9522631/how-to-put-line-comment-for-a-multi-line-command&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/18599711/how-can-i-split-a-shell-command-over-multiple-lines-when-using-an-if-statement&#34;&gt;2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;Concat array &lt;a href=&#34;http://stackoverflow.com/questions/9522631/how-to-put-line-comment-for-a-multi-line-command&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/18599711/how-can-i-split-a-shell-command-over-multiple-lines-when-using-an-if-statement&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;brew_packages=(
-	ansible		# Comment1
-	go		# Comment2
+    ansible     # Comment1
+    go      # Comment2
 )
 
 brew install &amp;quot;${brew_packages[@]}&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;for&#34;&gt;for&lt;/h3&gt;
 
@@ -645,14 +730,14 @@ brew install &amp;quot;${brew_packages[@]}&amp;quot;
 &lt;h3 id=&#34;if&#34;&gt;if&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Bash version =&amp;gt; 4 &lt;a href=&#34;http://unix.stackexchange.com/questions/250778/should-i-check-bash-version&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;Bash version =&amp;gt; 4 &lt;a href=&#34;http://unix.stackexchange.com/questions/250778/should-i-check-bash-version&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
-  echo &amp;quot;This script requires bash version &amp;gt; 4. Currently running is ${BASH_VERSION%%.*}&amp;quot;
-  exit 1
+echo &amp;quot;This script requires bash version &amp;gt; 4. Currently running is ${BASH_VERSION%%.*}&amp;quot;
+exit 1
 fi
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;until&#34;&gt;until&lt;/h3&gt;
 

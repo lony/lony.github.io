@@ -160,15 +160,13 @@
 <br /></li>
 </ul></li>
 
-<li><p>mkfifo - Create named pipe</p></li>
-</ul>
+<li><p>mkfifo - Create named pipe</p>
 
 <pre><code>mkfifo in 
 ssh -A -l LOGIN BASTIAN_HOST nc TARGET_HOST TARGET_PORT &lt;in | nc -l LOCAL_PORT &gt;in
 rm in
-</code></pre>
+</code></pre></li>
 
-<ul>
 <li><p>openssl <a href="http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/">1</a>, <a href="http://www.czeskis.com/random/openssl-encrypt-file.html">2</a>, <a href="https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs">3</a> - SSL encryption library</p>
 
 <ul>
@@ -276,10 +274,25 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><code>knife node list</code> - Show systems</li>
 <li><code>knife node from file nodes/&lt;MASCHINE_NAME&gt;.rb</code> - Loads local node configuration to Chef server</li>
 <li><code>knife data bag list</code></li>
-<li><code>nife data bag show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt;</code> &ndash;format=json</li>
-<li><code>knife vault list</code></li>
-<li><code>knife vault show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt;</code></li>
-<li><code>knife cookbook download -s &quot;https://&lt;SERVER_URL&gt;&quot; &lt;COOKBOOK_NAME&gt; 0.3.0</code></li>
+<li><code>knife data bag show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt; --format=json</code></li>
+
+<li><p><code>knife data bag show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt; -z --secret-file &lt;SYMMETRIC_SECRET_KEY&gt; -Fjson</code> - Shows locally stored encrypted data bag</p>
+
+<ul>
+<li><code>-z</code> - Local chef mode, uses local files
+
+<ul>
+<li>HINT: Needs chef-repo structure as on the server</li>
+</ul></li>
+<li><code>--secret-file</code> - Specifies symmetric key used to encrypted and decrypted</li>
+<li><code>-Fjson</code> same as <code>--format=jso</code> - Output data as JSON</li>
+</ul></li>
+
+<li><p><code>knife vault list</code></p></li>
+
+<li><p><code>knife vault show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt;</code></p></li>
+
+<li><p><code>knife cookbook download -s &quot;https://&lt;SERVER_URL&gt;&quot; &lt;COOKBOOK_NAME&gt; 0.3.0</code></p></li>
 </ul></li>
 
 <li><p>kitchen</p>
@@ -500,7 +513,73 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <li><p>httpie <a href="https://httpie.org/">1</a>,<a href="https://github.com/jkbrzt/httpie">2</a> - Better curl with JSON support</p></li>
 
+<li><p>ifconfig <a href="https://en.wikipedia.org/wiki/Ifconfig">1</a> - Display network interface configuration for Unix-systems</p></li>
+
 <li><p>ipcalc <a href="https://pypi.python.org/pypi/ipcalc">1</a> - IP subnet calculator</p></li>
+
+<li><p>iptables <a href="https://en.wikipedia.org/wiki/Iptables">1</a>, <a href="https://manpages.debian.org/jessie/iptables/iptables.8.en.html">2</a>, <a href="https://wiki.archlinux.org/index.php/iptables">3</a> - IPv4 firewall interface for Linux</p>
+
+<ul>
+<li><p>Overview of packet traversing (or <a href="http://jekor.com/gressgraph/">graph</a> your own), Source: <a href="/img/2017/commands/iptables.ep">Pencil file</a>
+<img src="/img/2017/commands/iptables.png" alt="iptables overview" /></p></li>
+
+<li><p><code>iptables -nvL</code> <a href="https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules">1</a> - Show existing rules</p>
+
+<ul>
+<li><code>-n</code> - Numeric output, do not resolve host names</li>
+<li><code>-v</code> - Verbose output</li>
+<li><code>-L [CHAIN]</code> - List all rules in optional chain</li>
+</ul></li>
+
+<li><p><code>iptables -F</code> or <code>iptables --flush</code> - Delete all existing rules</p></li>
+
+<li><p><code>iptables -P OUTPUT DROP</code> - DROP all outgoing traffic</p>
+
+<ul>
+<li><code>-P CHAIN TARGET</code> - Set policy for chain to given target (e.g. ACCEPT, REJECT, DROP or RETURN)</li>
+</ul></li>
+
+<li><p><code>iptables -A OUTPUT -d 192.30.0.0/17 -j DROP</code> - Drop only outgoing traffic to specified subnet</p>
+
+<ul>
+<li><code>-A OUTPUT</code> - Append rule to OUTPUT chain</li>
+<li><code>-d DEST</code> - Destination e.g. address, hostname, network name</li>
+<li><code>-j TARGET</code> - Specifies target of rule; i.e. what to do if packet matches.</li>
+</ul></li>
+
+<li><p><code>iptables -A OUTPUT -s 192.20.0.1 -j DROP</code> <a href="https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables">1</a> - Drop outgoing traffic only to specified IP address</p>
+
+<ul>
+<li><code>-s SRC</code> - Source e.g. address, hostname, network name</li>
+</ul></li>
+
+<li><p><code>iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT</code> <a href="https://crm.vpscheap.net/knowledgebase.php?action=displayarticle&amp;id=29">1</a> - Prevent DoS Attack</p>
+
+<ul>
+<li><code>-m limit</code> - Use limit iptables extension</li>
+<li><code>–limit 25/minute</code> - Limit to only 25 connections per minute</li>
+<li><code>–limit-burst 100</code> - The limit per minute will only be enforced if the total number of connections have reached this burst limit</li>
+</ul></li>
+
+<li><p>Allow incoming SSH connections only from specified subnet</p>
+
+<pre><code>iptables -A INPUT -i eth0 -p tcp -s 192.168.100.0/24 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+</code></pre></li>
+
+<li><p>Combine rules using multiport</p>
+
+<pre><code>iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp -m multiport --sports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
+</code></pre></li>
+
+<li><p>Load balance incoming traffic</p>
+
+<pre><code>iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 0 -j DNAT --to-destination 192.168.1.101:443
+iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 1 -j DNAT --to-destination 192.168.1.102:443
+iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
+</code></pre></li>
+</ul></li>
 
 <li><p>iptraf <a href="http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic">1</a> - Network statistic tool</p></li>
 
@@ -573,6 +652,12 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <li><p><code>tcpdump dst port 80</code> - Caputre only if destination port is 80</p></li>
 
+<li><p><code>tcpdump (src net 10.0.0.144/28) and not(dst host 10.20.0.251)</code> <a href="http://serverfault.com/questions/354102/tcpdump-filter-on-network-and-subnet-mask">1</a>  - Captue only traffic which is from specific network and not going to a specific host</p>
+
+<ul>
+<li>Hint: Use lowest IP for range to avoid <code>tcpdump: non-network bits set in “10.0.0.145/28&quot;</code> error <a href="http://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump">1</a></li>
+</ul></li>
+
 <li><p><code>tcpdump 'tcp[tcpflags] &amp; tcp-syn != 0'</code> <a href="http://www.tcpdump.org/manpages/pcap-filter.7.html">1</a>, <a href="https://syedali.net/2014/12/29/tcp-flags-explained/">2</a>, <a href="https://danielmiessler.com/study/tcpflags/">3</a> - Use PCAP-filters to capture start (SYN) packets of TCP conversation</p></li>
 
 <li><p><code>tcpdump 'tcp[tcpflags] &amp; (tcp-syn) != 0 and tcp[tcpflags] &amp; (tcp-ack) == 0 or udp'</code> - Capture tcp SYN but not SYN-ACK and also udp packets</p></li>
@@ -628,16 +713,16 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
 <h3 id="array">array</h3>
 
 <ul>
-<li>Concat array <a href="http://stackoverflow.com/questions/9522631/how-to-put-line-comment-for-a-multi-line-command">1</a>, <a href="http://stackoverflow.com/questions/18599711/how-can-i-split-a-shell-command-over-multiple-lines-when-using-an-if-statement">2</a></li>
-</ul>
+<li><p>Concat array <a href="http://stackoverflow.com/questions/9522631/how-to-put-line-comment-for-a-multi-line-command">1</a>, <a href="http://stackoverflow.com/questions/18599711/how-can-i-split-a-shell-command-over-multiple-lines-when-using-an-if-statement">2</a></p>
 
 <pre><code>brew_packages=(
-	ansible		# Comment1
-	go		# Comment2
+    ansible     # Comment1
+    go      # Comment2
 )
 
 brew install &quot;${brew_packages[@]}&quot;
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h3 id="for">for</h3>
 
@@ -648,14 +733,14 @@ brew install &quot;${brew_packages[@]}&quot;
 <h3 id="if">if</h3>
 
 <ul>
-<li>Bash version =&gt; 4 <a href="http://unix.stackexchange.com/questions/250778/should-i-check-bash-version">1</a></li>
-</ul>
+<li><p>Bash version =&gt; 4 <a href="http://unix.stackexchange.com/questions/250778/should-i-check-bash-version">1</a></p>
 
 <pre><code>if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
-  echo &quot;This script requires bash version &gt; 4. Currently running is ${BASH_VERSION%%.*}&quot;
-  exit 1
+echo &quot;This script requires bash version &gt; 4. Currently running is ${BASH_VERSION%%.*}&quot;
+exit 1
 fi
-</code></pre>
+</code></pre></li>
+</ul>
 
 <h3 id="until">until</h3>
 
