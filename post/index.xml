@@ -404,6 +404,62 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;sudo service apache restart&lt;/code&gt; - Restart command for System V (using /etc/init.d)&lt;/p&gt;&lt;/li&gt;
 
+&lt;li&gt;&lt;p&gt;tmux &lt;a href=&#34;https://en.wikipedia.org/wiki/Tmux&#34;&gt;1&lt;/a&gt; - Terminal multiplexer&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tmux list-key&lt;/code&gt; &lt;a href=&#34;https://til.hashrocket.com/posts/385fee97f3-list-all-tmux-key-bindings&#34;&gt;1&lt;/a&gt; - List all key bindings&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tmux new -s SESSION_NAME&lt;/code&gt; &lt;a href=&#34;https://gist.github.com/MohamedAlaa/2961058&#34;&gt;1&lt;/a&gt; - Create a new session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tmux ls&lt;/code&gt; - List sessions&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tmux detach&lt;/code&gt; &lt;a href=&#34;https://danielmiessler.com/study/tmux&#34;&gt;1&lt;/a&gt; - Detach session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tmux a&lt;/code&gt; or &lt;code&gt;tmux a -t SESSION_NAME&lt;/code&gt; - Reattach session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tmux kill-session -t SESSION_NAME&lt;/code&gt; - Kill the session&lt;/li&gt;
+&lt;li&gt;Key bindings (default) &lt;a href=&#34;https://tmuxcheatsheet.com/&#34;&gt;1&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Ctrl + b&lt;/code&gt; - Default prefix (Ctrl = Strg key)
+
+&lt;ul&gt;
+&lt;li&gt;Hint: The prefix is pressed and then released, after this the specific key combo can be pressed for example &lt;code&gt;Ctrl + b&lt;/code&gt; then &lt;code&gt;c&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Session
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$&lt;/code&gt; - Rename session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;d&lt;/code&gt; - Detach session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;(&lt;/code&gt; - Previous session&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;)&lt;/code&gt; - Next session&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Window
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;c&lt;/code&gt; - Create new window&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;,&lt;/code&gt; - Rename window&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;amp;&lt;/code&gt; - Close window&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;p&lt;/code&gt; - Previous window&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;n&lt;/code&gt; - Next window&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;0...9&lt;/code&gt; - Switch to window number&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Pane
+
+&lt;ul&gt;
+&lt;li&gt;Use arrow keys to switch to another pane&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;;&lt;/code&gt; - Toggle last active pane&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%&lt;/code&gt; - Split pane vertically&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;&lt;/code&gt; - Split pane horizontally&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;{&lt;/code&gt; - Shuffle current pane to left&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;}&lt;/code&gt; - Shuffle current pane to right&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;space&lt;/code&gt; -  Toggle between pane layouts&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;o&lt;/code&gt; - Next pane&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;q&lt;/code&gt; - Show pane numbers&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;q 0...9&lt;/code&gt; - Switch to pane number&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;z&lt;/code&gt; - Toggle pane zoom (full screen)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!&lt;/code&gt; - Convert pane to window&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt; - Close current pane&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;M + Arrow key&lt;/code&gt; - Resize pane (M = Alt key)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;top &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=758781701&#34;&gt;1&lt;/a&gt; - Real-time task manager&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;tree &lt;a href=&#34;https://en.wikipedia.org/w/index.php?oldid=766877590&#34;&gt;1&lt;/a&gt; - Recursive directory listing program&lt;/p&gt;

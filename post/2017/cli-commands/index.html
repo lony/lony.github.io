@@ -406,6 +406,62 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <li><p><code>sudo service apache restart</code> - Restart command for System V (using /etc/init.d)</p></li>
 
+<li><p>tmux <a href="https://en.wikipedia.org/wiki/Tmux">1</a> - Terminal multiplexer</p>
+
+<ul>
+<li><code>tmux list-key</code> <a href="https://til.hashrocket.com/posts/385fee97f3-list-all-tmux-key-bindings">1</a> - List all key bindings</li>
+<li><code>tmux new -s SESSION_NAME</code> <a href="https://gist.github.com/MohamedAlaa/2961058">1</a> - Create a new session</li>
+<li><code>tmux ls</code> - List sessions</li>
+<li><code>tmux detach</code> <a href="https://danielmiessler.com/study/tmux">1</a> - Detach session</li>
+<li><code>tmux a</code> or <code>tmux a -t SESSION_NAME</code> - Reattach session</li>
+<li><code>tmux kill-session -t SESSION_NAME</code> - Kill the session</li>
+<li>Key bindings (default) <a href="https://tmuxcheatsheet.com/">1</a>
+
+<ul>
+<li><code>Ctrl + b</code> - Default prefix (Ctrl = Strg key)
+
+<ul>
+<li>Hint: The prefix is pressed and then released, after this the specific key combo can be pressed for example <code>Ctrl + b</code> then <code>c</code>.</li>
+</ul></li>
+<li>Session
+
+<ul>
+<li><code>$</code> - Rename session</li>
+<li><code>d</code> - Detach session</li>
+<li><code>(</code> - Previous session</li>
+<li><code>)</code> - Next session</li>
+</ul></li>
+<li>Window
+
+<ul>
+<li><code>c</code> - Create new window</li>
+<li><code>,</code> - Rename window</li>
+<li><code>&amp;</code> - Close window</li>
+<li><code>p</code> - Previous window</li>
+<li><code>n</code> - Next window</li>
+<li><code>0...9</code> - Switch to window number</li>
+</ul></li>
+<li>Pane
+
+<ul>
+<li>Use arrow keys to switch to another pane</li>
+<li><code>;</code> - Toggle last active pane</li>
+<li><code>%</code> - Split pane vertically</li>
+<li><code>&quot;</code> - Split pane horizontally</li>
+<li><code>{</code> - Shuffle current pane to left</li>
+<li><code>}</code> - Shuffle current pane to right</li>
+<li><code>space</code> -  Toggle between pane layouts</li>
+<li><code>o</code> - Next pane</li>
+<li><code>q</code> - Show pane numbers</li>
+<li><code>q 0...9</code> - Switch to pane number</li>
+<li><code>z</code> - Toggle pane zoom (full screen)</li>
+<li><code>!</code> - Convert pane to window</li>
+<li><code>x</code> - Close current pane</li>
+<li><code>M + Arrow key</code> - Resize pane (M = Alt key)</li>
+</ul></li>
+</ul></li>
+</ul></li>
+
 <li><p>top <a href="https://en.wikipedia.org/w/index.php?oldid=758781701">1</a> - Real-time task manager</p></li>
 
 <li><p>tree <a href="https://en.wikipedia.org/w/index.php?oldid=766877590">1</a> - Recursive directory listing program</p>
