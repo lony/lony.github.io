@@ -236,6 +236,45 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * `sudo service apache restart` - Restart command for System V (using /etc/init.d)
 
+* tmux [1](https://en.wikipedia.org/wiki/Tmux) - Terminal multiplexer
+
+	* `tmux list-key` [1](https://til.hashrocket.com/posts/385fee97f3-list-all-tmux-key-bindings) - List all key bindings
+	* `tmux new -s SESSION_NAME` [1](https://gist.github.com/MohamedAlaa/2961058) - Create a new session
+	* `tmux ls` - List sessions
+	* `tmux detach` [1](https://danielmiessler.com/study/tmux) - Detach session
+	* `tmux a` or `tmux a -t SESSION_NAME` - Reattach session
+	* `tmux kill-session -t SESSION_NAME` - Kill the session
+	* Key bindings (default) [1](https://tmuxcheatsheet.com/)
+		* `Ctrl + b` - Default prefix (Ctrl = Strg key)
+			* Hint: The prefix is pressed and then released, after this the specific key combo can be pressed for example `Ctrl + b` then `c`.
+		* Session
+			* `$` - Rename session
+			* `d` - Detach session
+			* `(` - Previous session
+			* `)` - Next session
+		* Window
+			* `c` - Create new window
+			* `,` - Rename window
+			* `&` - Close window
+			* `p` - Previous window
+			* `n` - Next window
+			* `0...9` - Switch to window number
+		* Pane
+			* Use arrow keys to switch to another pane
+			* `;` - Toggle last active pane
+			* `%` - Split pane vertically
+			* `"` - Split pane horizontally
+			* `{` - Shuffle current pane to left
+			* `}` - Shuffle current pane to right
+			* `space` -  Toggle between pane layouts
+			* `o` - Next pane
+			* `q` - Show pane numbers
+			* `q 0...9` - Switch to pane number
+			* `z` - Toggle pane zoom (full screen)
+			* `!` - Convert pane to window
+			* `x` - Close current pane
+			* `M + Arrow key` - Resize pane (M = Alt key)
+
 * top [1](https://en.wikipedia.org/w/index.php?oldid=758781701) - Real-time task manager
 * tree [1](https://en.wikipedia.org/w/index.php?oldid=766877590) - Recursive directory listing program
 
