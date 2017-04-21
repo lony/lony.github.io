@@ -36,7 +36,10 @@ If you find a bug or want to recommend something, please feel free to open an [i
 		* [until](#until)
 		* [pasting](#pasting)
 		* [pipe](#pipe)
-		* [read](#read)		
+		* [read](#read)
+	* [Databases](#databases)
+		* [NoSQL](#nosql)
+			* [Mongo](#mongo)
 	* [Setup](#setup)
 		* [Prompt](#prompt)
 		* [Distribution](#distribution)
@@ -77,6 +80,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `openssl rsa -des3 -in {path-in} -out {path-out}` - Encrypt key with password (rsa)
 	* `openssl rsa -in {path-in} -out {path-out}` - Decrypt key with password (rsa)
 	* `echo | openssl s_client -host IP_OF_TARGET -port 443 2>&1 | openssl x509 -noout -subject` - Get SSL certificate subject of target machine
+	* `openssl rand -base64 12` - Create a random string with 12 characters (password generator)
 
 * rsync [1](https://en.wikipedia.org/wiki/Rsync), [2](http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs) - Data synchronization tool
 
@@ -174,6 +178,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `apt-get autoremove --purge`
 	* `apt-get upgrade --dry-run` [1](http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update)
 	* `apt-get dist-upgrade` [1](https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software) - Update newer version of distribution
+	* `apt-cache policy` [1](http://stackoverflow.com/questions/8647454/how-to-get-a-list-of-repositories-apt-get-is-checking), [2](https://wiki.ubuntuusers.de/sources.list/) - Show list of repositories
 
 * aptitude [1](http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig) - cli GUI for package management
 
@@ -485,6 +490,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 * grep [1](https://www.cyberciti.biz/faq/grep-regular-expressions/)
 
 	* `grep foo /home/lony/bar` - Search for foo in bar
+	* `grep -e ERROR -e WARN YOURLOG.log | grep -v IgnoreException` - Searches in YOURLOG for ERRORs and WARnings but ignores your IgnoreException
 	* `grep -r foo /home/lony/bar` - Search recursively for foo in bar
 	* `grep -nr 'foo*' .` [1](http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder) - Search for foo* in `.` showing relative line number
 	* `zgrep foo /home/lony/log.1.gz | less` - Search inside gzip log file for foo
@@ -562,6 +568,41 @@ EOF
 ### read
 
 * `read -p "Enter username to check:" USERNAME && echo $USERNAME`
+
+## Databases
+
+### SQL
+
+#### MySQL
+
+Run `mysql -u root -h localhost -p` to open the MySQL console, which lets you interact with the database.
+
+* `SELECT User FROM mysql.user;` [1](http://stackoverflow.com/questions/1135245/how-to-get-a-list-of-mysql-user-accounts) - Show users
+* Change user password [1](http://stackoverflow.com/questions/22774739/change-mysql-user-password-using-command-line)
+
+	```
+	USE mysql;
+	SET PASSWORD FOR 'USER'@'localhost' = PASSWORD('CLEAR_TEXT_PASSWORD');
+	FLUSH PRIVILEGES;
+	```
+
+### NoSQL
+
+#### Mongo
+
+Run `mongo` to open the mongo console, which lets you interact with the database.
+
+* `show dbs` - Show databases
+* `show collections` - Show collections
+* `show users` - Show users
+* `db.changeUserPassword("USERNAME", "NEWPASSWORD")` - Change user password
+* Authenticate
+	1. `use admin` - To select table
+	2. `db.auth("USER", "PASSWORD")`
+* `rs.status()` - Show cluster status (replica set)
+* `rs.conf()` - Returns current replica set configuration
+* `rs.stepDown()` - Trigger primary to become secondary and start election
+
 
 ## Setup
 
