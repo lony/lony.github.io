@@ -432,6 +432,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 		iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 1 -j DNAT --to-destination 192.168.1.102:443
 		iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
 		```
+* iftop [1](http://www.integralist.co.uk/posts/terminal-utils.html#10) - Monitor network traffic and show bandwith usage
 
 * iptraf [1](http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic) - Network statistic tool
 
