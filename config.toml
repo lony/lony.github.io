@@ -1,7 +1,7 @@
 baseurl = "https://lony.github.io/"
 languageCode = "en"
 title = "[x]"
-copyright = "&copy; <a href=\"https://github.com/lony\">Goetz Epperlein</a> 2016"
+copyright = "&copy; <a href=\"https://github.com/lony\">Goetz Epperlein</a> 2016 - 2017"
 googleAnalytics = "UA-83817537-1"
 theme = "hemingway3"
 
