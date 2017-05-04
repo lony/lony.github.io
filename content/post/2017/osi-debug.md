@@ -40,7 +40,7 @@ Still OSI is a really good tool to [understand and debug network connections](ht
 | 5 | Session layer      | Data                           | HTTP Cookies               |
 | 4 | Transport layer    | Segment (TCP) / Datagram (UDP) | TCP Windowing              |
 | 3 | Network layer      | Packet                         | Router, IP, ICMP           |
-| 2 | Data Link layer    | Frame                          | Switch, MAC addresses, ARP |
+| 2 | Data Link layer    | Frame                          | Switch, MAC addresses, ARP |
 | 1 | Physical layer     | Bit                            | Cable                      |
 |   | OTHER SIDE         |                                |                            |
 
@@ -75,7 +75,7 @@ As usually the more user facing layers of the OSI model are easier to interact w
 
 * 7. __Application layer__: As at the other side there has to be something delivering content, here is where your Go application and nginx lives.
     * To debug this part you could check the logs using `less /var/log/nginx/error.log` for nginx or similar your Go application. I hope your application writes logs!
-    * You could also use `ps -aux | grep -E (go-project-hello|nginx` to look if there is a process for both your application and nginx running.
+    * You could also use `ps -aux | grep -E (go-project-hello|nginx)` to look if there is a process for both your application and nginx running.
     * To see the resources (e.g. CPU, RAM) usage for your process you could use `top`.
 * 6. __Presentation layer__: Nothing to do, see client side.
 * 5. __Session layer__: In contrast to the client, the server has an influence on the session layer. Our Go application for example uses cookies to store session information. If we extend the live time of the cookies we may enhance the user experience and fix a timeout problem.
