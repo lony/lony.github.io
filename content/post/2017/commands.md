@@ -81,6 +81,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `openssl rsa -in {path-in} -out {path-out}` - Decrypt key with password (rsa)
 	* `echo | openssl s_client -host IP_OF_TARGET -port 443 2>&1 | openssl x509 -noout -subject` - Get SSL certificate subject of target machine
 	* `openssl rand -base64 12` - Create a random string with 12 characters (password generator)
+	* `openssl dgst -sha256 FILE` [1](https://forums.appleinsider.com/discussion/192161/how-to-verify-checksums-when-you-download-an-app-for-your-mac) - Create SHA256 checksum for file
+	* `openssl md5 FILE` - Create MD5 checksum for file
 
 * rsync [1](https://en.wikipedia.org/wiki/Rsync), [2](http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs) - Data synchronization tool
 
@@ -160,6 +162,9 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `knife vault list`
 	* `knife vault show <DATA_BAG_FOLDer> <DATA_BAG_FILE>`
 	* `knife cookbook download -s "https://<SERVER_URL>" <COOKBOOK_NAME> 0.3.0`
+	* `knife status` [1](https://www.digitalocean.com/community/tutorials/how-to-manage-your-cluster-with-chef-and-knife-on-ubuntu) - Shows infos about node as last successfull chef-client
+	* `knife search node "fqdn:web*-?.* OR fqdn:app-1" -i` [1](https://docs.chef.io/knife_search.html) - Searches for nodes in chef-server registry
+	* `knife ssh "fqdn:web*-?.*" "lsb_release -r && uname -rv"` - Show Ubuntu release and kernel for all web servers
 
 * kitchen
 	* `kitchen create` - Create instance/container using provisioner
@@ -339,7 +344,17 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 # Text processing
 
+* head - Show beginning of file
+
+	* `head -2 large_file` - Shows only first two lines
+
 * jq [1](https://stedolan.github.io/jq/) - CLI JSON processor
+
+* tail - Show ending of file
+
+	* `tail -f collectd.log | grep -E --color=auto '*Value too old*'` [1](https://unix.stackexchange.com/questions/8414/how-to-have-tail-f-show-colored-output), [2](https://unix.stackexchange.com/questions/106565/how-to-highlight-a-word-in-the-output-of-cat) - Show log output continuously highlighting specific words
+	* `tail -f collectd.log | grep -E --color=auto '*Value too old*' | sed 's/.*name = \(.*\); value.*/\1/' | awk '{ print length($0); }` [1](http://stackoverflow.com/questions/3532718/extract-string-from-string-using-regex-in-the-terminal), [2](http://stackoverflow.com/questions/8786634/how-to-print-the-number-of-characters-in-each-line-of-a-text-file) - Search for pattern regex string and count characters
+
 * xargs [1](https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/) - Sub-list generator 
 
 # Shell bulletins
@@ -349,6 +364,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 * curl - Client for URLs
 
 	* `curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{ "username" : "xxx", "pw" : "xxx"}' "http://localhost:8080/user/authenticate"`
+	* `curl -X GET --proxy http://proxy:8080 "http://www.google.de"` - Use a proxy
+	* `curl -s -o /dev/null -w "%{http_code}" http://www.example.org` [1](https://superuser.com/questions/272265/getting-curl-to-output-http-status-code) - Just get status code
 
 * dig - DNS querying tool using OS resolver
 
@@ -385,6 +402,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `iptables -A OUTPUT -s 192.20.0.1 -j DROP` [1](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables) - Drop outgoing traffic only to specified IP address
 
 		* `-s SRC` - Source e.g. address, hostname, network name
+
+	* `iptables -I OUTPUT -p tcp --dport 80 -m state --state NEW -j LOG -m limit --limit 5/m --limit-burst 1 --log-uid --log-prefix "IPTABLES-OUTBOUND-P80: " --log-level 4` - LOG outgoing traffic to port 80 into `/var/log/kern.log`
 
 	* `iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT` [1](https://crm.vpscheap.net/knowledgebase.php?action=displayarticle&id=29) - Prevent DoS Attack
 
@@ -490,6 +509,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 * grep [1](https://www.cyberciti.biz/faq/grep-regular-expressions/)
 
 	* `grep foo /home/lony/bar` - Search for foo in bar
+	* `grep -E 'foo|bar' *.tx` [1](https://unix.stackexchange.com/questions/37313/how-do-i-grep-for-multiple-patterns) - Searching for multiple patterns
+	* `grep -E --color=auto 'foo|bar' *.tx` - Highlight pattern found
 	* `grep -e ERROR -e WARN YOURLOG.log | grep -v IgnoreException` - Searches in YOURLOG for ERRORs and WARnings but ignores your IgnoreException
 	* `grep -r foo /home/lony/bar` - Search recursively for foo in bar
 	* `grep -nr 'foo*' .` [1](http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder) - Search for foo* in `.` showing relative line number
