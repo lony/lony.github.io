@@ -102,7 +102,7 @@
 &lt;tr&gt;
 &lt;td&gt;2&lt;/td&gt;
 &lt;td&gt;Data Link layer&lt;/td&gt;
-&lt;td&gt; Frame&lt;/td&gt;
+&lt;td&gt;Frame&lt;/td&gt;
 &lt;td&gt;Switch, MAC addresses, ARP&lt;/td&gt;
 &lt;/tr&gt;
 
@@ -179,7 +179,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;To debug this part you could check the logs using &lt;code&gt;less /var/log/nginx/error.log&lt;/code&gt; for nginx or similar your Go application. I hope your application writes logs!&lt;/li&gt;
-&lt;li&gt;You could also use &lt;code&gt;ps -aux | grep -E (go-project-hello|nginx&lt;/code&gt; to look if there is a process for both your application and nginx running.&lt;/li&gt;
+&lt;li&gt;You could also use &lt;code&gt;ps -aux | grep -E (go-project-hello|nginx)&lt;/code&gt; to look if there is a process for both your application and nginx running.&lt;/li&gt;
 &lt;li&gt;To see the resources (e.g. CPU, RAM) usage for your process you could use &lt;code&gt;top&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;6. &lt;strong&gt;Presentation layer&lt;/strong&gt;: Nothing to do, see client side.&lt;/li&gt;
