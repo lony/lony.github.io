@@ -6,9 +6,205 @@
     <description>Recent content on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016</copyright>
-    <lastBuildDate>Sun, 26 Feb 2017 14:02:52 +0200</lastBuildDate>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2017</copyright>
+    <lastBuildDate>Sun, 09 Apr 2017 20:00:00 +0200</lastBuildDate>
     <atom:link href="https://lony.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Debug web apps with OSI</title>
+      <link>https://lony.github.io/post/2017/debug-with-osi/</link>
+      <pubDate>Sun, 09 Apr 2017 20:00:00 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2017/debug-with-osi/</guid>
+      <description>
+
+&lt;p&gt;Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing. Using the famous OSI layers, I try to navigate through all the important parts someone should look at.&lt;/p&gt;
+
+&lt;p&gt;As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an &lt;a href=&#34;https://github.com/lony/lony.github.io/issues&#34;&gt;issue&lt;/a&gt; and help me get better. - Thank you!&lt;/p&gt;
+
+&lt;h1 id=&#34;toc&#34;&gt;TOC&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#scenario&#34;&gt;Scenario&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#osi-model&#34;&gt;OSI model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#debug&#34;&gt;Debug&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&#34;scenario&#34;&gt;Scenario&lt;/h1&gt;
+
+&lt;p&gt;To have a common ground for debugging I sketch a scenario which I will use for the debugging journey later on. To keep it simple we have a web application written in Go which runs behind an nginx and is accessed through Chrome. It is delivering static HTML and runs on a remote server.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://lony.github.io/img/2017/osi-debug/scenario.png&#34; alt=&#34;Scenario sketch&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;osi-model&#34;&gt;OSI model&lt;/h1&gt;
+
+&lt;p&gt;Everyone learns it during her/his IT education but usually nobody looks at it after the exam. This has to do with, the way many people work, but also with the fact that the OSI model is an &lt;a href=&#34;http://networkengineering.stackexchange.com/questions/6380/osi-model-and-networking-protocols-relationship&#34;&gt;abstract, theoretical model&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://en.wikipedia.org/wiki/OSI_model&#34;&gt;open systems interconnection model&lt;/a&gt; (OSI model) was designed in the 1970s to develop an open standard against the upcoming proprietary protocols by big companies. In difference to TCP/IP you had to pay for the specification and thats why TCP/IP gained ground much faster and took the lead. Thats also the reason OSI was never implemented in reality.&lt;/p&gt;
+
+&lt;p&gt;Still OSI is a really good tool to &lt;a href=&#34;https://www.youtube.com/watch?v=HEEnLZV2wGI&#34;&gt;understand and debug network connections&lt;/a&gt;. It is a container for models used at each level of the communication and as higher it gets as more abstract it is.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;#&lt;/th&gt;
+&lt;th&gt;OSI layer&lt;/th&gt;
+&lt;th&gt;Protocol data unit&lt;/th&gt;
+&lt;th&gt;Examples&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;USER&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;Application layer&lt;/td&gt;
+&lt;td&gt;Data&lt;/td&gt;
+&lt;td&gt;Chrome, Firefox&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;Presentation layer&lt;/td&gt;
+&lt;td&gt;Data&lt;/td&gt;
+&lt;td&gt;Mac OS X, Windows drivers&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;Session layer&lt;/td&gt;
+&lt;td&gt;Data&lt;/td&gt;
+&lt;td&gt;HTTP Cookies&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Transport layer&lt;/td&gt;
+&lt;td&gt;Segment (TCP) / Datagram (UDP)&lt;/td&gt;
+&lt;td&gt;TCP Windowing&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;Network layer&lt;/td&gt;
+&lt;td&gt;Packet&lt;/td&gt;
+&lt;td&gt;Router, IP, ICMP&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Data Link layer&lt;/td&gt;
+&lt;td&gt; Frame&lt;/td&gt;
+&lt;td&gt;Switch, MAC addresses, ARP&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;Physical layer&lt;/td&gt;
+&lt;td&gt;Bit&lt;/td&gt;
+&lt;td&gt;Cable&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;OTHER SIDE&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;You should now understand what &lt;code&gt;layer 8 problems&lt;/code&gt; are, what shouldn&amp;rsquo;t be clear is how to find problems regarding each layer and more important debugging an application most efficiently using the model.&lt;/p&gt;
+
+&lt;h1 id=&#34;debug&#34;&gt;Debug&lt;/h1&gt;
+
+&lt;p&gt;As usually the more user facing layers of the OSI model are easier to interact with we start from top to bottom to debug along the layers. This should help us finding problems in our network system and avoid missing complexity along the way.&lt;/p&gt;
+
+&lt;h2 id=&#34;on-the-client-side&#34;&gt;On the client side&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;7. &lt;strong&gt;Application layer&lt;/strong&gt;: Something is wrong with your browser. To find the issue use Firefox, instead of your default Chrome, see if you can open our example URI e.g. &lt;code&gt;www.go-project-hello.com&lt;/code&gt;. You could also use the Chrome debug bar &lt;code&gt;More Tools &amp;gt; Developer Tool&lt;/code&gt; and look at console tab for errors, maybe something went wrong with the JavaScript application delivered.
+
+&lt;ul&gt;
+&lt;li&gt;Hint: If the developer tools network tab is not enough for you debugging AJAX of your JavaScript application there is also &lt;a href=&#34;https://www.charlesproxy.com/&#34;&gt;Charles&lt;/a&gt; an HTTP reverse proxy.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;6. &lt;strong&gt;Presentation layer&lt;/strong&gt;: This was a big problem back in the days starting a LAN-party. Having different operating systems and different network protocols some operating drivers were missing - someone remembers &lt;a href=&#34;https://en.wikipedia.org/wiki/Internetwork_Packet_Exchange&#34;&gt;IPX&lt;/a&gt;? To fix this today, check your system drivers and see if every device has a working driver set.&lt;/li&gt;
+&lt;li&gt;5. &lt;strong&gt;Session layer&lt;/strong&gt;: There is not much to do at the client. Connecting to a website, you could check if you have session cookies set. Using the Chrome debug bar &lt;code&gt;More Tools &amp;gt; Developer Tool&lt;/code&gt; and there the &lt;code&gt;Application&lt;/code&gt; tab then on the left side &lt;code&gt;Storage &amp;gt; Cookies&lt;/code&gt; and see if something is set from your application.&lt;/li&gt;
+&lt;li&gt;4. &lt;strong&gt;Transport layer&lt;/strong&gt;: The transport layer is mostly &lt;a href=&#34;https://networkengineering.stackexchange.com/questions/16996/what-layer-of-the-osi-model-deals-with-ports&#34;&gt;about ports&lt;/a&gt;. It also manages so called windowing, which determines how much data should be send in one package. The windowing is mostly left to the protocols used (mostly TCP) and if you are interested read &lt;a href=&#34;https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Data_transfer&#34;&gt;this&lt;/a&gt;. This part either works or something is messed up with the protocol, therefore we can not look into it and lean only towards ports.
+
+&lt;ul&gt;
+&lt;li&gt;We use &lt;code&gt;netcat -vz go-project-hello.com 80&lt;/code&gt; to test if our application is reachable at a predefined port
+
+&lt;ul&gt;
+&lt;li&gt;Hint: The so called &lt;code&gt;well-known ports&lt;/code&gt; from 0 to 1023 are preset and widely used for specific network services. If you are interested look into the list &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers&#34;&gt;here&lt;/a&gt;. The opposite are &lt;a href=&#34;https://en.wikipedia.org/wiki/Ephemeral_port&#34;&gt;ephemeral ports&lt;/a&gt; which are short lived and automatically allocated.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;3. &lt;strong&gt;Network layer&lt;/strong&gt;: This is the area of IP or ICMP and is the layer where routers life and operate.
+
+&lt;ul&gt;
+&lt;li&gt;To debug this you could start looking up if you have an existing IP address using &lt;code&gt;ifconfig&lt;/code&gt; does your ethernet device show a IP address&lt;/li&gt;
+&lt;li&gt;If you have one, you could try if you could reach another machine using &lt;code&gt;ping www.go-project-hello.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;If this is not working, try the IP instead of the domain e.g. &lt;code&gt;ping 10.10.1.12&lt;/code&gt; and read this amazing &lt;a href=&#34;http://www.integralist.co.uk/posts/dnsbasics.html&#34;&gt;guide to DNS&lt;/a&gt;.
+
+&lt;ul&gt;
+&lt;li&gt;Hint 1: To get the IP from a domain use &lt;code&gt;dig&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Hint 2: For your local machine you could set &lt;code&gt;/etc/hosts&lt;/code&gt; mapping DNS names to IP addresses and avoiding the long number.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;2. &lt;strong&gt;Data Link layer&lt;/strong&gt;: This is the area of switches and used for address resolution. In this layer &lt;a href=&#34;https://en.wikipedia.org/wiki/Address_Resolution_Protocol&#34;&gt;ARP&lt;/a&gt; is used to translate your MAC address into an IP address. The &lt;a href=&#34;https://en.wikipedia.org/wiki/Media_access_control&#34;&gt;Media access control&lt;/a&gt; (MAC) address is assigned to your network device during manufacturing. Many think it is unique but using &lt;code&gt;ifconfig&lt;/code&gt; you could manipulate and change it.
+
+&lt;ul&gt;
+&lt;li&gt;For starters we again use &lt;code&gt;ifconfig&lt;/code&gt; this time to see if our ethernet device shows a MAC address&lt;/li&gt;
+&lt;li&gt;If this isn&amp;rsquo;t the case we use &lt;code&gt;tcpdump -i eth0 arp&lt;/code&gt; to debug the ARP packages and search for the cause, as no IP is assigned.
+
+&lt;ul&gt;
+&lt;li&gt;HINT: &lt;code&gt;tcpdump&lt;/code&gt; is the swiss army knife of networking. It can inspect not only layer 2 but also higher level packets and is widely used for debugging network communication problems. Its well known twin &lt;a href=&#34;https://www.wireshark.org/&#34;&gt;Wireshark&lt;/a&gt;, can also sniff traffic and look at the packages, but has a nice UI and is therefore preferable if a window system is installed.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;1. &lt;strong&gt;Physical layer&lt;/strong&gt;: Is the damn cable plugged in or does your wifi is blocked by lead walls?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;on-the-server-side&#34;&gt;On the server side&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;7. &lt;strong&gt;Application layer&lt;/strong&gt;: As at the other side there has to be something delivering content, here is where your Go application and nginx lives.
+
+&lt;ul&gt;
+&lt;li&gt;To debug this part you could check the logs using &lt;code&gt;less /var/log/nginx/error.log&lt;/code&gt; for nginx or similar your Go application. I hope your application writes logs!&lt;/li&gt;
+&lt;li&gt;You could also use &lt;code&gt;ps -aux | grep -E (go-project-hello|nginx&lt;/code&gt; to look if there is a process for both your application and nginx running.&lt;/li&gt;
+&lt;li&gt;To see the resources (e.g. CPU, RAM) usage for your process you could use &lt;code&gt;top&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;6. &lt;strong&gt;Presentation layer&lt;/strong&gt;: Nothing to do, see client side.&lt;/li&gt;
+&lt;li&gt;5. &lt;strong&gt;Session layer&lt;/strong&gt;: In contrast to the client, the server has an influence on the session layer. Our Go application for example uses cookies to store session information. If we extend the live time of the cookies we may enhance the user experience and fix a timeout problem.
+
+&lt;ul&gt;
+&lt;li&gt;Hint: For old fashioned PHP have a look into &lt;code&gt;php.ini&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;4. &lt;strong&gt;Transport layer&lt;/strong&gt;: As for the client we are back to ports. This time we have to see if our application can be reached from the outside.
+
+&lt;ul&gt;
+&lt;li&gt;We use &lt;code&gt;netstat -tulpn | grep LISTE&lt;/code&gt; to see which ports are open and what applications are listening on each specific port.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;3. &lt;strong&gt;Network layer&lt;/strong&gt;, 2. &lt;strong&gt;Data Link layer&lt;/strong&gt; and 1. &lt;strong&gt;Physical layer&lt;/strong&gt; are the same as for the client and can be debugged the same way.
+
+&lt;ul&gt;
+&lt;li&gt;Hint: If you use a firewall at the client or server run &lt;code&gt;iptables -nvL&lt;/code&gt; (for Linux machines) to see its settings. Depending on the implementation of your firewall it &lt;a href=&#34;https://networkengineering.stackexchange.com/questions/17115/how-to-know-at-what-osi-layers-does-a-firewall-operate&#34;&gt;can reside on every layer up from level two&lt;/a&gt;. You could also use especially the Linux &lt;code&gt;iptables&lt;/code&gt; firewall to build your own router or switch!&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an &lt;a href=&#34;https://github.com/lony/lony.github.io/issues&#34;&gt;issue&lt;/a&gt; and help me get better!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Graphical user interface development</title>
@@ -118,7 +314,16 @@
 &lt;li&gt;&lt;a href=&#34;#until&#34;&gt;until&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#pasting&#34;&gt;pasting&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#pipe&#34;&gt;pipe&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#read&#34;&gt;read&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#read&#34;&gt;read&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#databases&#34;&gt;Databases&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#nosql&#34;&gt;NoSQL&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mongo&#34;&gt;Mongo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#setup&#34;&gt;Setup&lt;/a&gt;
 
@@ -173,6 +378,9 @@ rm in
 &lt;li&gt;&lt;code&gt;openssl rsa -des3 -in {path-in} -out {path-out}&lt;/code&gt; - Encrypt key with password (rsa)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;openssl rsa -in {path-in} -out {path-out}&lt;/code&gt; - Decrypt key with password (rsa)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;echo | openssl s_client -host IP_OF_TARGET -port 443 2&amp;gt;&amp;amp;1 | openssl x509 -noout -subject&lt;/code&gt; - Get SSL certificate subject of target machine&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl rand -base64 12&lt;/code&gt; - Create a random string with 12 characters (password generator)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl dgst -sha256 FILE&lt;/code&gt; &lt;a href=&#34;https://forums.appleinsider.com/discussion/192161/how-to-verify-checksums-when-you-download-an-app-for-your-mac&#34;&gt;1&lt;/a&gt; - Create SHA256 checksum for file&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;openssl md5 FILE&lt;/code&gt; - Create MD5 checksum for file&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;rsync &lt;a href=&#34;https://en.wikipedia.org/wiki/Rsync&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs&#34;&gt;2&lt;/a&gt; - Data synchronization tool&lt;/p&gt;
@@ -291,6 +499,12 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;li&gt;&lt;p&gt;&lt;code&gt;knife vault show &amp;lt;DATA_BAG_FOLDer&amp;gt; &amp;lt;DATA_BAG_FILE&amp;gt;&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;knife cookbook download -s &amp;quot;https://&amp;lt;SERVER_URL&amp;gt;&amp;quot; &amp;lt;COOKBOOK_NAME&amp;gt; 0.3.0&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;knife status&lt;/code&gt; &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-manage-your-cluster-with-chef-and-knife-on-ubuntu&#34;&gt;1&lt;/a&gt; - Shows infos about node as last successfull chef-client&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;knife search node &amp;quot;fqdn:web*-?.* OR fqdn:app-1&amp;quot; -i&lt;/code&gt; &lt;a href=&#34;https://docs.chef.io/knife_search.html&#34;&gt;1&lt;/a&gt; - Searches for nodes in chef-server registry&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;knife ssh &amp;quot;fqdn:web*-?.*&amp;quot; &amp;quot;lsb_release -r &amp;amp;&amp;amp; uname -rv&amp;quot;&lt;/code&gt; - Show Ubuntu release and kernel for all web servers&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;kitchen&lt;/p&gt;
@@ -317,6 +531,7 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;li&gt;&lt;code&gt;apt-get autoremove --purge&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;apt-get upgrade --dry-run&lt;/code&gt; &lt;a href=&#34;http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update&#34;&gt;1&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;apt-get dist-upgrade&lt;/code&gt; &lt;a href=&#34;https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software&#34;&gt;1&lt;/a&gt; - Update newer version of distribution&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt-cache policy&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/8647454/how-to-get-a-list-of-repositories-apt-get-is-checking&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;https://wiki.ubuntuusers.de/sources.list/&#34;&gt;2&lt;/a&gt; - Show list of repositories&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;aptitude &lt;a href=&#34;http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig&#34;&gt;1&lt;/a&gt; - cli GUI for package management&lt;/p&gt;&lt;/li&gt;
@@ -544,8 +759,22 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;h1 id=&#34;text-processing&#34;&gt;Text processing&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;jq &lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;1&lt;/a&gt; - CLI JSON processor&lt;/li&gt;
-&lt;li&gt;xargs &lt;a href=&#34;https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/&#34;&gt;1&lt;/a&gt; - Sub-list generator&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;head - Show beginning of file&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;head -2 large_file&lt;/code&gt; - Shows only first two lines&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;jq &lt;a href=&#34;https://stedolan.github.io/jq/&#34;&gt;1&lt;/a&gt; - CLI JSON processor&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;tail - Show ending of file&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tail -f collectd.log | grep -E --color=auto &#39;*Value too old*&#39;&lt;/code&gt; &lt;a href=&#34;https://unix.stackexchange.com/questions/8414/how-to-have-tail-f-show-colored-output&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;https://unix.stackexchange.com/questions/106565/how-to-highlight-a-word-in-the-output-of-cat&#34;&gt;2&lt;/a&gt; - Show log output continuously highlighting specific words&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tail -f collectd.log | grep -E --color=auto &#39;*Value too old*&#39; | sed &#39;s/.*name = \(.*\); value.*/\1/&#39; | awk &#39;{ print length($0); }&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/3532718/extract-string-from-string-using-regex-in-the-terminal&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://stackoverflow.com/questions/8786634/how-to-print-the-number-of-characters-in-each-line-of-a-text-file&#34;&gt;2&lt;/a&gt; - Search for pattern regex string and count characters&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;xargs &lt;a href=&#34;https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/&#34;&gt;1&lt;/a&gt; - Sub-list generator&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&#34;shell-bulletins&#34;&gt;Shell bulletins&lt;/h1&gt;
@@ -557,6 +786,8 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;curl -X POST -H &amp;quot;Content-Type: application/json&amp;quot; -H &amp;quot;Cache-Control: no-cache&amp;quot; -d &#39;{ &amp;quot;username&amp;quot; : &amp;quot;xxx&amp;quot;, &amp;quot;pw&amp;quot; : &amp;quot;xxx&amp;quot;}&#39; &amp;quot;http://localhost:8080/user/authenticate&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl -X GET --proxy http://proxy:8080 &amp;quot;http://www.google.de&amp;quot;&lt;/code&gt; - Use a proxy&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl -s -o /dev/null -w &amp;quot;%{http_code}&amp;quot; http://www.example.org&lt;/code&gt; &lt;a href=&#34;https://superuser.com/questions/272265/getting-curl-to-output-http-status-code&#34;&gt;1&lt;/a&gt; - Just get status code&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;dig - DNS querying tool using OS resolver&lt;/p&gt;
@@ -607,6 +838,8 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;li&gt;&lt;code&gt;-s SRC&lt;/code&gt; - Source e.g. address, hostname, network name&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
+&lt;li&gt;&lt;p&gt;&lt;code&gt;iptables -I OUTPUT -p tcp --dport 80 -m state --state NEW -j LOG -m limit --limit 5/m --limit-burst 1 --log-uid --log-prefix &amp;quot;IPTABLES-OUTBOUND-P80: &amp;quot; --log-level 4&lt;/code&gt; - LOG outgoing traffic to port 80 into &lt;code&gt;/var/log/kern.log&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;&lt;code&gt;iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT&lt;/code&gt; &lt;a href=&#34;https://crm.vpscheap.net/knowledgebase.php?action=displayarticle&amp;amp;id=29&#34;&gt;1&lt;/a&gt; - Prevent DoS Attack&lt;/p&gt;
 
 &lt;ul&gt;
@@ -634,6 +867,8 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;iftop &lt;a href=&#34;http://www.integralist.co.uk/posts/terminal-utils.html#10&#34;&gt;1&lt;/a&gt; - Monitor network traffic and show bandwith usage&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;iptraf &lt;a href=&#34;http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic&#34;&gt;1&lt;/a&gt; - Network statistic tool&lt;/p&gt;&lt;/li&gt;
 
@@ -739,6 +974,9 @@ then &lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name 
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;grep foo /home/lony/bar&lt;/code&gt; - Search for foo in bar&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep -E &#39;foo|bar&#39; *.tx&lt;/code&gt; &lt;a href=&#34;https://unix.stackexchange.com/questions/37313/how-do-i-grep-for-multiple-patterns&#34;&gt;1&lt;/a&gt; - Searching for multiple patterns&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep -E --color=auto &#39;foo|bar&#39; *.tx&lt;/code&gt; - Highlight pattern found&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep -e ERROR -e WARN YOURLOG.log | grep -v IgnoreException&lt;/code&gt; - Searches in YOURLOG for ERRORs and WARnings but ignores your IgnoreException&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;grep -r foo /home/lony/bar&lt;/code&gt; - Search recursively for foo in bar&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;grep -nr &#39;foo*&#39; .&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder&#34;&gt;1&lt;/a&gt; - Search for foo* in &lt;code&gt;.&lt;/code&gt; showing relative line number&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;zgrep foo /home/lony/log.1.gz | less&lt;/code&gt; - Search inside gzip log file for foo&lt;/li&gt;
@@ -830,6 +1068,47 @@ EOF
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;read -p &amp;quot;Enter username to check:&amp;quot; USERNAME &amp;amp;&amp;amp; echo $USERNAME&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;databases&#34;&gt;Databases&lt;/h2&gt;
+
+&lt;h3 id=&#34;sql&#34;&gt;SQL&lt;/h3&gt;
+
+&lt;h4 id=&#34;mysql&#34;&gt;MySQL&lt;/h4&gt;
+
+&lt;p&gt;Run &lt;code&gt;mysql -u root -h localhost -p&lt;/code&gt; to open the MySQL console, which lets you interact with the database.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SELECT User FROM mysql.user;&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/1135245/how-to-get-a-list-of-mysql-user-accounts&#34;&gt;1&lt;/a&gt; - Show users&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Change user password &lt;a href=&#34;http://stackoverflow.com/questions/22774739/change-mysql-user-password-using-command-line&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;USE mysql;
+SET PASSWORD FOR &#39;USER&#39;@&#39;localhost&#39; = PASSWORD(&#39;CLEAR_TEXT_PASSWORD&#39;);
+FLUSH PRIVILEGES;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;nosql&#34;&gt;NoSQL&lt;/h3&gt;
+
+&lt;h4 id=&#34;mongo&#34;&gt;Mongo&lt;/h4&gt;
+
+&lt;p&gt;Run &lt;code&gt;mongo&lt;/code&gt; to open the mongo console, which lets you interact with the database.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;show dbs&lt;/code&gt; - Show databases&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;show collections&lt;/code&gt; - Show collections&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;show users&lt;/code&gt; - Show users&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;db.changeUserPassword(&amp;quot;USERNAME&amp;quot;, &amp;quot;NEWPASSWORD&amp;quot;)&lt;/code&gt; - Change user password&lt;/li&gt;
+&lt;li&gt;Authenticate
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;use admin&lt;/code&gt; - To select table&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;db.auth(&amp;quot;USER&amp;quot;, &amp;quot;PASSWORD&amp;quot;)&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rs.status()&lt;/code&gt; - Show cluster status (replica set)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rs.conf()&lt;/code&gt; - Returns current replica set configuration&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rs.stepDown()&lt;/code&gt; - Trigger primary to become secondary and start election&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;

@@ -120,7 +120,16 @@
 <li><a href="#until">until</a></li>
 <li><a href="#pasting">pasting</a></li>
 <li><a href="#pipe">pipe</a></li>
-<li><a href="#read">read</a><br /></li>
+<li><a href="#read">read</a></li>
+</ul></li>
+<li><a href="#databases">Databases</a>
+
+<ul>
+<li><a href="#nosql">NoSQL</a>
+
+<ul>
+<li><a href="#mongo">Mongo</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#setup">Setup</a>
 
@@ -175,6 +184,9 @@ rm in
 <li><code>openssl rsa -des3 -in {path-in} -out {path-out}</code> - Encrypt key with password (rsa)</li>
 <li><code>openssl rsa -in {path-in} -out {path-out}</code> - Decrypt key with password (rsa)</li>
 <li><code>echo | openssl s_client -host IP_OF_TARGET -port 443 2&gt;&amp;1 | openssl x509 -noout -subject</code> - Get SSL certificate subject of target machine</li>
+<li><code>openssl rand -base64 12</code> - Create a random string with 12 characters (password generator)</li>
+<li><code>openssl dgst -sha256 FILE</code> <a href="https://forums.appleinsider.com/discussion/192161/how-to-verify-checksums-when-you-download-an-app-for-your-mac">1</a> - Create SHA256 checksum for file</li>
+<li><code>openssl md5 FILE</code> - Create MD5 checksum for file</li>
 </ul></li>
 
 <li><p>rsync <a href="https://en.wikipedia.org/wiki/Rsync">1</a>, <a href="http://stackoverflow.com/questions/4493525/rsync-what-means-the-f-on-rsync-logs">2</a> - Data synchronization tool</p>
@@ -293,6 +305,12 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p><code>knife vault show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt;</code></p></li>
 
 <li><p><code>knife cookbook download -s &quot;https://&lt;SERVER_URL&gt;&quot; &lt;COOKBOOK_NAME&gt; 0.3.0</code></p></li>
+
+<li><p><code>knife status</code> <a href="https://www.digitalocean.com/community/tutorials/how-to-manage-your-cluster-with-chef-and-knife-on-ubuntu">1</a> - Shows infos about node as last successfull chef-client</p></li>
+
+<li><p><code>knife search node &quot;fqdn:web*-?.* OR fqdn:app-1&quot; -i</code> <a href="https://docs.chef.io/knife_search.html">1</a> - Searches for nodes in chef-server registry</p></li>
+
+<li><p><code>knife ssh &quot;fqdn:web*-?.*&quot; &quot;lsb_release -r &amp;&amp; uname -rv&quot;</code> - Show Ubuntu release and kernel for all web servers</p></li>
 </ul></li>
 
 <li><p>kitchen</p>
@@ -319,6 +337,7 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><code>apt-get autoremove --purge</code></li>
 <li><code>apt-get upgrade --dry-run</code> <a href="http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update">1</a></li>
 <li><code>apt-get dist-upgrade</code> <a href="https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software">1</a> - Update newer version of distribution</li>
+<li><code>apt-cache policy</code> <a href="http://stackoverflow.com/questions/8647454/how-to-get-a-list-of-repositories-apt-get-is-checking">1</a>, <a href="https://wiki.ubuntuusers.de/sources.list/">2</a> - Show list of repositories</li>
 </ul></li>
 
 <li><p>aptitude <a href="http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig">1</a> - cli GUI for package management</p></li>
@@ -546,8 +565,22 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <h1 id="text-processing">Text processing</h1>
 
 <ul>
-<li>jq <a href="https://stedolan.github.io/jq/">1</a> - CLI JSON processor</li>
-<li>xargs <a href="https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/">1</a> - Sub-list generator</li>
+<li><p>head - Show beginning of file</p>
+
+<ul>
+<li><code>head -2 large_file</code> - Shows only first two lines</li>
+</ul></li>
+
+<li><p>jq <a href="https://stedolan.github.io/jq/">1</a> - CLI JSON processor</p></li>
+
+<li><p>tail - Show ending of file</p>
+
+<ul>
+<li><code>tail -f collectd.log | grep -E --color=auto '*Value too old*'</code> <a href="https://unix.stackexchange.com/questions/8414/how-to-have-tail-f-show-colored-output">1</a>, <a href="https://unix.stackexchange.com/questions/106565/how-to-highlight-a-word-in-the-output-of-cat">2</a> - Show log output continuously highlighting specific words</li>
+<li><code>tail -f collectd.log | grep -E --color=auto '*Value too old*' | sed 's/.*name = \(.*\); value.*/\1/' | awk '{ print length($0); }</code> <a href="http://stackoverflow.com/questions/3532718/extract-string-from-string-using-regex-in-the-terminal">1</a>, <a href="http://stackoverflow.com/questions/8786634/how-to-print-the-number-of-characters-in-each-line-of-a-text-file">2</a> - Search for pattern regex string and count characters</li>
+</ul></li>
+
+<li><p>xargs <a href="https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/">1</a> - Sub-list generator</p></li>
 </ul>
 
 <h1 id="shell-bulletins">Shell bulletins</h1>
@@ -559,6 +592,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <ul>
 <li><code>curl -X POST -H &quot;Content-Type: application/json&quot; -H &quot;Cache-Control: no-cache&quot; -d '{ &quot;username&quot; : &quot;xxx&quot;, &quot;pw&quot; : &quot;xxx&quot;}' &quot;http://localhost:8080/user/authenticate&quot;</code></li>
+<li><code>curl -X GET --proxy http://proxy:8080 &quot;http://www.google.de&quot;</code> - Use a proxy</li>
+<li><code>curl -s -o /dev/null -w &quot;%{http_code}&quot; http://www.example.org</code> <a href="https://superuser.com/questions/272265/getting-curl-to-output-http-status-code">1</a> - Just get status code</li>
 </ul></li>
 
 <li><p>dig - DNS querying tool using OS resolver</p>
@@ -609,6 +644,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><code>-s SRC</code> - Source e.g. address, hostname, network name</li>
 </ul></li>
 
+<li><p><code>iptables -I OUTPUT -p tcp --dport 80 -m state --state NEW -j LOG -m limit --limit 5/m --limit-burst 1 --log-uid --log-prefix &quot;IPTABLES-OUTBOUND-P80: &quot; --log-level 4</code> - LOG outgoing traffic to port 80 into <code>/var/log/kern.log</code></p></li>
+
 <li><p><code>iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT</code> <a href="https://crm.vpscheap.net/knowledgebase.php?action=displayarticle&amp;id=29">1</a> - Prevent DoS Attack</p>
 
 <ul>
@@ -636,6 +673,8 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
 </code></pre></li>
 </ul></li>
+
+<li><p>iftop <a href="http://www.integralist.co.uk/posts/terminal-utils.html#10">1</a> - Monitor network traffic and show bandwith usage</p></li>
 
 <li><p>iptraf <a href="http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic">1</a> - Network statistic tool</p></li>
 
@@ -741,6 +780,9 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
 
 <ul>
 <li><code>grep foo /home/lony/bar</code> - Search for foo in bar</li>
+<li><code>grep -E 'foo|bar' *.tx</code> <a href="https://unix.stackexchange.com/questions/37313/how-do-i-grep-for-multiple-patterns">1</a> - Searching for multiple patterns</li>
+<li><code>grep -E --color=auto 'foo|bar' *.tx</code> - Highlight pattern found</li>
+<li><code>grep -e ERROR -e WARN YOURLOG.log | grep -v IgnoreException</code> - Searches in YOURLOG for ERRORs and WARnings but ignores your IgnoreException</li>
 <li><code>grep -r foo /home/lony/bar</code> - Search recursively for foo in bar</li>
 <li><code>grep -nr 'foo*' .</code> <a href="http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder">1</a> - Search for foo* in <code>.</code> showing relative line number</li>
 <li><code>zgrep foo /home/lony/log.1.gz | less</code> - Search inside gzip log file for foo</li>
@@ -834,6 +876,47 @@ EOF
 <li><code>read -p &quot;Enter username to check:&quot; USERNAME &amp;&amp; echo $USERNAME</code></li>
 </ul>
 
+<h2 id="databases">Databases</h2>
+
+<h3 id="sql">SQL</h3>
+
+<h4 id="mysql">MySQL</h4>
+
+<p>Run <code>mysql -u root -h localhost -p</code> to open the MySQL console, which lets you interact with the database.</p>
+
+<ul>
+<li><code>SELECT User FROM mysql.user;</code> <a href="http://stackoverflow.com/questions/1135245/how-to-get-a-list-of-mysql-user-accounts">1</a> - Show users</li>
+
+<li><p>Change user password <a href="http://stackoverflow.com/questions/22774739/change-mysql-user-password-using-command-line">1</a></p>
+
+<pre><code>USE mysql;
+SET PASSWORD FOR 'USER'@'localhost' = PASSWORD('CLEAR_TEXT_PASSWORD');
+FLUSH PRIVILEGES;
+</code></pre></li>
+</ul>
+
+<h3 id="nosql">NoSQL</h3>
+
+<h4 id="mongo">Mongo</h4>
+
+<p>Run <code>mongo</code> to open the mongo console, which lets you interact with the database.</p>
+
+<ul>
+<li><code>show dbs</code> - Show databases</li>
+<li><code>show collections</code> - Show collections</li>
+<li><code>show users</code> - Show users</li>
+<li><code>db.changeUserPassword(&quot;USERNAME&quot;, &quot;NEWPASSWORD&quot;)</code> - Change user password</li>
+<li>Authenticate
+
+<ol>
+<li><code>use admin</code> - To select table</li>
+<li><code>db.auth(&quot;USER&quot;, &quot;PASSWORD&quot;)</code></li>
+</ol></li>
+<li><code>rs.status()</code> - Show cluster status (replica set)</li>
+<li><code>rs.conf()</code> - Returns current replica set configuration</li>
+<li><code>rs.stepDown()</code> - Trigger primary to become secondary and start election</li>
+</ul>
+
 <h2 id="setup">Setup</h2>
 
 <h3 id="prompt">Prompt</h3>
@@ -877,7 +960,7 @@ $? \[\e[01;34m\][$(date &quot;+%H:%M:%S&quot;)] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/lony">Goetz Epperlein</a> 2016</p>
+    <p>&copy; <a href="https://github.com/lony">Goetz Epperlein</a> 2016 - 2017</p>
   </div>
 </section>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
