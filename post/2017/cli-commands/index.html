@@ -165,8 +165,29 @@
 
 <ul>
 <li><code>ln -s /foo/bar /home/lony/bar</code> - Creates symbolic link</li>
-<li><code>ln /foo/bar /home/lony/bar</code> - Creates hard link (files only)
-<br /></li>
+<li><code>ln /foo/bar /home/lony/bar</code> - Creates hard link (files only)</li>
+</ul></li>
+
+<li><p>losetup <a href="https://linux.die.net/man/8/losetup">1</a> - control loop devices</p>
+
+<ul>
+<li><p>Create, format and mount loopback device <a href="https://stackoverflow.com/questions/16044204/testing-out-of-disk-space-in-linux">1</a>, <a href="https://linux.die.net/man/1/dd">2</a></p>
+
+<pre><code>dd if=/dev/zero of=/tmp/tcp_dump_data bs=1M count=2 # Create a file with random data
+losetup -f /tmp/tcp_dump_data                       # Create loopback device from file
+mkfs.ext4 /dev/loop0                                # Format loopback device
+mount /dev/loop0 /mnt/test                          # Mount loopback device
+</code></pre></li>
+
+<li><p>Unmount and delete loopback device</p>
+
+<pre><code>umount /mnt/test                                    # Unmount loopback device
+losetup -D                                          # Delete loopback device
+</code></pre></li>
+
+<li><p><code>losetup -a</code> - List all existing loopback devices</p></li>
+
+<li><p><code>losetup --list</code> <a href="https://unix.stackexchange.com/questions/172382/how-to-find-which-images-belong-to-which-dev-loop">1</a> - Show images behind loopback devices</p></li>
 </ul></li>
 
 <li><p>mkfifo - Create named pipe</p>
@@ -268,6 +289,14 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <h3 id="chef">Chef</h3>
 
 <ul>
+<li><p>berks</p>
+
+<ul>
+<li><code>berks install</code> - Updates cookbook dependencies (pessimistic)</li>
+<li><code>berks update</code> - Updates cookbook dependencies to latest lib version (optimistic)</li>
+<li><code>berks upload</code> - Uploads local cookbook and its dependencies to chef server</li>
+</ul></li>
+
 <li><p>chef-client</p>
 
 <ul>
@@ -277,7 +306,9 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p>chef-server-ctl</p>
 
 <ul>
-<li><code>chef-server-ctl org-user-add -a &lt;ORGA&gt; &lt;USER&gt;</code> - Create user in organization using chef ACL</li>
+<li><code>chef-server-ctl user-create &lt;LOGIN_NAME&gt; &lt;FIRST_NAME&gt; &lt;SECOND_NAME&gt; &lt;EMAIL&gt; &lt;PASSWORD&gt; -f &lt;/tmp/KEY_FILE.pem&gt;</code>- Create user</li>
+<li><code>chef-server-ctl user-delete &lt;LOGIN_NAME&gt;</code> - Delete user</li>
+<li><code>chef-server-ctl org-user-add -a &lt;ORGA&gt; &lt;LOGIN_NAME&gt;</code> - Add user into organization using chef ACL</li>
 </ul></li>
 
 <li><p>knife</p>
@@ -763,6 +794,17 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 <li><p>vnstat <a href="https://wiki.ubuntuusers.de/vnStat/">1</a>,<a href="http://www.thegeekstuff.com/2011/11/vnstat-network-traffic-monitor/">2</a> - Network traffic monitor</p></li>
 </ul>
 
+<h2 id="apache2">Apache2</h2>
+
+<ul>
+<li>apachectl
+
+<ul>
+<li><code>apachectl -t</code> <a href="https://serverfault.com/questions/541171/apache2-require-all-granted-doesnt-work">1</a> - Test syntax of config files</li>
+<li><code>apachectl -S</code> - Show which files are beeing parsed</li>
+</ul></li>
+</ul>
+
 <h1 id="searching">Searching</h1>
 
 <ul>
@@ -786,6 +828,7 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
 <li><code>grep -r foo /home/lony/bar</code> - Search recursively for foo in bar</li>
 <li><code>grep -nr 'foo*' .</code> <a href="http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder">1</a> - Search for foo* in <code>.</code> showing relative line number</li>
 <li><code>zgrep foo /home/lony/log.1.gz | less</code> - Search inside gzip log file for foo</li>
+<li><code>grep 'IPTABLES-OUTBOUND-' /var/log/kern.log | sed 's/.* DST=\(.*\)[[:space:]]LEN.* DPT=\(.*\)[[:space:]]WINDOW.*/\1_\2/' | sort | uniq -c | sort -n</code> <a href="http://stackoverflow.com/questions/6447473/linux-command-or-script-counting-duplicated-lines-in-a-text-file">1</a> - Extract log entry and count distinct occurence of IP_Port combinations by frequency</li>
 </ul></li>
 </ul>
 

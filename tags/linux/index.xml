@@ -107,8 +107,29 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;ln -s /foo/bar /home/lony/bar&lt;/code&gt; - Creates symbolic link&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ln /foo/bar /home/lony/bar&lt;/code&gt; - Creates hard link (files only)
-&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln /foo/bar /home/lony/bar&lt;/code&gt; - Creates hard link (files only)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;losetup &lt;a href=&#34;https://linux.die.net/man/8/losetup&#34;&gt;1&lt;/a&gt; - control loop devices&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Create, format and mount loopback device &lt;a href=&#34;https://stackoverflow.com/questions/16044204/testing-out-of-disk-space-in-linux&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;https://linux.die.net/man/1/dd&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;dd if=/dev/zero of=/tmp/tcp_dump_data bs=1M count=2 # Create a file with random data
+losetup -f /tmp/tcp_dump_data                       # Create loopback device from file
+mkfs.ext4 /dev/loop0                                # Format loopback device
+mount /dev/loop0 /mnt/test                          # Mount loopback device
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Unmount and delete loopback device&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;umount /mnt/test                                    # Unmount loopback device
+losetup -D                                          # Delete loopback device
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;losetup -a&lt;/code&gt; - List all existing loopback devices&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;losetup --list&lt;/code&gt; &lt;a href=&#34;https://unix.stackexchange.com/questions/172382/how-to-find-which-images-belong-to-which-dev-loop&#34;&gt;1&lt;/a&gt; - Show images behind loopback devices&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;mkfifo - Create named pipe&lt;/p&gt;
@@ -210,6 +231,14 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;h3 id=&#34;chef&#34;&gt;Chef&lt;/h3&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;berks&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;berks install&lt;/code&gt; - Updates cookbook dependencies (pessimistic)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;berks update&lt;/code&gt; - Updates cookbook dependencies to latest lib version (optimistic)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;berks upload&lt;/code&gt; - Uploads local cookbook and its dependencies to chef server&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;chef-client&lt;/p&gt;
 
 &lt;ul&gt;
@@ -219,7 +248,9 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;li&gt;&lt;p&gt;chef-server-ctl&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;chef-server-ctl org-user-add -a &amp;lt;ORGA&amp;gt; &amp;lt;USER&amp;gt;&lt;/code&gt; - Create user in organization using chef ACL&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chef-server-ctl user-create &amp;lt;LOGIN_NAME&amp;gt; &amp;lt;FIRST_NAME&amp;gt; &amp;lt;SECOND_NAME&amp;gt; &amp;lt;EMAIL&amp;gt; &amp;lt;PASSWORD&amp;gt; -f &amp;lt;/tmp/KEY_FILE.pem&amp;gt;&lt;/code&gt;- Create user&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chef-server-ctl user-delete &amp;lt;LOGIN_NAME&amp;gt;&lt;/code&gt; - Delete user&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chef-server-ctl org-user-add -a &amp;lt;ORGA&amp;gt; &amp;lt;LOGIN_NAME&amp;gt;&lt;/code&gt; - Add user into organization using chef ACL&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;knife&lt;/p&gt;
@@ -705,6 +736,17 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 &lt;li&gt;&lt;p&gt;vnstat &lt;a href=&#34;https://wiki.ubuntuusers.de/vnStat/&#34;&gt;1&lt;/a&gt;,&lt;a href=&#34;http://www.thegeekstuff.com/2011/11/vnstat-network-traffic-monitor/&#34;&gt;2&lt;/a&gt; - Network traffic monitor&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&#34;apache2&#34;&gt;Apache2&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;apachectl
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apachectl -t&lt;/code&gt; &lt;a href=&#34;https://serverfault.com/questions/541171/apache2-require-all-granted-doesnt-work&#34;&gt;1&lt;/a&gt; - Test syntax of config files&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apachectl -S&lt;/code&gt; - Show which files are beeing parsed&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&#34;searching&#34;&gt;Searching&lt;/h1&gt;
 
 &lt;ul&gt;
@@ -728,6 +770,7 @@ then &lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name 
 &lt;li&gt;&lt;code&gt;grep -r foo /home/lony/bar&lt;/code&gt; - Search recursively for foo in bar&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;grep -nr &#39;foo*&#39; .&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder&#34;&gt;1&lt;/a&gt; - Search for foo* in &lt;code&gt;.&lt;/code&gt; showing relative line number&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;zgrep foo /home/lony/log.1.gz | less&lt;/code&gt; - Search inside gzip log file for foo&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep &#39;IPTABLES-OUTBOUND-&#39; /var/log/kern.log | sed &#39;s/.* DST=\(.*\)[[:space:]]LEN.* DPT=\(.*\)[[:space:]]WINDOW.*/\1_\2/&#39; | sort | uniq -c | sort -n&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/6447473/linux-command-or-script-counting-duplicated-lines-in-a-text-file&#34;&gt;1&lt;/a&gt; - Extract log entry and count distinct occurence of IP_Port combinations by frequency&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
