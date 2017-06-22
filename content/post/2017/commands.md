@@ -64,7 +64,28 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 	* `ln -s /foo/bar /home/lony/bar` - Creates symbolic link
 	* `ln /foo/bar /home/lony/bar` - Creates hard link (files only)
-	
+
+* losetup [1](https://linux.die.net/man/8/losetup) - control loop devices
+
+	* Create, format and mount loopback device [1](https://stackoverflow.com/questions/16044204/testing-out-of-disk-space-in-linux), [2](https://linux.die.net/man/1/dd)
+
+		```
+		dd if=/dev/zero of=/tmp/tcp_dump_data bs=1M count=2 # Create a file with random data
+		losetup -f /tmp/tcp_dump_data 						# Create loopback device from file
+		mkfs.ext4 /dev/loop0								# Format loopback device
+		mount /dev/loop0 /mnt/test							# Mount loopback device
+		```
+
+	* Unmount and delete loopback device
+
+		```
+		umount /mnt/test									# Unmount loopback device
+		losetup -D											# Delete loopback device
+		```
+
+	* `losetup -a` - List all existing loopback devices
+	* `losetup --list` [1](https://unix.stackexchange.com/questions/172382/how-to-find-which-images-belong-to-which-dev-loop) - Show images behind loopback devices
+
 * mkfifo - Create named pipe
 
 	```
@@ -142,11 +163,18 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 ### Chef
 
+* berks
+	* `berks install` - Updates cookbook dependencies (pessimistic)
+	* `berks update` - Updates cookbook dependencies to latest lib version (optimistic)
+	* `berks upload` - Uploads local cookbook and its dependencies to chef server
+
 * chef-client
 	* `chef-client -W` - Test run without actually changing anything
 
 * chef-server-ctl
-	* `chef-server-ctl org-user-add -a <ORGA> <USER>` - Create user in organization using chef ACL
+	* `chef-server-ctl user-create <LOGIN_NAME> <FIRST_NAME> <SECOND_NAME> <EMAIL> <PASSWORD> -f </tmp/KEY_FILE.pem>`- Create user
+	* `chef-server-ctl user-delete <LOGIN_NAME>` - Delete user
+	* `chef-server-ctl org-user-add -a <ORGA> <LOGIN_NAME>` - Add user into organization using chef ACL
 
 * knife
 	* `knife node list` - Show systems
@@ -497,6 +525,12 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * vnstat [1](https://wiki.ubuntuusers.de/vnStat/),[2](http://www.thegeekstuff.com/2011/11/vnstat-network-traffic-monitor/) - Network traffic monitor
 
+## Apache2
+
+* apachectl
+	* `apachectl -t` [1](https://serverfault.com/questions/541171/apache2-require-all-granted-doesnt-work) - Test syntax of config files
+	* `apachectl -S` - Show which files are beeing parsed
+
 # Searching
 
 * find
@@ -516,6 +550,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `grep -r foo /home/lony/bar` - Search recursively for foo in bar
 	* `grep -nr 'foo*' .` [1](http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder) - Search for foo* in `.` showing relative line number
 	* `zgrep foo /home/lony/log.1.gz | less` - Search inside gzip log file for foo
+	* `grep 'IPTABLES-OUTBOUND-' /var/log/kern.log | sed 's/.* DST=\(.*\)[[:space:]]LEN.* DPT=\(.*\)[[:space:]]WINDOW.*/\1_\2/' | sort | uniq -c | sort -n` [1](http://stackoverflow.com/questions/6447473/linux-command-or-script-counting-duplicated-lines-in-a-text-file) - Extract log entry and count distinct occurence of IP_Port combinations by frequency
 
 # Documentation
 
