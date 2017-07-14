@@ -12,8 +12,10 @@ This post contains information about how I tweak a new Mac when I first get it. 
 * [User interface](#user-interface)
 * [Terminal](#terminal)
     * [Python](#python)
+    * [SDKMan](#sdkman)
 * [Apps](#apps)
     * [iTerm2](#iterm2)
+* [Shortcuts](#shortcuts)
 
 ----
 
@@ -157,6 +159,14 @@ If for any reason, you also need a running python installation on your Mac, this
 
 2. Execute `brew install python`
 
+## SDKMan
+
+If you plan to develop on the [JVM](https://en.wikipedia.org/wiki/Java_virtual_machine) you need an SKD for the language of your choice.
+
+[SDKMan](http://sdkman.io) is a wrapper like rbenv or nvm which allows you to install SDK's as also selecting them for usage.
+
+Sadly there is no brew package available, and you can only install it with the following command: `curl -s "https://get.sdkman.io" | bash`
+
 # Apps
 
 Having all the necessities for command line life at the pipe, now is the time for applications. Homebrew wouldn't be THE missing package manager if it could not install also binary packages. Still, to do this there is another tap required - [homebrew Cask](https://caskroom.github.io/) a homebrew extension for GUI and binary applications.
@@ -241,6 +251,21 @@ Now you should have not only cli tools installed but also all your favorite bina
 To make your favorite terminal emulator a bit more fantastic as it already is, you can adjust the following settings.
 
 * To let iTerm2 fill the complete screen after a resize: Turn on `Preferences> Advanced> Terminal windows resize smoothly`
+
+
+# Shortcuts
+
+As with every other operating system, also Mac OS has some nice shortcuts which ease the usage of the system.
+
+The most complete list of available shortcuts is provided by Apple on its support [page](https://support.apple.com/en-us/HT201236).
+
+The following list is a subset of my personal selection:
+
+| Shortcut         | Usage                  |
+|------------------|------------------------|
+| ⌘ + Tab          | Switch between apps    |
+| ⇧ + ⌘ + ~        | Switch between windows |
+
 
 ----
 

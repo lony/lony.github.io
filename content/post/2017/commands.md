@@ -14,10 +14,15 @@ If you find a bug or want to recommend something, please feel free to open an [i
 # TOC
 
 * [File system](#file-system)
+	* [Language environments](#language-environments)
+		* [Python](#python)
+		* [Ruby](#ruby)
+		* [Scala](#scala)
 	* [Configuration management](#configuration-management)
 		* [Ansible](#ansible)
 		* [Chef](#chef)
 	* [Package management](#package-management)
+	* [Version control systems](#version-control-systems)
 * [Processes](#processes)
 	* [Docker](#docker)
 	* [Vagrant](#vagrant)
@@ -26,6 +31,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 * [Text processing](#text-processing)
 * [Shell bulletins](#shell-bulletins)
 * [Networking](#networking)
+	* [Apache2](#apache2)
+	* [Varnish](#varnish)
 * [Searching](#searching)
 * [Documentation](#documentation)
 * [Miscellaneous](#miscellaneous)
@@ -38,6 +45,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 		* [pipe](#pipe)
 		* [read](#read)
 	* [Databases](#databases)
+		* [SQL](#sql)
+			* [MySQL](#mysql)
 		* [NoSQL](#nosql)
 			* [Mongo](#mongo)
 	* [Setup](#setup)
@@ -80,7 +89,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 		```
 		umount /mnt/test									# Unmount loopback device
-		losetup -D											# Delete loopback device
+		losetup -d /dev/loop0								# Delete loopback device
 		```
 
 	* `losetup -a` - List all existing loopback devices
@@ -153,6 +162,38 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `zip -r <TARGET_.zip> <SOURCE_FOLDER>/` [1](http://unix.stackexchange.com/questions/57013/zip-all-files-in-directory) - Zip folder recursively
 	* `zip -r -s 3g archive.zip FolderName/` [1](http://www.addictivetips.com/mac-os/how-to-create-a-split-zipped-archive-from-mac-os-x-terminal/) - Split into multiple chunks
 
+## Language environments
+
+### Python
+
+* pip - Python package manager
+
+	* `pip install ansible` - Install package
+	* `pip install -r requirements.txt` - Install all packages listed in requirements.txt
+
+### Ruby
+
+* rbenv
+	
+	* `rbenv install -l` - List Ruby versions available
+	* `rbenv install 2.4.1` - Install Ruby version
+	* `rbenv versions` - Show locally installed and available versions
+	* `rbenv global 2.4.1` - Make version the default
+
+### Scala
+
+* sbt
+	* `sbt compile test` - Compile an application and run tests for it
+
+* activator
+
+	* You first have to run `activator` to initialize, then you can run commands for the project.
+
+		* `clean` - Cleans project and deletes compiled binaries
+		* `compile` - Compiles the application source
+		* `evicted` - Shows dependency conflicts
+		* `test` - Run the projects tests
+		
 ## Configuration management
 
 ### Ansible
@@ -167,6 +208,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `berks install` - Updates cookbook dependencies (pessimistic)
 	* `berks update` - Updates cookbook dependencies to latest lib version (optimistic)
 	* `berks upload` - Uploads local cookbook and its dependencies to chef server
+		
+		* `berks upload --no-freeze` - Upload cookbook but allowing a later change
 
 * chef-client
 	* `chef-client -W` - Test run without actually changing anything
@@ -216,12 +259,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 * aptitude [1](http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig) - cli GUI for package management
 
 * dpkg - Debian/Ubuntu package manager (without dependencies)
+
 	* `dpkg -l`
-
-* pip - Python package manager
-
-	* `pip install ansible` - Install package
-	* `pip install -r requirements.txt` - Install all packages listed in requirements.txt
 
 * `sudo update-alternatives --config java` - Set default Java version on system
 
@@ -231,6 +270,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 	* `git update-index --assume-unchanged FILE_NAME` [1](http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes) - Ignore file for comparison (HINT: only set locally on repository)
 	* `git update-index --no-assume-unchanged FILE_NAME` - Regard file again for comparison
+	* `git commit --allow-empty -m 'Msg to do'` [1](https://coderwall.com/p/vkdekq/git-commit-allow-empty) - Commit without change
+	* `FILE="<FILE_PATH>"; COMMIT_HASH=$(git rev-list -n 1 HEAD -- "${FILE}") && git checkout ${COMMIT_HASH}^ -- "${FILE}"` [1](https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository) - Restore file deleted in previous commit
 
 # Processes
 
@@ -372,6 +413,10 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 # Text processing
 
+* diff - Compare text files
+
+	* `diff <(echo "${S1}") <(echo "${S2}")` [1](https://stackoverflow.com/questions/13437104/compare-content-of-two-variables-in-bash) - Compare two text parameters
+
 * head - Show beginning of file
 
 	* `head -2 large_file` - Shows only first two lines
@@ -499,6 +544,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `ssh -vT git@github.com` [1](http://stackoverflow.com/questions/2643502/git-permission-denied-publickey) - Testing GIT via SSH connection using verbose mode
 	* `ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com` [1](https://www.howtoforge.com/reverse-ssh-tunneling) - Tunnel Mongo port from local machine to ec2 machine using SSH
 	* `ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N` - Tunnel port using a bastian host
+	* `ssh -i ${SSH_KEY} -T ${TARGET_HOST} 'bash -s' < your-bash-script.sh` - Run bash script on remote host (look up -T and -tt)
 
 * tcpdump [1](http://packetpushers.net/masterclass-tcpdump-interpreting-output/) - Packet analyzer
 
@@ -531,6 +577,10 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `apachectl -t` [1](https://serverfault.com/questions/541171/apache2-require-all-granted-doesnt-work) - Test syntax of config files
 	* `apachectl -S` - Show which files are beeing parsed
 
+## Varnish
+
+* varnishncsa
+
 # Searching
 
 * find
@@ -551,6 +601,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `grep -nr 'foo*' .` [1](http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder) - Search for foo* in `.` showing relative line number
 	* `zgrep foo /home/lony/log.1.gz | less` - Search inside gzip log file for foo
 	* `grep 'IPTABLES-OUTBOUND-' /var/log/kern.log | sed 's/.* DST=\(.*\)[[:space:]]LEN.* DPT=\(.*\)[[:space:]]WINDOW.*/\1_\2/' | sort | uniq -c | sort -n` [1](http://stackoverflow.com/questions/6447473/linux-command-or-script-counting-duplicated-lines-in-a-text-file) - Extract log entry and count distinct occurence of IP_Port combinations by frequency
+	* `grep 'version' package.json | sed 's/.*version": "\(.*\)".*/\1/g'` - Get version from package.json of node projekts
 
 # Documentation
 
@@ -592,6 +643,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	exit 1
 	fi
 	````
+
+* Compare two string parameters `if [ "$S1" = "$S2" ]; then 	echo "YES"; else echo "FALSE"; fi`
 
 ### until
 
@@ -642,6 +695,8 @@ Run `mysql -u root -h localhost -p` to open the MySQL console, which lets you in
 	SET PASSWORD FOR 'USER'@'localhost' = PASSWORD('CLEAR_TEXT_PASSWORD');
 	FLUSH PRIVILEGES;
 	```
+
+* `SHOW SLAVE STATUS\G` [1](https://dev.mysql.com/doc/refman/5.7/en/replication-administration-status.html) - To check replication status
 
 ### NoSQL
 
