@@ -29,6 +29,13 @@
 &lt;li&gt;&lt;a href=&#34;#file-system&#34;&gt;File system&lt;/a&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#language-environments&#34;&gt;Language environments&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ruby&#34;&gt;Ruby&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#scala&#34;&gt;Scala&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#configuration-management&#34;&gt;Configuration management&lt;/a&gt;
 
 &lt;ul&gt;
@@ -36,6 +43,7 @@
 &lt;li&gt;&lt;a href=&#34;#chef&#34;&gt;Chef&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#package-management&#34;&gt;Package management&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#version-control-systems&#34;&gt;Version control systems&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#processes&#34;&gt;Processes&lt;/a&gt;
 
@@ -47,7 +55,12 @@
 &lt;li&gt;&lt;a href=&#34;#user-environment&#34;&gt;User environment&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#text-processing&#34;&gt;Text processing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#shell-bulletins&#34;&gt;Shell bulletins&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#networking&#34;&gt;Networking&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#networking&#34;&gt;Networking&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#apache2&#34;&gt;Apache2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#varnish&#34;&gt;Varnish&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#searching&#34;&gt;Searching&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#documentation&#34;&gt;Documentation&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#miscellaneous&#34;&gt;Miscellaneous&lt;/a&gt;
@@ -67,6 +80,11 @@
 &lt;li&gt;&lt;a href=&#34;#databases&#34;&gt;Databases&lt;/a&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#sql&#34;&gt;SQL&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#mysql&#34;&gt;MySQL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#nosql&#34;&gt;NoSQL&lt;/a&gt;
 
 &lt;ul&gt;
@@ -124,7 +142,7 @@ mount /dev/loop0 /mnt/test                          # Mount loopback device
 &lt;li&gt;&lt;p&gt;Unmount and delete loopback device&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;umount /mnt/test                                    # Unmount loopback device
-losetup -D                                          # Delete loopback device
+losetup -d /dev/loop0                               # Delete loopback device
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;losetup -a&lt;/code&gt; - List all existing loopback devices&lt;/p&gt;&lt;/li&gt;
@@ -216,6 +234,56 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&#34;language-environments&#34;&gt;Language environments&lt;/h2&gt;
+
+&lt;h3 id=&#34;python&#34;&gt;Python&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;pip - Python package manager&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install ansible&lt;/code&gt; - Install package&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip install -r requirements.txt&lt;/code&gt; - Install all packages listed in requirements.txt&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;ruby&#34;&gt;Ruby&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;rbenv&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;rbenv install -l&lt;/code&gt; - List Ruby versions available&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rbenv install 2.4.1&lt;/code&gt; - Install Ruby version&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rbenv versions&lt;/code&gt; - Show locally installed and available versions&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rbenv global 2.4.1&lt;/code&gt; - Make version the default&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;scala&#34;&gt;Scala&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;sbt&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sbt compile test&lt;/code&gt; - Compile an application and run tests for it&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;activator&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;You first have to run &lt;code&gt;activator&lt;/code&gt; to initialize, then you can run commands for the project.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;clean&lt;/code&gt; - Cleans project and deletes compiled binaries&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;compile&lt;/code&gt; - Compiles the application source&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;evicted&lt;/code&gt; - Shows dependency conflicts&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;test&lt;/code&gt; - Run the projects tests
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&#34;configuration-management&#34;&gt;Configuration management&lt;/h2&gt;
 
 &lt;h3 id=&#34;ansible&#34;&gt;Ansible&lt;/h3&gt;
@@ -236,7 +304,12 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;berks install&lt;/code&gt; - Updates cookbook dependencies (pessimistic)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;berks update&lt;/code&gt; - Updates cookbook dependencies to latest lib version (optimistic)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;berks upload&lt;/code&gt; - Uploads local cookbook and its dependencies to chef server&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;berks upload&lt;/code&gt; - Uploads local cookbook and its dependencies to chef server&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;berks upload --no-freeze&lt;/code&gt; - Upload cookbook but allowing a later change&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;chef-client&lt;/p&gt;
@@ -321,13 +394,6 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;li&gt;&lt;code&gt;dpkg -l&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;pip - Python package manager&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;pip install ansible&lt;/code&gt; - Install package&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pip install -r requirements.txt&lt;/code&gt; - Install all packages listed in requirements.txt&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
 &lt;li&gt;&lt;p&gt;&lt;code&gt;sudo update-alternatives --config java&lt;/code&gt; - Set default Java version on system&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -339,6 +405,8 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;git update-index --assume-unchanged FILE_NAME&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes&#34;&gt;1&lt;/a&gt; - Ignore file for comparison (HINT: only set locally on repository)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;git update-index --no-assume-unchanged FILE_NAME&lt;/code&gt; - Regard file again for comparison&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git commit --allow-empty -m &#39;Msg to do&#39;&lt;/code&gt; &lt;a href=&#34;https://coderwall.com/p/vkdekq/git-commit-allow-empty&#34;&gt;1&lt;/a&gt; - Commit without change&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;FILE=&amp;quot;&amp;lt;FILE_PATH&amp;gt;&amp;quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &amp;quot;${FILE}&amp;quot;) &amp;amp;&amp;amp; git checkout ${COMMIT_HASH}^ -- &amp;quot;${FILE}&amp;quot;&lt;/code&gt; &lt;a href=&#34;https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository&#34;&gt;1&lt;/a&gt; - Restore file deleted in previous commit&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -538,6 +606,12 @@ tar -xvf combined.tar&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/ques
 &lt;h1 id=&#34;text-processing&#34;&gt;Text processing&lt;/h1&gt;
 
 &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;diff - Compare text files&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;diff &amp;lt;(echo &amp;quot;${S1}&amp;quot;) &amp;lt;(echo &amp;quot;${S2}&amp;quot;)&lt;/code&gt; &lt;a href=&#34;https://stackoverflow.com/questions/13437104/compare-content-of-two-variables-in-bash&#34;&gt;1&lt;/a&gt; - Compare two text parameters&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
 &lt;li&gt;&lt;p&gt;head - Show beginning of file&lt;/p&gt;
 
 &lt;ul&gt;
@@ -695,6 +769,7 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 &lt;li&gt;&lt;code&gt;ssh -vT git@github.com&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/2643502/git-permission-denied-publickey&#34;&gt;1&lt;/a&gt; - Testing GIT via SSH connection using verbose mode&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com&lt;/code&gt; &lt;a href=&#34;https://www.howtoforge.com/reverse-ssh-tunneling&#34;&gt;1&lt;/a&gt; - Tunnel Mongo port from local machine to ec2 machine using SSH&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N&lt;/code&gt; - Tunnel port using a bastian host&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ssh -i ${SSH_KEY} -T ${TARGET_HOST} &#39;bash -s&#39; &amp;lt; your-bash-script.sh&lt;/code&gt; - Run bash script on remote host (look up -T and -tt)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;tcpdump &lt;a href=&#34;http://packetpushers.net/masterclass-tcpdump-interpreting-output/&#34;&gt;1&lt;/a&gt; - Packet analyzer&lt;/p&gt;
@@ -747,6 +822,12 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&#34;varnish&#34;&gt;Varnish&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;varnishncsa&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&#34;searching&#34;&gt;Searching&lt;/h1&gt;
 
 &lt;ul&gt;
@@ -771,6 +852,7 @@ then &lt;code&gt;find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name 
 &lt;li&gt;&lt;code&gt;grep -nr &#39;foo*&#39; .&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder&#34;&gt;1&lt;/a&gt; - Search for foo* in &lt;code&gt;.&lt;/code&gt; showing relative line number&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;zgrep foo /home/lony/log.1.gz | less&lt;/code&gt; - Search inside gzip log file for foo&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;grep &#39;IPTABLES-OUTBOUND-&#39; /var/log/kern.log | sed &#39;s/.* DST=\(.*\)[[:space:]]LEN.* DPT=\(.*\)[[:space:]]WINDOW.*/\1_\2/&#39; | sort | uniq -c | sort -n&lt;/code&gt; &lt;a href=&#34;http://stackoverflow.com/questions/6447473/linux-command-or-script-counting-duplicated-lines-in-a-text-file&#34;&gt;1&lt;/a&gt; - Extract log entry and count distinct occurence of IP_Port combinations by frequency&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;grep &#39;version&#39; package.json | sed &#39;s/.*version&amp;quot;: &amp;quot;\(.*\)&amp;quot;.*/\1/g&#39;&lt;/code&gt; - Get version from package.json of node projekts&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -823,6 +905,8 @@ echo &amp;quot;This script requires bash version &amp;gt; 4. Currently running i
 exit 1
 fi
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Compare two string parameters &lt;code&gt;if [ &amp;quot;$S1&amp;quot; = &amp;quot;$S2&amp;quot; ]; then     echo &amp;quot;YES&amp;quot;; else echo &amp;quot;FALSE&amp;quot;; fi&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;until&#34;&gt;until&lt;/h3&gt;
@@ -878,6 +962,8 @@ EOF
 SET PASSWORD FOR &#39;USER&#39;@&#39;localhost&#39; = PASSWORD(&#39;CLEAR_TEXT_PASSWORD&#39;);
 FLUSH PRIVILEGES;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;SHOW SLAVE STATUS\G&lt;/code&gt; &lt;a href=&#34;https://dev.mysql.com/doc/refman/5.7/en/replication-administration-status.html&#34;&gt;1&lt;/a&gt; - To check replication status&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;nosql&#34;&gt;NoSQL&lt;/h3&gt;

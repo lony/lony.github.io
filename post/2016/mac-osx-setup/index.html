@@ -83,12 +83,14 @@
 
 <ul>
 <li><a href="#python">Python</a></li>
+<li><a href="#sdkman">SDKMan</a></li>
 </ul></li>
 <li><a href="#apps">Apps</a>
 
 <ul>
 <li><a href="#iterm2">iTerm2</a></li>
 </ul></li>
+<li><a href="#shortcuts">Shortcuts</a></li>
 </ul>
 
 <hr />
@@ -239,6 +241,14 @@ chsh -s $(which zsh)
 <li><p>Execute <code>brew install python</code></p></li>
 </ol>
 
+<h2 id="sdkman">SDKMan</h2>
+
+<p>If you plan to develop on the <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">JVM</a> you need an SKD for the language of your choice.</p>
+
+<p><a href="http://sdkman.io">SDKMan</a> is a wrapper like rbenv or nvm which allows you to install SDK&rsquo;s as also selecting them for usage.</p>
+
+<p>Sadly there is no brew package available, and you can only install it with the following command: <code>curl -s &quot;https://get.sdkman.io&quot; | bash</code></p>
+
 <h1 id="apps">Apps</h1>
 
 <p>Having all the necessities for command line life at the pipe, now is the time for applications. Homebrew wouldn&rsquo;t be THE missing package manager if it could not install also binary packages. Still, to do this there is another tap required - <a href="https://caskroom.github.io/">homebrew Cask</a> a homebrew extension for GUI and binary applications.</p>
@@ -324,6 +334,35 @@ brew cask install &quot;${brew_cask_packages[@]}&quot;
 <ul>
 <li>To let iTerm2 fill the complete screen after a resize: Turn on <code>Preferences&gt; Advanced&gt; Terminal windows resize smoothly</code></li>
 </ul>
+
+<h1 id="shortcuts">Shortcuts</h1>
+
+<p>As with every other operating system, also Mac OS has some nice shortcuts which ease the usage of the system.</p>
+
+<p>The most complete list of available shortcuts is provided by Apple on its support <a href="https://support.apple.com/en-us/HT201236">page</a>.</p>
+
+<p>The following list is a subset of my personal selection:</p>
+
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Usage</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>⌘ + Tab</td>
+<td>Switch between apps</td>
+</tr>
+
+<tr>
+<td>⇧ + ⌘ + ~</td>
+<td>Switch between windows</td>
+</tr>
+</tbody>
+</table>
 
 <hr />
 

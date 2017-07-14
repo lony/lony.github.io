@@ -27,12 +27,14 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sdkman&#34;&gt;SDKMan&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#apps&#34;&gt;Apps&lt;/a&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#iterm2&#34;&gt;iTerm2&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#shortcuts&#34;&gt;Shortcuts&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
@@ -183,6 +185,14 @@ chsh -s $(which zsh)
 &lt;li&gt;&lt;p&gt;Execute &lt;code&gt;brew install python&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
+&lt;h2 id=&#34;sdkman&#34;&gt;SDKMan&lt;/h2&gt;
+
+&lt;p&gt;If you plan to develop on the &lt;a href=&#34;https://en.wikipedia.org/wiki/Java_virtual_machine&#34;&gt;JVM&lt;/a&gt; you need an SKD for the language of your choice.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://sdkman.io&#34;&gt;SDKMan&lt;/a&gt; is a wrapper like rbenv or nvm which allows you to install SDK&amp;rsquo;s as also selecting them for usage.&lt;/p&gt;
+
+&lt;p&gt;Sadly there is no brew package available, and you can only install it with the following command: &lt;code&gt;curl -s &amp;quot;https://get.sdkman.io&amp;quot; | bash&lt;/code&gt;&lt;/p&gt;
+
 &lt;h1 id=&#34;apps&#34;&gt;Apps&lt;/h1&gt;
 
 &lt;p&gt;Having all the necessities for command line life at the pipe, now is the time for applications. Homebrew wouldn&amp;rsquo;t be THE missing package manager if it could not install also binary packages. Still, to do this there is another tap required - &lt;a href=&#34;https://caskroom.github.io/&#34;&gt;homebrew Cask&lt;/a&gt; a homebrew extension for GUI and binary applications.&lt;/p&gt;
@@ -268,6 +278,35 @@ brew cask install &amp;quot;${brew_cask_packages[@]}&amp;quot;
 &lt;ul&gt;
 &lt;li&gt;To let iTerm2 fill the complete screen after a resize: Turn on &lt;code&gt;Preferences&amp;gt; Advanced&amp;gt; Terminal windows resize smoothly&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h1 id=&#34;shortcuts&#34;&gt;Shortcuts&lt;/h1&gt;
+
+&lt;p&gt;As with every other operating system, also Mac OS has some nice shortcuts which ease the usage of the system.&lt;/p&gt;
+
+&lt;p&gt;The most complete list of available shortcuts is provided by Apple on its support &lt;a href=&#34;https://support.apple.com/en-us/HT201236&#34;&gt;page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The following list is a subset of my personal selection:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Shortcut&lt;/th&gt;
+&lt;th&gt;Usage&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;⌘ + Tab&lt;/td&gt;
+&lt;td&gt;Switch between apps&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;⇧ + ⌘ + ~&lt;/td&gt;
+&lt;td&gt;Switch between windows&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;hr /&gt;
 

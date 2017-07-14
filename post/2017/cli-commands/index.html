@@ -87,6 +87,13 @@
 <li><a href="#file-system">File system</a>
 
 <ul>
+<li><a href="#language-environments">Language environments</a>
+
+<ul>
+<li><a href="#python">Python</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#scala">Scala</a></li>
+</ul></li>
 <li><a href="#configuration-management">Configuration management</a>
 
 <ul>
@@ -94,6 +101,7 @@
 <li><a href="#chef">Chef</a></li>
 </ul></li>
 <li><a href="#package-management">Package management</a></li>
+<li><a href="#version-control-systems">Version control systems</a></li>
 </ul></li>
 <li><a href="#processes">Processes</a>
 
@@ -105,7 +113,12 @@
 <li><a href="#user-environment">User environment</a></li>
 <li><a href="#text-processing">Text processing</a></li>
 <li><a href="#shell-bulletins">Shell bulletins</a></li>
-<li><a href="#networking">Networking</a></li>
+<li><a href="#networking">Networking</a>
+
+<ul>
+<li><a href="#apache2">Apache2</a></li>
+<li><a href="#varnish">Varnish</a></li>
+</ul></li>
 <li><a href="#searching">Searching</a></li>
 <li><a href="#documentation">Documentation</a></li>
 <li><a href="#miscellaneous">Miscellaneous</a>
@@ -125,6 +138,11 @@
 <li><a href="#databases">Databases</a>
 
 <ul>
+<li><a href="#sql">SQL</a>
+
+<ul>
+<li><a href="#mysql">MySQL</a></li>
+</ul></li>
 <li><a href="#nosql">NoSQL</a>
 
 <ul>
@@ -182,7 +200,7 @@ mount /dev/loop0 /mnt/test                          # Mount loopback device
 <li><p>Unmount and delete loopback device</p>
 
 <pre><code>umount /mnt/test                                    # Unmount loopback device
-losetup -D                                          # Delete loopback device
+losetup -d /dev/loop0                               # Delete loopback device
 </code></pre></li>
 
 <li><p><code>losetup -a</code> - List all existing loopback devices</p></li>
@@ -274,6 +292,56 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 </ul></li>
 </ul>
 
+<h2 id="language-environments">Language environments</h2>
+
+<h3 id="python">Python</h3>
+
+<ul>
+<li><p>pip - Python package manager</p>
+
+<ul>
+<li><code>pip install ansible</code> - Install package</li>
+<li><code>pip install -r requirements.txt</code> - Install all packages listed in requirements.txt</li>
+</ul></li>
+</ul>
+
+<h3 id="ruby">Ruby</h3>
+
+<ul>
+<li><p>rbenv</p>
+
+<ul>
+<li><code>rbenv install -l</code> - List Ruby versions available</li>
+<li><code>rbenv install 2.4.1</code> - Install Ruby version</li>
+<li><code>rbenv versions</code> - Show locally installed and available versions</li>
+<li><code>rbenv global 2.4.1</code> - Make version the default</li>
+</ul></li>
+</ul>
+
+<h3 id="scala">Scala</h3>
+
+<ul>
+<li><p>sbt</p>
+
+<ul>
+<li><code>sbt compile test</code> - Compile an application and run tests for it</li>
+</ul></li>
+
+<li><p>activator</p>
+
+<ul>
+<li><p>You first have to run <code>activator</code> to initialize, then you can run commands for the project.</p>
+
+<ul>
+<li><code>clean</code> - Cleans project and deletes compiled binaries</li>
+<li><code>compile</code> - Compiles the application source</li>
+<li><code>evicted</code> - Shows dependency conflicts</li>
+<li><code>test</code> - Run the projects tests
+<br /></li>
+</ul></li>
+</ul></li>
+</ul>
+
 <h2 id="configuration-management">Configuration management</h2>
 
 <h3 id="ansible">Ansible</h3>
@@ -294,7 +362,12 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <ul>
 <li><code>berks install</code> - Updates cookbook dependencies (pessimistic)</li>
 <li><code>berks update</code> - Updates cookbook dependencies to latest lib version (optimistic)</li>
-<li><code>berks upload</code> - Uploads local cookbook and its dependencies to chef server</li>
+
+<li><p><code>berks upload</code> - Uploads local cookbook and its dependencies to chef server</p>
+
+<ul>
+<li><code>berks upload --no-freeze</code> - Upload cookbook but allowing a later change</li>
+</ul></li>
 </ul></li>
 
 <li><p>chef-client</p>
@@ -379,13 +452,6 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><code>dpkg -l</code></li>
 </ul></li>
 
-<li><p>pip - Python package manager</p>
-
-<ul>
-<li><code>pip install ansible</code> - Install package</li>
-<li><code>pip install -r requirements.txt</code> - Install all packages listed in requirements.txt</li>
-</ul></li>
-
 <li><p><code>sudo update-alternatives --config java</code> - Set default Java version on system</p></li>
 </ul>
 
@@ -397,6 +463,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <ul>
 <li><code>git update-index --assume-unchanged FILE_NAME</code> <a href="http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes">1</a> - Ignore file for comparison (HINT: only set locally on repository)</li>
 <li><code>git update-index --no-assume-unchanged FILE_NAME</code> - Regard file again for comparison</li>
+<li><code>git commit --allow-empty -m 'Msg to do'</code> <a href="https://coderwall.com/p/vkdekq/git-commit-allow-empty">1</a> - Commit without change</li>
+<li><code>FILE=&quot;&lt;FILE_PATH&gt;&quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &quot;${FILE}&quot;) &amp;&amp; git checkout ${COMMIT_HASH}^ -- &quot;${FILE}&quot;</code> <a href="https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository">1</a> - Restore file deleted in previous commit</li>
 </ul></li>
 </ul>
 
@@ -596,6 +664,12 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <h1 id="text-processing">Text processing</h1>
 
 <ul>
+<li><p>diff - Compare text files</p>
+
+<ul>
+<li><code>diff &lt;(echo &quot;${S1}&quot;) &lt;(echo &quot;${S2}&quot;)</code> <a href="https://stackoverflow.com/questions/13437104/compare-content-of-two-variables-in-bash">1</a> - Compare two text parameters</li>
+</ul></li>
+
 <li><p>head - Show beginning of file</p>
 
 <ul>
@@ -753,6 +827,7 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 <li><code>ssh -vT git@github.com</code> <a href="http://stackoverflow.com/questions/2643502/git-permission-denied-publickey">1</a> - Testing GIT via SSH connection using verbose mode</li>
 <li><code>ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com</code> <a href="https://www.howtoforge.com/reverse-ssh-tunneling">1</a> - Tunnel Mongo port from local machine to ec2 machine using SSH</li>
 <li><code>ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N</code> - Tunnel port using a bastian host</li>
+<li><code>ssh -i ${SSH_KEY} -T ${TARGET_HOST} 'bash -s' &lt; your-bash-script.sh</code> - Run bash script on remote host (look up -T and -tt)</li>
 </ul></li>
 
 <li><p>tcpdump <a href="http://packetpushers.net/masterclass-tcpdump-interpreting-output/">1</a> - Packet analyzer</p>
@@ -805,6 +880,12 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 </ul></li>
 </ul>
 
+<h2 id="varnish">Varnish</h2>
+
+<ul>
+<li>varnishncsa</li>
+</ul>
+
 <h1 id="searching">Searching</h1>
 
 <ul>
@@ -829,6 +910,7 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
 <li><code>grep -nr 'foo*' .</code> <a href="http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder">1</a> - Search for foo* in <code>.</code> showing relative line number</li>
 <li><code>zgrep foo /home/lony/log.1.gz | less</code> - Search inside gzip log file for foo</li>
 <li><code>grep 'IPTABLES-OUTBOUND-' /var/log/kern.log | sed 's/.* DST=\(.*\)[[:space:]]LEN.* DPT=\(.*\)[[:space:]]WINDOW.*/\1_\2/' | sort | uniq -c | sort -n</code> <a href="http://stackoverflow.com/questions/6447473/linux-command-or-script-counting-duplicated-lines-in-a-text-file">1</a> - Extract log entry and count distinct occurence of IP_Port combinations by frequency</li>
+<li><code>grep 'version' package.json | sed 's/.*version&quot;: &quot;\(.*\)&quot;.*/\1/g'</code> - Get version from package.json of node projekts</li>
 </ul></li>
 </ul>
 
@@ -881,6 +963,8 @@ echo &quot;This script requires bash version &gt; 4. Currently running is ${BASH
 exit 1
 fi
 </code></pre></li>
+
+<li><p>Compare two string parameters <code>if [ &quot;$S1&quot; = &quot;$S2&quot; ]; then     echo &quot;YES&quot;; else echo &quot;FALSE&quot;; fi</code></p></li>
 </ul>
 
 <h3 id="until">until</h3>
@@ -936,6 +1020,8 @@ EOF
 SET PASSWORD FOR 'USER'@'localhost' = PASSWORD('CLEAR_TEXT_PASSWORD');
 FLUSH PRIVILEGES;
 </code></pre></li>
+
+<li><p><code>SHOW SLAVE STATUS\G</code> <a href="https://dev.mysql.com/doc/refman/5.7/en/replication-administration-status.html">1</a> - To check replication status</p></li>
 </ul>
 
 <h3 id="nosql">NoSQL</h3>
