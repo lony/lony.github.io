@@ -268,6 +268,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * git [1](https://git-scm.com/) - Distributed VCS
 
+	* `git checkout -b newBranch v1.0-oldTag` - Create git branch from tag
+	* `git tag -d tagName && git push origin :refs/tags/tagName` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
 	* `git update-index --assume-unchanged FILE_NAME` [1](http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes) - Ignore file for comparison (HINT: only set locally on repository)
 	* `git update-index --no-assume-unchanged FILE_NAME` - Regard file again for comparison
 	* `git commit --allow-empty -m 'Msg to do'` [1](https://coderwall.com/p/vkdekq/git-commit-allow-empty) - Commit without change
