@@ -2,12 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Network on [x]</title>
-    <link>https://lony.github.io/tags/network/index.xml</link>
+    <link>https://lony.github.io/tags/network/</link>
     <description>Recent content in Network on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2017</copyright>
-    <atom:link href="https://lony.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Apr 2017 20:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://lony.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Debug web apps with OSI</title>
@@ -15,194 +18,8 @@
       <pubDate>Sun, 09 Apr 2017 20:00:00 +0200</pubDate>
       
       <guid>https://lony.github.io/post/2017/debug-with-osi/</guid>
-      <description>
-
-&lt;p&gt;Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing. Using the famous OSI layers, I try to navigate through all the important parts someone should look at.&lt;/p&gt;
-
-&lt;p&gt;As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an &lt;a href=&#34;https://github.com/lony/lony.github.io/issues&#34;&gt;issue&lt;/a&gt; and help me get better. - Thank you!&lt;/p&gt;
-
-&lt;h1 id=&#34;toc&#34;&gt;TOC&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#scenario&#34;&gt;Scenario&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#osi-model&#34;&gt;OSI model&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#debug&#34;&gt;Debug&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h1 id=&#34;scenario&#34;&gt;Scenario&lt;/h1&gt;
-
-&lt;p&gt;To have a common ground for debugging I sketch a scenario which I will use for the debugging journey later on. To keep it simple we have a web application written in Go which runs behind an nginx and is accessed through Chrome. It is delivering static HTML and runs on a remote server.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://lony.github.io/img/2017/osi-debug/scenario.png&#34; alt=&#34;Scenario sketch&#34; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;osi-model&#34;&gt;OSI model&lt;/h1&gt;
-
-&lt;p&gt;Everyone learns it during her/his IT education but usually nobody looks at it after the exam. This has to do with, the way many people work, but also with the fact that the OSI model is an &lt;a href=&#34;http://networkengineering.stackexchange.com/questions/6380/osi-model-and-networking-protocols-relationship&#34;&gt;abstract, theoretical model&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href=&#34;https://en.wikipedia.org/wiki/OSI_model&#34;&gt;open systems interconnection model&lt;/a&gt; (OSI model) was designed in the 1970s to develop an open standard against the upcoming proprietary protocols by big companies. In difference to TCP/IP you had to pay for the specification and thats why TCP/IP gained ground much faster and took the lead. Thats also the reason OSI was never implemented in reality.&lt;/p&gt;
-
-&lt;p&gt;Still OSI is a really good tool to &lt;a href=&#34;https://www.youtube.com/watch?v=HEEnLZV2wGI&#34;&gt;understand and debug network connections&lt;/a&gt;. It is a container for models used at each level of the communication and as higher it gets as more abstract it is.&lt;/p&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;#&lt;/th&gt;
-&lt;th&gt;OSI layer&lt;/th&gt;
-&lt;th&gt;Protocol data unit&lt;/th&gt;
-&lt;th&gt;Examples&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;USER&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;7&lt;/td&gt;
-&lt;td&gt;Application layer&lt;/td&gt;
-&lt;td&gt;Data&lt;/td&gt;
-&lt;td&gt;Chrome, Firefox&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;Presentation layer&lt;/td&gt;
-&lt;td&gt;Data&lt;/td&gt;
-&lt;td&gt;Mac OS X, Windows drivers&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;Session layer&lt;/td&gt;
-&lt;td&gt;Data&lt;/td&gt;
-&lt;td&gt;HTTP Cookies&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;Transport layer&lt;/td&gt;
-&lt;td&gt;Segment (TCP) / Datagram (UDP)&lt;/td&gt;
-&lt;td&gt;TCP Windowing&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;Network layer&lt;/td&gt;
-&lt;td&gt;Packet&lt;/td&gt;
-&lt;td&gt;Router, IP, ICMP&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;2&lt;/td&gt;
-&lt;td&gt;Data Link layer&lt;/td&gt;
-&lt;td&gt;Frame&lt;/td&gt;
-&lt;td&gt;Switch, MAC addresses, ARP&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;Physical layer&lt;/td&gt;
-&lt;td&gt;Bit&lt;/td&gt;
-&lt;td&gt;Cable&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;OTHER SIDE&lt;/td&gt;
-&lt;td&gt; &lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;You should now understand what &lt;code&gt;layer 8 problems&lt;/code&gt; are, what shouldn&amp;rsquo;t be clear is how to find problems regarding each layer and more important debugging an application most efficiently using the model.&lt;/p&gt;
-
-&lt;h1 id=&#34;debug&#34;&gt;Debug&lt;/h1&gt;
-
-&lt;p&gt;As usually the more user facing layers of the OSI model are easier to interact with we start from top to bottom to debug along the layers. This should help us finding problems in our network system and avoid missing complexity along the way.&lt;/p&gt;
-
-&lt;h2 id=&#34;on-the-client-side&#34;&gt;On the client side&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;7. &lt;strong&gt;Application layer&lt;/strong&gt;: Something is wrong with your browser. To find the issue use Firefox, instead of your default Chrome, see if you can open our example URI e.g. &lt;code&gt;www.go-project-hello.com&lt;/code&gt;. You could also use the Chrome debug bar &lt;code&gt;More Tools &amp;gt; Developer Tool&lt;/code&gt; and look at console tab for errors, maybe something went wrong with the JavaScript application delivered.
-
-&lt;ul&gt;
-&lt;li&gt;Hint: If the developer tools network tab is not enough for you debugging AJAX of your JavaScript application there is also &lt;a href=&#34;https://www.charlesproxy.com/&#34;&gt;Charles&lt;/a&gt; an HTTP reverse proxy.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;6. &lt;strong&gt;Presentation layer&lt;/strong&gt;: This was a big problem back in the days starting a LAN-party. Having different operating systems and different network protocols some operating drivers were missing - someone remembers &lt;a href=&#34;https://en.wikipedia.org/wiki/Internetwork_Packet_Exchange&#34;&gt;IPX&lt;/a&gt;? To fix this today, check your system drivers and see if every device has a working driver set.&lt;/li&gt;
-&lt;li&gt;5. &lt;strong&gt;Session layer&lt;/strong&gt;: There is not much to do at the client. Connecting to a website, you could check if you have session cookies set. Using the Chrome debug bar &lt;code&gt;More Tools &amp;gt; Developer Tool&lt;/code&gt; and there the &lt;code&gt;Application&lt;/code&gt; tab then on the left side &lt;code&gt;Storage &amp;gt; Cookies&lt;/code&gt; and see if something is set from your application.&lt;/li&gt;
-&lt;li&gt;4. &lt;strong&gt;Transport layer&lt;/strong&gt;: The transport layer is mostly &lt;a href=&#34;https://networkengineering.stackexchange.com/questions/16996/what-layer-of-the-osi-model-deals-with-ports&#34;&gt;about ports&lt;/a&gt;. It also manages so called windowing, which determines how much data should be send in one package. The windowing is mostly left to the protocols used (mostly TCP) and if you are interested read &lt;a href=&#34;https://en.wikipedia.org/wiki/Transmission_Control_Protocol#Data_transfer&#34;&gt;this&lt;/a&gt;. This part either works or something is messed up with the protocol, therefore we can not look into it and lean only towards ports.
-
-&lt;ul&gt;
-&lt;li&gt;We use &lt;code&gt;netcat -vz go-project-hello.com 80&lt;/code&gt; to test if our application is reachable at a predefined port
-
-&lt;ul&gt;
-&lt;li&gt;Hint: The so called &lt;code&gt;well-known ports&lt;/code&gt; from 0 to 1023 are preset and widely used for specific network services. If you are interested look into the list &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers&#34;&gt;here&lt;/a&gt;. The opposite are &lt;a href=&#34;https://en.wikipedia.org/wiki/Ephemeral_port&#34;&gt;ephemeral ports&lt;/a&gt; which are short lived and automatically allocated.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;3. &lt;strong&gt;Network layer&lt;/strong&gt;: This is the area of IP or ICMP and is the layer where routers life and operate.
-
-&lt;ul&gt;
-&lt;li&gt;To debug this you could start looking up if you have an existing IP address using &lt;code&gt;ifconfig&lt;/code&gt; does your ethernet device show a IP address&lt;/li&gt;
-&lt;li&gt;If you have one, you could try if you could reach another machine using &lt;code&gt;ping www.go-project-hello.com&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;If this is not working, try the IP instead of the domain e.g. &lt;code&gt;ping 10.10.1.12&lt;/code&gt; and read this amazing &lt;a href=&#34;http://www.integralist.co.uk/posts/dnsbasics.html&#34;&gt;guide to DNS&lt;/a&gt;.
-
-&lt;ul&gt;
-&lt;li&gt;Hint 1: To get the IP from a domain use &lt;code&gt;dig&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Hint 2: For your local machine you could set &lt;code&gt;/etc/hosts&lt;/code&gt; mapping DNS names to IP addresses and avoiding the long number.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;2. &lt;strong&gt;Data Link layer&lt;/strong&gt;: This is the area of switches and used for address resolution. In this layer &lt;a href=&#34;https://en.wikipedia.org/wiki/Address_Resolution_Protocol&#34;&gt;ARP&lt;/a&gt; is used to translate your MAC address into an IP address. The &lt;a href=&#34;https://en.wikipedia.org/wiki/Media_access_control&#34;&gt;Media access control&lt;/a&gt; (MAC) address is assigned to your network device during manufacturing. Many think it is unique but using &lt;code&gt;ifconfig&lt;/code&gt; you could manipulate and change it.
-
-&lt;ul&gt;
-&lt;li&gt;For starters we again use &lt;code&gt;ifconfig&lt;/code&gt; this time to see if our ethernet device shows a MAC address&lt;/li&gt;
-&lt;li&gt;If this isn&amp;rsquo;t the case we use &lt;code&gt;tcpdump -i eth0 arp&lt;/code&gt; to debug the ARP packages and search for the cause, as no IP is assigned.
-
-&lt;ul&gt;
-&lt;li&gt;HINT: &lt;code&gt;tcpdump&lt;/code&gt; is the swiss army knife of networking. It can inspect not only layer 2 but also higher level packets and is widely used for debugging network communication problems. Its well known twin &lt;a href=&#34;https://www.wireshark.org/&#34;&gt;Wireshark&lt;/a&gt;, can also sniff traffic and look at the packages, but has a nice UI and is therefore preferable if a window system is installed.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;1. &lt;strong&gt;Physical layer&lt;/strong&gt;: Is the damn cable plugged in or does your wifi is blocked by lead walls?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;on-the-server-side&#34;&gt;On the server side&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;7. &lt;strong&gt;Application layer&lt;/strong&gt;: As at the other side there has to be something delivering content, here is where your Go application and nginx lives.
-
-&lt;ul&gt;
-&lt;li&gt;To debug this part you could check the logs using &lt;code&gt;less /var/log/nginx/error.log&lt;/code&gt; for nginx or similar your Go application. I hope your application writes logs!&lt;/li&gt;
-&lt;li&gt;You could also use &lt;code&gt;ps -aux | grep -E (go-project-hello|nginx)&lt;/code&gt; to look if there is a process for both your application and nginx running.&lt;/li&gt;
-&lt;li&gt;To see the resources (e.g. CPU, RAM) usage for your process you could use &lt;code&gt;top&lt;/code&gt;.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;6. &lt;strong&gt;Presentation layer&lt;/strong&gt;: Nothing to do, see client side.&lt;/li&gt;
-&lt;li&gt;5. &lt;strong&gt;Session layer&lt;/strong&gt;: In contrast to the client, the server has an influence on the session layer. Our Go application for example uses cookies to store session information. If we extend the live time of the cookies we may enhance the user experience and fix a timeout problem.
-
-&lt;ul&gt;
-&lt;li&gt;Hint: For old fashioned PHP have a look into &lt;code&gt;php.ini&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;4. &lt;strong&gt;Transport layer&lt;/strong&gt;: As for the client we are back to ports. This time we have to see if our application can be reached from the outside.
-
-&lt;ul&gt;
-&lt;li&gt;We use &lt;code&gt;netstat -tulpn | grep LISTE&lt;/code&gt; to see which ports are open and what applications are listening on each specific port.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;3. &lt;strong&gt;Network layer&lt;/strong&gt;, 2. &lt;strong&gt;Data Link layer&lt;/strong&gt; and 1. &lt;strong&gt;Physical layer&lt;/strong&gt; are the same as for the client and can be debugged the same way.
-
-&lt;ul&gt;
-&lt;li&gt;Hint: If you use a firewall at the client or server run &lt;code&gt;iptables -nvL&lt;/code&gt; (for Linux machines) to see its settings. Depending on the implementation of your firewall it &lt;a href=&#34;https://networkengineering.stackexchange.com/questions/17115/how-to-know-at-what-osi-layers-does-a-firewall-operate&#34;&gt;can reside on every layer up from level two&lt;/a&gt;. You could also use especially the Linux &lt;code&gt;iptables&lt;/code&gt; firewall to build your own router or switch!&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an &lt;a href=&#34;https://github.com/lony/lony.github.io/issues&#34;&gt;issue&lt;/a&gt; and help me get better!&lt;/p&gt;
-</description>
+      <description>Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing. Using the famous OSI layers, I try to navigate through all the important parts someone should look at.
+As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better.</description>
     </item>
     
   </channel>

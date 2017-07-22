@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://lony.github.io/post/2017/debug-with-osi/</loc>
@@ -29,6 +30,11 @@
   <url>
     <loc>https://lony.github.io/tags/blog/</loc>
     <lastmod>2016-06-06T18:06:30+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://lony.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
@@ -112,6 +118,7 @@
   
   <url>
     <loc>https://lony.github.io/tags/</loc>
+    <lastmod>2016-06-06T18:06:30+02:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -461,6 +461,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p>git <a href="https://git-scm.com/">1</a> - Distributed VCS</p>
 
 <ul>
+<li><code>git checkout -b newBranch v1.0-oldTag</code> - Create git branch from tag</li>
+<li><code>git tag -d tagName &amp;&amp; git push origin :refs/tags/tagName</code> <a href="https://nathanhoad.net/how-to-delete-a-remote-git-tag">1</a> - Delete tag locally and remote</li>
 <li><code>git update-index --assume-unchanged FILE_NAME</code> <a href="http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes">1</a> - Ignore file for comparison (HINT: only set locally on repository)</li>
 <li><code>git update-index --no-assume-unchanged FILE_NAME</code> - Regard file again for comparison</li>
 <li><code>git commit --allow-empty -m 'Msg to do'</code> <a href="https://coderwall.com/p/vkdekq/git-commit-allow-empty">1</a> - Commit without change</li>

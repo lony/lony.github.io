@@ -2,12 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cross Platform on [x]</title>
-    <link>https://lony.github.io/tags/cross-platform/index.xml</link>
+    <link>https://lony.github.io/tags/cross-platform/</link>
     <description>Recent content in Cross Platform on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2017</copyright>
-    <atom:link href="https://lony.github.io/tags/cross-platform/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 26 Feb 2017 14:02:52 +0200</lastBuildDate>
+    
+	<atom:link href="https://lony.github.io/tags/cross-platform/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Graphical user interface development</title>
@@ -15,53 +18,8 @@
       <pubDate>Sun, 26 Feb 2017 14:02:52 +0200</pubDate>
       
       <guid>https://lony.github.io/post/2017/gui-development-cross-platform/</guid>
-      <description>
-
-&lt;p&gt;This list was started in search for the right architecture to develop a cross-platform tool, which I needed badly for myself. As I&amp;rsquo;m working private and commercially with the tool, I need support for all three mayor operating systems &lt;code&gt;Linux, Windows and OS X&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;First of all there is always a &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_platform-independent_GUI_libraries&#34;&gt;Wikipedia list&lt;/a&gt; around. Next I then started by researching how tools I liked are developed. I looked for my favorite apps and how they are build for example the all famous Sublime Text editor, which is developed in C++ as stated &lt;a href=&#34;http://stackoverflow.com/questions/7102378/what-gui-library-is-used-by-sublime-text-editor&#34;&gt;here&lt;/a&gt;. Another big one these days it Slack and Franz which are both made with JavaScript and &lt;a href=&#34;https://electron.atom.io/apps/&#34;&gt;Electron&lt;/a&gt;. Last but not least there is the obvious choice of using Java.&lt;/p&gt;
-
-&lt;p&gt;After a bit of research I cam up with the following list:&lt;/p&gt;
-
-&lt;h1 id=&#34;c&#34;&gt;C++&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.qt.io/&#34;&gt;Qt&lt;/a&gt; [Commercial] - Best and most feature&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.gtk.org/&#34;&gt;GTK+&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.wxwidgets.org/&#34;&gt;wxwidgets&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.juce.com&#34;&gt;JUCE&lt;/a&gt; [Commercial]&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://nanapro.org&#34;&gt;nana&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;java&#34;&gt;Java&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.oracle.com/javase/8/docs/technotes/guides/awt/&#34;&gt;AWT&lt;/a&gt; - Very old but fast&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.oracle.com/javase/tutorial/uiswing/&#34;&gt;Swing&lt;/a&gt; - Based on AWT but easier
-
-&lt;ul&gt;
-&lt;li&gt;Builder
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.formdev.com/jformdesigner/&#34;&gt;JFormDesigner&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://netbeans.org/features/java/swing.html&#34;&gt;Swing GUI Builder (aka Matisse)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.eclipse.org/swt/&#34;&gt;SWT&lt;/a&gt; - Uses more native UI components, developed for eclipse&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://docs.oracle.com/javase/8/javase-clienttechnologies.htm&#34;&gt;JavaFX&lt;/a&gt; - Successor of Swing, better for visualizations and animations&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;javascript&#34;&gt;JavaScript&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://electron.atom.io/&#34;&gt;Electro&lt;/a&gt; - Successor of NW.js and used for Franz and Slack, JavaScript inside Chromium&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://nwjs.io/&#34;&gt;NW.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;Now that you read that far - thank you and please remember, if you find a bug or want to recommend something, please feel free to open an &lt;a href=&#34;https://github.com/lony/lony.github.io/issues&#34;&gt;issue&lt;/a&gt; and help me get better!&lt;/p&gt;
-</description>
+      <description>This list was started in search for the right architecture to develop a cross-platform tool, which I needed badly for myself. As I&amp;rsquo;m working private and commercially with the tool, I need support for all three mayor operating systems Linux, Windows and OS X.
+First of all there is always a Wikipedia list around. Next I then started by researching how tools I liked are developed. I looked for my favorite apps and how they are build for example the all famous Sublime Text editor, which is developed in C++ as stated here.</description>
     </item>
     
   </channel>
