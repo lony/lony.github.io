@@ -324,6 +324,7 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p>sbt</p>
 
 <ul>
+<li><code>sbt console</code> - Starts interactive console for Scala</li>
 <li><code>sbt compile test</code> - Compile an application and run tests for it</li>
 </ul></li>
 
@@ -603,6 +604,9 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><code>docker rm -f 2247780d0b39</code> - Delete instance</li>
 <li><code>docker images</code> - List images</li>
 <li><code>docker rmi ae12afb99714 a78344b99ebc</code> - Delete images</li>
+<li><code>docker inspect jenkins</code> - Show information of the docker image object</li>
+<li><code>docker rm $(docker ps -a -q)</code> <a href="https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes">1</a> - Remove all containers</li>
+<li><code>docker rmi $(docker images -a -q)</code> - Remove all images</li>
 </ul>
 
 <h2 id="vagrant">Vagrant</h2>
@@ -952,7 +956,16 @@ brew install &quot;${brew_packages[@]}&quot;
 <h3 id="for">for</h3>
 
 <ul>
-<li><code>for i in &quot;ci&quot; &quot;stage&quot; &quot;prod&quot;; do (export ENVI=$i; echo $ENVI); done</code> <a href="http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash">1</a>,<a href="https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/">2</a>,<a href="http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second">3</a></li>
+<li><p><code>for i in &quot;ci&quot; &quot;stage&quot; &quot;prod&quot;; do (export ENVI=$i; echo $ENVI); done</code> <a href="http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash">1</a>,<a href="https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/">2</a>,<a href="http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second">3</a></p></li>
+
+<li><p>for + sleep, writing message every second <a href="https://unix.stackexchange.com/questions/10646/repeat-a-unix-command-every-x-seconds-forever/10647#10647">1</a></p>
+
+<pre><code>while true
+do 
+    echo &quot;Hi&quot;
+    sleep 1
+done
+</code></pre></li>
 </ul>
 
 <h3 id="if">if</h3>
