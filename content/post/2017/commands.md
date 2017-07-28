@@ -183,6 +183,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 ### Scala
 
 * sbt
+	* `sbt console` - Starts interactive console for Scala
 	* `sbt compile test` - Compile an application and run tests for it
 
 * activator
@@ -372,6 +373,10 @@ If you find a bug or want to recommend something, please feel free to open an [i
 * `docker rm -f 2247780d0b39` - Delete instance
 * `docker images` - List images
 * `docker rmi ae12afb99714 a78344b99ebc` - Delete images
+* `docker inspect jenkins` - Show information of the docker image object
+* `docker rm $(docker ps -a -q)` [1](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes) - Remove all containers
+* `docker rmi $(docker images -a -q)` - Remove all images
+
 
 ## Vagrant
 
@@ -634,6 +639,16 @@ If you find a bug or want to recommend something, please feel free to open an [i
 ### for
 
 * `for i in "ci" "stage" "prod"; do (export ENVI=$i; echo $ENVI); done` [1](http://stackoverflow.com/questions/8880603/loop-through-array-of-strings-in-bash),[2](https://www.cyberciti.biz/faq/linux-unix-bash-for-loop-one-line-command/),[3](http://stackoverflow.com/questions/10856129/setting-an-environment-variable-before-a-command-in-bash-not-working-for-second)
+
+* for + sleep, writing message every second [1](https://unix.stackexchange.com/questions/10646/repeat-a-unix-command-every-x-seconds-forever/10647#10647)
+
+	````
+	while true
+	do 
+		echo "Hi"
+		sleep 1
+	done
+	````
 
 ### if
 
