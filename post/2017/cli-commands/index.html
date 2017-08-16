@@ -415,7 +415,11 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <li><p><code>knife search node &quot;fqdn:web*-?.* OR fqdn:app-1&quot; -i</code> <a href="https://docs.chef.io/knife_search.html">1</a> - Searches for nodes in chef-server registry</p></li>
 
-<li><p><code>knife ssh &quot;fqdn:web*-?.*&quot; &quot;lsb_release -r &amp;&amp; uname -rv&quot;</code> - Show Ubuntu release and kernel for all web servers</p></li>
+<li><p><code>knife ssh &quot;fqdn:web*-?.*&quot; &quot;lsb_release -r &amp;&amp; uname -rv&quot;</code> - Show Ubuntu release and kernel for all web servers</p>
+
+<ul>
+<li><code>knife ssh 'name:jenkins-*' 'curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -v 12.19.36'</code> <a href="http://ionrails.com/2013/04/19/downgrading-chef-client/">1</a> - Update chef version on all jenkins-* hosts</li>
+</ul></li>
 </ul></li>
 
 <li><p>kitchen</p>
@@ -437,15 +441,34 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <ul>
 <li><code>apt-get update</code> -  Update is used to re-synchronize the package index files from their sources via Internet</li>
-<li><code>apt-get upgrade</code> - Upgrade is used to install the newest versions of all packages currently installed on the system</li>
-<li><code>apt-get install --only-upgrade linux-generic</code></li>
-<li><code>apt-get autoremove --purge</code></li>
-<li><code>apt-get upgrade --dry-run</code> <a href="http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update">1</a></li>
-<li><code>apt-get dist-upgrade</code> <a href="https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software">1</a> - Update newer version of distribution</li>
-<li><code>apt-cache policy</code> <a href="http://stackoverflow.com/questions/8647454/how-to-get-a-list-of-repositories-apt-get-is-checking">1</a>, <a href="https://wiki.ubuntuusers.de/sources.list/">2</a> - Show list of repositories</li>
+
+<li><p><code>apt-get upgrade</code> - Upgrade is used to install the newest versions of all packages currently installed on the system</p>
+
+<ul>
+<li><p><code>apt-get upgrade -s | grep -i security</code> <a href="https://serverfault.com/questions/424486/how-to-get-a-list-of-security-updates-on-the-command-line-in-debian-ubuntu">1</a> - List security updates available for system</p>
+
+<ul>
+<li><code>-s</code> is the same as <code>--dry-run</code> - Just run in simulation mode</li>
+</ul></li>
 </ul></li>
 
-<li><p>aptitude <a href="http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig">1</a> - cli GUI for package management</p></li>
+<li><p><code>apt-get install --only-upgrade linux-generic</code></p></li>
+
+<li><p><code>apt-get autoremove --purge</code></p></li>
+
+<li><p><code>apt-get upgrade --dry-run</code> <a href="http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update">1</a></p></li>
+
+<li><p><code>apt-get dist-upgrade</code> <a href="https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software">1</a> - Update newer version of distribution</p></li>
+
+<li><p><code>apt-cache policy</code> <a href="http://stackoverflow.com/questions/8647454/how-to-get-a-list-of-repositories-apt-get-is-checking">1</a>, <a href="https://wiki.ubuntuusers.de/sources.list/">2</a> - Show list of repositories</p></li>
+</ul></li>
+
+<li><p>aptitude <a href="http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig">1</a>, <a href="https://wiki.ubuntuusers.de/aptitude/">2</a> - cli GUI for package management</p>
+
+<ul>
+<li><code>aptitude update</code> - Update is used to re-synchronize the package index files from their sources via Internet</li>
+<li><code>aptitude upgrade</code> - Upgrade is used to install the newest versions of all packages currently installed on the system</li>
+</ul></li>
 
 <li><p>dpkg - Debian/Ubuntu package manager (without dependencies)</p>
 
@@ -463,11 +486,21 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <ul>
 <li><code>git checkout -b newBranch v1.0-oldTag</code> - Create git branch from tag</li>
+
+<li><p><code>git tag -a 1.0 -m 'Init Release'</code> - Create git tag with annotation</p>
+
+<ul>
 <li><code>git tag -d tagName &amp;&amp; git push origin :refs/tags/tagName</code> <a href="https://nathanhoad.net/how-to-delete-a-remote-git-tag">1</a> - Delete tag locally and remote</li>
-<li><code>git update-index --assume-unchanged FILE_NAME</code> <a href="http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes">1</a> - Ignore file for comparison (HINT: only set locally on repository)</li>
-<li><code>git update-index --no-assume-unchanged FILE_NAME</code> - Regard file again for comparison</li>
-<li><code>git commit --allow-empty -m 'Msg to do'</code> <a href="https://coderwall.com/p/vkdekq/git-commit-allow-empty">1</a> - Commit without change</li>
-<li><code>FILE=&quot;&lt;FILE_PATH&gt;&quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &quot;${FILE}&quot;) &amp;&amp; git checkout ${COMMIT_HASH}^ -- &quot;${FILE}&quot;</code> <a href="https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository">1</a> - Restore file deleted in previous commit</li>
+<li><code>git tag -n9</code> <a href="https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message">1</a> - List all tags along with annotation message</li>
+</ul></li>
+
+<li><p><code>git update-index --assume-unchanged FILE_NAME</code> <a href="http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes">1</a> - Ignore file for comparison (HINT: only set locally on repository)</p></li>
+
+<li><p><code>git update-index --no-assume-unchanged FILE_NAME</code> - Regard file again for comparison</p></li>
+
+<li><p><code>git commit --allow-empty -m 'Msg to do'</code> <a href="https://coderwall.com/p/vkdekq/git-commit-allow-empty">1</a> - Commit without change</p></li>
+
+<li><p><code>FILE=&quot;&lt;FILE_PATH&gt;&quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &quot;${FILE}&quot;) &amp;&amp; git checkout ${COMMIT_HASH}^ -- &quot;${FILE}&quot;</code> <a href="https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository">1</a> - Restore file deleted in previous commit</p></li>
 </ul></li>
 </ul>
 
@@ -479,7 +512,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p>df - Display free disk space</p>
 
 <ul>
-<li><code>df -h</code></li>
+<li><code>df -h</code> - Show space used</li>
+<li><code>df -i</code> <a href="https://stackoverflow.com/questions/653096/how-to-free-inode-usage">1</a> - Show inode usage</li>
 </ul></li>
 
 <li><p>du</p>
@@ -889,7 +923,8 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 <h2 id="varnish">Varnish</h2>
 
 <ul>
-<li>varnishncsa</li>
+<li>varnishncsa - Log in apache access format</li>
+<li>varnishlog <a href="https://www.varnish-cache.org/trac/wiki/DebuggingVarnish">1</a> - Log including detailied HTTP data</li>
 </ul>
 
 <h1 id="searching">Searching</h1>
