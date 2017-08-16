@@ -183,6 +183,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 ### Scala
 
 * sbt
+
 	* `sbt console` - Starts interactive console for Scala
 	* `sbt compile test` - Compile an application and run tests for it
 
@@ -238,6 +239,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `knife search node "fqdn:web*-?.* OR fqdn:app-1" -i` [1](https://docs.chef.io/knife_search.html) - Searches for nodes in chef-server registry
 	* `knife ssh "fqdn:web*-?.*" "lsb_release -r && uname -rv"` - Show Ubuntu release and kernel for all web servers
 
+		* `knife ssh 'name:jenkins-*' 'curl -L https://www.opscode.com/chef/install.sh | sudo bash -s -- -v 12.19.36'` [1](http://ionrails.com/2013/04/19/downgrading-chef-client/) - Update chef version on all jenkins-* hosts
+
 * kitchen
 	* `kitchen create` - Create instance/container using provisioner
 	* `kitchen converge` - Runs chef on the instance/container
@@ -249,15 +252,24 @@ If you find a bug or want to recommend something, please feel free to open an [i
 ## Package management
 
 * apt [1](http://askubuntu.com/questions/705885/difference-between-dpkg-i-and-apt-get-install), [2](http://askubuntu.com/questions/309113/what-is-the-difference-between-dpkg-and-aptitude-apt-get) - Debian/Ubuntu package manager (including dependencies)
+
 	* `apt-get update` -  Update is used to re-synchronize the package index files from their sources via Internet
 	* `apt-get upgrade` - Upgrade is used to install the newest versions of all packages currently installed on the system
+
+		* `apt-get upgrade -s | grep -i security` [1](https://serverfault.com/questions/424486/how-to-get-a-list-of-security-updates-on-the-command-line-in-debian-ubuntu) - List security updates available for system
+
+			* `-s` is the same as `--dry-run` - Just run in simulation mode
+
 	* `apt-get install --only-upgrade linux-generic`
 	* `apt-get autoremove --purge`
 	* `apt-get upgrade --dry-run` [1](http://askubuntu.com/questions/99834/how-do-you-see-what-packages-are-available-for-update)
 	* `apt-get dist-upgrade` [1](https://www.cyberciti.biz/faq/how-do-i-update-ubuntu-linux-software) - Update newer version of distribution
 	* `apt-cache policy` [1](http://stackoverflow.com/questions/8647454/how-to-get-a-list-of-repositories-apt-get-is-checking), [2](https://wiki.ubuntuusers.de/sources.list/) - Show list of repositories
 
-* aptitude [1](http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig) - cli GUI for package management
+* aptitude [1](http://unix.stackexchange.com/questions/767/what-is-the-real-difference-between-apt-get-and-aptitude-how-about-wajig), [2](https://wiki.ubuntuusers.de/aptitude/) - cli GUI for package management
+
+	* `aptitude update` - Update is used to re-synchronize the package index files from their sources via Internet
+	* `aptitude upgrade` - Upgrade is used to install the newest versions of all packages currently installed on the system
 
 * dpkg - Debian/Ubuntu package manager (without dependencies)
 
@@ -270,7 +282,11 @@ If you find a bug or want to recommend something, please feel free to open an [i
 * git [1](https://git-scm.com/) - Distributed VCS
 
 	* `git checkout -b newBranch v1.0-oldTag` - Create git branch from tag
-	* `git tag -d tagName && git push origin :refs/tags/tagName` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
+	* `git tag -a 1.0 -m 'Init Release'` - Create git tag with annotation
+
+		* `git tag -d tagName && git push origin :refs/tags/tagName` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
+		* `git tag -n9` [1](https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message) - List all tags along with annotation message
+
 	* `git update-index --assume-unchanged FILE_NAME` [1](http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes) - Ignore file for comparison (HINT: only set locally on repository)
 	* `git update-index --no-assume-unchanged FILE_NAME` - Regard file again for comparison
 	* `git commit --allow-empty -m 'Msg to do'` [1](https://coderwall.com/p/vkdekq/git-commit-allow-empty) - Commit without change
@@ -282,7 +298,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * df - Display free disk space
 
-	* `df -h`
+	* `df -h` - Show space used
+	* `df -i` [1](https://stackoverflow.com/questions/653096/how-to-free-inode-usage) - Show inode usage
 
 * du
 
@@ -586,7 +603,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 ## Varnish
 
-* varnishncsa
+* varnishncsa - Log in apache access format
+* varnishlog [1](https://www.varnish-cache.org/trac/wiki/DebuggingVarnish) - Log including detailied HTTP data
 
 # Searching
 
