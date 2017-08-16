@@ -40,6 +40,7 @@ After applying this configuration changes through the terminal there are also so
 * System Preferences > Accessibility > Display and there check `Reduce Transparency`
 * System Preferences > Dock select `Scale effect` for Minimize windows using
 
+Another really important UX improvement is allowing Finder to show hidden files. To enable this feature type the following into your terminal `defaults write com.apple.finder AppleShowAllFiles YES` [1](https://ianlunn.co.uk/articles/quickly-showhide-hidden-files-mac-os-x-mavericks/)
 
 # Terminal
 
