@@ -291,6 +291,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `git update-index --no-assume-unchanged FILE_NAME` - Regard file again for comparison
 	* `git commit --allow-empty -m 'Msg to do'` [1](https://coderwall.com/p/vkdekq/git-commit-allow-empty) - Commit without change
 	* `FILE="<FILE_PATH>"; COMMIT_HASH=$(git rev-list -n 1 HEAD -- "${FILE}") && git checkout ${COMMIT_HASH}^ -- "${FILE}"` [1](https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository) - Restore file deleted in previous commit
+	* `git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME` [1](https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/) - Filter folder from repository to extract for separate repo
 
 # Processes
 
