@@ -501,6 +501,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p><code>git commit --allow-empty -m 'Msg to do'</code> <a href="https://coderwall.com/p/vkdekq/git-commit-allow-empty">1</a> - Commit without change</p></li>
 
 <li><p><code>FILE=&quot;&lt;FILE_PATH&gt;&quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &quot;${FILE}&quot;) &amp;&amp; git checkout ${COMMIT_HASH}^ -- &quot;${FILE}&quot;</code> <a href="https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository">1</a> - Restore file deleted in previous commit</p></li>
+
+<li><p><code>git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME</code> <a href="https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/">1</a> - Filter folder from repository to extract for separate repo</p></li>
 </ul></li>
 </ul>
 
