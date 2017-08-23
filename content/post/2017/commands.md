@@ -35,6 +35,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* [Varnish](#varnish)
 * [Searching](#searching)
 * [Documentation](#documentation)
+	* [Atlassian JIRA](#atlassian-JIRA)
 * [Miscellaneous](#miscellaneous)
 	* [Programming sh](#programming-sh)
 		* [array](#array)
@@ -49,6 +50,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 			* [MySQL](#mysql)
 		* [NoSQL](#nosql)
 			* [Mongo](#mongo)
+			* [ElasticSearch](#elasticsearch)
 	* [Setup](#setup)
 		* [Prompt](#prompt)
 		* [Distribution](#distribution)
@@ -222,18 +224,38 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `chef-server-ctl org-user-add -a <ORGA> <LOGIN_NAME>` - Add user into organization using chef ACL
 
 * knife
+	* knife configuration in `~/.chef/knife.rb``
+
+	```
+	log_level                :info
+	log_location             STDOUT
+	node_name                'lony'
+	client_key               '/Users/lony/.chef/lony.pem'
+	validation_client_name   'chef-validator'
+	validation_key           '/etc/chef-server/chef-validator.pem'
+	chef_server_url          'https://chef-server.lony/organizations/de'
+	syntax_check_cache_path  '/Users/lony/.chef/syntax_check_cache'
+
+	knife[:editor] = 'vim'
+	knife[:vault_mode] = 'client'
+	knife[:vault_admins] = %w(lony aorange)
+	```
+
 	* `knife node list` - Show systems
 	* `knife node from file nodes/<MASCHINE_NAME>.rb` - Loads local node configuration to Chef server
 	* `knife data bag list`
-	* `knife data bag show <DATA_BAG_FOLDer> <DATA_BAG_FILE> --format=json`
-	* `knife data bag show <DATA_BAG_FOLDer> <DATA_BAG_FILE> -z --secret-file <SYMMETRIC_SECRET_KEY> -Fjson` - Shows locally stored encrypted data bag
+	* `knife data bag show <DATA_BAG_FOLDER> <DATA_BAG_FILE> --format=json`
+	* `knife data bag show <DATA_BAG_FOLDER> <DATA_BAG_FILE> -z --secret-file <SYMMETRIC_SECRET_KEY> -Fjson` - Shows locally stored encrypted data bag
 		* `-z` - Local chef mode, uses local files
 			* HINT: Needs chef-repo structure as on the server
 		* `--secret-file` - Specifies symmetric key used to encrypted and decrypted
 		* `-Fjson` same as `--format=jso` - Output data as JSON
 
 	* `knife vault list`
-	* `knife vault show <DATA_BAG_FOLDer> <DATA_BAG_FILE>`
+	* `knife vault show <DATA_BAG_FOLDER> <DATA_BAG_FILE>`
+	* `knife vault show <DATA_BAG_FOLDER> <DATA_BAG_FILE> -p admins`
+	* `knife vault create <DATA_BAG_FOLDER> <DATA_BAG_FILE> -A lony -M client  -S "*:*"`
+	* `knife vault update <DATA_BAG_FOLDER> <DATA_BAG_FILE> -A $(for f in $(knife user list); do echo -n ",$f"; done | sed 's/,//')`
 	* `knife cookbook download -s "https://<SERVER_URL>" <COOKBOOK_NAME> 0.3.0`
 	* `knife status` [1](https://www.digitalocean.com/community/tutorials/how-to-manage-your-cluster-with-chef-and-knife-on-ubuntu) - Shows infos about node as last successfull chef-client
 	* `knife search node "fqdn:web*-?.* OR fqdn:app-1" -i` [1](https://docs.chef.io/knife_search.html) - Searches for nodes in chef-server registry
@@ -284,7 +306,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `git checkout -b newBranch v1.0-oldTag` - Create git branch from tag
 	* `git tag -a 1.0 -m 'Init Release'` - Create git tag with annotation
 
-		* `git tag -d tagName && git push origin :refs/tags/tagName` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
+		* `TAG_NAME="weg-damit"; git tag -d ${TAG_NAME} && git push origin :refs/tags/${TAG_NAME}` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
 		* `git tag -n9` [1](https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message) - List all tags along with annotation message
 
 	* `git update-index --assume-unchanged FILE_NAME` [1](http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes) - Ignore file for comparison (HINT: only set locally on repository)
@@ -292,6 +314,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `git commit --allow-empty -m 'Msg to do'` [1](https://coderwall.com/p/vkdekq/git-commit-allow-empty) - Commit without change
 	* `FILE="<FILE_PATH>"; COMMIT_HASH=$(git rev-list -n 1 HEAD -- "${FILE}") && git checkout ${COMMIT_HASH}^ -- "${FILE}"` [1](https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository) - Restore file deleted in previous commit
 	* `git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME` [1](https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/) - Filter folder from repository to extract for separate repo
+	* `BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)` [1](https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse) - Get branch currently on
 
 # Processes
 
@@ -604,7 +627,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 ## Varnish
 
-* varnishncsa - Log in apache access format
+* varnishncsa [1](https://varnish-cache.org/docs/3.0/reference/varnishncsa.html) - Log in apache access format
 * varnishlog [1](https://www.varnish-cache.org/trac/wiki/DebuggingVarnish) - Log including detailied HTTP data
 
 # Searching
@@ -630,6 +653,13 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `grep 'version' package.json | sed 's/.*version": "\(.*\)".*/\1/g'` - Get version from package.json of node projekts
 
 # Documentation
+
+## Atlassian JIRA
+
+* Filters
+
+	* `assignee in (currentUser()) OR reporter in (currentUser()) OR watcher in (currentUser()) ORDER BY status` - Show all my ticket e.g. where I'm assigne, reporter or watcher
+	* `(assignee in (currentUser()) OR reporter in (currentUser()) OR watcher in (currentUser())) AND status not in (Closed, Resolved, Done) ORDER BY status, priority` - All my open tickets
 
 # Miscellaneous
 
@@ -715,7 +745,18 @@ EOF
 
 * `read -p "Enter username to check:" USERNAME && echo $USERNAME`
 
+### error-handling
+
+* set -? [1](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html#The-Set-Builtin)
+
+	* `-e` - Failed command causes exit of script.
+	* `-u` - Treat unset parameters as error and exit.
+	* `-x` - Trace of simple commands and their arguments
+
+
 ## Databases
+
+Overview of [SQL](https://db-engines.com) and [No-SQL](http://nosql-database.org) databases.
 
 ### SQL
 
@@ -738,9 +779,9 @@ Run `mysql -u root -h localhost -p` to open the MySQL console, which lets you in
 
 #### Mongo
 
-Run `mongo` to open the mongo console, which lets you interact with the database.
+Run `mongo` to open the mongo console, which lets you interact with the database. To connect to specific host and port use `mongo --host ShouldIAutomate.It --port 27017`.
 
-* `show dbs` - Show databases
+* `show dbs` - Show databases (same as show databases)
 * `show collections` - Show collections
 * `show users` - Show users
 * `db.changeUserPassword("USERNAME", "NEWPASSWORD")` - Change user password
@@ -750,7 +791,23 @@ Run `mongo` to open the mongo console, which lets you interact with the database
 * `rs.status()` - Show cluster status (replica set)
 * `rs.conf()` - Returns current replica set configuration
 * `rs.stepDown()` - Trigger primary to become secondary and start election
+* `db.printReplicationInfo()` [1](https://docs.mongodb.com/master/reference/method/db.printReplicationInfo/) - Info about the replication timings
 
+#### ElasticSearch
+
+* [localhost:9200/_cluster/health?pretty](http://localhost:9200/_cluster/health?pretty) [1](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html) - Simple info about cluster health
+* [localhost:9200/_nodes](http://localhost:9200/_nodes) [1](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-info.html) - Info about cluster nodes
+* [localhost:9200/_plugin/head](http://localhost:9200/_plugin/head/) - Plugin for interacting with ES
+* Disable shard allocation [1](https://www.elastic.co/guide/en/elasticsearch/reference/current/rolling-upgrades.html) e.g. for a rolling update of the OS (Alternativly: Delay the allocation [2](https://www.elastic.co/guide/en/elasticsearch/reference/current/delayed-allocation.html))
+
+	```
+	PUT _cluster/settings
+	{
+	"transient": {
+		"cluster.routing.allocation.enable": "none"
+	}
+	}
+	```
 
 ## Setup
 
