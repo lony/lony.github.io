@@ -120,7 +120,11 @@
 <li><a href="#varnish">Varnish</a></li>
 </ul></li>
 <li><a href="#searching">Searching</a></li>
-<li><a href="#documentation">Documentation</a></li>
+<li><a href="#documentation">Documentation</a>
+
+<ul>
+<li><a href="#atlassian-JIRA">Atlassian JIRA</a></li>
+</ul></li>
 <li><a href="#miscellaneous">Miscellaneous</a>
 
 <ul>
@@ -147,6 +151,7 @@
 
 <ul>
 <li><a href="#mongo">Mongo</a></li>
+<li><a href="#elasticsearch">ElasticSearch</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#setup">Setup</a>
@@ -388,12 +393,30 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p>knife</p>
 
 <ul>
+<li>knife configuration in <code>~/.chef/knife.rb</code>`</li>
+</ul>
+
+<pre><code>log_level                :info
+log_location             STDOUT
+node_name                'lony'
+client_key               '/Users/lony/.chef/lony.pem'
+validation_client_name   'chef-validator'
+validation_key           '/etc/chef-server/chef-validator.pem'
+chef_server_url          'https://chef-server.lony/organizations/de'
+syntax_check_cache_path  '/Users/lony/.chef/syntax_check_cache'
+
+knife[:editor] = 'vim'
+knife[:vault_mode] = 'client'
+knife[:vault_admins] = %w(lony aorange)
+</code></pre>
+
+<ul>
 <li><code>knife node list</code> - Show systems</li>
 <li><code>knife node from file nodes/&lt;MASCHINE_NAME&gt;.rb</code> - Loads local node configuration to Chef server</li>
 <li><code>knife data bag list</code></li>
-<li><code>knife data bag show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt; --format=json</code></li>
+<li><code>knife data bag show &lt;DATA_BAG_FOLDER&gt; &lt;DATA_BAG_FILE&gt; --format=json</code></li>
 
-<li><p><code>knife data bag show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt; -z --secret-file &lt;SYMMETRIC_SECRET_KEY&gt; -Fjson</code> - Shows locally stored encrypted data bag</p>
+<li><p><code>knife data bag show &lt;DATA_BAG_FOLDER&gt; &lt;DATA_BAG_FILE&gt; -z --secret-file &lt;SYMMETRIC_SECRET_KEY&gt; -Fjson</code> - Shows locally stored encrypted data bag</p>
 
 <ul>
 <li><code>-z</code> - Local chef mode, uses local files
@@ -407,7 +430,13 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <li><p><code>knife vault list</code></p></li>
 
-<li><p><code>knife vault show &lt;DATA_BAG_FOLDer&gt; &lt;DATA_BAG_FILE&gt;</code></p></li>
+<li><p><code>knife vault show &lt;DATA_BAG_FOLDER&gt; &lt;DATA_BAG_FILE&gt;</code></p></li>
+
+<li><p><code>knife vault show &lt;DATA_BAG_FOLDER&gt; &lt;DATA_BAG_FILE&gt; -p admins</code></p></li>
+
+<li><p><code>knife vault create &lt;DATA_BAG_FOLDER&gt; &lt;DATA_BAG_FILE&gt; -A lony -M client  -S &quot;*:*&quot;</code></p></li>
+
+<li><p><code>knife vault update &lt;DATA_BAG_FOLDER&gt; &lt;DATA_BAG_FILE&gt; -A $(for f in $(knife user list); do echo -n &quot;,$f&quot;; done | sed 's/,//')</code></p></li>
 
 <li><p><code>knife cookbook download -s &quot;https://&lt;SERVER_URL&gt;&quot; &lt;COOKBOOK_NAME&gt; 0.3.0</code></p></li>
 
@@ -490,7 +519,7 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p><code>git tag -a 1.0 -m 'Init Release'</code> - Create git tag with annotation</p>
 
 <ul>
-<li><code>git tag -d tagName &amp;&amp; git push origin :refs/tags/tagName</code> <a href="https://nathanhoad.net/how-to-delete-a-remote-git-tag">1</a> - Delete tag locally and remote</li>
+<li><code>TAG_NAME=&quot;weg-damit&quot;; git tag -d ${TAG_NAME} &amp;&amp; git push origin :refs/tags/${TAG_NAME}</code> <a href="https://nathanhoad.net/how-to-delete-a-remote-git-tag">1</a> - Delete tag locally and remote</li>
 <li><code>git tag -n9</code> <a href="https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message">1</a> - List all tags along with annotation message</li>
 </ul></li>
 
@@ -503,6 +532,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><p><code>FILE=&quot;&lt;FILE_PATH&gt;&quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &quot;${FILE}&quot;) &amp;&amp; git checkout ${COMMIT_HASH}^ -- &quot;${FILE}&quot;</code> <a href="https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository">1</a> - Restore file deleted in previous commit</p></li>
 
 <li><p><code>git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME</code> <a href="https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/">1</a> - Filter folder from repository to extract for separate repo</p></li>
+
+<li><p><code>BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)</code> <a href="https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse">1</a> - Get branch currently on</p></li>
 </ul></li>
 </ul>
 
@@ -925,7 +956,7 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 <h2 id="varnish">Varnish</h2>
 
 <ul>
-<li>varnishncsa - Log in apache access format</li>
+<li>varnishncsa <a href="https://varnish-cache.org/docs/3.0/reference/varnishncsa.html">1</a> - Log in apache access format</li>
 <li>varnishlog <a href="https://www.varnish-cache.org/trac/wiki/DebuggingVarnish">1</a> - Log including detailied HTTP data</li>
 </ul>
 
@@ -958,6 +989,17 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
 </ul>
 
 <h1 id="documentation">Documentation</h1>
+
+<h2 id="atlassian-jira">Atlassian JIRA</h2>
+
+<ul>
+<li><p>Filters</p>
+
+<ul>
+<li><code>assignee in (currentUser()) OR reporter in (currentUser()) OR watcher in (currentUser()) ORDER BY status</code> - Show all my ticket e.g. where I&rsquo;m assigne, reporter or watcher</li>
+<li><code>(assignee in (currentUser()) OR reporter in (currentUser()) OR watcher in (currentUser())) AND status not in (Closed, Resolved, Done) ORDER BY status, priority</code> - All my open tickets</li>
+</ul></li>
+</ul>
 
 <h1 id="miscellaneous">Miscellaneous</h1>
 
@@ -1055,7 +1097,21 @@ EOF
 <li><code>read -p &quot;Enter username to check:&quot; USERNAME &amp;&amp; echo $USERNAME</code></li>
 </ul>
 
+<h3 id="error-handling">error-handling</h3>
+
+<ul>
+<li><p>set -? <a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html#The-Set-Builtin">1</a></p>
+
+<ul>
+<li><code>-e</code> - Failed command causes exit of script.</li>
+<li><code>-u</code> - Treat unset parameters as error and exit.</li>
+<li><code>-x</code> - Trace of simple commands and their arguments</li>
+</ul></li>
+</ul>
+
 <h2 id="databases">Databases</h2>
+
+<p>Overview of <a href="https://db-engines.com">SQL</a> and <a href="http://nosql-database.org">No-SQL</a> databases.</p>
 
 <h3 id="sql">SQL</h3>
 
@@ -1080,10 +1136,10 @@ FLUSH PRIVILEGES;
 
 <h4 id="mongo">Mongo</h4>
 
-<p>Run <code>mongo</code> to open the mongo console, which lets you interact with the database.</p>
+<p>Run <code>mongo</code> to open the mongo console, which lets you interact with the database. To connect to specific host and port use <code>mongo --host ShouldIAutomate.It --port 27017</code>.</p>
 
 <ul>
-<li><code>show dbs</code> - Show databases</li>
+<li><code>show dbs</code> - Show databases (same as show databases)</li>
 <li><code>show collections</code> - Show collections</li>
 <li><code>show users</code> - Show users</li>
 <li><code>db.changeUserPassword(&quot;USERNAME&quot;, &quot;NEWPASSWORD&quot;)</code> - Change user password</li>
@@ -1096,6 +1152,25 @@ FLUSH PRIVILEGES;
 <li><code>rs.status()</code> - Show cluster status (replica set)</li>
 <li><code>rs.conf()</code> - Returns current replica set configuration</li>
 <li><code>rs.stepDown()</code> - Trigger primary to become secondary and start election</li>
+<li><code>db.printReplicationInfo()</code> <a href="https://docs.mongodb.com/master/reference/method/db.printReplicationInfo/">1</a> - Info about the replication timings</li>
+</ul>
+
+<h4 id="elasticsearch">ElasticSearch</h4>
+
+<ul>
+<li><a href="http://localhost:9200/_cluster/health?pretty">localhost:9200/_cluster/health?pretty</a> <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-health.html">1</a> - Simple info about cluster health</li>
+<li><a href="http://localhost:9200/_nodes">localhost:9200/_nodes</a> <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster-nodes-info.html">1</a> - Info about cluster nodes</li>
+<li><a href="http://localhost:9200/_plugin/head/">localhost:9200/_plugin/head</a> - Plugin for interacting with ES</li>
+
+<li><p>Disable shard allocation <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/rolling-upgrades.html">1</a> e.g. for a rolling update of the OS (Alternativly: Delay the allocation <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/delayed-allocation.html">2</a>)</p>
+
+<pre><code>PUT _cluster/settings
+{
+&quot;transient&quot;: {
+    &quot;cluster.routing.allocation.enable&quot;: &quot;none&quot;
+}
+}
+</code></pre></li>
 </ul>
 
 <h2 id="setup">Setup</h2>
