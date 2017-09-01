@@ -158,7 +158,20 @@ If for any reason, you also need a running python installation on your Mac, this
     * Downloading the Command Line Tools from [here](https://developer.apple.com/downloads/) (requires Apple-Account). The file you need is called `Command_Line_Tools_OS_X_10.XX_for_Xcode_7.2.dmg`. *The XX depends on your OSX-Version.*
     * Then install the downloaded dmg
 
-2. Execute `brew install python`
+2. Execute `brew install python python3`
+
+If you like you can create Python 3 symbolic links on your system using `brew linkapps python3`, check it afterwards `which python3`.
+
+### OpenCV
+
+Following the guide from [pyimagesearch.com](http://www.pyimagesearch.com/2016/12/19/install-opencv-3-on-macos-with-homebrew-the-easy-way/), I install OpenCV 3 using homebrew.
+
+```
+brew tap homebrew/science
+brew install opencv3 --with--contrib --with-python3 --with-ffmpeg --with-tbb
+# If you wan to see all option use: brew info opencv3
+# Maybe also required to find the libs: brew force link --force opencv3
+```
 
 ## SDKMan
 
