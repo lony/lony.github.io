@@ -778,6 +778,7 @@ knife[:vault_admins] = %w(lony aorange)
 
 <ul>
 <li><code>dig +short myip.opendns.com @resolver1.opendns.com</code> <a href="http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-a-shell-script">1</a> - Retrieve your external IP address using DNS</li>
+<li><code>dig getgoetz.com ANY +noall +answer</code> - Show all DNS entries</li>
 </ul></li>
 
 <li><p>httpie <a href="https://httpie.org/">1</a>,<a href="https://github.com/jkbrzt/httpie">2</a> - Better curl with JSON support</p></li>
@@ -971,6 +972,7 @@ iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --
 <li><code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;*.tmp&quot; -print</code> <a href="http://unix.stackexchange.com/questions/194863/delete-files-older-than-x-days">1</a>, <a href="http://askubuntu.com/questions/413529/delete-files-older-than-one-year-on-linux">2</a>, <a href="http://stackoverflow.com/questions/5927369/recursively-look-for-files-with-a-specific-extension">3</a>
 then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;*.tmp&quot; -delete</code></li>
 <li><code>find /path/to/directory/ -mindepth 1 -maxdepth 1 -mtime +365 -type d -print -exec rm -r &quot;{}&quot; \;</code> - <a href="http://unix.stackexchange.com/questions/89925/how-to-delete-directories-based-on-find-output">1</a>, <a href="http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di">2</a> Delete directories recursivly</li>
+<li><code>find . -name '*.py' -exec grep -Hn 'STRING_INSIDE_PYHTON' {} \;</code> <a href="https://unix.stackexchange.com/questions/21033/how-can-i-grep-the-results-of-find-using-exec-and-still-output-to-a-file">1</a> - Search for python files and inside them grep for given string. The result is shown with path and line number.</li>
 </ul></li>
 
 <li><p>grep <a href="https://www.cyberciti.biz/faq/grep-regular-expressions/">1</a></p>
