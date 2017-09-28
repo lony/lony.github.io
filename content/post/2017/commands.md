@@ -499,6 +499,11 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * ipcalc [1](https://pypi.python.org/pypi/ipcalc) - IP subnet calculator
 
+* iperf3 [1](http://software.es.net/iperf/) - Tool for network speed test
+
+	* `iperf3 -s` - Starts listening server mode
+	* `iperf3 -cR IP_ADDR` - Starts a client TCP test using reverse testing
+
 * iptables [1](https://en.wikipedia.org/wiki/Iptables), [2](https://manpages.debian.org/jessie/iptables/iptables.8.en.html), [3](https://wiki.archlinux.org/index.php/iptables) - IPv4 firewall interface for Linux
 
 	* Overview of packet traversing (or [graph](http://jekor.com/gressgraph/) your own), Source: [Pencil file](/img/2017/commands/iptables.ep)
