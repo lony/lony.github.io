@@ -19,16 +19,20 @@ style = "github"
 languages = ["go", "dockerfile"]
 
 [[params.social]]
-url = "https://github.com/lony"
-fa_icon = "fa-github"
+url = "https://de.linkedin.com/in/goetzepperlein"
+fa_icon = "fa-linkedin"
 
 [[params.social]]
 url = "https://www.xing.com/profile/Goetz_Epperlein"
 fa_icon = "fa-xing"
 
 [[params.social]]
-url = "https://de.linkedin.com/in/goetzepperlein"
-fa_icon = "fa-linkedin"
+url = "https://github.com/lony"
+fa_icon = "fa-github"
+
+[[params.social]]
+url = "/post/2017/cli-commands/"
+fa_icon = "fa-terminal"
 
 [[params.social]]
 url = "/index.xml"
