@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2017</copyright>
-    <lastBuildDate>Mon, 06 Jun 2016 18:06:30 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 07 Oct 2017 15:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://lony.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ansible</title>
+      <link>https://lony.github.io/tags/ansible/</link>
+      <pubDate>Sat, 07 Oct 2017 15:00:00 +0200</pubDate>
+      
+      <guid>https://lony.github.io/tags/ansible/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Blog</title>
@@ -132,7 +141,7 @@
     <item>
       <title>Programming</title>
       <link>https://lony.github.io/tags/programming/</link>
-      <pubDate>Sun, 09 Apr 2017 20:00:00 +0200</pubDate>
+      <pubDate>Sat, 07 Oct 2017 15:00:00 +0200</pubDate>
       
       <guid>https://lony.github.io/tags/programming/</guid>
       <description></description>
@@ -141,7 +150,7 @@
     <item>
       <title>Setup</title>
       <link>https://lony.github.io/tags/setup/</link>
-      <pubDate>Sat, 01 Oct 2016 18:02:52 +0200</pubDate>
+      <pubDate>Sat, 07 Oct 2017 15:00:00 +0200</pubDate>
       
       <guid>https://lony.github.io/tags/setup/</guid>
       <description></description>

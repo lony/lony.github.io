@@ -24,9 +24,9 @@
       <div class="nav-right">
         <nav class="nav-item level is-mobile">
           
-          <a class="level-item" href="https://github.com/lony">
+          <a class="level-item" href="https://de.linkedin.com/in/goetzepperlein">
             <span class="icon">
-              <i class="fa fa-github"></i>
+              <i class="fa fa-linkedin"></i>
             </span>
           </a>
           
@@ -36,9 +36,15 @@
             </span>
           </a>
           
-          <a class="level-item" href="https://de.linkedin.com/in/goetzepperlein">
+          <a class="level-item" href="https://github.com/lony">
             <span class="icon">
-              <i class="fa fa-linkedin"></i>
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/post/2017/cli-commands/">
+            <span class="icon">
+              <i class="fa fa-terminal"></i>
             </span>
           </a>
           
@@ -111,23 +117,43 @@
 <li><a href="#virtualbox">VirtualBox</a></li>
 </ul></li>
 <li><a href="#user-environment">User environment</a></li>
-<li><a href="#text-processing">Text processing</a></li>
+<li><a href="#text-processing">Text processing</a>
+
+<ul>
+<li><a href="#vim">Vim</a></li>
+</ul></li>
 <li><a href="#shell-bulletins">Shell bulletins</a></li>
 <li><a href="#networking">Networking</a>
 
 <ul>
 <li><a href="#apache2">Apache2</a></li>
+<li><a href="#iptables">iptables</a></li>
+<li><a href="#secure-shell-command-ssh">Secure Shell command (ssh)</a>
+
+<ul>
+<li><a href="#setup-ssh">Setup SSH</a></li>
+<li><a href="#agent-support">Agent Support</a></li>
+<li><a href="#agent-forwarding">Agent Forwarding</a></li>
+<li><a href="#application">Application</a></li>
+</ul></li>
 <li><a href="#varnish">Varnish</a></li>
 </ul></li>
 <li><a href="#searching">Searching</a></li>
 <li><a href="#documentation">Documentation</a>
 
 <ul>
-<li><a href="#atlassian-JIRA">Atlassian JIRA</a></li>
+<li><a href="#atlassian-jira">Atlassian JIRA</a></li>
 </ul></li>
 <li><a href="#miscellaneous">Miscellaneous</a>
 
 <ul>
+<li><a href="#shell">Shell</a>
+
+<ul>
+<li><a href="#detect-shell">Detect shell</a></li>
+<li><a href="#shell-types-and-frameworks">Shell types and frameworks</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#shebangs">Shebangs</a></li>
 <li><a href="#programming-sh">Programming sh</a>
 
 <ul>
@@ -138,6 +164,7 @@
 <li><a href="#pasting">pasting</a></li>
 <li><a href="#pipe">pipe</a></li>
 <li><a href="#read">read</a></li>
+</ul></li>
 </ul></li>
 <li><a href="#databases">Databases</a>
 
@@ -154,11 +181,10 @@
 <li><a href="#elasticsearch">ElasticSearch</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#setup">Setup</a>
+<li><a href="#distributions">Distributions</a>
 
 <ul>
-<li><a href="#prompt">Prompt</a></li>
-<li><a href="#distribution">Distribution</a></li>
+<li><a href="#ubuntu">Ubuntu</a></li>
 </ul></li>
 </ul></li>
 <li><a href="#meta">Meta</a></li>
@@ -299,6 +325,14 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 
 <h2 id="language-environments">Language environments</h2>
 
+<ul>
+<li><a href="#python">Python</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#scala">Scala</a></li>
+</ul>
+
+<hr />
+
 <h3 id="python">Python</h3>
 
 <ul>
@@ -349,6 +383,13 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 </ul>
 
 <h2 id="configuration-management">Configuration management</h2>
+
+<ul>
+<li><a href="#ansible">Ansible</a></li>
+<li><a href="#chef">Chef</a></li>
+</ul>
+
+<hr />
 
 <h3 id="ansible">Ansible</h3>
 
@@ -508,7 +549,9 @@ knife[:vault_admins] = %w(lony aorange)
 <li><p><code>sudo update-alternatives --config java</code> - Set default Java version on system</p></li>
 </ul>
 
-<h2 id="version-control-systems-https-en-wikipedia-org-wiki-version-control-vcs"><a href="https://en.wikipedia.org/wiki/Version_control">Version control systems</a> (VCS)</h2>
+<h2 id="version-control-systems">Version control systems</h2>
+
+<p>To get a general overview see <a href="https://en.wikipedia.org/wiki/Version_control">Version control systems</a> (VCS)</p>
 
 <ul>
 <li><p>git <a href="https://git-scm.com/">1</a> - Distributed VCS</p>
@@ -761,6 +804,15 @@ knife[:vault_admins] = %w(lony aorange)
 <li><p>xargs <a href="https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/">1</a> - Sub-list generator</p></li>
 </ul>
 
+<h2 id="vim">Vim</h2>
+
+<p>The one and only <code>vim</code> aka <a href="https://en.wikipedia.org/w/index.php?oldid=801583579">Vi IMproved</a></p>
+
+<ul>
+<li>Edit shell commands in vim <a href="http://nuclearsquid.com/writings/edit-long-commands/">1</a></li>
+<li>Debug loading times <a href="http://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time">1</a>, <a href="https://puroh.it/speeding-up-vim/">2</a>, <a href="http://www.gbonfant.com/blog/speed-up-performance-of-iterm-and-vim">3</a></li>
+</ul>
+
 <h1 id="shell-bulletins">Shell bulletins</h1>
 
 <h1 id="networking">Networking</h1>
@@ -794,7 +846,101 @@ knife[:vault_admins] = %w(lony aorange)
 <li><code>iperf3 -cR IP_ADDR</code> - Starts a client TCP test using reverse testing</li>
 </ul></li>
 
-<li><p>iptables <a href="https://en.wikipedia.org/wiki/Iptables">1</a>, <a href="https://manpages.debian.org/jessie/iptables/iptables.8.en.html">2</a>, <a href="https://wiki.archlinux.org/index.php/iptables">3</a> - IPv4 firewall interface for Linux</p>
+<li><p>iftop <a href="http://www.integralist.co.uk/posts/terminal-utils.html#10">1</a> - Monitor network traffic and show bandwith usage</p></li>
+
+<li><p>iptraf <a href="http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic">1</a> - Network statistic tool</p></li>
+
+<li><p>netcat aka nc - Tool to read and write from network connections</p>
+
+<ul>
+<li><code>nc -vz external.host 6379</code> - Just test Redis port with verbose output</li>
+<li><code>netcat -vv localhost 3306</code></li>
+</ul></li>
+
+<li><p>netstat - Host based network statistic tool</p>
+
+<ul>
+<li><code>sudo netstat -tulpn | grep LISTEN</code></li>
+<li><code>sudo netstat -an | grep 8080 | grep ESTABLISHED</code></li>
+</ul></li>
+
+<li><p>ngrep <a href="https://en.wikipedia.org/wiki/Ngrep">1</a> - Similar to tcpdump</p></li>
+
+<li><p>nmap <a href="https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump">1</a> - Network mapping and port scanning tool</p></li>
+
+<li><p><code>nscd -i hosts</code> <a href="http://serverfault.com/questions/16299/how-do-i-flush-the-dns-cache-on-win-mac-linux-computers">1</a> - Flush DNS cache</p></li>
+
+<li><p>nslookup <a href="https://en.wikipedia.org/wiki/Nslookup">1</a>,<a href="http://unix.stackexchange.com/questions/93808/dig-vs-nslookup">2</a> - DNS querying tool incl. own resolver</p></li>
+
+<li><p>ntop <a href="https://en.wikipedia.org/wiki/Ntop">1</a> - Interactive network monitor</p></li>
+
+<li><p>ntpdate</p>
+
+<ul>
+<li><code>ntpdate -q de.pool.ntp.org</code> - Query NTP service without changing something</li>
+</ul></li>
+
+<li><p>route <a href="https://en.wikipedia.org/w/index.php?oldid=749414632">1</a> - View IP routing table of host (replaced with <code>iproute2</code>)</p></li>
+
+<li><p>scp - secure copy</p>
+
+<ul>
+<li><code>scp server:source/ dest/</code> - Copy from external server to local</li>
+</ul></li>
+
+<li><p>tcpdump <a href="http://packetpushers.net/masterclass-tcpdump-interpreting-output/">1</a> - Packet analyzer</p>
+
+<ul>
+<li><p><code>tcpdump -nvvvp -i any -c 100 -s 1500 -w /tmp/capture.file.pcap</code> <a href="http://bencane.com/2014/10/13/quick-and-practical-reference-for-tcpdump/">1</a> - Write first 1500 bytes of the first 100 packages to PCAP file which are coming from any device</p>
+
+<ul>
+<li><code>-n</code> - Do not translate hostnames (use ips)</li>
+<li><code>-v</code> - Verbosity (max. vvv)</li>
+<li><code>-p</code> - Don&rsquo;t put the interface into promiscuous mode</li>
+<li><code>-i</code> - Interface to use (any for all)</li>
+<li><code>-c</code> - Exit after amount of packets</li>
+<li><code>-s</code> - Truncates bytes of data for each package</li>
+<li><code>-w</code> - Store PCAP file of dump</li>
+</ul></li>
+
+<li><p><code>tcpdump -A 'port 80 and host 192.168.0.1'</code> <a href="https://danielmiessler.com/study/tcpdump/">1</a> - Print package output in ANSII format</p></li>
+
+<li><p><code>tcpdump host 10.0.3.1</code> - Capture only if source and destination ip is 10.0.3.1</p></li>
+
+<li><p><code>tcpdump src host 10.0.3.1</code> - Capture only if source ip is 10.0.3.1</p></li>
+
+<li><p><code>tcpdump dst port 80</code> - Caputre only if destination port is 80</p></li>
+
+<li><p><code>tcpdump (src net 10.0.0.144/28) and not(dst host 10.20.0.251)</code> <a href="http://serverfault.com/questions/354102/tcpdump-filter-on-network-and-subnet-mask">1</a>  - Captue only traffic which is from specific network and not going to a specific host</p>
+
+<ul>
+<li>Hint: Use lowest IP for range to avoid <code>tcpdump: non-network bits set in “10.0.0.145/28&quot;</code> error <a href="http://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump">1</a></li>
+</ul></li>
+
+<li><p><code>tcpdump 'tcp[tcpflags] &amp; tcp-syn != 0'</code> <a href="http://www.tcpdump.org/manpages/pcap-filter.7.html">1</a>, <a href="https://syedali.net/2014/12/29/tcp-flags-explained/">2</a>, <a href="https://danielmiessler.com/study/tcpflags/">3</a> - Use PCAP-filters to capture start (SYN) packets of TCP conversation</p></li>
+
+<li><p><code>tcpdump 'tcp[tcpflags] &amp; (tcp-syn) != 0 and tcp[tcpflags] &amp; (tcp-ack) == 0 or udp'</code> - Capture tcp SYN but not SYN-ACK and also udp packets</p></li>
+</ul></li>
+
+<li><p>trace aka traceroute <a href="https://en.wikipedia.org/wiki/Traceroute">1</a> - Display route for transit of packets across IP network</p></li>
+
+<li><p>vnstat <a href="https://wiki.ubuntuusers.de/vnStat/">1</a>,<a href="http://www.thegeekstuff.com/2011/11/vnstat-network-traffic-monitor/">2</a> - Network traffic monitor</p></li>
+</ul>
+
+<h2 id="apache2">Apache2</h2>
+
+<ul>
+<li>apachectl
+
+<ul>
+<li><code>apachectl -t</code> <a href="https://serverfault.com/questions/541171/apache2-require-all-granted-doesnt-work">1</a> - Test syntax of config files</li>
+<li><code>apachectl -S</code> - Show which files are beeing parsed</li>
+</ul></li>
+</ul>
+
+<h2 id="iptables">iptables</h2>
+
+<p>iptables <a href="https://en.wikipedia.org/wiki/Iptables">1</a>, <a href="https://manpages.debian.org/jessie/iptables/iptables.8.en.html">2</a>, <a href="https://wiki.archlinux.org/index.php/iptables">3</a> - IPv4 firewall interface for Linux</p>
 
 <ul>
 <li><p>Overview of packet traversing (or <a href="http://jekor.com/gressgraph/">graph</a> your own), Source: <a href="/img/2017/commands/iptables.ep">Pencil file</a>
@@ -858,107 +1004,86 @@ iptables -A OUTPUT -o eth0 -p tcp -m multiport --sports 22,80,443 -m state --sta
 iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 1 -j DNAT --to-destination 192.168.1.102:443
 iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
 </code></pre></li>
-</ul></li>
+</ul>
 
-<li><p>iftop <a href="http://www.integralist.co.uk/posts/terminal-utils.html#10">1</a> - Monitor network traffic and show bandwith usage</p></li>
-
-<li><p>iptraf <a href="http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic">1</a> - Network statistic tool</p></li>
-
-<li><p>netcat aka nc - Tool to read and write from network connections</p>
+<h2 id="secure-shell-command-ssh">Secure Shell command (ssh)</h2>
 
 <ul>
-<li><code>nc -vz external.host 6379</code> - Just test Redis port with verbose output</li>
-<li><code>netcat -vv localhost 3306</code></li>
-</ul></li>
+<li><a href="#setup-ssh">Setup SSH</a></li>
+<li><a href="#agent-support">Agent Support</a></li>
+<li><a href="#agent-forwarding">Agent Forwarding</a></li>
+<li><a href="#application">Application</a></li>
+</ul>
 
-<li><p>netstat - Host based network statistic tool</p>
+<hr />
 
-<ul>
-<li><code>sudo netstat -tulpn | grep LISTEN</code></li>
-<li><code>sudo netstat -an | grep 8080 | grep ESTABLISHED</code></li>
-</ul></li>
+<h3 id="setup-ssh">Setup SSH</h3>
 
-<li><p>ngrep <a href="https://en.wikipedia.org/wiki/Ngrep">1</a> - Similar to tcpdump</p></li>
+<h4 id="generate-keys">Generate Keys</h4>
 
-<li><p>nmap <a href="https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump">1</a> - Network mapping and port scanning tool</p></li>
+<p><code>ssh-keygen -t rsa -b 4096 -C &quot;&lt;YOUR@EMAIL.COM&gt;&quot; -N &quot;&quot; -f &lt;TARGET_FILE&gt;</code>
+This generate a key without a password <code>-N &quot;&quot;</code> and with the email as a label <a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">1</a>.</p>
 
-<li><p><code>nscd -i hosts</code> <a href="http://serverfault.com/questions/16299/how-do-i-flush-the-dns-cache-on-win-mac-linux-computers">1</a> - Flush DNS cache</p></li>
-
-<li><p>nslookup <a href="https://en.wikipedia.org/wiki/Nslookup">1</a>,<a href="http://unix.stackexchange.com/questions/93808/dig-vs-nslookup">2</a> - DNS querying tool incl. own resolver</p></li>
-
-<li><p>ntop <a href="https://en.wikipedia.org/wiki/Ntop">1</a> - Interactive network monitor</p></li>
-
-<li><p>ntpdate</p>
+<h4 id="add-target-url-machine-to-known-hosts">Add target URL/machine to known_hosts</h4>
 
 <ul>
-<li><code>ntpdate -q de.pool.ntp.org</code> - Query NTP service without changing something</li>
-</ul></li>
+<li>Remove the machine if already in known_hosts <code>ssh-keygen -R &lt;URL&gt;</code></li>
+<li>Add the new machine <code>ssh-keyscan -t rsa &lt;URL&gt; &gt;&gt; ~/.ssh/known_hosts</code></li>
+</ul>
 
-<li><p>route <a href="https://en.wikipedia.org/w/index.php?oldid=749414632">1</a> - View IP routing table of host (replaced with <code>iproute2</code>)</p></li>
+<h4 id="get-public-key-from-private-one">Get public key from private one</h4>
 
-<li><p>scp - secure copy</p>
+<p><code>ssh-keygen -y -f &lt;PRIVATE_KEY&gt;</code></p>
+
+<h4 id="get-fingerprint-from-key">Get fingerprint from key</h4>
 
 <ul>
-<li><code>scp server:source/ dest/</code> - Copy from external server to local</li>
-</ul></li>
+<li><p>For SHA print <a href="http://stackoverflow.com/questions/9607295/how-do-i-find-my-rsa-key-fingerprint">1</a>
+<code>ssh-keygen -lf ~/.ssh/id_rsa.pub</code></p></li>
 
-<li><p>ssh - Secure Shell commands (more on how to setup <a href="https://github.com/lony/dotFiles/tree/master/.ssh">here</a>)</p>
+<li><p>For MD5 print
+<code>ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub</code></p></li>
+</ul>
+
+<p><em>Hint</em> AWS keys are not fingerprinted as expected and use a different method see <a href="http://serverfault.com/questions/603982/why-does-my-openssh-key-fingerprint-not-match-the-aws-ec2-console-keypair-finger">1</a>.</p>
+
+<h4 id="test-connection">Test connection</h4>
 
 <ul>
 <li><code>ssh -vT git@github.com</code> <a href="http://stackoverflow.com/questions/2643502/git-permission-denied-publickey">1</a> - Testing GIT via SSH connection using verbose mode</li>
+<li><code>ssh -T -o 'StrictHostKeyChecking=no' -o 'ConnectionAttempts=1' -vvv ec2-user@&lt;URL&gt; -i &lt;KEY_FILE&gt;</code></li>
+</ul>
+
+<h3 id="agent-support">Agent Support</h3>
+
+<p>Keys are hard to handle, especially if they have a password. Thats were <code>ssh-agent</code> comes into play. Its a small tool which ones typed in, remembers your ssh keys password and lets you use the key without retyping the password over and over again.</p>
+
+<h4 id="list-keys">List keys</h4>
+
+<p>To list all keys which are managed by the agent type <code>ssh-add -L</code></p>
+
+<h4 id="add-key">Add key</h4>
+
+<p>To add a key to the agent use <code>ssh-add &lt;PATH_TO_KEY&gt;</code></p>
+
+<p><em>Hint:</em> On OSx you can also <a href="http://www.stormacq.com/mac-os-x-makes-handling-ssh-keys-easier/">move your key</a> to the KeyChain of Mac.</p>
+
+<h3 id="agent-forwarding">Agent Forwarding</h3>
+
+<p>If you have multiple host and want to jump from one to another without always copying you key to all the systems, which would be a security risk, you can use agent forwarding.</p>
+
+<p>The principle is explained <a href="http://unixwiz.net/techtips/ssh-agent-forwarding.html">here</a> in perfect detail, therefore only briefly explained: If you connect to another host and from there want to jump ones further, the key challenge is forwarded back to your client machine and if successfully propagated back to the target machine, instead of just using the keys available on the machine.</p>
+
+<p>As perquisites agent forwarding needs <code>ssh-agent</code> on the client, which handles the key management. In your <code>~/.ssh/config</code> you have to allow <code>ForwardAgent yes</code> as also the server has to allow it.</p>
+
+<p><em>Hint:</em> SSH agent forwarding is working nicely together with <a href="http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/">Capistrano</a> and can be setup like <a href="http://blog.blenderbox.com/2013/02/20/ssh-agent-forwarding-with-github/">1</a> and <a href="http://dchua.com/2013/08/29/properly-using-ssh-agent-forwarding-in-capistrano/">2</a>.</p>
+
+<h3 id="application">Application</h3>
+
+<ul>
 <li><code>ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com</code> <a href="https://www.howtoforge.com/reverse-ssh-tunneling">1</a> - Tunnel Mongo port from local machine to ec2 machine using SSH</li>
 <li><code>ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N</code> - Tunnel port using a bastian host</li>
 <li><code>ssh -i ${SSH_KEY} -T ${TARGET_HOST} 'bash -s' &lt; your-bash-script.sh</code> - Run bash script on remote host (look up -T and -tt)</li>
-</ul></li>
-
-<li><p>tcpdump <a href="http://packetpushers.net/masterclass-tcpdump-interpreting-output/">1</a> - Packet analyzer</p>
-
-<ul>
-<li><p><code>tcpdump -nvvvp -i any -c 100 -s 1500 -w /tmp/capture.file.pcap</code> <a href="http://bencane.com/2014/10/13/quick-and-practical-reference-for-tcpdump/">1</a> - Write first 1500 bytes of the first 100 packages to PCAP file which are coming from any device</p>
-
-<ul>
-<li><code>-n</code> - Do not translate hostnames (use ips)</li>
-<li><code>-v</code> - Verbosity (max. vvv)</li>
-<li><code>-p</code> - Don&rsquo;t put the interface into promiscuous mode</li>
-<li><code>-i</code> - Interface to use (any for all)</li>
-<li><code>-c</code> - Exit after amount of packets</li>
-<li><code>-s</code> - Truncates bytes of data for each package</li>
-<li><code>-w</code> - Store PCAP file of dump</li>
-</ul></li>
-
-<li><p><code>tcpdump -A 'port 80 and host 192.168.0.1'</code> <a href="https://danielmiessler.com/study/tcpdump/">1</a> - Print package output in ANSII format</p></li>
-
-<li><p><code>tcpdump host 10.0.3.1</code> - Capture only if source and destination ip is 10.0.3.1</p></li>
-
-<li><p><code>tcpdump src host 10.0.3.1</code> - Capture only if source ip is 10.0.3.1</p></li>
-
-<li><p><code>tcpdump dst port 80</code> - Caputre only if destination port is 80</p></li>
-
-<li><p><code>tcpdump (src net 10.0.0.144/28) and not(dst host 10.20.0.251)</code> <a href="http://serverfault.com/questions/354102/tcpdump-filter-on-network-and-subnet-mask">1</a>  - Captue only traffic which is from specific network and not going to a specific host</p>
-
-<ul>
-<li>Hint: Use lowest IP for range to avoid <code>tcpdump: non-network bits set in “10.0.0.145/28&quot;</code> error <a href="http://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump">1</a></li>
-</ul></li>
-
-<li><p><code>tcpdump 'tcp[tcpflags] &amp; tcp-syn != 0'</code> <a href="http://www.tcpdump.org/manpages/pcap-filter.7.html">1</a>, <a href="https://syedali.net/2014/12/29/tcp-flags-explained/">2</a>, <a href="https://danielmiessler.com/study/tcpflags/">3</a> - Use PCAP-filters to capture start (SYN) packets of TCP conversation</p></li>
-
-<li><p><code>tcpdump 'tcp[tcpflags] &amp; (tcp-syn) != 0 and tcp[tcpflags] &amp; (tcp-ack) == 0 or udp'</code> - Capture tcp SYN but not SYN-ACK and also udp packets</p></li>
-</ul></li>
-
-<li><p>trace aka traceroute <a href="https://en.wikipedia.org/wiki/Traceroute">1</a> - Display route for transit of packets across IP network</p></li>
-
-<li><p>vnstat <a href="https://wiki.ubuntuusers.de/vnStat/">1</a>,<a href="http://www.thegeekstuff.com/2011/11/vnstat-network-traffic-monitor/">2</a> - Network traffic monitor</p></li>
-</ul>
-
-<h2 id="apache2">Apache2</h2>
-
-<ul>
-<li>apachectl
-
-<ul>
-<li><code>apachectl -t</code> <a href="https://serverfault.com/questions/541171/apache2-require-all-granted-doesnt-work">1</a> - Test syntax of config files</li>
-<li><code>apachectl -S</code> - Show which files are beeing parsed</li>
-</ul></li>
 </ul>
 
 <h2 id="varnish">Varnish</h2>
@@ -1025,7 +1150,116 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
 </ul></li>
 </ul>
 
-<h2 id="programming-sh">Programming sh</h2>
+<h2 id="shell">Shell</h2>
+
+<ul>
+<li><a href="#detect-shell">Detect shell</a></li>
+<li><a href="#shell-types-and-frameworks">Shell types and frameworks</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#shebangs">Shebangs</a></li>
+<li><a href="#programming-sh">Programming sh</a>
+
+<ul>
+<li><a href="#array">array</a></li>
+<li><a href="#for">for</a></li>
+<li><a href="#if">if</a></li>
+<li><a href="#until">until</a></li>
+<li><a href="#pasting">pasting</a></li>
+<li><a href="#pipe">pipe</a></li>
+<li><a href="#read">read</a></li>
+</ul></li>
+</ul>
+
+<hr />
+
+<h3 id="detect-shell">Detect shell</h3>
+
+<p>Check which shell is currently used?</p>
+
+<p><code>echo $SHELL</code> <a href="http://askubuntu.com/questions/590899/how-to-check-which-shell-am-i-using">1</a>, <a href="http://stackoverflow.com/questions/9910966/how-to-tell-if-its-using-zsh-or-bash">2</a></p>
+
+<h3 id="shell-types-and-frameworks">Shell types and frameworks</h3>
+
+<ul>
+<li><p><a href="https://www.gnu.org/software/bash/">bash</a></p>
+
+<ul>
+<li><p>Prompt</p>
+
+<pre><code>ERRORLEVEL TIME USER@HOST PATH #
+2 [14:03:07] lony@hobbes /var/log/upstart # echo $PS1
+$? \[\e[01;34m\][$(date &quot;+%H:%M:%S&quot;)] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;34m\] \w # \[\e[0m\]
+</code></pre></li>
+</ul></li>
+
+<li><p><a href="http://www.zsh.org/">zsh</a></p>
+
+<ul>
+<li><p>Frameworks</p>
+
+<ol>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a></li>
+<li><a href="https://github.com/zsh-users/prezto">prezto</a></li>
+<li><a href="https://github.com/Eriner/zim">zim</a></li>
+</ol></li>
+</ul></li>
+
+<li><p><a href="/etc/shells">fish</a></p>
+
+<ul>
+<li><code>fish_config</code> - Configuration</li>
+
+<li><p>Frameworks</p>
+
+<ul>
+<li><a href="https://github.com/oh-my-fish/oh-my-fish">oh-my-fish</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="setup">Setup</h3>
+
+<ul>
+<li>To <strong>bash</strong> <code>chsh -s $(which bash)</code> or <code>chsh -s /bin/bash</code></li>
+
+<li><p>To <strong>zsh</strong> <code>chsh -s $(which zsh)</code></p>
+
+<ul>
+<li><p>zsh on OSX <a href="http://stackoverflow.com/questions/17648621/how-do-i-update-zsh-to-the-latest-version">1</a></p>
+
+<ol>
+<li>Install zsh <code>brew install --without-etcdir zsh</code></li>
+<li>Add shell path <code>sudo vim /etc/shells</code> add to end <code>/usr/local/bin/zsh</code></li>
+<li>Change default shell <code>chsh -s /usr/local/bin/zsh</code></li>
+<li>To reload shell settings use <code>exec zsh</code> <a href="http://unix.stackexchange.com/questions/217905/restart-bash-from-terminal-without-restarting-the-terminal-application-mac">1</a></li>
+</ol></li>
+</ul></li>
+
+<li><p>To <strong>fish</strong> <code>chsh -s $(which fish)</code></p>
+
+<ul>
+<li><p>fish on OSX <a href="https://hackercodex.com/guide/install-fish-shell-mac-ubuntu">1</a></p>
+
+<ol>
+<li>Install fish <code>brew install fish</code></li>
+<li>Add shell path <code>echo &quot;/usr/local/bin/fish&quot; | sudo tee -a /etc/shells</code></li>
+<li>Change default shell <code>chsh -s /usr/local/bin/fish</code></li>
+</ol></li>
+</ul></li>
+</ul>
+
+<h3 id="shebangs">Shebangs</h3>
+
+<p>For an explanation why to use <code>env</code> read <a href="https://en.wikipedia.org/wiki/Shebang_%28Unix%29#Portability">1</a></p>
+
+<ul>
+<li>For <strong>sh</strong> <code>#!/usr/bin/env sh</code></li>
+<li>For <strong>bash</strong> <code>#!/usr/bin/env bash</code></li>
+<li>For <strong>zsh</strong> <code>#!/usr/bin/env zsh</code></li>
+<li>For <strong>fish</strong> <code>#!/usr/bin/env fish</code></li>
+</ul>
+
+<h3 id="programming-sh">Programming sh</h3>
 
 <h3 id="array">array</h3>
 
@@ -1122,6 +1356,22 @@ EOF
 
 <p>Overview of <a href="https://db-engines.com">SQL</a> and <a href="http://nosql-database.org">No-SQL</a> databases.</p>
 
+<ul>
+<li><a href="#sql">SQL</a>
+
+<ul>
+<li><a href="#mysql">MySQL</a></li>
+</ul></li>
+<li><a href="#nosql">NoSQL</a>
+
+<ul>
+<li><a href="#mongo">Mongo</a></li>
+<li><a href="#elasticsearch">ElasticSearch</a></li>
+</ul></li>
+</ul>
+
+<hr />
+
 <h3 id="sql">SQL</h3>
 
 <h4 id="mysql">MySQL</h4>
@@ -1182,22 +1432,13 @@ FLUSH PRIVILEGES;
 </code></pre></li>
 </ul>
 
-<h2 id="setup">Setup</h2>
-
-<h3 id="prompt">Prompt</h3>
-
-<pre><code>ERRORLEVEL TIME USER@HOST PATH #
-2 [14:03:07] lony@hobbes /var/log/upstart # echo $PS1
-$? \[\e[01;34m\][$(date &quot;+%H:%M:%S&quot;)] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;34m\] \w # \[\e[0m\]
-</code></pre>
-
-<h3 id="distribution">Distribution</h3>
+<h2 id="distributions">Distributions</h2>
 
 <ul>
 <li><code>uname -a</code> - Show kernel version and private system information</li>
 </ul>
 
-<h4 id="ubuntu">Ubuntu</h4>
+<h3 id="ubuntu">Ubuntu</h3>
 
 <ul>
 <li><code>lsb_release -a</code> - Print version</li>
