@@ -38,7 +38,7 @@ git worktree prune
 rm -rf .git/worktrees/public/
 
 msg "Checking out ${BRANCH_DEPLOY} branch into public"
-git worktree add -B ${BRANCH_DEPLOY} public upstream/${BRANCH_DEPLOY}
+git worktree add -B ${BRANCH_DEPLOY} public origin/${BRANCH_DEPLOY}
 
 msg "Removing existing files"
 rm -rf public/*
