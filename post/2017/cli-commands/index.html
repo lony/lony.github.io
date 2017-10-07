@@ -557,6 +557,17 @@ knife[:vault_admins] = %w(lony aorange)
 <li><p>git <a href="https://git-scm.com/">1</a> - Distributed VCS</p>
 
 <ul>
+<li><p>Ignore</p>
+
+<ul>
+<li><code>git update-index --assume-unchanged FILE_NAME</code> <a href="http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes">1</a> - Ignore file for comparison (HINT: only set locally on repository)</li>
+<li><code>git update-index --no-assume-unchanged FILE_NAME</code> - Regard file again for comparison</li>
+</ul></li>
+
+<li><p>Tag and Branch</p>
+
+<ul>
+<li><code>BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)</code> <a href="https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse">1</a> - Get branch currently on</li>
 <li><code>git checkout -b newBranch v1.0-oldTag</code> - Create git branch from tag</li>
 
 <li><p><code>git tag -a 1.0 -m 'Init Release'</code> - Create git tag with annotation</p>
@@ -565,18 +576,21 @@ knife[:vault_admins] = %w(lony aorange)
 <li><code>TAG_NAME=&quot;weg-damit&quot;; git tag -d ${TAG_NAME} &amp;&amp; git push origin :refs/tags/${TAG_NAME}</code> <a href="https://nathanhoad.net/how-to-delete-a-remote-git-tag">1</a> - Delete tag locally and remote</li>
 <li><code>git tag -n9</code> <a href="https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message">1</a> - List all tags along with annotation message</li>
 </ul></li>
+</ul></li>
 
-<li><p><code>git update-index --assume-unchanged FILE_NAME</code> <a href="http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes">1</a> - Ignore file for comparison (HINT: only set locally on repository)</p></li>
+<li><p>Commit</p>
 
-<li><p><code>git update-index --no-assume-unchanged FILE_NAME</code> - Regard file again for comparison</p></li>
+<ul>
+<li><code>git commit --allow-empty -m 'Msg to do'</code> <a href="https://coderwall.com/p/vkdekq/git-commit-allow-empty">1</a> - Commit without change</li>
+<li><code>FILE=&quot;&lt;FILE_PATH&gt;&quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &quot;${FILE}&quot;) &amp;&amp; git checkout ${COMMIT_HASH}^ -- &quot;${FILE}&quot;</code> <a href="https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository">1</a> - Restore file deleted in previous commit</li>
+</ul></li>
 
-<li><p><code>git commit --allow-empty -m 'Msg to do'</code> <a href="https://coderwall.com/p/vkdekq/git-commit-allow-empty">1</a> - Commit without change</p></li>
+<li><p>Move</p>
 
-<li><p><code>FILE=&quot;&lt;FILE_PATH&gt;&quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &quot;${FILE}&quot;) &amp;&amp; git checkout ${COMMIT_HASH}^ -- &quot;${FILE}&quot;</code> <a href="https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository">1</a> - Restore file deleted in previous commit</p></li>
-
-<li><p><code>git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME</code> <a href="https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/">1</a> - Filter folder from repository to extract for separate repo</p></li>
-
-<li><p><code>BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)</code> <a href="https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse">1</a> - Get branch currently on</p></li>
+<ul>
+<li><code>git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME</code> <a href="https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/">1</a> - Filter folder from repository to extract for separate repository</li>
+<li><code>git worktree prune &amp;&amp; git worktree add -B master public origin/master</code> - Prune aka clean and checkout master branch into public folder <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script">1</a>, <a href="https://stacktoheap.com/blog/2016/01/19/using-multiple-worktrees-with-git/">2</a>, <a href="https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/">3</a>, <a href="https://git-scm.com/docs/git-worktree">4</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
