@@ -46,5 +46,5 @@ rm -rf public/*
 msg "Generating site"
 hugo
 
-msg "Updating ${BRANCH_DEPLOY} branch"
-cd public && git add --all && git commit -m "${MSG_COMMIT}"
+msg "Updating ${BRANCH_DEPLOY} branch (commit & push)"
+cd public && git add --all && git commit -m "${MSG_COMMIT}" && git push
