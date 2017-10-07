@@ -1,37 +1,50 @@
 #!/usr/bin/env bash
+#
+# Script for deploying hugo generated pages to Github
 
-# This script allows you to easily and quickly generate and deploy your website
-# using Hugo to your personal GitHub Pages repository. This script requires a
-# certain configuration, run the `setup.sh` script to configure this. See
-# https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-github-pages/
-# for more information.
+set -e
+
+#
+## Config
 
 # Set the English locale for the `date` command.
 export LC_TIME=en_US.UTF-8
+MSG_COMMIT="Site rebuild $(date)"
+BRANCH_DEPLOY="master"
+DIR_SCRIPT=$(dirname "$0")
 
-# The commit message.
-MESSAGE="Site rebuild $(date)"
+#
+## Functions
 
 msg() {
     printf "\033[1;32m :: %s\n\033[0m" "$1"
 }
+
+#
+## Tasks
+
+cd ${DIR_SCRIPT}/..
+msg "Switched to repo root $(pwd)"
 
 if [[ $(git status -s) ]]; then
     msg "The working directory is dirty, please commit or stash any pending changes"
     exit 1;
 fi
 
-msg "Removing the old website"
-pushd public
-git rm -rf *
-popd
+msg "Deleting old publication"
+rm -rf public
+mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
 
-msg "Building the website"
+msg "Checking out ${BRANCH_DEPLOY} branch into public"
+git worktree add -B ${BRANCH_DEPLOY} public upstream/${BRANCH_DEPLOY}
+
+msg "Removing existing files"
+rm -rf public/*
+
+msg "Generating site"
 hugo
 
-msg "Pushing the updated \`public\` folder to the \`master\` branch"
-pushd public
-git add *
-git commit -m "$MESSAGE"
-popd
-git push origin master
+msg "Updating ${BRANCH_DEPLOY} branch"
+cd public && git add --all && git commit -m "${MSG_COMMIT}"

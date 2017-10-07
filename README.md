@@ -12,3 +12,4 @@ Source of my static [Hugo](https://gohugo.io/) blog which is accessible [here](h
 
 * [Deploy to Github](https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/) - No longer working (2017-10)
 * [Host on GitHub](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
+* [Simple deployment to GH Pages](https://discourse.gohugo.io/t/simple-deployment-to-gh-pages/5003)
