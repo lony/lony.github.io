@@ -10,4 +10,5 @@ Source of my static [Hugo](https://gohugo.io/) blog which is accessible [here](h
 
 ## Know-How
 
-* [Deploy to Github](https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/)
+* [Deploy to Github](https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/) - No longer working (2017-10)
+* [Host on GitHub](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
