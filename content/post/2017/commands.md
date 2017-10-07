@@ -29,31 +29,42 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* [VirtualBox](#virtualbox)
 * [User environment](#user-environment)
 * [Text processing](#text-processing)
+	* [Vim](#vim)
 * [Shell bulletins](#shell-bulletins)
 * [Networking](#networking)
 	* [Apache2](#apache2)
+	* [iptables](#iptables)
+	* [Secure Shell command (ssh)](#secure-shell-command-ssh)
+		* [Setup SSH](#setup-ssh)
+		* [Agent Support](#agent-support)
+		* [Agent Forwarding](#agent-forwarding)
+		* [Application](#application)
 	* [Varnish](#varnish)
 * [Searching](#searching)
 * [Documentation](#documentation)
-	* [Atlassian JIRA](#atlassian-JIRA)
+	* [Atlassian JIRA](#atlassian-jira)
 * [Miscellaneous](#miscellaneous)
-	* [Programming sh](#programming-sh)
-		* [array](#array)
-		* [for](#for)
-		* [if](#if)
-		* [until](#until)
-		* [pasting](#pasting)
-		* [pipe](#pipe)
-		* [read](#read)
+	* [Shell](#shell)
+		* [Detect shell](#detect-shell)
+		* [Shell types and frameworks](#shell-types-and-frameworks)
+		* [Setup](#setup)
+		* [Shebangs](#shebangs)
+		* [Programming sh](#programming-sh)
+			* [array](#array)
+			* [for](#for)
+			* [if](#if)
+			* [until](#until)
+			* [pasting](#pasting)
+			* [pipe](#pipe)
+			* [read](#read)
 	* [Databases](#databases)
 		* [SQL](#sql)
 			* [MySQL](#mysql)
 		* [NoSQL](#nosql)
 			* [Mongo](#mongo)
 			* [ElasticSearch](#elasticsearch)
-	* [Setup](#setup)
-		* [Prompt](#prompt)
-		* [Distribution](#distribution)
+	* [Distributions](#distributions)
+		* [Ubuntu](#ubuntu)
 * [Meta](#meta)
 
 ----
@@ -166,6 +177,12 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 ## Language environments
 
+* [Python](#python)
+* [Ruby](#ruby)
+* [Scala](#scala)
+
+----
+
 ### Python
 
 * pip - Python package manager
@@ -199,6 +216,11 @@ If you find a bug or want to recommend something, please feel free to open an [i
 		* `test` - Run the projects tests
 		
 ## Configuration management
+
+* [Ansible](#ansible)
+* [Chef](#chef)
+
+----
 
 ### Ansible
 
@@ -299,7 +321,9 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * `sudo update-alternatives --config java` - Set default Java version on system
 
-## [Version control systems](https://en.wikipedia.org/wiki/Version_control) (VCS)
+## Version control systems
+
+To get a general overview see [Version control systems](https://en.wikipedia.org/wiki/Version_control) (VCS)
 
 * git [1](https://git-scm.com/) - Distributed VCS
 
@@ -478,6 +502,13 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * xargs [1](https://www.cyberciti.biz/faq/linux-unix-bsd-xargs-construct-argument-lists-utility/) - Sub-list generator 
 
+## Vim
+
+The one and only `vim` aka [Vi IMproved](https://en.wikipedia.org/w/index.php?oldid=801583579)
+
+* Edit shell commands in vim [1](http://nuclearsquid.com/writings/edit-long-commands/)
+* Debug loading times [1](http://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time), [2](https://puroh.it/speeding-up-vim/), [3](http://www.gbonfant.com/blog/speed-up-performance-of-iterm-and-vim)
+
 # Shell bulletins
 
 # Networking
@@ -504,61 +535,6 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `iperf3 -s` - Starts listening server mode
 	* `iperf3 -cR IP_ADDR` - Starts a client TCP test using reverse testing
 
-* iptables [1](https://en.wikipedia.org/wiki/Iptables), [2](https://manpages.debian.org/jessie/iptables/iptables.8.en.html), [3](https://wiki.archlinux.org/index.php/iptables) - IPv4 firewall interface for Linux
-
-	* Overview of packet traversing (or [graph](http://jekor.com/gressgraph/) your own), Source: [Pencil file](/img/2017/commands/iptables.ep)
-	![iptables overview](/img/2017/commands/iptables.png)	
-
-	* `iptables -nvL` [1](https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules) - Show existing rules
-
-		* `-n` - Numeric output, do not resolve host names
-		* `-v` - Verbose output
-		* `-L [CHAIN]` - List all rules in optional chain
-
-	* `iptables -F` or `iptables --flush` - Delete all existing rules
-	* `iptables -P OUTPUT DROP` - DROP all outgoing traffic
-
-		* `-P CHAIN TARGET` - Set policy for chain to given target (e.g. ACCEPT, REJECT, DROP or RETURN)
-
-	* `iptables -A OUTPUT -d 192.30.0.0/17 -j DROP` - Drop only outgoing traffic to specified subnet
-
-		* `-A OUTPUT` - Append rule to OUTPUT chain
-		* `-d DEST` - Destination e.g. address, hostname, network name
-		* `-j TARGET` - Specifies target of rule; i.e. what to do if packet matches.
-
-	* `iptables -A OUTPUT -s 192.20.0.1 -j DROP` [1](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables) - Drop outgoing traffic only to specified IP address
-
-		* `-s SRC` - Source e.g. address, hostname, network name
-
-	* `iptables -I OUTPUT -p tcp --dport 80 -m state --state NEW -j LOG -m limit --limit 5/m --limit-burst 1 --log-uid --log-prefix "IPTABLES-OUTBOUND-P80: " --log-level 4` - LOG outgoing traffic to port 80 into `/var/log/kern.log`
-
-	* `iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT` [1](https://crm.vpscheap.net/knowledgebase.php?action=displayarticle&id=29) - Prevent DoS Attack
-
-		* `-m limit` - Use limit iptables extension
-		* `–limit 25/minute` - Limit to only 25 connections per minute
-		* `–limit-burst 100` - The limit per minute will only be enforced if the total number of connections have reached this burst limit
-
-	* Allow incoming SSH connections only from specified subnet
-
-		```
-		iptables -A INPUT -i eth0 -p tcp -s 192.168.100.0/24 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
-		iptables -A OUTPUT -o eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
-		```
-	
-	* Combine rules using multiport
-
-		```
-		iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
-		iptables -A OUTPUT -o eth0 -p tcp -m multiport --sports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
-		```
-
-	* Load balance incoming traffic
-
-		```
-		iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 0 -j DNAT --to-destination 192.168.1.101:443
-		iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 1 -j DNAT --to-destination 192.168.1.102:443
-		iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
-		```
 * iftop [1](http://www.integralist.co.uk/posts/terminal-utils.html#10) - Monitor network traffic and show bandwith usage
 
 * iptraf [1](http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic) - Network statistic tool
@@ -593,13 +569,6 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 	* `scp server:source/ dest/` - Copy from external server to local
 
-* ssh - Secure Shell commands (more on how to setup [here](https://github.com/lony/dotFiles/tree/master/.ssh))
-
-	* `ssh -vT git@github.com` [1](http://stackoverflow.com/questions/2643502/git-permission-denied-publickey) - Testing GIT via SSH connection using verbose mode
-	* `ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com` [1](https://www.howtoforge.com/reverse-ssh-tunneling) - Tunnel Mongo port from local machine to ec2 machine using SSH
-	* `ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N` - Tunnel port using a bastian host
-	* `ssh -i ${SSH_KEY} -T ${TARGET_HOST} 'bash -s' < your-bash-script.sh` - Run bash script on remote host (look up -T and -tt)
-
 * tcpdump [1](http://packetpushers.net/masterclass-tcpdump-interpreting-output/) - Packet analyzer
 
 	* `tcpdump -nvvvp -i any -c 100 -s 1500 -w /tmp/capture.file.pcap` [1](http://bencane.com/2014/10/13/quick-and-practical-reference-for-tcpdump/) - Write first 1500 bytes of the first 100 packages to PCAP file which are coming from any device
@@ -630,6 +599,135 @@ If you find a bug or want to recommend something, please feel free to open an [i
 * apachectl
 	* `apachectl -t` [1](https://serverfault.com/questions/541171/apache2-require-all-granted-doesnt-work) - Test syntax of config files
 	* `apachectl -S` - Show which files are beeing parsed
+
+
+## iptables
+
+ iptables [1](https://en.wikipedia.org/wiki/Iptables), [2](https://manpages.debian.org/jessie/iptables/iptables.8.en.html), [3](https://wiki.archlinux.org/index.php/iptables) - IPv4 firewall interface for Linux
+
+* Overview of packet traversing (or [graph](http://jekor.com/gressgraph/) your own), Source: [Pencil file](/img/2017/commands/iptables.ep)
+![iptables overview](/img/2017/commands/iptables.png)	
+
+* `iptables -nvL` [1](https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules) - Show existing rules
+
+	* `-n` - Numeric output, do not resolve host names
+	* `-v` - Verbose output
+	* `-L [CHAIN]` - List all rules in optional chain
+
+* `iptables -F` or `iptables --flush` - Delete all existing rules
+* `iptables -P OUTPUT DROP` - DROP all outgoing traffic
+
+	* `-P CHAIN TARGET` - Set policy for chain to given target (e.g. ACCEPT, REJECT, DROP or RETURN)
+
+* `iptables -A OUTPUT -d 192.30.0.0/17 -j DROP` - Drop only outgoing traffic to specified subnet
+
+	* `-A OUTPUT` - Append rule to OUTPUT chain
+	* `-d DEST` - Destination e.g. address, hostname, network name
+	* `-j TARGET` - Specifies target of rule; i.e. what to do if packet matches.
+
+* `iptables -A OUTPUT -s 192.20.0.1 -j DROP` [1](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables) - Drop outgoing traffic only to specified IP address
+
+	* `-s SRC` - Source e.g. address, hostname, network name
+
+* `iptables -I OUTPUT -p tcp --dport 80 -m state --state NEW -j LOG -m limit --limit 5/m --limit-burst 1 --log-uid --log-prefix "IPTABLES-OUTBOUND-P80: " --log-level 4` - LOG outgoing traffic to port 80 into `/var/log/kern.log`
+
+* `iptables -A INPUT -p tcp --dport 80 -m limit --limit 25/minute --limit-burst 100 -j ACCEPT` [1](https://crm.vpscheap.net/knowledgebase.php?action=displayarticle&id=29) - Prevent DoS Attack
+
+	* `-m limit` - Use limit iptables extension
+	* `–limit 25/minute` - Limit to only 25 connections per minute
+	* `–limit-burst 100` - The limit per minute will only be enforced if the total number of connections have reached this burst limit
+
+* Allow incoming SSH connections only from specified subnet
+
+	```
+	iptables -A INPUT -i eth0 -p tcp -s 192.168.100.0/24 --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A OUTPUT -o eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+	```
+
+* Combine rules using multiport
+
+	```
+	iptables -A INPUT -i eth0 -p tcp -m multiport --dports 22,80,443 -m state --state NEW,ESTABLISHED -j ACCEPT
+	iptables -A OUTPUT -o eth0 -p tcp -m multiport --sports 22,80,443 -m state --state ESTABLISHED -j ACCEPT
+	```
+
+* Load balance incoming traffic
+
+	```
+	iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 0 -j DNAT --to-destination 192.168.1.101:443
+	iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 1 -j DNAT --to-destination 192.168.1.102:443
+	iptables -A PREROUTING -i eth0 -p tcp --dport 443 -m state --state NEW -m nth --counter 0 --every 3 --packet 2 -j DNAT --to-destination 192.168.1.103:443
+	```
+
+## Secure Shell command (ssh)
+
+* [Setup SSH](#setup-ssh)
+* [Agent Support](#agent-support)
+* [Agent Forwarding](#agent-forwarding)
+* [Application](#application)
+
+----
+
+### Setup SSH
+
+#### Generate Keys
+
+`ssh-keygen -t rsa -b 4096 -C "<YOUR@EMAIL.COM>" -N "" -f <TARGET_FILE>`
+This generate a key without a password `-N ""` and with the email as a label [1](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+
+#### Add target URL/machine to known_hosts
+
+- Remove the machine if already in known_hosts `ssh-keygen -R <URL>`
+- Add the new machine `ssh-keyscan -t rsa <URL> >> ~/.ssh/known_hosts`
+
+#### Get public key from private one
+
+`ssh-keygen -y -f <PRIVATE_KEY>`
+
+#### Get fingerprint from key
+
+* For SHA print [1](http://stackoverflow.com/questions/9607295/how-do-i-find-my-rsa-key-fingerprint)
+`ssh-keygen -lf ~/.ssh/id_rsa.pub`
+
+* For MD5 print
+`ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub`
+
+*Hint* AWS keys are not fingerprinted as expected and use a different method see [1](http://serverfault.com/questions/603982/why-does-my-openssh-key-fingerprint-not-match-the-aws-ec2-console-keypair-finger).
+
+#### Test connection
+
+* `ssh -vT git@github.com` [1](http://stackoverflow.com/questions/2643502/git-permission-denied-publickey) - Testing GIT via SSH connection using verbose mode
+* `ssh -T -o 'StrictHostKeyChecking=no' -o 'ConnectionAttempts=1' -vvv ec2-user@<URL> -i <KEY_FILE>`
+
+### Agent Support
+
+Keys are hard to handle, especially if they have a password. Thats were `ssh-agent` comes into play. Its a small tool which ones typed in, remembers your ssh keys password and lets you use the key without retyping the password over and over again.
+
+#### List keys
+
+To list all keys which are managed by the agent type `ssh-add -L`
+
+#### Add key
+
+To add a key to the agent use `ssh-add <PATH_TO_KEY>`
+
+_Hint:_ On OSx you can also [move your key](http://www.stormacq.com/mac-os-x-makes-handling-ssh-keys-easier/) to the KeyChain of Mac.
+
+### Agent Forwarding
+
+If you have multiple host and want to jump from one to another without always copying you key to all the systems, which would be a security risk, you can use agent forwarding.
+
+The principle is explained [here](http://unixwiz.net/techtips/ssh-agent-forwarding.html) in perfect detail, therefore only briefly explained: If you connect to another host and from there want to jump ones further, the key challenge is forwarded back to your client machine and if successfully propagated back to the target machine, instead of just using the keys available on the machine.
+
+As perquisites agent forwarding needs `ssh-agent` on the client, which handles the key management. In your `~/.ssh/config` you have to allow `ForwardAgent yes` as also the server has to allow it.
+
+_Hint:_ SSH agent forwarding is working nicely together with [Capistrano](http://capistranorb.com/documentation/getting-started/authentication-and-authorisation/) and can be setup like [1](http://blog.blenderbox.com/2013/02/20/ssh-agent-forwarding-with-github/) and [2](http://dchua.com/2013/08/29/properly-using-ssh-agent-forwarding-in-capistrano/).
+
+### Application
+
+* `ssh -L 27017:localhost:27017 ec2-FOO.eu-west-1.compute.amazonaws.com` [1](https://www.howtoforge.com/reverse-ssh-tunneling) - Tunnel Mongo port from local machine to ec2 machine using SSH
+* `ssh -i ${SSH_KEY} -L ${PORT}:${TARGET_HOST}:${PORT} ec2-user@${BASTION_HOST} -N` - Tunnel port using a bastian host
+* `ssh -i ${SSH_KEY} -T ${TARGET_HOST} 'bash -s' < your-bash-script.sh` - Run bash script on remote host (look up -T and -tt)
 
 ## Varnish
 
@@ -677,7 +775,86 @@ If you find a bug or want to recommend something, please feel free to open an [i
 		* `-d=cumulative` - Highlight differences that ever changed since start
 		* `-n <SECONDS>` - Run every X seconds (default=2s)
 
-## Programming sh
+## Shell
+
+* [Detect shell](#detect-shell)
+* [Shell types and frameworks](#shell-types-and-frameworks)
+* [Setup](#setup)
+* [Shebangs](#shebangs)
+* [Programming sh](#programming-sh)
+	* [array](#array)
+	* [for](#for)
+	* [if](#if)
+	* [until](#until)
+	* [pasting](#pasting)
+	* [pipe](#pipe)
+	* [read](#read)
+
+----
+
+### Detect shell
+
+Check which shell is currently used?
+
+`echo $SHELL` [1](http://askubuntu.com/questions/590899/how-to-check-which-shell-am-i-using), [2](http://stackoverflow.com/questions/9910966/how-to-tell-if-its-using-zsh-or-bash)
+
+### Shell types and frameworks
+
+* [bash](https://www.gnu.org/software/bash/)
+
+	* Prompt
+
+		```
+		ERRORLEVEL TIME USER@HOST PATH #
+		2 [14:03:07] lony@hobbes /var/log/upstart # echo $PS1
+		$? \[\e[01;34m\][$(date "+%H:%M:%S")] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;34m\] \w # \[\e[0m\]
+		```
+
+* [zsh](http://www.zsh.org/)
+
+    * Frameworks
+
+        1. [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+        2. [prezto](https://github.com/zsh-users/prezto)
+        3. [zim](https://github.com/Eriner/zim)
+
+* [fish](/etc/shells)
+
+    * `fish_config` - Configuration
+    * Frameworks
+
+        * [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish)
+
+### Setup
+
+* To **bash** `chsh -s $(which bash)` or `chsh -s /bin/bash`
+* To **zsh** `chsh -s $(which zsh)`
+
+	* zsh on OSX [1](http://stackoverflow.com/questions/17648621/how-do-i-update-zsh-to-the-latest-version)
+
+		1. Install zsh `brew install --without-etcdir zsh`
+		2. Add shell path `sudo vim /etc/shells` add to end `/usr/local/bin/zsh`
+		3. Change default shell `chsh -s /usr/local/bin/zsh`
+		4. To reload shell settings use `exec zsh` [1](http://unix.stackexchange.com/questions/217905/restart-bash-from-terminal-without-restarting-the-terminal-application-mac)
+
+* To **fish** `chsh -s $(which fish)`
+
+	* fish on OSX [1](https://hackercodex.com/guide/install-fish-shell-mac-ubuntu)
+
+		1. Install fish `brew install fish`
+		2. Add shell path `echo "/usr/local/bin/fish" | sudo tee -a /etc/shells`
+		3. Change default shell `chsh -s /usr/local/bin/fish`
+
+### Shebangs
+
+For an explanation why to use `env` read [1](https://en.wikipedia.org/wiki/Shebang_%28Unix%29#Portability)
+
+* For **sh** `#!/usr/bin/env sh`
+* For **bash** `#!/usr/bin/env bash`
+* For **zsh** `#!/usr/bin/env zsh`
+* For **fish** `#!/usr/bin/env fish`
+
+### Programming sh
 
 ### array
 
@@ -765,6 +942,14 @@ EOF
 
 Overview of [SQL](https://db-engines.com) and [No-SQL](http://nosql-database.org) databases.
 
+* [SQL](#sql)
+	* [MySQL](#mysql)
+* [NoSQL](#nosql)
+	* [Mongo](#mongo)
+	* [ElasticSearch](#elasticsearch)
+
+----
+
 ### SQL
 
 #### MySQL
@@ -816,21 +1001,11 @@ Run `mongo` to open the mongo console, which lets you interact with the database
 	}
 	```
 
-## Setup
-
-### Prompt
-
-```
-ERRORLEVEL TIME USER@HOST PATH #
-2 [14:03:07] lony@hobbes /var/log/upstart # echo $PS1
-$? \[\e[01;34m\][$(date "+%H:%M:%S")] \[\e[01;31m\]\u\[\e[1;34m\]@\[\e[1;31m\]\h\[\e[1;34m\] \w # \[\e[0m\]
-```
-
-### Distribution
+## Distributions
 
 * `uname -a` - Show kernel version and private system information
 
-#### Ubuntu
+### Ubuntu
 
 * `lsb_release -a` - Print version 
 
