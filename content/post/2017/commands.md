@@ -327,18 +327,30 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 * git [1](https://git-scm.com/) - Distributed VCS
 
-	* `git checkout -b newBranch v1.0-oldTag` - Create git branch from tag
-	* `git tag -a 1.0 -m 'Init Release'` - Create git tag with annotation
+	* Ignore
 
-		* `TAG_NAME="weg-damit"; git tag -d ${TAG_NAME} && git push origin :refs/tags/${TAG_NAME}` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
-		* `git tag -n9` [1](https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message) - List all tags along with annotation message
+		* `git update-index --assume-unchanged FILE_NAME` [1](http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes) - Ignore file for comparison (HINT: only set locally on repository)
+		* `git update-index --no-assume-unchanged FILE_NAME` - Regard file again for comparison
 
-	* `git update-index --assume-unchanged FILE_NAME` [1](http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes) - Ignore file for comparison (HINT: only set locally on repository)
-	* `git update-index --no-assume-unchanged FILE_NAME` - Regard file again for comparison
-	* `git commit --allow-empty -m 'Msg to do'` [1](https://coderwall.com/p/vkdekq/git-commit-allow-empty) - Commit without change
-	* `FILE="<FILE_PATH>"; COMMIT_HASH=$(git rev-list -n 1 HEAD -- "${FILE}") && git checkout ${COMMIT_HASH}^ -- "${FILE}"` [1](https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository) - Restore file deleted in previous commit
-	* `git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME` [1](https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/) - Filter folder from repository to extract for separate repo
-	* `BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)` [1](https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse) - Get branch currently on
+	* Tag and Branch
+
+		* `BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)` [1](https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse) - Get branch currently on
+		* `git checkout -b newBranch v1.0-oldTag` - Create git branch from tag
+		* `git tag -a 1.0 -m 'Init Release'` - Create git tag with annotation
+
+			* `TAG_NAME="weg-damit"; git tag -d ${TAG_NAME} && git push origin :refs/tags/${TAG_NAME}` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
+			* `git tag -n9` [1](https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message) - List all tags along with annotation message
+
+	* Commit
+
+		* `git commit --allow-empty -m 'Msg to do'` [1](https://coderwall.com/p/vkdekq/git-commit-allow-empty) - Commit without change
+		* `FILE="<FILE_PATH>"; COMMIT_HASH=$(git rev-list -n 1 HEAD -- "${FILE}") && git checkout ${COMMIT_HASH}^ -- "${FILE}"` [1](https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository) - Restore file deleted in previous commit
+
+	* Move
+
+		* `git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME` [1](https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/) - Filter folder from repository to extract for separate repository
+		* `git worktree prune && git worktree add -B master public origin/master` - Prune aka clean and checkout master branch into public folder [1](https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script), [2](https://stacktoheap.com/blog/2016/01/19/using-multiple-worktrees-with-git/), [3](https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/), [4](https://git-scm.com/docs/git-worktree)
+
 
 # Processes
 
