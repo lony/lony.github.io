@@ -516,10 +516,16 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 ## Vim
 
-The one and only `vim` aka [Vi IMproved](https://en.wikipedia.org/w/index.php?oldid=801583579)
+The one and only `vim` aka [Vi IMproved](https://en.wikipedia.org/w/index.php?oldid=801583579).
 
 * Edit shell commands in vim [1](http://nuclearsquid.com/writings/edit-long-commands/)
 * Debug loading times [1](http://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time), [2](https://puroh.it/speeding-up-vim/), [3](http://www.gbonfant.com/blog/speed-up-performance-of-iterm-and-vim)
+
+* Plugins
+	* Search for
+		* [vimawesome.com](https://vimawesome.com/)
+	* Manage them
+		* [vim-plug](https://github.com/junegunn/vim-plug)
 
 # Shell bulletins
 
