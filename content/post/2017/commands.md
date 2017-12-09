@@ -327,28 +327,67 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 * git [1](https://git-scm.com/) - Distributed VCS
 
+	* Status & Log
+
+		* `git status` - Show extensive information about a branch
+		* `git status -s` - Show short information
+		* `git diff` - Show changed differences
+		* `git diff --cached` - Show changed differences which are already cached
+		* `git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit` - Show nicely formated log (adding `-p` makes it more extensive)
+
 	* Ignore
 
 		* `git update-index --assume-unchanged FILE_NAME` [1](http://stackoverflow.com/questions/9794931/keep-file-in-a-git-repo-but-dont-track-changes) - Ignore file for comparison (HINT: only set locally on repository)
 		* `git update-index --no-assume-unchanged FILE_NAME` - Regard file again for comparison
 
-	* Tag and Branch
+	* Remote
+
+		* `git remote -v` - Show remotes
+		* `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git` [1](https://help.github.com/articles/changing-a-remote-s-url/) - Change remote
+
+	* Branch
 
 		* `BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)` [1](https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse) - Get branch currently on
-		* `git checkout -b newBranch v1.0-oldTag` - Create git branch from tag
-		* `git tag -a 1.0 -m 'Init Release'` - Create git tag with annotation
+		* `git checkout -b newBranch v1.0-oldTag` - Create git branch from tag or commit-hash
+		* `git push -d <remote_name> <branch_name> && git branch -d <branch_name>` [1](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely) - Delete branch local and remote
 
-			* `TAG_NAME="weg-damit"; git tag -d ${TAG_NAME} && git push origin :refs/tags/${TAG_NAME}` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
-			* `git tag -n9` [1](https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message) - List all tags along with annotation message
+	* Tag
+
+		* `git tag -n9` [1](https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message) - List all tags along with annotation message
+		* `git tag -a 1.0 -m 'Init Release'` - Create git tag with annotation
+		* `git push --delete origin TAGNAME && git tag --delete TAGNAME` [1](https://stackoverflow.com/questions/5480258/how-to-delete-a-git-remote-tag) - Delete local and remote tag
+		* `TAG_NAME="weg-damit"; git tag -d ${TAG_NAME} && git push origin :refs/tags/${TAG_NAME}` [1](https://nathanhoad.net/how-to-delete-a-remote-git-tag) - Delete tag locally and remote
 
 	* Commit
 
+		* `git add .` - Stage all modifications for commit
 		* `git commit --allow-empty -m 'Msg to do'` [1](https://coderwall.com/p/vkdekq/git-commit-allow-empty) - Commit without change
 		* `FILE="<FILE_PATH>"; COMMIT_HASH=$(git rev-list -n 1 HEAD -- "${FILE}") && git checkout ${COMMIT_HASH}^ -- "${FILE}"` [1](https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository) - Restore file deleted in previous commit
+		* `git commit --amend` [1](https://www.atlassian.com/git/tutorials/rewriting-history) - Change last commit message
+
+	* Pull, Fetch & Push
+
+		* `git pull` [1](https://git-scm.com/docs/git-pull) - Fetch from remote repository
+		* `git fetch --prune --tags` [1](https://git-scm.com/docs/git-fetch) - Fetch remote tags, delete left over local ones
+		* `git fetch origin && branch_name=$(git symbolic-ref -q HEAD) && branch_name=${branch_name##refs/heads/} && branch_name=${branch_name:-HEAD} && git reset --hard origin/$branch_name && git checkout -- . && git clean -df` - Fetch the hole repository fresh (CAUTION!) 
+		* `git for-each-ref --format '"'"'%(refname:short)'"'"' refs/heads | grep -v '"'"'\*\|master\|develop'"'"' | xargs git branch -D` - Fetch the branch fresh (CAUTION!)
+		* `git push` [1](https://git-scm.com/docs/git-push) - Push local changes to remote repository
+		* `git push origin --tags` - Push local tags to remote repository
+
+	* Merge & Rebase & Cherry-pick
+
+		* `git merge master feature` [1](https://www.atlassian.com/git/tutorials/merging-vs-rebasing) - Merges MASTER branch into FEATURE one
+		* `git rebase master` [1](https://www.atlassian.com/git/tutorials/merging-vs-rebasing) - Moves the current branch's "starting commit" to current master head (allowing fast forward merge)
+		* `git cherry-pick COMMIT_HASH` [1](https://stackoverflow.com/questions/9339429/what-does-cherry-picking-a-commit-with-git-mean), [2](https://git-scm.com/docs/git-cherry-pick) - "Copy" commit from another branch to the current branch
+		
+	* Revert
+
+		* `git revert --no-commit 0766c053..HEAD && git commit` [1](https://stackoverflow.com/questions/4114095/how-to-revert-git-repository-to-a-previous-commit) - Reverts range of commits and makes commit with all reverting changes (like a patch)
+		* `git reset --hard COMMIT_HASH && git push origin master --force` [1](https://stackoverflow.com/questions/12305668/how-to-delete-commit-that-is-pushed-to-the-remote-repository), [2](https://git-scm.com/blog), [3](https://stackoverflow.com/questions/2530060/can-you-explain-what-git-reset-does-in-plain-english), [4](https://git-scm.com/docs/git-reset) - Delete local history till certain commit and then overwrites remote history too [THIS IS DANGEROUS!!]
 
 	* Move
 
-		* `git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME` [1](https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/) - Filter folder from repository to extract for separate repository
+		* `git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME BRANCH-NAME` [1](https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/) - Filter folder from repository to extract for separate repository
 		* `git worktree prune && git worktree add -B master public origin/master` - Prune aka clean and checkout master branch into public folder [1](https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script), [2](https://stacktoheap.com/blog/2016/01/19/using-multiple-worktrees-with-git/), [3](https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/), [4](https://git-scm.com/docs/git-worktree)
 
 
@@ -553,7 +592,7 @@ The one and only `vim` aka [Vi IMproved](https://en.wikipedia.org/w/index.php?ol
 	* `iperf3 -s` - Starts listening server mode
 	* `iperf3 -cR IP_ADDR` - Starts a client TCP test using reverse testing
 
-* iftop [1](http://www.integralist.co.uk/posts/terminal-utils.html#10) - Monitor network traffic and show bandwith usage
+* iftop [1](http://www.integralist.co.uk/posts/terminal-debugging-utilities/#10) - Monitor network traffic and show bandwith usage
 
 * iptraf [1](http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic) - Network statistic tool
 
