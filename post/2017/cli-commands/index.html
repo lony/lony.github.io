@@ -557,6 +557,16 @@ knife[:vault_admins] = %w(lony aorange)
 <li><p>git <a href="https://git-scm.com/">1</a> - Distributed VCS</p>
 
 <ul>
+<li><p>Status &amp; Log</p>
+
+<ul>
+<li><code>git status</code> - Show extensive information about a branch</li>
+<li><code>git status -s</code> - Show short information</li>
+<li><code>git diff</code> - Show changed differences</li>
+<li><code>git diff --cached</code> - Show changed differences which are already cached</li>
+<li><code>git log --graph --pretty=format:&quot;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&quot; --abbrev-commit</code> - Show nicely formated log (adding <code>-p</code> makes it more extensive)</li>
+</ul></li>
+
 <li><p>Ignore</p>
 
 <ul>
@@ -564,31 +574,83 @@ knife[:vault_admins] = %w(lony aorange)
 <li><code>git update-index --no-assume-unchanged FILE_NAME</code> - Regard file again for comparison</li>
 </ul></li>
 
-<li><p>Tag and Branch</p>
+<li><p>Remote</p>
+
+<ul>
+<li><code>git remote -v</code> - Show remotes</li>
+<li><code>git remote set-url origin git@github.com:USERNAME/REPOSITORY.git</code> <a href="https://help.github.com/articles/changing-a-remote-s-url/">1</a> - Change remote</li>
+</ul></li>
+
+<li><p>Branch</p>
 
 <ul>
 <li><code>BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)</code> <a href="https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse">1</a> - Get branch currently on</li>
-<li><code>git checkout -b newBranch v1.0-oldTag</code> - Create git branch from tag</li>
+<li><code>git checkout -b newBranch v1.0-oldTag</code> - Create git branch from tag or commit-hash</li>
+<li><code>git push -d &lt;remote_name&gt; &lt;branch_name&gt; &amp;&amp; git branch -d &lt;branch_name&gt;</code> <a href="https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely">1</a> - Delete branch local and remote</li>
+</ul></li>
 
-<li><p><code>git tag -a 1.0 -m 'Init Release'</code> - Create git tag with annotation</p>
+<li><p>Tag</p>
 
 <ul>
-<li><code>TAG_NAME=&quot;weg-damit&quot;; git tag -d ${TAG_NAME} &amp;&amp; git push origin :refs/tags/${TAG_NAME}</code> <a href="https://nathanhoad.net/how-to-delete-a-remote-git-tag">1</a> - Delete tag locally and remote</li>
 <li><code>git tag -n9</code> <a href="https://stackoverflow.com/questions/5358336/have-git-list-all-tags-along-with-the-full-message">1</a> - List all tags along with annotation message</li>
-</ul></li>
+<li><code>git tag -a 1.0 -m 'Init Release'</code> - Create git tag with annotation</li>
+<li><code>git push --delete origin TAGNAME &amp;&amp; git tag --delete TAGNAME</code> <a href="https://stackoverflow.com/questions/5480258/how-to-delete-a-git-remote-tag">1</a> - Delete local and remote tag</li>
+<li><code>TAG_NAME=&quot;weg-damit&quot;; git tag -d ${TAG_NAME} &amp;&amp; git push origin :refs/tags/${TAG_NAME}</code> <a href="https://nathanhoad.net/how-to-delete-a-remote-git-tag">1</a> - Delete tag locally and remote</li>
 </ul></li>
 
 <li><p>Commit</p>
 
 <ul>
+<li><code>git add .</code> - Stage all modifications for commit</li>
 <li><code>git commit --allow-empty -m 'Msg to do'</code> <a href="https://coderwall.com/p/vkdekq/git-commit-allow-empty">1</a> - Commit without change</li>
 <li><code>FILE=&quot;&lt;FILE_PATH&gt;&quot;; COMMIT_HASH=$(git rev-list -n 1 HEAD -- &quot;${FILE}&quot;) &amp;&amp; git checkout ${COMMIT_HASH}^ -- &quot;${FILE}&quot;</code> <a href="https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository">1</a> - Restore file deleted in previous commit</li>
+<li><code>git commit --amend</code> <a href="https://www.atlassian.com/git/tutorials/rewriting-history">1</a> - Change last commit message</li>
+</ul></li>
+
+<li><p>Pull, Fetch &amp; Push</p>
+
+<ul>
+<li><code>git pull</code> <a href="https://git-scm.com/docs/git-pull">1</a> - Fetch from remote repository</li>
+<li><code>git fetch --prune --tags</code> <a href="https://git-scm.com/docs/git-fetch">1</a> - Fetch remote tags, delete left over local ones</li>
+<li><code>git fetch origin &amp;&amp; branch_name=$(git symbolic-ref -q HEAD) &amp;&amp; branch_name=${branch_name##refs/heads/} &amp;&amp; branch_name=${branch_name:-HEAD} &amp;&amp; git reset --hard origin/$branch_name &amp;&amp; git checkout -- . &amp;&amp; git clean -df</code> - Fetch the hole repository fresh (CAUTION!)</li>
+<li><code>git for-each-ref --format '&quot;'&quot;'%(refname:short)'&quot;'&quot;' refs/heads | grep -v '&quot;'&quot;'\*\|master\|develop'&quot;'&quot;' | xargs git branch -D</code> - Fetch the branch fresh (CAUTION!)</li>
+<li><code>git push</code> <a href="https://git-scm.com/docs/git-push">1</a> - Push local changes to remote repository</li>
+<li><code>git push origin --tags</code> - Push local tags to remote repository</li>
+</ul></li>
+
+<li><p>Merge &amp; Rebase &amp; Cherry-pick</p>
+
+<ul>
+<li><code>git merge master feature</code> <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">1</a> - Merges MASTER branch into FEATURE one</li>
+<li><code>git rebase master</code> <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">1</a> - Moves the current branch&rsquo;s &ldquo;starting commit&rdquo; to current master head (allowing fast forward merge)</li>
+<li><code>git cherry-pick COMMIT_HASH</code> <a href="https://stackoverflow.com/questions/9339429/what-does-cherry-picking-a-commit-with-git-mean">1</a>, <a href="https://git-scm.com/docs/git-cherry-pick">2</a> - &ldquo;Copy&rdquo; commit from another branch to the current branch
+<br /></li>
+</ul></li>
+
+<li><p>Stash</p>
+
+<ul>
+<li><p><code>git stash</code> <a href="https://git-scm.com/docs/git-stash">1</a> - Stores changes done in branch away for later use</p>
+
+<ul>
+<li><code>-k</code> - Ignores files already added to staging environment (aka <code>--keep-index</code>)</li>
+<li><code>-u</code> - Includes un-tracked files (aka <code>--include-untracked</code>)</li>
+</ul></li>
+
+<li><p><code>git stash pop</code> - Restores, last stashed changes back to branch</p></li>
+</ul></li>
+
+<li><p>Revert</p>
+
+<ul>
+<li><code>git revert --no-commit 0766c053..HEAD &amp;&amp; git commit</code> <a href="https://stackoverflow.com/questions/4114095/how-to-revert-git-repository-to-a-previous-commit">1</a> - Reverts range of commits and makes commit with all reverting changes (like a patch)</li>
+<li><code>git reset --hard COMMIT_HASH &amp;&amp; git push origin master --force</code> <a href="https://stackoverflow.com/questions/12305668/how-to-delete-commit-that-is-pushed-to-the-remote-repository">1</a>, <a href="https://git-scm.com/blog">2</a>, <a href="https://stackoverflow.com/questions/2530060/can-you-explain-what-git-reset-does-in-plain-english">3</a>, <a href="https://git-scm.com/docs/git-reset">4</a> - Delete local history till certain commit and then overwrites remote history too [THIS IS DANGEROUS!!]</li>
 </ul></li>
 
 <li><p>Move</p>
 
 <ul>
-<li><code>git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME  BRANCH-NAME</code> <a href="https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/">1</a> - Filter folder from repository to extract for separate repository</li>
+<li><code>git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME BRANCH-NAME</code> <a href="https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/">1</a> - Filter folder from repository to extract for separate repository</li>
 <li><code>git worktree prune &amp;&amp; git worktree add -B master public origin/master</code> - Prune aka clean and checkout master branch into public folder <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script">1</a>, <a href="https://stacktoheap.com/blog/2016/01/19/using-multiple-worktrees-with-git/">2</a>, <a href="https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/">3</a>, <a href="https://git-scm.com/docs/git-worktree">4</a></li>
 </ul></li>
 </ul></li>
@@ -820,11 +882,27 @@ knife[:vault_admins] = %w(lony aorange)
 
 <h2 id="vim">Vim</h2>
 
-<p>The one and only <code>vim</code> aka <a href="https://en.wikipedia.org/w/index.php?oldid=801583579">Vi IMproved</a></p>
+<p>The one and only <code>vim</code> aka <a href="https://en.wikipedia.org/w/index.php?oldid=801583579">Vi IMproved</a>.</p>
 
 <ul>
 <li>Edit shell commands in vim <a href="http://nuclearsquid.com/writings/edit-long-commands/">1</a></li>
-<li>Debug loading times <a href="http://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time">1</a>, <a href="https://puroh.it/speeding-up-vim/">2</a>, <a href="http://www.gbonfant.com/blog/speed-up-performance-of-iterm-and-vim">3</a></li>
+
+<li><p>Debug loading times <a href="http://kynan.github.io/blog/2015/07/31/how-to-speed-up-your-vim-startup-time">1</a>, <a href="https://puroh.it/speeding-up-vim/">2</a>, <a href="http://www.gbonfant.com/blog/speed-up-performance-of-iterm-and-vim">3</a></p></li>
+
+<li><p>Plugins</p>
+
+<ul>
+<li>Search for
+
+<ul>
+<li><a href="https://vimawesome.com/">vimawesome.com</a></li>
+</ul></li>
+<li>Manage them
+
+<ul>
+<li><a href="https://github.com/junegunn/vim-plug">vim-plug</a></li>
+</ul></li>
+</ul></li>
 </ul>
 
 <h1 id="shell-bulletins">Shell bulletins</h1>
@@ -860,7 +938,7 @@ knife[:vault_admins] = %w(lony aorange)
 <li><code>iperf3 -cR IP_ADDR</code> - Starts a client TCP test using reverse testing</li>
 </ul></li>
 
-<li><p>iftop <a href="http://www.integralist.co.uk/posts/terminal-utils.html#10">1</a> - Monitor network traffic and show bandwith usage</p></li>
+<li><p>iftop <a href="http://www.integralist.co.uk/posts/terminal-debugging-utilities/#10">1</a> - Monitor network traffic and show bandwith usage</p></li>
 
 <li><p>iptraf <a href="http://unix.stackexchange.com/questions/71456/check-outgoing-network-traffic">1</a> - Network statistic tool</p></li>
 
