@@ -62,7 +62,7 @@ As usually the more user facing layers of the OSI model are easier to interact w
 * 3. __Network layer__: This is the area of IP or ICMP and is the layer where routers life and operate.
     * To debug this you could start looking up if you have an existing IP address using `ifconfig` does your ethernet device show a IP address
     * If you have one, you could try if you could reach another machine using `ping www.go-project-hello.com`
-    * If this is not working, try the IP instead of the domain e.g. `ping 10.10.1.12` and read this amazing [guide to DNS](http://www.integralist.co.uk/posts/dnsbasics.html).
+    * If this is not working, try the IP instead of the domain e.g. `ping 10.10.1.12` and read this amazing [guide to DNS](http://www.integralist.co.uk/posts/dns-101/).
         * Hint 1: To get the IP from a domain use `dig`
         * Hint 2: For your local machine you could set `/etc/hosts` mapping DNS names to IP addresses and avoiding the long number.
 * 2. __Data Link layer__: This is the area of switches and used for address resolution. In this layer [ARP](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) is used to translate your MAC address into an IP address. The [Media access control](https://en.wikipedia.org/wiki/Media_access_control) (MAC) address is assigned to your network device during manufacturing. Many think it is unique but using `ifconfig` you could manipulate and change it.
