@@ -380,6 +380,15 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 		* `git rebase master` [1](https://www.atlassian.com/git/tutorials/merging-vs-rebasing) - Moves the current branch's "starting commit" to current master head (allowing fast forward merge)
 		* `git cherry-pick COMMIT_HASH` [1](https://stackoverflow.com/questions/9339429/what-does-cherry-picking-a-commit-with-git-mean), [2](https://git-scm.com/docs/git-cherry-pick) - "Copy" commit from another branch to the current branch
 		
+	* Stash
+
+		* `git stash` [1](https://git-scm.com/docs/git-stash) - Stores changes done in branch away for later use
+
+			* `-k` - Ignores files already added to staging environment (aka `--keep-index`)
+			* `-u` - Includes un-tracked files (aka `--include-untracked`)
+
+		* `git stash pop` - Restores, last stashed changes back to branch
+
 	* Revert
 
 		* `git revert --no-commit 0766c053..HEAD && git commit` [1](https://stackoverflow.com/questions/4114095/how-to-revert-git-repository-to-a-previous-commit) - Reverts range of commits and makes commit with all reverting changes (like a patch)
