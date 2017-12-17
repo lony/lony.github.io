@@ -490,7 +490,10 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 ## Docker
 
 * `docker pull jenkins:2.32.1` - Download docker image from registry
-* `docker build` - Build an image from a Dockerfile
+* `docker build -t "tagIt" .` - Build an image from a Dockerfile
+
+	* `--no-cache` [1](https://stackoverflow.com/questions/35594987/how-to-force-docker-for-clean-build-of-an-image) - Build from scratch
+
 * `docker run -p 8080:8080 jenkins:2.32.1` - Starts existing docker image and maps port
 * `docker run -it -d shykes/pybuilder /bin/bash` [1](http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container) - Run image and start bash
 * `docker exec -it f151aff2b21e /bin/bash` - Starts docker image f151aff2b21e and open interactive shell
@@ -501,7 +504,7 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 * `docker inspect jenkins` - Show information of the docker image object
 * `docker rm $(docker ps -a -q)` [1](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes) - Remove all containers
 * `docker rmi $(docker images -a -q)` - Remove all images
-
+* `docker system prune -a` [1](https://docs.docker.com/engine/reference/commandline/system_prune/) - Remove everything
 
 ## Vagrant
 
