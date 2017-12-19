@@ -782,17 +782,34 @@ knife[:vault_admins] = %w(lony aorange)
 
 <ul>
 <li><code>docker pull jenkins:2.32.1</code> - Download docker image from registry</li>
-<li><code>docker build</code> - Build an image from a Dockerfile</li>
-<li><code>docker run -p 8080:8080 jenkins:2.32.1</code> - Starts existing docker image and maps port</li>
-<li><code>docker run -it -d shykes/pybuilder /bin/bash</code> <a href="http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container">1</a> - Run image and start bash</li>
-<li><code>docker exec -it f151aff2b21e /bin/bash</code> - Starts docker image f151aff2b21e and open interactive shell</li>
-<li><code>docker ps -a</code> - List instances (derived from images)</li>
-<li><code>docker rm -f 2247780d0b39</code> - Delete instance</li>
-<li><code>docker images</code> - List images</li>
-<li><code>docker rmi ae12afb99714 a78344b99ebc</code> - Delete images</li>
-<li><code>docker inspect jenkins</code> - Show information of the docker image object</li>
-<li><code>docker rm $(docker ps -a -q)</code> <a href="https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes">1</a> - Remove all containers</li>
-<li><code>docker rmi $(docker images -a -q)</code> - Remove all images</li>
+
+<li><p><code>docker build -t &quot;tagIt&quot; .</code> - Build an image from a Dockerfile</p>
+
+<ul>
+<li><code>--no-cache</code> <a href="https://stackoverflow.com/questions/35594987/how-to-force-docker-for-clean-build-of-an-image">1</a> - Build from scratch</li>
+</ul></li>
+
+<li><p><code>docker run -p 8080:8080 jenkins:2.32.1</code> - Starts existing docker image and maps port</p></li>
+
+<li><p><code>docker run -it -d shykes/pybuilder /bin/bash</code> <a href="http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container">1</a> - Run image and start bash</p></li>
+
+<li><p><code>docker exec -it f151aff2b21e /bin/bash</code> - Starts docker image f151aff2b21e and open interactive shell</p></li>
+
+<li><p><code>docker ps -a</code> - List instances (derived from images)</p></li>
+
+<li><p><code>docker rm -f 2247780d0b39</code> - Delete instance</p></li>
+
+<li><p><code>docker images</code> - List images</p></li>
+
+<li><p><code>docker rmi ae12afb99714 a78344b99ebc</code> - Delete images</p></li>
+
+<li><p><code>docker inspect jenkins</code> - Show information of the docker image object</p></li>
+
+<li><p><code>docker rm $(docker ps -a -q)</code> <a href="https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes">1</a> - Remove all containers</p></li>
+
+<li><p><code>docker rmi $(docker images -a -q)</code> - Remove all images</p></li>
+
+<li><p><code>docker system prune -a</code> <a href="https://docs.docker.com/engine/reference/commandline/system_prune/">1</a> - Remove everything</p></li>
 </ul>
 
 <h2 id="vagrant">Vagrant</h2>

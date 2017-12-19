@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Goetz Epperlein">
+<meta name="keywords" content="programming,hosting,os,virtualization,hypervisor,containerization">
+<meta property="og:title" content="Docker and the likes - Are boxes really for dead people? - [x]">
+<meta property="og:description" content="Docker and the likes - Are boxes really for dead people?">
+<title>Docker and the likes - Are boxes really for dead people? | [x]</title>
+
+<link rel="stylesheet" href="https://lony.github.io//css/style.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://lony.github.io/"><h1 class="title is-4">[x]</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://de.linkedin.com/in/goetzepperlein">
+            <span class="icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://www.xing.com/profile/Goetz_Epperlein">
+            <span class="icon">
+              <i class="fa fa-xing"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/lony">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/post/2017/cli-commands/">
+            <span class="icon">
+              <i class="fa fa-terminal"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">December 19, 2017</h2>
+    <h1 class="title">Docker and the likes - Are boxes really for dead people?</h1>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/programming">programming</a>
+    
+        <a class="button is-link" href="/tags/hosting">hosting</a>
+    
+        <a class="button is-link" href="/tags/os">os</a>
+    
+        <a class="button is-link" href="/tags/virtualization">virtualization</a>
+    
+        <a class="button is-link" href="/tags/hypervisor">hypervisor</a>
+    
+        <a class="button is-link" href="/tags/containerization">containerization</a>
+    
+</div>
+
+    
+    <div class="content">
+      
+
+<p>Virtualization was standard when Docker came around 2013 and made containerization the new state of the art. This new ecosystem shifted the landscape and was under heavy development, which today we want to make a snapshot of. This post should not only cover Docker but software abstraction in general.</p>
+
+<p>As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an <a href="https://github.com/lony/lony.github.io/issues">issue</a> and help me get better. - Thank you!</p>
+
+<h1 id="toc">TOC</h1>
+
+<ul>
+<li><a href="#types-and-formats">Types and formats</a>
+
+<ul>
+<li><a href="#bare-metal-type-1">Bare-Metal Type-1</a></li>
+<li><a href="#hosted-type-2">Hosted Type-2</a>
+
+<ul>
+<li><a href="#virtualization">Virtualization</a></li>
+<li><a href="#containerization">Containerization</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#cluster-managers">Cluster Managers</a></li>
+<li><a href="#cloud-hosting">Cloud Hosting</a></li>
+</ul>
+
+<hr />
+
+<h1 id="types-and-formats">Types and formats</h1>
+
+<p>Running multiple operating system environments on the same hardware you have to abstract the hardware components from the OSes. This is called <a href="https://en.wikipedia.org/wiki/Hardware_virtualization">virtualization</a>.</p>
+
+<p>The software to abstract the hardware away from the OS is often called <a href="https://de.wikipedia.org/wiki/Hypervisor">hypervisor</a>. The <a href="http://www.searchdatacenter.de/tipp/Hosted-und-Bare-Metal-Virtualisierung-Hypervisor-Typen-im-Vergleich">different types</a> can be categorized in Bare-Metal Type-1, which is just installed directly onto the hardware, and Hosted Type-2 were first an OS is installed an then the hypervisor is put ontop of the OS. Type-1 is more direct and therefore faster as Type-2 has better driver support.</p>
+
+<p>In this article we mainly look at <a href="https://en.wikipedia.org/wiki/Virtualization">virtualization</a> of computing on physical hardware. Which already is a huge topic as can be seen looking at the incomplete <a href="https://en.wikipedia.org/wiki/Comparison_of_platform_virtualization_software">comparison site</a> at Wikipedia. Still there is a lot more out there to abstract as for example networks, or the JVM with is abstracting OS specifics away from Java.</p>
+
+<h2 id="bare-metal-type-1">Bare-Metal Type-1</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/VMware_ESXi">VMware ESX</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hyper-V">Microsoft Hyper-V</a></li>
+<li><a href="https://en.wikipedia.org/wiki/XenApp">Citrix Systems XenServer</a></li>
+</ul>
+
+<h2 id="hosted-type-2">Hosted Type-2</h2>
+
+<p>This type of virtualization always needs a host OS on which it is running. This <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">overview</a> show&rsquo;s the most important ones. Even sometimes Type-2 virtualization is synonymously called containerization, in here I want to separate between just virtualization and containerization as if they were clearly separated to illustrate the new approach of shipping software in (Docker) containers more clearly.</p>
+
+<h3 id="virtualization">Virtualization</h3>
+
+<ul>
+<li><p>OS independent</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/VMware_Workstation">VMware Workstation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Windows_Virtual_PC">Microsoft VirtualPC</a></li>
+<li><a href="https://en.wikipedia.org/wiki/VirtualBox">VirtualBox</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine">KVM</a></li>
+</ul></li>
+
+<li><p>Linux only</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Xen">Xen</a></li>
+<li><a href="https://en.wikipedia.org/wiki/OpenVZ">OpenVZ</a></li>
+<li><a href="https://en.wikipedia.org/wiki/LXC">LXC</a></li>
+</ul></li>
+
+<li><p>BSD only</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/FreeBSD_jail">FreeBSD jail</a></li>
+</ul></li>
+
+<li><p>OSX only</p>
+
+<ul>
+<li><a href="https://github.com/mist64/xhyve">xhyve</a></li>
+</ul></li>
+</ul>
+
+<h3 id="containerization">Containerization</h3>
+
+<p>Standardized <a href="https://github.com/opencontainers/image-spec">OCI Image Format</a></p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/w/index.php?title=Docker_(software)&amp;oldid=806239173">Docker</a></li>
+<li><a href="https://github.com/rkt/rkt">CoreOS rkt</a> - Competitor for Docker see comparison <a href="https://medium.com/@adriaandejonge/moving-from-docker-to-rkt-310dc9aec938">here</a></li>
+</ul>
+
+<h1 id="cluster-managers">Cluster Managers</h1>
+
+<ul>
+<li><p>CM for containers</p>
+
+<ul>
+<li><p>IaaS</p>
+
+<ul>
+<li><a href="https://www.openstack.org">OpenStack</a></li>
+<li><a href="https://cloudstack.apache.org/">CloudStack</a></li>
+<li><a href="https://opennebula.org/">OpenNebula</a></li>
+
+<li><p><a href="http://mesos.apache.org/">Apache Mesos</a></p>
+
+<ul>
+<li><a href="https://mesosphere.github.io/marathon/">Marathon</a></li>
+<li><a href="https://dcos.io">Data Center Operating System (DC/OS)</a></li>
+</ul></li>
+</ul></li>
+
+<li><p>PaaS</p>
+
+<ul>
+<li><a href="https://www.cloudfoundry.org">Cloud Foundry</a></li>
+<li><a href="https://www.openshift.com">OpenShift Origin</a></li>
+</ul></li>
+
+<li><p>CaaS</p>
+
+<ul>
+<li><a href="https://kubernetes.io/">Kubernets aka K8s</a></li>
+<li><a href="https://docs.docker.com/engine/swarm/">Docker Swarm</a></li>
+<li><a href="https://www.nomadproject.io">Nomad</a></li>
+<li><a href="http://rancher.com/">Rancher</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="cloud-hosting">Cloud Hosting</h1>
+
+<ul>
+<li><p>CH for containers</p>
+
+<ul>
+<li>AWS
+
+<ul>
+<li><a href="https://aws.amazon.com/elasticbeanstalk/">AWS Elastic Beanstalk</a></li>
+<li><a href="https://aws.amazon.com/ecs/">AWS EC2 Container Service (ECS)</a></li>
+<li><a href="https://aws.amazon.com/eks/">Amazon Elastic Container Service for Kubernetes (EKS)</a></li>
+<li><a href="https://aws.amazon.com/fargate/">AWS Fargate</a></li>
+</ul></li>
+<li>Google
+
+<ul>
+<li><a href="https://cloud.google.com/container-engine/">Google Container Engine (GKE)</a></li>
+<li><a href="https://cloud.google.com/appengine/">Google App Engine</a></li>
+</ul></li>
+<li>Microsoft
+
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/services/container-service/">Microsoft Azure Container Service (AKS)</a></li>
+<li><a href="https://azure.microsoft.com/en-us/services/container-instances/">Microsoft Azure Container Instances</a></li>
+</ul></li>
+<li><a href="https://devcenter.heroku.com/articles/container-registry-and-runtime">Heroku Container Registry &amp; Runtime</a></li>
+</ul></li>
+</ul>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/lony">Goetz Epperlein</a> 2016 - 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-83817537-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+

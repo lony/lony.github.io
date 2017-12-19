@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2017</copyright>
-    <lastBuildDate>Sat, 07 Oct 2017 15:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 19 Dec 2017 20:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://lony.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker and the likes - Are boxes really for dead people?</title>
+      <link>https://lony.github.io/post/2017/docker-and-the-likes/</link>
+      <pubDate>Tue, 19 Dec 2017 20:00:00 +0200</pubDate>
+      
+      <guid>https://lony.github.io/post/2017/docker-and-the-likes/</guid>
+      <description>Virtualization was standard when Docker came around 2013 and made containerization the new state of the art. This new ecosystem shifted the landscape and was under heavy development, which today we want to make a snapshot of. This post should not only cover Docker but software abstraction in general.
+As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better.</description>
+    </item>
     
     <item>
       <title>Setup Reloaded - Ansible to the rescue</title>
