@@ -505,6 +505,8 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 * `docker rm $(docker ps -a -q)` [1](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes) - Remove all containers
 * `docker rmi $(docker images -a -q)` - Remove all images
 * `docker system prune -a` [1](https://docs.docker.com/engine/reference/commandline/system_prune/) - Remove everything
+* `docker network ls` [1](https://docs.docker.com/engine/userguide/networking/) - Show docker networks
+* `docker network inspect bridge` - Show network information about the bridge network
 
 ## Vagrant
 
@@ -597,6 +599,21 @@ The one and only `vim` aka [Vi IMproved](https://en.wikipedia.org/w/index.php?ol
 
 * ifconfig [1](https://en.wikipedia.org/wiki/Ifconfig) - Display network interface configuration for Unix-systems
 
+	> Command is deprecated on Linux in favour of iproute2 and the `ip` command, which now should be used instead. [1](https://serverfault.com/questions/458628/should-i-quit-using-ifconfig)
+
+* ip [1](https://en.wikipedia.org/wiki/Iproute2), [2](https://serverfault.com/questions/458628/should-i-quit-using-ifconfig) - Also iproute2 utilities, is a tool to controll and monitor network aspects of Linux systems
+
+	* `ip link` - List available interfaces
+	* `ip link set eth0 up` - Activate eth0 interface [1](https://wiki.gentoo.org/wiki/Iproute2)
+	* `ip addr` - Show IP address
+	* `ip addr add 192.0.2.11/24 dev eth0` - Add IP address to eth0 interface
+	* `ip -6 addr add 2001:db8::10/64 dev wlan0` - Add IPv6 address to wlan0 interface
+	* `ip link set eth0 down` -  Deactivate interface
+	* `ip route` - Show IP routing table
+	* `ip route add default via 192.0.2.1` - Add default route
+	* `ip neighbour` - Show neighbour in your network similar to `arp -a`
+	* `ip -s` or `ss` - Show network statistics like `netstat`
+
 * ipcalc [1](https://pypi.python.org/pypi/ipcalc) - IP subnet calculator
 
 * iperf3 [1](http://software.es.net/iperf/) - Tool for network speed test
@@ -621,6 +638,15 @@ The one and only `vim` aka [Vi IMproved](https://en.wikipedia.org/w/index.php?ol
 * ngrep [1](https://en.wikipedia.org/wiki/Ngrep) - Similar to tcpdump
 
 * nmap [1](https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump) - Network mapping and port scanning tool
+
+	* `nmap -n -sn 192.168.1.0/24` [1](https://superuser.com/questions/261818/how-can-i-list-all-ips-in-the-connected-network-through-terminal-preferably) - Show up hosts in network
+
+		* `n` - No DNS resolution
+		* `sn` - Ping scan, no port scan
+
+	* `nmap -n -sn 192.0.2.0/24 -oG - | awk '/Up$/{print $2}'` [1](https://unix.stackexchange.com/questions/181676/output-only-the-ip-addresses-of-the-online-machines-with-nmap) - Get up hosts IP adresses
+
+		* `-oG -` - Print grep'able output
 
 * `nscd -i hosts` [1](http://serverfault.com/questions/16299/how-do-i-flush-the-dns-cache-on-win-mac-linux-computers) - Flush DNS cache
 
