@@ -810,6 +810,10 @@ knife[:vault_admins] = %w(lony aorange)
 <li><p><code>docker rmi $(docker images -a -q)</code> - Remove all images</p></li>
 
 <li><p><code>docker system prune -a</code> <a href="https://docs.docker.com/engine/reference/commandline/system_prune/">1</a> - Remove everything</p></li>
+
+<li><p><code>docker network ls</code> <a href="https://docs.docker.com/engine/userguide/networking/">1</a> - Show docker networks</p></li>
+
+<li><p><code>docker network inspect bridge</code> - Show network information about the bridge network</p></li>
 </ul>
 
 <h2 id="vagrant">Vagrant</h2>
@@ -944,7 +948,26 @@ knife[:vault_admins] = %w(lony aorange)
 
 <li><p>httpie <a href="https://httpie.org/">1</a>,<a href="https://github.com/jkbrzt/httpie">2</a> - Better curl with JSON support</p></li>
 
-<li><p>ifconfig <a href="https://en.wikipedia.org/wiki/Ifconfig">1</a> - Display network interface configuration for Unix-systems</p></li>
+<li><p>ifconfig <a href="https://en.wikipedia.org/wiki/Ifconfig">1</a> - Display network interface configuration for Unix-systems</p>
+
+<blockquote>
+<p>Command is deprecated on Linux in favour of iproute2 and the <code>ip</code> command, which now should be used instead. <a href="https://serverfault.com/questions/458628/should-i-quit-using-ifconfig">1</a></p>
+</blockquote></li>
+
+<li><p>ip <a href="https://en.wikipedia.org/wiki/Iproute2">1</a>, <a href="https://serverfault.com/questions/458628/should-i-quit-using-ifconfig">2</a> - Also iproute2 utilities, is a tool to controll and monitor network aspects of Linux systems</p>
+
+<ul>
+<li><code>ip link</code> - List available interfaces</li>
+<li><code>ip link set eth0 up</code> - Activate eth0 interface <a href="https://wiki.gentoo.org/wiki/Iproute2">1</a></li>
+<li><code>ip addr</code> - Show IP address</li>
+<li><code>ip addr add 192.0.2.11/24 dev eth0</code> - Add IP address to eth0 interface</li>
+<li><code>ip -6 addr add 2001:db8::10/64 dev wlan0</code> - Add IPv6 address to wlan0 interface</li>
+<li><code>ip link set eth0 down</code> -  Deactivate interface</li>
+<li><code>ip route</code> - Show IP routing table</li>
+<li><code>ip route add default via 192.0.2.1</code> - Add default route</li>
+<li><code>ip neighbour</code> - Show neighbour in your network similar to <code>arp -a</code></li>
+<li><code>ip -s</code> or <code>ss</code> - Show network statistics like <code>netstat</code></li>
+</ul></li>
 
 <li><p>ipcalc <a href="https://pypi.python.org/pypi/ipcalc">1</a> - IP subnet calculator</p></li>
 
@@ -975,7 +998,22 @@ knife[:vault_admins] = %w(lony aorange)
 
 <li><p>ngrep <a href="https://en.wikipedia.org/wiki/Ngrep">1</a> - Similar to tcpdump</p></li>
 
-<li><p>nmap <a href="https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump">1</a> - Network mapping and port scanning tool</p></li>
+<li><p>nmap <a href="https://www.digitalocean.com/community/tutorials/how-to-test-your-firewall-configuration-with-nmap-and-tcpdump">1</a> - Network mapping and port scanning tool</p>
+
+<ul>
+<li><p><code>nmap -n -sn 192.168.1.0/24</code> <a href="https://superuser.com/questions/261818/how-can-i-list-all-ips-in-the-connected-network-through-terminal-preferably">1</a> - Show up hosts in network</p>
+
+<ul>
+<li><code>n</code> - No DNS resolution</li>
+<li><code>sn</code> - Ping scan, no port scan</li>
+</ul></li>
+
+<li><p><code>nmap -n -sn 192.0.2.0/24 -oG - | awk '/Up$/{print $2}'</code> <a href="https://unix.stackexchange.com/questions/181676/output-only-the-ip-addresses-of-the-online-machines-with-nmap">1</a> - Get up hosts IP adresses</p>
+
+<ul>
+<li><code>-oG -</code> - Print grep&rsquo;able output</li>
+</ul></li>
+</ul></li>
 
 <li><p><code>nscd -i hosts</code> <a href="http://serverfault.com/questions/16299/how-do-i-flush-the-dns-cache-on-win-mac-linux-computers">1</a> - Flush DNS cache</p></li>
 
