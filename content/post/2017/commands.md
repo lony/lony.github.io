@@ -118,6 +118,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * openssl [1](http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/), [2](http://www.czeskis.com/random/openssl-encrypt-file.html), [3](https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs) - SSL encryption library
 
+	* `openssl base64 -in binary.file -out base64.text` [1](https://superuser.com/questions/120796/how-to-encode-base64-via-command-line) - Encode binary file as base64 
+	* `openssl base64 -d -in base64.text -out binary.file` - Decode base64 back to binary file
 	* `openssl enc -aes-256-cbc -e -in {path-in} -out {path-out}` - Encrypt file with password (aes-256)
 	* `openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}` - Decrypt file with password (aes-256)
 	* `openssl rsa -des3 -in {path-in} -out {path-out}` - Encrypt key with password (rsa)
@@ -427,6 +429,11 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 	* `sudo lsof -i` - All internal network files
 	* `sudo lsof | grep jre`
 	* `sudo lsof -i -n -P | grep LISTEN`
+
+* oc [1](https://github.com/openshift/origin) - OpenShift CLI tool
+
+	* `oc login https://YOUR_CLUSER --token=YOUR_SECRET_TOKEN` - Login to your cluster
+	* `oc port-forward POD_NAME 80:80` - Map port from pod to local system
 
 * ps [1](https://en.wikipedia.org/w/index.php?oldid=765270359) - Static process monitor 
 
@@ -839,6 +846,7 @@ _Hint:_ SSH agent forwarding is working nicely together with [Capistrano](http:/
 		then `find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name "*.tmp" -delete`
 	* `find /path/to/directory/ -mindepth 1 -maxdepth 1 -mtime +365 -type d -print -exec rm -r "{}" \;` - [1](http://unix.stackexchange.com/questions/89925/how-to-delete-directories-based-on-find-output), [2](http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di) Delete directories recursivly
 	* `find . -name '*.py' -exec grep -Hn 'STRING_INSIDE_PYHTON' {} \;` [1](https://unix.stackexchange.com/questions/21033/how-can-i-grep-the-results-of-find-using-exec-and-still-output-to-a-file) - Search for python files and inside them grep for given string. The result is shown with path and line number.
+	* `find -E . \( -type f -or -type d \) -print| awk -F/ '{ if (length($NF)  > 143) { print length($NF),"\t",$0; fflush() } else {} }' > files_to_long` [1](https://unix.stackexchange.com/questions/207504/find-files-whose-name-is-4-characters-long) - Find files and folders which names are longer then 143 
 
 * grep [1](https://www.cyberciti.biz/faq/grep-regular-expressions/)
 
