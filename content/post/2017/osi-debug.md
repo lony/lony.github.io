@@ -7,6 +7,8 @@ slug = "debug-with-osi"
 
 Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing. Using the famous OSI layers, I try to navigate through all the important parts someone should look at.
 
+`Update 2018-02-18` If you are interest in the details of how the internet is working I highly recommend you the following amazing Ars Technica article ["How the Internet works: Submarine fiber, brains in jars, and coaxial cables"](https://arstechnica.com/information-technology/2016/05/how-the-internet-works-submarine-cables-data-centres-last-mile/). When you then inspired to build your own ISP first have a look at ["Starting an ISP is really hard, don’t do it"](http://www.slashgeek.net/2016/05/31/starting-isp-really-hard-dont/), and keep on reading [here](https://startyourownisp.com/)!
+
 As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an [issue](https://github.com/lony/lony.github.io/issues) and help me get better. - Thank you!
 
 # TOC
