@@ -434,6 +434,7 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 	* `oc login https://YOUR_CLUSER --token=YOUR_SECRET_TOKEN` - Login to your cluster
 	* `oc port-forward POD_NAME 80:80` - Map port from pod to local system
+	* `oc rsh POD_NAME` - Open secure shell session
 
 * ps [1](https://en.wikipedia.org/w/index.php?oldid=765270359) - Static process monitor 
 
