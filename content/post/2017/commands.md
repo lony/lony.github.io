@@ -207,6 +207,8 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 	* `sbt console` - Starts interactive console for Scala
 	* `sbt compile test` - Compile an application and run tests for it
+	* `sbt evicted` - Shows dependency conflicts
+	* `sbt "inspect tree clean"` [1](https://stackoverflow.com/questions/25519926/how-see-dependency-tree-in-sbt) - See dependency tree
 
 * activator
 
