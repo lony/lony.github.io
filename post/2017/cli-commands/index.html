@@ -249,6 +249,8 @@ rm in
 <li><p>openssl <a href="http://snazzylabs.com/tutorial/five-advanced-tricks-for-mac-users/">1</a>, <a href="http://www.czeskis.com/random/openssl-encrypt-file.html">2</a>, <a href="https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs">3</a> - SSL encryption library</p>
 
 <ul>
+<li><code>openssl base64 -in binary.file -out base64.text</code> <a href="https://superuser.com/questions/120796/how-to-encode-base64-via-command-line">1</a> - Encode binary file as base64</li>
+<li><code>openssl base64 -d -in base64.text -out binary.file</code> - Decode base64 back to binary file</li>
 <li><code>openssl enc -aes-256-cbc -e -in {path-in} -out {path-out}</code> - Encrypt file with password (aes-256)</li>
 <li><code>openssl enc -aes-256-cbc -d -in {path-in} -out {path-out}</code> - Decrypt file with password (aes-256)</li>
 <li><code>openssl rsa -des3 -in {path-in} -out {path-out}</code> - Encrypt key with password (rsa)</li>
@@ -365,6 +367,8 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <ul>
 <li><code>sbt console</code> - Starts interactive console for Scala</li>
 <li><code>sbt compile test</code> - Compile an application and run tests for it</li>
+<li><code>sbt evicted</code> - Shows dependency conflicts</li>
+<li><code>sbt &quot;inspect tree clean&quot;</code> <a href="https://stackoverflow.com/questions/25519926/how-see-dependency-tree-in-sbt">1</a> - See dependency tree</li>
 </ul></li>
 
 <li><p>activator</p>
@@ -689,6 +693,14 @@ knife[:vault_admins] = %w(lony aorange)
 <li><code>sudo lsof -i</code> - All internal network files</li>
 <li><code>sudo lsof | grep jre</code></li>
 <li><code>sudo lsof -i -n -P | grep LISTEN</code></li>
+</ul></li>
+
+<li><p>oc <a href="https://github.com/openshift/origin">1</a> - OpenShift CLI tool</p>
+
+<ul>
+<li><code>oc login https://YOUR_CLUSER --token=YOUR_SECRET_TOKEN</code> - Login to your cluster</li>
+<li><code>oc port-forward POD_NAME 80:80</code> - Map port from pod to local system</li>
+<li><code>oc rsh POD_NAME</code> - Open secure shell session</li>
 </ul></li>
 
 <li><p>ps <a href="https://en.wikipedia.org/w/index.php?oldid=765270359">1</a> - Static process monitor</p></li>
@@ -1252,6 +1264,7 @@ This generate a key without a password <code>-N &quot;&quot;</code> and with the
 then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;*.tmp&quot; -delete</code></li>
 <li><code>find /path/to/directory/ -mindepth 1 -maxdepth 1 -mtime +365 -type d -print -exec rm -r &quot;{}&quot; \;</code> - <a href="http://unix.stackexchange.com/questions/89925/how-to-delete-directories-based-on-find-output">1</a>, <a href="http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di">2</a> Delete directories recursivly</li>
 <li><code>find . -name '*.py' -exec grep -Hn 'STRING_INSIDE_PYHTON' {} \;</code> <a href="https://unix.stackexchange.com/questions/21033/how-can-i-grep-the-results-of-find-using-exec-and-still-output-to-a-file">1</a> - Search for python files and inside them grep for given string. The result is shown with path and line number.</li>
+<li><code>find -E . \( -type f -or -type d \) -print| awk -F/ '{ if (length($NF)  &gt; 143) { print length($NF),&quot;\t&quot;,$0; fflush() } else {} }' &gt; files_to_long</code> <a href="https://unix.stackexchange.com/questions/207504/find-files-whose-name-is-4-characters-long">1</a> - Find files and folders which names are longer then 143</li>
 </ul></li>
 
 <li><p>grep <a href="https://www.cyberciti.biz/faq/grep-regular-expressions/">1</a></p>

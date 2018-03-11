@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Goetz Epperlein">
+<meta name="keywords" content="programming,security,authentication,authorization">
+<meta property="og:title" content="Authentication and authorization - [x]">
+<meta property="og:description" content="Authentication and authorization">
+<title>Authentication and authorization | [x]</title>
+
+<link rel="stylesheet" href="https://lony.github.io//css/style.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://lony.github.io/"><h1 class="title is-4">[x]</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://de.linkedin.com/in/goetzepperlein">
+            <span class="icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://www.xing.com/profile/Goetz_Epperlein">
+            <span class="icon">
+              <i class="fa fa-xing"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/lony">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/post/2017/cli-commands/">
+            <span class="icon">
+              <i class="fa fa-terminal"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">March 11, 2018</h2>
+    <h1 class="title">Authentication and authorization</h1>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/programming">programming</a>
+    
+        <a class="button is-link" href="/tags/security">security</a>
+    
+        <a class="button is-link" href="/tags/authentication">authentication</a>
+    
+        <a class="button is-link" href="/tags/authorization">authorization</a>
+    
+</div>
+
+    
+    <div class="content">
+      
+
+<blockquote>
+<p>Be yourself; everyone else is already taken. <em>(Oscar Wilde)</em></p>
+</blockquote>
+
+<p>.. or else, how to build identity and access restrictions inside your app.</p>
+
+<h1 id="toc">TOC</h1>
+
+<ul>
+<li><a href="#definition">Definition</a></li>
+<li><a href="#providers">Providers</a></li>
+</ul>
+
+<hr />
+
+<h1 id="definition">Definition</h1>
+
+<ul>
+<li><strong>Authentication</strong> is the process of verifying who you are. When you log on to a PC with a user name and password you are authenticating. <strong>[= login + password (who you are)]</strong></li>
+<li><strong>Authorization</strong> is the process of verifying that you have access to something. Gaining access to a resource (e.g. directory on a hard disk) because the permissions configured on it allow you access is authorization. <strong>[= permissions (what you are allowed to do)]</strong></li>
+</ul>
+
+<p>Source: <a href="https://serverfault.com/questions/57077/what-is-the-difference-between-authentication-and-authorization">1</a>, <a href="https://stackoverflow.com/questions/6556522/authentication-versus-authorization">2</a></p>
+
+<h1 id="providers">Providers</h1>
+
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>From</th>
+<th>Protocols</th>
+<th>Purpose</th>
+<th>CVEs (2018-03)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/OAuth#OAuth_2.0">OAuth2</a></td>
+<td>2012</td>
+<td>JSON, HTTP</td>
+<td>API authorization between applications</td>
+<td>39 (+ v1)</td>
+</tr>
+
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/JSON_Web_Token">JWT</a></td>
+<td>2015</td>
+<td>JSON, HTTP</td>
+<td>Token verifying identity</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language">SAML</a></td>
+<td>2001</td>
+<td>SAM, XML, HTTP, SOAP</td>
+<td>Single sign-on for enterprise users</td>
+<td>56</td>
+</tr>
+
+<tr>
+<td><a href="https://en.wikipedia.org/wiki/OpenID">OpenID</a></td>
+<td>2005</td>
+<td>XRDS, HTTP</td>
+<td>Single sign-on for consumers in an open environment</td>
+<td>49</td>
+</tr>
+
+<tr>
+<td><a href="https://en.wikipedia.org/w/index.php?oldid=824622869">Kerberos</a></td>
+<td>1980</td>
+<td>UDP</td>
+<td>Single sign-on in controlled environment</td>
+<td>228</td>
+</tr>
+</tbody>
+</table>
+
+<p>Source: <a href="https://www.softwaresecured.com/federated-identities-openid-vs-saml-vs-oauth/">1</a>, <a href="https://spin.atomicobject.com/2016/05/30/openid-oauth-saml/">2</a>, <a href="https://security.stackexchange.com/questions/5141/how-does-openid-implement-single-sign-on">3</a>, <a href="https://www.owasp.org/index.php/REST_Security_Cheat_Sheet">4</a></p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/lony">Goetz Epperlein</a> 2016 - 2017</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-83817537-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
