@@ -403,6 +403,14 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 		* `git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME BRANCH-NAME` [1](https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/) - Filter folder from repository to extract for separate repository
 		* `git worktree prune && git worktree add -B master public origin/master` - Prune aka clean and checkout master branch into public folder [1](https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script), [2](https://stacktoheap.com/blog/2016/01/19/using-multiple-worktrees-with-git/), [3](https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/), [4](https://git-scm.com/docs/git-worktree)
 
+	* Backup
+
+		* `git archive --format zip master -o my_repo.zip` [1](https://alvinalexander.com/git/git-export-project-archive-cvs-svn-export), [2](https://stackoverflow.com/questions/160608/do-a-git-export-like-svn-export) - Create zip archive from repository only including its content
+		* `git bundle` - Create archive with history
+
+			* `git bundle create my_repo.bundle --all` [1](https://stackoverflow.com/questions/11879287/export-git-with-version-history) - Create archive from repository including also the history (of commited staff [1](https://stackoverflow.com/questions/7639952/whats-the-difference-between-bundling-and-zipping-a-git-repo))
+			* `git bundle verify my_repo.bundle && git clone my_repo.bundle` [1](https://stackoverflow.com/questions/9807367/restoring-git-repository-from-bundle-backup) - Restore repository from archive
+
 
 # Processes
 
@@ -512,6 +520,9 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 * `docker images` - List images
 * `docker rmi ae12afb99714 a78344b99ebc` - Delete images
 * `docker inspect jenkins` - Show information of the docker image object
+
+	* `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 942e216109c6` [1](https://stackoverflow.com/questions/17157721/how-to-get-a-docker-containers-ip-address-from-the-host) - Get IP address of docker container
+
 * `docker rm $(docker ps -a -q)` [1](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes) - Remove all containers
 * `docker rmi $(docker images -a -q)` - Remove all images
 * `docker system prune -a` [1](https://docs.docker.com/engine/reference/commandline/system_prune/) - Remove everything
