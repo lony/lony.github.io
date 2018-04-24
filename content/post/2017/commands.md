@@ -351,6 +351,7 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 	* Branch
 
+		* `git checkout -b NEW_BRANCH_NAME` [1](https://stackoverflow.com/questions/3899627/create-git-branch-with-current-changes) - Creates new branch from the existing one currently in, and also copies over changes made
 		* `BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)` [1](https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse) - Get branch currently on
 		* `git checkout -b newBranch v1.0-oldTag` - Create git branch from tag or commit-hash
 		* `git push -d <remote_name> <branch_name> && git branch -d <branch_name>` [1](https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely) - Delete branch local and remote
