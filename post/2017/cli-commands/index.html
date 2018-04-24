@@ -657,6 +657,19 @@ knife[:vault_admins] = %w(lony aorange)
 <li><code>git filter-branch --prune-empty --subdirectory-filter SUB-FOLDER-NAME BRANCH-NAME</code> <a href="https://help.github.com/articles/splitting-a-subfolder-out-into-a-new-repository/">1</a> - Filter folder from repository to extract for separate repository</li>
 <li><code>git worktree prune &amp;&amp; git worktree add -B master public origin/master</code> - Prune aka clean and checkout master branch into public folder <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#put-it-into-a-script">1</a>, <a href="https://stacktoheap.com/blog/2016/01/19/using-multiple-worktrees-with-git/">2</a>, <a href="https://spin.atomicobject.com/2016/06/26/parallelize-development-git-worktrees/">3</a>, <a href="https://git-scm.com/docs/git-worktree">4</a></li>
 </ul></li>
+
+<li><p>Backup</p>
+
+<ul>
+<li><code>git archive --format zip master -o my_repo.zip</code> <a href="https://alvinalexander.com/git/git-export-project-archive-cvs-svn-export">1</a>, <a href="https://stackoverflow.com/questions/160608/do-a-git-export-like-svn-export">2</a> - Create zip archive from repository only including its content</li>
+
+<li><p><code>git bundle</code> - Create archive with history</p>
+
+<ul>
+<li><code>git bundle create my_repo.bundle --all</code> <a href="https://stackoverflow.com/questions/11879287/export-git-with-version-history">1</a> - Create archive from repository including also the history (of commited staff <a href="https://stackoverflow.com/questions/7639952/whats-the-difference-between-bundling-and-zipping-a-git-repo">1</a>)</li>
+<li><code>git bundle verify my_repo.bundle &amp;&amp; git clone my_repo.bundle</code> <a href="https://stackoverflow.com/questions/9807367/restoring-git-repository-from-bundle-backup">1</a> - Restore repository from archive</li>
+</ul></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -815,7 +828,11 @@ knife[:vault_admins] = %w(lony aorange)
 
 <li><p><code>docker rmi ae12afb99714 a78344b99ebc</code> - Delete images</p></li>
 
-<li><p><code>docker inspect jenkins</code> - Show information of the docker image object</p></li>
+<li><p><code>docker inspect jenkins</code> - Show information of the docker image object</p>
+
+<ul>
+<li><code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 942e216109c6</code> <a href="https://stackoverflow.com/questions/17157721/how-to-get-a-docker-containers-ip-address-from-the-host">1</a> - Get IP address of docker container</li>
+</ul></li>
 
 <li><p><code>docker rm $(docker ps -a -q)</code> <a href="https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes">1</a> - Remove all containers</p></li>
 
