@@ -330,6 +330,7 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <ul>
 <li><a href="#python">Python</a></li>
 <li><a href="#ruby">Ruby</a></li>
+<li><a href="#java">Java</a></li>
 <li><a href="#scala">Scala</a></li>
 </ul>
 
@@ -356,6 +357,16 @@ tar -xvf combined.tar</code> <a href="http://stackoverflow.com/questions/2749160
 <li><code>rbenv install 2.4.1</code> - Install Ruby version</li>
 <li><code>rbenv versions</code> - Show locally installed and available versions</li>
 <li><code>rbenv global 2.4.1</code> - Make version the default</li>
+</ul></li>
+</ul>
+
+<h3 id="java">Java</h3>
+
+<ul>
+<li><p>jar</p>
+
+<ul>
+<li><code>jar xf MY_JOB.jar</code> <a href="https://stackoverflow.com/questions/39563843/how-to-extract-the-source-code-from-a-jar-file-on-a-mac">1</a> - Unpack files from jar (ATTENTION: happens inside current folder!)</li>
 </ul></li>
 </ul>
 
@@ -588,6 +599,7 @@ knife[:vault_admins] = %w(lony aorange)
 <li><p>Branch</p>
 
 <ul>
+<li><code>git checkout -b NEW_BRANCH_NAME</code> <a href="https://stackoverflow.com/questions/3899627/create-git-branch-with-current-changes">1</a> - Creates new branch from the existing one currently in, and also copies over changes made</li>
 <li><code>BRANCH=$(git show-ref | grep $(git rev-parse HEAD) | grep remotes | grep -v HEAD | sed -e 's/.*remotes.origin.//' | head -n1)</code> <a href="https://stackoverflow.com/questions/14985563/how-to-retrieve-the-git-branch-name-that-was-built-by-jenkins-when-using-inverse">1</a> - Get branch currently on</li>
 <li><code>git checkout -b newBranch v1.0-oldTag</code> - Create git branch from tag or commit-hash</li>
 <li><code>git push -d &lt;remote_name&gt; &lt;branch_name&gt; &amp;&amp; git branch -d &lt;branch_name&gt;</code> <a href="https://stackoverflow.com/questions/2003505/how-do-i-delete-a-git-branch-both-locally-and-remotely">1</a> - Delete branch local and remote</li>
