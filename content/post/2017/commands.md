@@ -181,6 +181,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 
 * [Python](#python)
 * [Ruby](#ruby)
+* [Java](#java)
 * [Scala](#scala)
 
 ----
@@ -200,6 +201,12 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* `rbenv install 2.4.1` - Install Ruby version
 	* `rbenv versions` - Show locally installed and available versions
 	* `rbenv global 2.4.1` - Make version the default
+
+### Java
+
+* jar
+
+	* `jar xf MY_JOB.jar` [1](https://stackoverflow.com/questions/39563843/how-to-extract-the-source-code-from-a-jar-file-on-a-mac) - Unpack files from jar (ATTENTION: happens inside current folder!)
 
 ### Scala
 
