@@ -403,6 +403,7 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 	* Revert
 
+		* `git reset HEAD~` [1](https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git) - Undoes last commit but leaves files unchanged
 		* `git revert --no-commit 0766c053..HEAD && git commit` [1](https://stackoverflow.com/questions/4114095/how-to-revert-git-repository-to-a-previous-commit) - Reverts range of commits and makes commit with all reverting changes (like a patch)
 		* `git reset --hard COMMIT_HASH && git push origin master --force` [1](https://stackoverflow.com/questions/12305668/how-to-delete-commit-that-is-pushed-to-the-remote-repository), [2](https://git-scm.com/blog), [3](https://stackoverflow.com/questions/2530060/can-you-explain-what-git-reset-does-in-plain-english), [4](https://git-scm.com/docs/git-reset) - Delete local history till certain commit and then overwrites remote history too [THIS IS DANGEROUS!!]
 
@@ -520,8 +521,12 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 	* `--no-cache` [1](https://stackoverflow.com/questions/35594987/how-to-force-docker-for-clean-build-of-an-image) - Build from scratch
 
-* `docker run -p 8080:8080 jenkins:2.32.1` - Starts existing docker image and maps port
-* `docker run -it -d shykes/pybuilder /bin/bash` [1](http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container) - Run image and start bash
+* `docker run` - Start image
+
+	* `docker run -p 8080:8080 jenkins:2.32.1` - Starts existing docker image and maps port
+	* `docker run -it -d shykes/pybuilder /bin/bash` [1](http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container) - Run image detached and start bash
+	* `docker run -it --rm alpine /bin/ash` [1](https://stackoverflow.com/questions/35689628/starting-a-shell-in-the-docker-alpine-container) - Start docker image interactivly with a shell and deletes container after shutdown
+
 * `docker exec -it f151aff2b21e /bin/bash` - Starts docker image f151aff2b21e and open interactive shell
 * `docker ps -a` - List instances (derived from images)
 * `docker rm -f 2247780d0b39` - Delete instance
