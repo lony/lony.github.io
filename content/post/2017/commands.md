@@ -516,11 +516,16 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 ## Docker
 
+### Create
+
 * `docker pull jenkins:2.32.1` - Download docker image from registry
 * `docker build -t "tagIt" .` - Build an image from a Dockerfile
 
 	* `--no-cache` [1](https://stackoverflow.com/questions/35594987/how-to-force-docker-for-clean-build-of-an-image) - Build from scratch
 
+### Run
+
+* `docker images` - List images
 * `docker run` - Start image
 
 	* `docker run -p 8080:8080 jenkins:2.32.1` - Starts existing docker image and maps port
@@ -529,16 +534,29 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 * `docker exec -it f151aff2b21e /bin/bash` - Starts docker image f151aff2b21e and open interactive shell
 * `docker ps -a` - List instances (derived from images)
-* `docker rm -f 2247780d0b39` - Delete instance
-* `docker images` - List images
-* `docker rmi ae12afb99714 a78344b99ebc` - Delete images
+
+### Inspect
+
 * `docker inspect jenkins` - Show information of the docker image object
 
 	* `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 942e216109c6` [1](https://stackoverflow.com/questions/17157721/how-to-get-a-docker-containers-ip-address-from-the-host) - Get IP address of docker container
 
-* `docker rm $(docker ps -a -q)` [1](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes) - Remove all containers
-* `docker rmi $(docker images -a -q)` - Remove all images
+### Delete
+
+* `docker rm -f 2247780d0b39` - Delete instance
+
+	* `docker rm $(docker ps -a -q)` [1](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes) - Remove all containers
+
+* `docker rmi ae12afb99714 a78344b99ebc` - Delete images
+
+	* `docker image prune -f --filter label=app=hello_world` - Delete images by label
+	* `IMAGE_NAME=hello_a; docker images | grep $IMAGE_NAME | awk '{print $1 ":" $2}' | xargs docker rmi` - Delete images by tag
+	* `docker rmi $(docker images -a -q)` - Remove all images
+
 * `docker system prune -a` [1](https://docs.docker.com/engine/reference/commandline/system_prune/) - Remove everything
+
+### Network
+
 * `docker network ls` [1](https://docs.docker.com/engine/userguide/networking/) - Show docker networks
 * `docker network inspect bridge` - Show network information about the bridge network
 
