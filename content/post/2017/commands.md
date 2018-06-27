@@ -25,6 +25,7 @@ If you find a bug or want to recommend something, please feel free to open an [i
 	* [Version control systems](#version-control-systems)
 * [Processes](#processes)
 	* [Docker](#docker)
+	* [Kubernetes](#kubernetes)
 	* [Vagrant](#vagrant)
 	* [VirtualBox](#virtualbox)
 * [User environment](#user-environment)
@@ -560,6 +561,12 @@ To get a general overview see [Version control systems](https://en.wikipedia.org
 
 * `docker network ls` [1](https://docs.docker.com/engine/userguide/networking/) - Show docker networks
 * `docker network inspect bridge` - Show network information about the bridge network
+
+## Kubernetes
+
+* `kubectl`
+
+	* `kubectl port-forward POD_NAME LOCAL_PORT:REMOTE_PORT -n NAMESPACE` [1](https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_port-forward/) - Forward port from Kubernetes to local machine
 
 ## Vagrant
 
