@@ -1,363 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="Goetz Epperlein">
-<meta name="keywords" content=" tech,it,politics,europe">
-<meta property="og:title" content="Programming - [x]">
-<meta property="og:description" content="Programming">
-<title>Programming | [x]</title>
+<html lang="en-GB" dir="ltr">
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <title>Programming - [x]</title>
+        <meta name="description" content="Test">
+        <meta name="keywords" content=" tech,it,politics,europe">
+        <meta name="author" content="Goetz Epperlein">
 
-<link rel="stylesheet" href="https://lony.github.io//css/style.css">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="alternate" type="application/rss+xml" href="lony.github.io/tags/programming/index.xml" title="[x]" />
+        
+      
+        <meta name="geo.region" content="DE-BY" />
+        <meta name="geo.placename" content="M&uuml;nchen" />
+        <meta name="geo.position" content="48.135125;11.58198" />
+        <meta name="ICBM" content="48.135125, 11.58198" />
+            
+        <meta property="og:title" content="Programming - [x]">
+        <meta property="og:description" content="Programming">
+        <meta property="og:url" content="lony.github.io" />
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="lony.github.io" />
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
+            integrity="sha256-zIG416V1ynj3Wgju/scU80KAEWOsO5rRLfVyRDuOv7Q="
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+            integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+            crossorigin="anonymous">
+        <style type="text/css">
+            a {
+                color: #F86B61;
+            }
+            .article-margin {
+                padding-bottom: 50px;
+            }
+            .pagination-link.is-current {
+                background-color: #F86B61;
+                border-color: #F86B61;
+            }
+            #box--hire {
+                z-index: 10;
+                position: absolute;
+                top: 1em;
+                right: 1em;
+            }
+        </style>
 
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"
+            integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk="
+            crossorigin="anonymous" />
+        
+            
+        
 
-<section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://lony.github.io/"><h1 class="title is-4">[x]</h1></a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile">
+        <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js"
+            integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a"
+            crossorigin="anonymous"
+            async></script>
+
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
+            integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw="
+            crossorigin="anonymous"
+            async></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+
+        
           
-          <a class="level-item" href="https://de.linkedin.com/in/goetzepperlein">
-            <span class="icon">
-              <i class="fa fa-linkedin"></i>
-            </span>
-          </a>
-          
-          <a class="level-item" href="https://www.xing.com/profile/Goetz_Epperlein">
-            <span class="icon">
-              <i class="fa fa-xing"></i>
-            </span>
-          </a>
-          
-          <a class="level-item" href="https://github.com/lony">
-            <span class="icon">
-              <i class="fa fa-github"></i>
-            </span>
-          </a>
-          
-          <a class="level-item" href="/post/2017/cli-commands/">
-            <span class="icon">
-              <i class="fa fa-terminal"></i>
-            </span>
-          </a>
-          
-          <a class="level-item" href="/index.xml">
-            <span class="icon">
-              <i class="fa fa-rss"></i>
-            </span>
-          </a>
-          
-        </nav>
-      </div>
-    </nav>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    
-    <article>
-      <h2 class="subtitle is-6">August 22, 2018</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2018/network-ipv6/">Internet Protocol version 6</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/network">network</a>
-    
-        <a class="button is-link" href="/tags/osi">osi</a>
-    
-        <a class="button is-link" href="/tags/ipv6">ipv6</a>
-    
-</div>
-
-      
-      <div class="content">
-        IPv6 is the replacement version of the existing IPv4 protocol version for transmitting packages on the internet. Its most visible change is the change of 32-bit addresses to 64-bit, which you can notice having characters on top of the already used numbers.
-The transition is happening slowly. Looking at a statistic compiled by Google so far only ~25% of the global internet is able to use IPv6.
-Still as you may plan to select your new internet service provider (ISP) there are some things to consider about IPv6.
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2018/network-ipv6/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <h2 class="subtitle is-6">March 11, 2018</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2018/auth/">Authentication and authorization</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/security">security</a>
-    
-        <a class="button is-link" href="/tags/authentication">authentication</a>
-    
-        <a class="button is-link" href="/tags/authorization">authorization</a>
-    
-</div>
-
-      
-      <div class="content">
-        Be yourself; everyone else is already taken. (Oscar Wilde)
- .. or else, how to build identity and access restrictions inside your app.
-TOC  Definition Providers  Definition  Authentication is the process of verifying who you are. When you log on to a PC with a user name and password you are authenticating. [= login + password (who you are)] Authorization is the process of verifying that you have access to something.
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2018/auth/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <h2 class="subtitle is-6">December 19, 2017</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2017/docker-and-the-likes/">Docker and the likes - Are boxes really for dead people?</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/hosting">hosting</a>
-    
-        <a class="button is-link" href="/tags/os">os</a>
-    
-        <a class="button is-link" href="/tags/virtualization">virtualization</a>
-    
-        <a class="button is-link" href="/tags/hypervisor">hypervisor</a>
-    
-        <a class="button is-link" href="/tags/containerization">containerization</a>
-    
-</div>
-
-      
-      <div class="content">
-        Virtualization was standard when Docker came around 2013 and made containerization the new state of the art. This new ecosystem shifted the landscape and was under heavy development, which today we want to make a snapshot of. This post should not only cover Docker but software abstraction in general.
-As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better.
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2017/docker-and-the-likes/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <h2 class="subtitle is-6">October 7, 2017</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2017/setup-reloaded/">Setup Reloaded - Ansible to the rescue</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/ansible">ansible</a>
-    
-        <a class="button is-link" href="/tags/setup">setup</a>
-    
-</div>
-
-      
-      <div class="content">
-        Last year I tried to &ldquo;semi-automate&rdquo; my OSX setup, as described in the Mac OS X Setup post. This weekend I enhanced the deployment using Ansible.
-If you are interested have a look into my dotfile repository. The setup for now only supports OSX, but is already a big step forward for me.
-Usage  Clone repo git clone git@github.com:lony/dotFiles.git Customize all_secret.sh and maybe .ssh/config (see SSH guide) Execute .
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2017/setup-reloaded/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <h2 class="subtitle is-6">April 9, 2017</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2017/debug-with-osi/">Debug web apps with OSI</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/network">network</a>
-    
-        <a class="button is-link" href="/tags/osi">osi</a>
-    
-        <a class="button is-link" href="/tags/debug">debug</a>
-    
-</div>
-
-      
-      <div class="content">
-        Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing. Using the famous OSI layers, I try to navigate through all the important parts someone should look at.
-Update 2018-02-18 If you are interest in the details of how the internet is working I highly recommend you the following amazing Ars Technica article &ldquo;How the Internet works: Submarine fiber, brains in jars, and coaxial cables&rdquo;.
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2017/debug-with-osi/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <h2 class="subtitle is-6">February 26, 2017</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2017/gui-development-cross-platform/">Graphical user interface development</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/gui">gui</a>
-    
-        <a class="button is-link" href="/tags/cross-platform">cross-platform</a>
-    
-</div>
-
-      
-      <div class="content">
-        This list was started in search for the right architecture to develop a cross-platform tool, which I needed badly for myself. As I&rsquo;m working private and commercially with the tool, I need support for all three mayor operating systems Linux, Windows and OS X.
-First of all there is always a Wikipedia list around. Next I then started by researching how tools I liked are developed. I looked for my favorite apps and how they are build for example the all famous Sublime Text editor, which is developed in C++ as stated here.
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2017/gui-development-cross-platform/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <h2 class="subtitle is-6">February 25, 2017</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2017/cli-commands/">CLI commands</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/cli">cli</a>
-    
-        <a class="button is-link" href="/tags/linux">linux</a>
-    
-        <a class="button is-link" href="/tags/commands">commands</a>
-    
-</div>
-
-      
-      <div class="content">
-        Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for you.
-The collection is divided into different sections under which the commands are explained. For each commands there are examples how to use them, as links - from which information about the command can be gathered. For the most commands there is also a short explanation what it does.
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2017/cli-commands/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-    <article>
-      <h2 class="subtitle is-6">October 1, 2016</h2>
-      <h1 class="title"><a href="https://lony.github.io/post/2016/mac-osx-setup/">Mac OS X Setup</a></h1>
-      
-        <div class="tags">
-    
-        <a class="button is-link" href="/tags/programming">programming</a>
-    
-        <a class="button is-link" href="/tags/mac">mac</a>
-    
-        <a class="button is-link" href="/tags/setup">setup</a>
-    
-</div>
-
-      
-      <div class="content">
-        This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better. - Thank you!
-TOC  User interface Terminal  Python SDKMan  Apps  iTerm2  Shortcuts  User interface Following the defaults-write.
-        
-        ...<a class="button is-link" href="https://lony.github.io/post/2016/mac-osx-setup/" style="height:28px">
-          Read more
-          <span class="icon is-small">
-            <i class="fa fa-angle-double-right"></i>
-          </span>
-        </a>
-        
-      </div>
-    </article>
-    
-  </div>
-</section>
-<section class="section">
-  <div class="container">
-    <nav class="level is-mobile">
-      <div class="level-left">
-        <div class="level-item">
-          
-          <a class="button is-disabled">
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-left"></i>
-            </span>
-            Newer
-          </a>
-          
-        </div>
-      </div>
-      <div class="level-right is-marginless">
-        <div class="level-item">
-          
-          <a class="button is-disabled">
-            Older
-            <span class="icon is-small is-marginless">
-              <i class="fa fa-angle-right"></i>
-            </span>
-          </a>
-          
-        </div>
-      </div>
-    </nav>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/lony">Goetz Epperlein</a> 2016 - 2018</p>
-  </div>
-</section>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
-
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
-
-<script>hljs.initHighlightingOnLoad();</script>
-
-
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -369,5 +83,187 @@ if (!doNotTrack) {
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
+        
+  </head>
+  <body>
 
+        <div id="box--hire">
+            <a href="https://getgoetz.com/">
+                <span class="icon is-small">
+                <i class="fa fa-envelope"></i>
+                </span>
+                Hire!
+            </a>
+        </div>
+          <section class="section">
+        <div class="container">
+            
+            
+            
 
+            
+                <article class="article-margin">
+                    <h1 class="title"><a href="lony.github.io/post/2018/network-ipv6/">Internet Protocol version 6</a></h1>
+                    <h2 class="subtitle is-6">2018-08-22 Wednesday 09:00 UTC</h2>
+                    
+                        <div class="tags">
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/programming">
+                                    programming
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/network">
+                                    network
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/osi">
+                                    osi
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/ipv6">
+                                    ipv6
+                                </a>
+                            
+                        </div>
+                    
+                    <div class="content">
+                    IPv6 is the replacement version of the existing IPv4 protocol version for transmitting packages on the internet. Its most visible change is the change of 32-bit addresses to 64-bit, which you can notice having characters on top of the already used numbers.
+                    
+                        ...
+                        <a class="button is-small" href="lony.github.io/post/2018/network-ipv6/" style="height:28px">
+                            Read more&nbsp;&nbsp;
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-double-right"></i>
+                            </span>
+                        </a>
+                    
+                    </div>
+                </article>
+            
+                <article class="article-margin">
+                    <h1 class="title"><a href="lony.github.io/post/2018/auth/">Authentication and authorization</a></h1>
+                    <h2 class="subtitle is-6">2018-03-11 Sunday 17:24 UTC</h2>
+                    
+                        <div class="tags">
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/programming">
+                                    programming
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/security">
+                                    security
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/authentication">
+                                    authentication
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/authorization">
+                                    authorization
+                                </a>
+                            
+                        </div>
+                    
+                    <div class="content">
+                    Be yourself; everyone else is already taken. (Oscar Wilde)
+ .. or else, how to build identity and access restrictions inside your app.
+TOC  Definition Providers  Definition  Authentication is the process of verifying who you are.
+                    
+                        ...
+                        <a class="button is-small" href="lony.github.io/post/2018/auth/" style="height:28px">
+                            Read more&nbsp;&nbsp;
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-double-right"></i>
+                            </span>
+                        </a>
+                    
+                    </div>
+                </article>
+            
+                <article >
+                    <h1 class="title"><a href="lony.github.io/post/2017/docker-and-the-likes/">Docker and the likes - Are boxes really for dead people?</a></h1>
+                    <h2 class="subtitle is-6">2017-12-19 Tuesday 18:00 UTC</h2>
+                    
+                        <div class="tags">
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/programming">
+                                    programming
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/hosting">
+                                    hosting
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/os">
+                                    os
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/virtualization">
+                                    virtualization
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/hypervisor">
+                                    hypervisor
+                                </a>
+                            
+                                <a class="tag is-light" href="/lony.github.io/tags/containerization">
+                                    containerization
+                                </a>
+                            
+                        </div>
+                    
+                    <div class="content">
+                    Virtualization was standard when Docker came around 2013 and made containerization the new state of the art. This new ecosystem shifted the landscape and was under heavy development, which today we want to make a snapshot of.
+                    
+                        ...
+                        <a class="button is-small" href="lony.github.io/post/2017/docker-and-the-likes/" style="height:28px">
+                            Read more&nbsp;&nbsp;
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-double-right"></i>
+                            </span>
+                        </a>
+                    
+                    </div>
+                </article>
+            
+        </div>
+      </section><section class="section">
+  <div class="container">
+      <nav class="pagination is-centered is-rounded is-small" aria-label="pagination">
+        <a href="" class="pagination-previous" 
+            aria-label="Previous page" disabled aria-hidden="true">Previous</a>
+        <a href="lony.github.io/tags/programming/page/2/" class="pagination-next" 
+            aria-label="Next page" >Next</a>
+        <ul class="pagination-list">
+              
+              
+            <li><a href="lony.github.io/tags/programming/" aria-label="Go to page 1" 
+                class="pagination-link is-current">1</a></li>
+            
+          
+              
+              
+            <li><a href="lony.github.io/tags/programming/page/2/" aria-label="Go to page 2" 
+                class="pagination-link ">2</a></li>
+            
+          
+              
+              
+            <li><a href="lony.github.io/tags/programming/page/3/" aria-label="Go to page 3" 
+                class="pagination-link ">3</a></li>
+            
+          
+        </ul>
+      </nav>
+      
+      
+  </div>
+</section>
+    <section class="section">
+        <div class="container has-text-centered">
+            <p><a href="/post/2017/cli-commands/">&copy;</a> <a href="https://getgoetz.com">Goetz Epperlein</a> 2016 - 2018</p>
+        </div>
+    </section>
+
+</body>
+</html>

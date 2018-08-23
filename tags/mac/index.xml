@@ -2,24 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mac on [x]</title>
-    <link>https://lony.github.io/tags/mac/</link>
+    <link>lony.github.io/tags/mac/</link>
     <description>Recent content in Mac on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Sat, 01 Oct 2016 18:02:52 +0200</lastBuildDate>
     
-	<atom:link href="https://lony.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="lony.github.io/tags/mac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Mac OS X Setup</title>
-      <link>https://lony.github.io/post/2016/mac-osx-setup/</link>
+      <link>lony.github.io/post/2016/mac-osx-setup/</link>
       <pubDate>Sat, 01 Oct 2016 18:02:52 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2016/mac-osx-setup/</guid>
-      <description>This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better. - Thank you!
-TOC  User interface Terminal  Python SDKMan  Apps  iTerm2  Shortcuts  User interface Following the defaults-write.</description>
+      <guid>lony.github.io/post/2016/mac-osx-setup/</guid>
+      <description>This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better.</description>
     </item>
     
   </channel>

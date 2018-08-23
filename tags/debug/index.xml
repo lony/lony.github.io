@@ -2,24 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Debug on [x]</title>
-    <link>https://lony.github.io/tags/debug/</link>
+    <link>lony.github.io/tags/debug/</link>
     <description>Recent content in Debug on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Sun, 09 Apr 2017 20:00:00 +0200</lastBuildDate>
     
-	<atom:link href="https://lony.github.io/tags/debug/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="lony.github.io/tags/debug/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Debug web apps with OSI</title>
-      <link>https://lony.github.io/post/2017/debug-with-osi/</link>
+      <link>lony.github.io/post/2017/debug-with-osi/</link>
       <pubDate>Sun, 09 Apr 2017 20:00:00 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/debug-with-osi/</guid>
-      <description>Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing. Using the famous OSI layers, I try to navigate through all the important parts someone should look at.
-Update 2018-02-18 If you are interest in the details of how the internet is working I highly recommend you the following amazing Ars Technica article &amp;ldquo;How the Internet works: Submarine fiber, brains in jars, and coaxial cables&amp;rdquo;.</description>
+      <guid>lony.github.io/post/2017/debug-with-osi/</guid>
+      <description>Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing.</description>
     </item>
     
   </channel>

@@ -2,134 +2,118 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on [x]</title>
-    <link>https://lony.github.io/post/</link>
+    <link>lony.github.io/post/</link>
     <description>Recent content in Posts on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Wed, 22 Aug 2018 11:00:00 +0200</lastBuildDate>
     
-	<atom:link href="https://lony.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="lony.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Internet Protocol version 6</title>
-      <link>https://lony.github.io/post/2018/network-ipv6/</link>
+      <link>lony.github.io/post/2018/network-ipv6/</link>
       <pubDate>Wed, 22 Aug 2018 11:00:00 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2018/network-ipv6/</guid>
-      <description>IPv6 is the replacement version of the existing IPv4 protocol version for transmitting packages on the internet. Its most visible change is the change of 32-bit addresses to 64-bit, which you can notice having characters on top of the already used numbers.
-The transition is happening slowly. Looking at a statistic compiled by Google so far only ~25% of the global internet is able to use IPv6.
-Still as you may plan to select your new internet service provider (ISP) there are some things to consider about IPv6.</description>
+      <guid>lony.github.io/post/2018/network-ipv6/</guid>
+      <description>IPv6 is the replacement version of the existing IPv4 protocol version for transmitting packages on the internet. Its most visible change is the change of 32-bit addresses to 64-bit, which you can notice having characters on top of the already used numbers.</description>
     </item>
     
     <item>
       <title>Authentication and authorization</title>
-      <link>https://lony.github.io/post/2018/auth/</link>
+      <link>lony.github.io/post/2018/auth/</link>
       <pubDate>Sun, 11 Mar 2018 19:24:00 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2018/auth/</guid>
+      <guid>lony.github.io/post/2018/auth/</guid>
       <description>Be yourself; everyone else is already taken. (Oscar Wilde)
  .. or else, how to build identity and access restrictions inside your app.
-TOC  Definition Providers  Definition  Authentication is the process of verifying who you are. When you log on to a PC with a user name and password you are authenticating. [= login + password (who you are)] Authorization is the process of verifying that you have access to something.</description>
+TOC  Definition Providers  Definition  Authentication is the process of verifying who you are.</description>
     </item>
     
     <item>
       <title>Docker and the likes - Are boxes really for dead people?</title>
-      <link>https://lony.github.io/post/2017/docker-and-the-likes/</link>
+      <link>lony.github.io/post/2017/docker-and-the-likes/</link>
       <pubDate>Tue, 19 Dec 2017 20:00:00 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/docker-and-the-likes/</guid>
-      <description>Virtualization was standard when Docker came around 2013 and made containerization the new state of the art. This new ecosystem shifted the landscape and was under heavy development, which today we want to make a snapshot of. This post should not only cover Docker but software abstraction in general.
-As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better.</description>
+      <guid>lony.github.io/post/2017/docker-and-the-likes/</guid>
+      <description>Virtualization was standard when Docker came around 2013 and made containerization the new state of the art. This new ecosystem shifted the landscape and was under heavy development, which today we want to make a snapshot of.</description>
     </item>
     
     <item>
       <title>GDPR - Privacy! Welcome to Europe?</title>
-      <link>https://lony.github.io/post/2017/data-privacy/</link>
+      <link>lony.github.io/post/2017/data-privacy/</link>
       <pubDate>Sun, 10 Dec 2017 00:00:00 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/data-privacy/</guid>
-      <description>Starting May 25th, 2018 the new General Data Protection Regulation will become effective. In German &amp;ldquo;Datenschutz-Grundverordnung&amp;rdquo; this new legislation will align and harmonise European privacy laws and is already known for its high fees. Most prominent areas covered are the following and should be carefully considered to comply.
- Accountability
- Principle of data economy Appropriation Data integrity Data safety Breach notification  Access
- Reservation of authorisation Right to be forgotten Data portability   Is this THE red flag act for European IT or the game changer to have a unique, competitive advantage?</description>
+      <guid>lony.github.io/post/2017/data-privacy/</guid>
+      <description>Starting May 25th, 2018 the new General Data Protection Regulation will become effective. In German &amp;ldquo;Datenschutz-Grundverordnung&amp;rdquo; this new legislation will align and harmonise European privacy laws and is already known for its high fees.</description>
     </item>
     
     <item>
       <title>Setup Reloaded - Ansible to the rescue</title>
-      <link>https://lony.github.io/post/2017/setup-reloaded/</link>
+      <link>lony.github.io/post/2017/setup-reloaded/</link>
       <pubDate>Sat, 07 Oct 2017 15:00:00 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/setup-reloaded/</guid>
+      <guid>lony.github.io/post/2017/setup-reloaded/</guid>
       <description>Last year I tried to &amp;ldquo;semi-automate&amp;rdquo; my OSX setup, as described in the Mac OS X Setup post. This weekend I enhanced the deployment using Ansible.
-If you are interested have a look into my dotfile repository. The setup for now only supports OSX, but is already a big step forward for me.
-Usage  Clone repo git clone git@github.com:lony/dotFiles.git Customize all_secret.sh and maybe .ssh/config (see SSH guide) Execute .</description>
+If you are interested have a look into my dotfile repository.</description>
     </item>
     
     <item>
       <title>Bundestagswahl 2017</title>
-      <link>https://lony.github.io/post/2017/bundestagswahl-2017/</link>
+      <link>lony.github.io/post/2017/bundestagswahl-2017/</link>
       <pubDate>Sun, 24 Sep 2017 14:00:00 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/bundestagswahl-2017/</guid>
+      <guid>lony.github.io/post/2017/bundestagswahl-2017/</guid>
       <description>This German election is the first time since World War II that a racist and history revisionist party is elected into the German Bundestag - our Congress.
-Looking at the predications from Süddeutsche Zeitung just 2 pm on election day (UTC+1) the predictions show a 10+ % yield for the AfD, easily reaching the 5 % threshold for entry.
-(Source: www.sueddeutsche.de &amp;ldquo;Wahlzentrale&amp;rdquo; from 2017-09-24 14:00 UTC+1)
-5.316.095 people made the AfD their first choice and 5.</description>
+Looking at the predications from Süddeutsche Zeitung just 2 pm on election day (UTC+1) the predictions show a 10+ % yield for the AfD, easily reaching the 5 % threshold for entry.</description>
     </item>
     
     <item>
       <title>Debug web apps with OSI</title>
-      <link>https://lony.github.io/post/2017/debug-with-osi/</link>
+      <link>lony.github.io/post/2017/debug-with-osi/</link>
       <pubDate>Sun, 09 Apr 2017 20:00:00 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/debug-with-osi/</guid>
-      <description>Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing. Using the famous OSI layers, I try to navigate through all the important parts someone should look at.
-Update 2018-02-18 If you are interest in the details of how the internet is working I highly recommend you the following amazing Ars Technica article &amp;ldquo;How the Internet works: Submarine fiber, brains in jars, and coaxial cables&amp;rdquo;.</description>
+      <guid>lony.github.io/post/2017/debug-with-osi/</guid>
+      <description>Working with web applications every day, a lot of my time is spend troubleshooting problems with them. In this post I write what I learned about debugging web applications in production, and during testing.</description>
     </item>
     
     <item>
       <title>Graphical user interface development</title>
-      <link>https://lony.github.io/post/2017/gui-development-cross-platform/</link>
+      <link>lony.github.io/post/2017/gui-development-cross-platform/</link>
       <pubDate>Sun, 26 Feb 2017 14:02:52 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/gui-development-cross-platform/</guid>
-      <description>This list was started in search for the right architecture to develop a cross-platform tool, which I needed badly for myself. As I&amp;rsquo;m working private and commercially with the tool, I need support for all three mayor operating systems Linux, Windows and OS X.
-First of all there is always a Wikipedia list around. Next I then started by researching how tools I liked are developed. I looked for my favorite apps and how they are build for example the all famous Sublime Text editor, which is developed in C++ as stated here.</description>
+      <guid>lony.github.io/post/2017/gui-development-cross-platform/</guid>
+      <description>This list was started in search for the right architecture to develop a cross-platform tool, which I needed badly for myself. As I&amp;rsquo;m working private and commercially with the tool, I need support for all three mayor operating systems Linux, Windows and OS X.</description>
     </item>
     
     <item>
       <title>CLI commands</title>
-      <link>https://lony.github.io/post/2017/cli-commands/</link>
+      <link>lony.github.io/post/2017/cli-commands/</link>
       <pubDate>Sat, 25 Feb 2017 18:02:52 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/cli-commands/</guid>
-      <description>Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for you.
-The collection is divided into different sections under which the commands are explained. For each commands there are examples how to use them, as links - from which information about the command can be gathered. For the most commands there is also a short explanation what it does.</description>
+      <guid>lony.github.io/post/2017/cli-commands/</guid>
+      <description>Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for you.</description>
     </item>
     
     <item>
       <title>Mac OS X Setup</title>
-      <link>https://lony.github.io/post/2016/mac-osx-setup/</link>
+      <link>lony.github.io/post/2016/mac-osx-setup/</link>
       <pubDate>Sat, 01 Oct 2016 18:02:52 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2016/mac-osx-setup/</guid>
-      <description>This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better. - Thank you!
-TOC  User interface Terminal  Python SDKMan  Apps  iTerm2  Shortcuts  User interface Following the defaults-write.</description>
+      <guid>lony.github.io/post/2016/mac-osx-setup/</guid>
+      <description>This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better.</description>
     </item>
     
     <item>
       <title>Why this started!</title>
-      <link>https://lony.github.io/post/2016/why-started/</link>
+      <link>lony.github.io/post/2016/why-started/</link>
       <pubDate>Mon, 06 Jun 2016 18:06:30 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2016/why-started/</guid>
+      <guid>lony.github.io/post/2016/why-started/</guid>
       <description>Working as a client I got to know Michael Muckel. He is a head of software division at a company I consulted.
-One day we worked with an open source tool and he stated:
- We should give something back after using so many open source tools.
- That&amp;rsquo;s basically why I started this blog.
-Over the years learning computer science, private as professionally I used a lot of public information.</description>
+One day we worked with an open source tool and he stated:</description>
     </item>
     
   </channel>

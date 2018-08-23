@@ -2,24 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cli on [x]</title>
-    <link>https://lony.github.io/tags/cli/</link>
+    <link>lony.github.io/tags/cli/</link>
     <description>Recent content in Cli on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/lony&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Sat, 25 Feb 2017 18:02:52 +0200</lastBuildDate>
     
-	<atom:link href="https://lony.github.io/tags/cli/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="lony.github.io/tags/cli/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CLI commands</title>
-      <link>https://lony.github.io/post/2017/cli-commands/</link>
+      <link>lony.github.io/post/2017/cli-commands/</link>
       <pubDate>Sat, 25 Feb 2017 18:02:52 +0200</pubDate>
       
-      <guid>https://lony.github.io/post/2017/cli-commands/</guid>
-      <description>Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for you.
-The collection is divided into different sections under which the commands are explained. For each commands there are examples how to use them, as links - from which information about the command can be gathered. For the most commands there is also a short explanation what it does.</description>
+      <guid>lony.github.io/post/2017/cli-commands/</guid>
+      <description>Working with UNIX systems you often need commands to get something done. This is a continuously updated collection of useful commands I compile and maintain for myself - and maybe also for you.</description>
     </item>
     
   </channel>
