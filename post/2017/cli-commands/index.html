@@ -113,6 +113,7 @@
 
 <ul>
 <li><a href="#docker">Docker</a></li>
+<li><a href="#kubernetes">Kubernetes</a></li>
 <li><a href="#vagrant">Vagrant</a></li>
 <li><a href="#virtualbox">VirtualBox</a></li>
 </ul></li>
@@ -659,6 +660,7 @@ knife[:vault_admins] = %w(lony aorange)
 <li><p>Revert</p>
 
 <ul>
+<li><code>git reset HEAD~</code> <a href="https://stackoverflow.com/questions/927358/how-to-undo-the-most-recent-commits-in-git">1</a> - Undoes last commit but leaves files unchanged</li>
 <li><code>git revert --no-commit 0766c053..HEAD &amp;&amp; git commit</code> <a href="https://stackoverflow.com/questions/4114095/how-to-revert-git-repository-to-a-previous-commit">1</a> - Reverts range of commits and makes commit with all reverting changes (like a patch)</li>
 <li><code>git reset --hard COMMIT_HASH &amp;&amp; git push origin master --force</code> <a href="https://stackoverflow.com/questions/12305668/how-to-delete-commit-that-is-pushed-to-the-remote-repository">1</a>, <a href="https://git-scm.com/blog">2</a>, <a href="https://stackoverflow.com/questions/2530060/can-you-explain-what-git-reset-does-in-plain-english">3</a>, <a href="https://git-scm.com/docs/git-reset">4</a> - Delete local history till certain commit and then overwrites remote history too [THIS IS DANGEROUS!!]</li>
 </ul></li>
@@ -817,6 +819,8 @@ knife[:vault_admins] = %w(lony aorange)
 
 <h2 id="docker">Docker</h2>
 
+<h3 id="create">Create</h3>
+
 <ul>
 <li><code>docker pull jenkins:2.32.1</code> - Download docker image from registry</li>
 
@@ -825,36 +829,72 @@ knife[:vault_admins] = %w(lony aorange)
 <ul>
 <li><code>--no-cache</code> <a href="https://stackoverflow.com/questions/35594987/how-to-force-docker-for-clean-build-of-an-image">1</a> - Build from scratch</li>
 </ul></li>
+</ul>
 
-<li><p><code>docker run -p 8080:8080 jenkins:2.32.1</code> - Starts existing docker image and maps port</p></li>
+<h3 id="run">Run</h3>
 
-<li><p><code>docker run -it -d shykes/pybuilder /bin/bash</code> <a href="http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container">1</a> - Run image and start bash</p></li>
+<ul>
+<li><code>docker images</code> - List images</li>
+
+<li><p><code>docker run</code> - Start image</p>
+
+<ul>
+<li><code>docker run -p 8080:8080 jenkins:2.32.1</code> - Starts existing docker image and maps port</li>
+<li><code>docker run -it -d shykes/pybuilder /bin/bash</code> <a href="http://stackoverflow.com/questions/26153686/how-to-run-a-command-on-an-already-existing-docker-container">1</a> - Run image detached and start bash</li>
+<li><code>docker run -it --rm alpine /bin/ash</code> <a href="https://stackoverflow.com/questions/35689628/starting-a-shell-in-the-docker-alpine-container">1</a> - Start docker image interactivly with a shell and deletes container after shutdown</li>
+<li><code>docker run -it --rm -p 5000:5000 -e PORT=5000 7b6df7f3b971</code> - Start container handing over environment variable PORT</li>
+</ul></li>
 
 <li><p><code>docker exec -it f151aff2b21e /bin/bash</code> - Starts docker image f151aff2b21e and open interactive shell</p></li>
 
 <li><p><code>docker ps -a</code> - List instances (derived from images)</p></li>
+</ul>
 
-<li><p><code>docker rm -f 2247780d0b39</code> - Delete instance</p></li>
+<h3 id="inspect">Inspect</h3>
 
-<li><p><code>docker images</code> - List images</p></li>
-
-<li><p><code>docker rmi ae12afb99714 a78344b99ebc</code> - Delete images</p></li>
-
+<ul>
 <li><p><code>docker inspect jenkins</code> - Show information of the docker image object</p>
 
 <ul>
 <li><code>docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 942e216109c6</code> <a href="https://stackoverflow.com/questions/17157721/how-to-get-a-docker-containers-ip-address-from-the-host">1</a> - Get IP address of docker container</li>
 </ul></li>
+</ul>
 
-<li><p><code>docker rm $(docker ps -a -q)</code> <a href="https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes">1</a> - Remove all containers</p></li>
+<h3 id="delete">Delete</h3>
 
-<li><p><code>docker rmi $(docker images -a -q)</code> - Remove all images</p></li>
+<ul>
+<li><p><code>docker rm -f 2247780d0b39</code> - Delete instance</p>
+
+<ul>
+<li><code>docker rm $(docker ps -a -q)</code> <a href="https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes">1</a> - Remove all containers</li>
+</ul></li>
+
+<li><p><code>docker rmi ae12afb99714 a78344b99ebc</code> - Delete images</p>
+
+<ul>
+<li><code>docker image prune -f --filter label=app=hello_world</code> - Delete images by label</li>
+<li><code>IMAGE_NAME=hello_a; docker images | grep $IMAGE_NAME | awk '{print $1 &quot;:&quot; $2}' | xargs docker rmi</code> - Delete images by tag</li>
+<li><code>docker rmi $(docker images -a -q)</code> - Remove all images</li>
+</ul></li>
 
 <li><p><code>docker system prune -a</code> <a href="https://docs.docker.com/engine/reference/commandline/system_prune/">1</a> - Remove everything</p></li>
+</ul>
 
-<li><p><code>docker network ls</code> <a href="https://docs.docker.com/engine/userguide/networking/">1</a> - Show docker networks</p></li>
+<h3 id="network">Network</h3>
 
-<li><p><code>docker network inspect bridge</code> - Show network information about the bridge network</p></li>
+<ul>
+<li><code>docker network ls</code> <a href="https://docs.docker.com/engine/userguide/networking/">1</a> - Show docker networks</li>
+<li><code>docker network inspect bridge</code> - Show network information about the bridge network</li>
+</ul>
+
+<h2 id="kubernetes">Kubernetes</h2>
+
+<ul>
+<li><p><code>kubectl</code></p>
+
+<ul>
+<li><code>kubectl port-forward POD_NAME LOCAL_PORT:REMOTE_PORT -n NAMESPACE</code> <a href="https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_port-forward/">1</a> - Forward port from Kubernetes to local machine</li>
+</ul></li>
 </ul>
 
 <h2 id="vagrant">Vagrant</h2>
@@ -1305,6 +1345,7 @@ then <code>find /path/to/directory/ -mindepth 1 -mtime +365 -type f -name &quot;
 <li><code>grep -e ERROR -e WARN YOURLOG.log | grep -v IgnoreException</code> - Searches in YOURLOG for ERRORs and WARnings but ignores your IgnoreException</li>
 <li><code>grep -r foo /home/lony/bar</code> - Search recursively for foo in bar</li>
 <li><code>grep -nr 'foo*' .</code> <a href="http://stackoverflow.com/questions/4121803/how-can-i-use-grep-to-find-a-word-inside-a-folder">1</a> - Search for foo* in <code>.</code> showing relative line number</li>
+<li><code>grep -lr 'SEAR_TERM' .</code> <a href="https://stackoverflow.com/questions/6637882/how-can-i-use-grep-to-show-just-filenames-no-in-line-matches-on-linux">1</a> - Recurive search for term and show only file names</li>
 <li><code>zgrep foo /home/lony/log.1.gz | less</code> - Search inside gzip log file for foo</li>
 <li><code>grep 'IPTABLES-OUTBOUND-' /var/log/kern.log | sed 's/.* DST=\(.*\)[[:space:]]LEN.* DPT=\(.*\)[[:space:]]WINDOW.*/\1_\2/' | sort | uniq -c | sort -n</code> <a href="http://stackoverflow.com/questions/6447473/linux-command-or-script-counting-duplicated-lines-in-a-text-file">1</a> - Extract log entry and count distinct occurence of IP_Port combinations by frequency</li>
 <li><code>grep 'version' package.json | sed 's/.*version&quot;: &quot;\(.*\)&quot;.*/\1/g'</code> - Get version from package.json of node projekts</li>
@@ -1655,7 +1696,7 @@ FLUSH PRIVILEGES;
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/lony">Goetz Epperlein</a> 2016 - 2017</p>
+    <p>&copy; <a href="https://github.com/lony">Goetz Epperlein</a> 2016 - 2018</p>
   </div>
 </section>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
@@ -1667,12 +1708,16 @@ FLUSH PRIVILEGES;
 <script>hljs.initHighlightingOnLoad();</script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-83817537-1', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-83817537-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 

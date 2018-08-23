@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Goetz Epperlein">
+<meta name="keywords" content="programming,network,osi,ipv6">
+<meta property="og:title" content="Internet Protocol version 6 - [x]">
+<meta property="og:description" content="Internet Protocol version 6">
+<title>Internet Protocol version 6 | [x]</title>
+
+<link rel="stylesheet" href="https://lony.github.io//css/style.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
+
+
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://lony.github.io/"><h1 class="title is-4">[x]</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://de.linkedin.com/in/goetzepperlein">
+            <span class="icon">
+              <i class="fa fa-linkedin"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://www.xing.com/profile/Goetz_Epperlein">
+            <span class="icon">
+              <i class="fa fa-xing"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://github.com/lony">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/post/2017/cli-commands/">
+            <span class="icon">
+              <i class="fa fa-terminal"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="subtitle is-6">August 22, 2018</h2>
+    <h1 class="title">Internet Protocol version 6</h1>
+    
+      <div class="tags">
+    
+        <a class="button is-link" href="/tags/programming">programming</a>
+    
+        <a class="button is-link" href="/tags/network">network</a>
+    
+        <a class="button is-link" href="/tags/osi">osi</a>
+    
+        <a class="button is-link" href="/tags/ipv6">ipv6</a>
+    
+</div>
+
+    
+    <div class="content">
+      <p><a href="https://en.wikipedia.org/wiki/IPv6">IPv6</a> is the replacement version of the existing <a href="https://en.wikipedia.org/wiki/IPv4">IPv4</a> protocol version for transmitting packages on the internet. Its most visible change is the change of 32-bit addresses to 64-bit, which you can notice having characters on top of the already used numbers.</p>
+
+<p>The transition is happening slowly. Looking at a <a href="https://www.google.com/intl/en/ipv6/statistics.html">statistic compiled by Google</a> so far only ~25% of the global internet is able to use IPv6.</p>
+
+<p>Still as you may plan to select your new internet service provider (ISP) there are some things to consider about IPv6.</p>
+
+<p>As the IPv4 address space is getting smaller many ISPs move their new customers to IPv6 directly. Therefore, you get an IPv6 address and no regular IPv4 address on top. To still be able to reach the &ldquo;old&rdquo; internet the Internet Engineering Task Force (IETF) developed a couple of <a href="https://en.wikipedia.org/wiki/IPv6_transition_mechanism">standards as transition mechanisms</a>.</p>
+
+<p>Most ISP&rsquo;s use the Dual Stack Lite (<a href="https://www.elektronik-kompendium.de/sites/net/2010211.htm">DE</a>, <a href="https://www.juniper.net/documentation/en_US/junos/topics/concept/ipv6-dual-stack-lite-overview.html">EN</a>) way of delivering content from IPv4 servers to clients. This way uses a pool of IPv4 addresses to map request from your IPv6 out to an IPv4 receiver and back again. Sadly, this implies that you are not able to use certain services as before e.g. NAS or Fritbox remote.</p>
+
+<p>Understanding IPv6 and the transition mechanisms helps your choice your ISP wisely.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/lony">Goetz Epperlein</a> 2016 - 2018</p>
+  </div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/dockerfile.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-83817537-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+

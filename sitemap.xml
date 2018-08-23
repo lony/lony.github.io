@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://lony.github.io/post/2018/network-ipv6/</loc>
+    <lastmod>2018-08-22T11:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lony.github.io/post/2018/auth/</loc>
     <lastmod>2018-03-11T19:24:00+02:00</lastmod>
   </url>
@@ -142,6 +147,12 @@
   </url>
   
   <url>
+    <loc>https://lony.github.io/tags/ipv6/</loc>
+    <lastmod>2018-08-22T11:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://lony.github.io/tags/law/</loc>
     <lastmod>2017-12-10T00:00:00+02:00</lastmod>
     <priority>0</priority>
@@ -161,7 +172,7 @@
   
   <url>
     <loc>https://lony.github.io/tags/network/</loc>
-    <lastmod>2017-04-09T20:00:00+02:00</lastmod>
+    <lastmod>2018-08-22T11:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -173,7 +184,7 @@
   
   <url>
     <loc>https://lony.github.io/tags/osi/</loc>
-    <lastmod>2017-04-09T20:00:00+02:00</lastmod>
+    <lastmod>2018-08-22T11:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -185,7 +196,7 @@
   
   <url>
     <loc>https://lony.github.io/post/</loc>
-    <lastmod>2018-03-11T19:24:00+02:00</lastmod>
+    <lastmod>2018-08-22T11:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -197,7 +208,7 @@
   
   <url>
     <loc>https://lony.github.io/tags/programming/</loc>
-    <lastmod>2018-03-11T19:24:00+02:00</lastmod>
+    <lastmod>2018-08-22T11:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -227,7 +238,7 @@
   
   <url>
     <loc>https://lony.github.io/</loc>
-    <lastmod>2018-03-11T19:24:00+02:00</lastmod>
+    <lastmod>2018-08-22T11:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
