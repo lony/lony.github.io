@@ -1,4 +1,4 @@
-baseurl = "lony.github.io"
+baseurl = "http://lony.github.io"
 languageCode = "en"
 title = "[x]"
 copyright = "<a href=\"/post/2017/cli-commands/\">&copy;</a> <a href=\"https://getgoetz.com\">Goetz Epperlein</a> 2016 - 2018"
