@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Init on [x]</title>
-    <link>lony.github.io/tags/init/</link>
+    <link>http://lony.github.io/tags/init/</link>
     <description>Recent content in Init on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;http://lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Mon, 06 Jun 2016 18:06:30 +0200</lastBuildDate>
     
-	<atom:link href="lony.github.io/tags/init/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://lony.github.io/tags/init/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Why this started!</title>
-      <link>lony.github.io/post/2016/why-started/</link>
+      <link>http://lony.github.io/post/2016/why-started/</link>
       <pubDate>Mon, 06 Jun 2016 18:06:30 +0200</pubDate>
       
-      <guid>lony.github.io/post/2016/why-started/</guid>
+      <guid>http://lony.github.io/post/2016/why-started/</guid>
       <description>Working as a client I got to know Michael Muckel. He is a head of software division at a company I consulted.
 One day we worked with an open source tool and he stated:</description>
     </item>

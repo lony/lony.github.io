@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Politics on [x]</title>
-    <link>lony.github.io/tags/politics/</link>
+    <link>http://lony.github.io/tags/politics/</link>
     <description>Recent content in Politics on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;http://lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Sun, 24 Sep 2017 14:00:00 +0200</lastBuildDate>
     
-	<atom:link href="lony.github.io/tags/politics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://lony.github.io/tags/politics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bundestagswahl 2017</title>
-      <link>lony.github.io/post/2017/bundestagswahl-2017/</link>
+      <link>http://lony.github.io/post/2017/bundestagswahl-2017/</link>
       <pubDate>Sun, 24 Sep 2017 14:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/post/2017/bundestagswahl-2017/</guid>
+      <guid>http://lony.github.io/post/2017/bundestagswahl-2017/</guid>
       <description>This German election is the first time since World War II that a racist and history revisionist party is elected into the German Bundestag - our Congress.
 Looking at the predications from Süddeutsche Zeitung just 2 pm on election day (UTC+1) the predictions show a 10+ % yield for the AfD, easily reaching the 5 % threshold for entry.</description>
     </item>

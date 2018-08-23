@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ipv6 on [x]</title>
-    <link>lony.github.io/tags/ipv6/</link>
+    <link>http://lony.github.io/tags/ipv6/</link>
     <description>Recent content in Ipv6 on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;http://lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Wed, 22 Aug 2018 11:00:00 +0200</lastBuildDate>
     
-	<atom:link href="lony.github.io/tags/ipv6/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://lony.github.io/tags/ipv6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Internet Protocol version 6</title>
-      <link>lony.github.io/post/2018/network-ipv6/</link>
+      <link>http://lony.github.io/post/2018/network-ipv6/</link>
       <pubDate>Wed, 22 Aug 2018 11:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/post/2018/network-ipv6/</guid>
+      <guid>http://lony.github.io/post/2018/network-ipv6/</guid>
       <description>IPv6 is the replacement version of the existing IPv4 protocol version for transmitting packages on the internet. Its most visible change is the change of 32-bit addresses to 64-bit, which you can notice having characters on top of the already used numbers.</description>
     </item>
     

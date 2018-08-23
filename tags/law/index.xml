@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Law on [x]</title>
-    <link>lony.github.io/tags/law/</link>
+    <link>http://lony.github.io/tags/law/</link>
     <description>Recent content in Law on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;http://lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Sun, 10 Dec 2017 00:00:00 +0200</lastBuildDate>
     
-	<atom:link href="lony.github.io/tags/law/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://lony.github.io/tags/law/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>GDPR - Privacy! Welcome to Europe?</title>
-      <link>lony.github.io/post/2017/data-privacy/</link>
+      <link>http://lony.github.io/post/2017/data-privacy/</link>
       <pubDate>Sun, 10 Dec 2017 00:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/post/2017/data-privacy/</guid>
+      <guid>http://lony.github.io/post/2017/data-privacy/</guid>
       <description>Starting May 25th, 2018 the new General Data Protection Regulation will become effective. In German &amp;ldquo;Datenschutz-Grundverordnung&amp;rdquo; this new legislation will align and harmonise European privacy laws and is already known for its high fees.</description>
     </item>
     

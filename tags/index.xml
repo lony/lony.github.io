@@ -2,256 +2,256 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on [x]</title>
-    <link>lony.github.io/tags/</link>
+    <link>http://lony.github.io/tags/</link>
     <description>Recent content in Tags on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;http://lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Sat, 07 Oct 2017 15:00:00 +0200</lastBuildDate>
     
-	<atom:link href="lony.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://lony.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ansible</title>
-      <link>lony.github.io/tags/ansible/</link>
+      <link>http://lony.github.io/tags/ansible/</link>
       <pubDate>Sat, 07 Oct 2017 15:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/ansible/</guid>
+      <guid>http://lony.github.io/tags/ansible/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Authentication</title>
-      <link>lony.github.io/tags/authentication/</link>
+      <link>http://lony.github.io/tags/authentication/</link>
       <pubDate>Sun, 11 Mar 2018 19:24:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/authentication/</guid>
+      <guid>http://lony.github.io/tags/authentication/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Authorization</title>
-      <link>lony.github.io/tags/authorization/</link>
+      <link>http://lony.github.io/tags/authorization/</link>
       <pubDate>Sun, 11 Mar 2018 19:24:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/authorization/</guid>
+      <guid>http://lony.github.io/tags/authorization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Blog</title>
-      <link>lony.github.io/tags/blog/</link>
+      <link>http://lony.github.io/tags/blog/</link>
       <pubDate>Mon, 06 Jun 2016 18:06:30 +0200</pubDate>
       
-      <guid>lony.github.io/tags/blog/</guid>
+      <guid>http://lony.github.io/tags/blog/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cli</title>
-      <link>lony.github.io/tags/cli/</link>
+      <link>http://lony.github.io/tags/cli/</link>
       <pubDate>Sat, 25 Feb 2017 18:02:52 +0200</pubDate>
       
-      <guid>lony.github.io/tags/cli/</guid>
+      <guid>http://lony.github.io/tags/cli/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Commands</title>
-      <link>lony.github.io/tags/commands/</link>
+      <link>http://lony.github.io/tags/commands/</link>
       <pubDate>Sat, 25 Feb 2017 18:02:52 +0200</pubDate>
       
-      <guid>lony.github.io/tags/commands/</guid>
+      <guid>http://lony.github.io/tags/commands/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Containerization</title>
-      <link>lony.github.io/tags/containerization/</link>
+      <link>http://lony.github.io/tags/containerization/</link>
       <pubDate>Tue, 19 Dec 2017 20:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/containerization/</guid>
+      <guid>http://lony.github.io/tags/containerization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cross Platform</title>
-      <link>lony.github.io/tags/cross-platform/</link>
+      <link>http://lony.github.io/tags/cross-platform/</link>
       <pubDate>Sun, 26 Feb 2017 14:02:52 +0200</pubDate>
       
-      <guid>lony.github.io/tags/cross-platform/</guid>
+      <guid>http://lony.github.io/tags/cross-platform/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Debug</title>
-      <link>lony.github.io/tags/debug/</link>
+      <link>http://lony.github.io/tags/debug/</link>
       <pubDate>Sun, 09 Apr 2017 20:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/debug/</guid>
+      <guid>http://lony.github.io/tags/debug/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Election</title>
-      <link>lony.github.io/tags/election/</link>
+      <link>http://lony.github.io/tags/election/</link>
       <pubDate>Sun, 24 Sep 2017 14:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/election/</guid>
+      <guid>http://lony.github.io/tags/election/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gui</title>
-      <link>lony.github.io/tags/gui/</link>
+      <link>http://lony.github.io/tags/gui/</link>
       <pubDate>Sun, 26 Feb 2017 14:02:52 +0200</pubDate>
       
-      <guid>lony.github.io/tags/gui/</guid>
+      <guid>http://lony.github.io/tags/gui/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hosting</title>
-      <link>lony.github.io/tags/hosting/</link>
+      <link>http://lony.github.io/tags/hosting/</link>
       <pubDate>Tue, 19 Dec 2017 20:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/hosting/</guid>
+      <guid>http://lony.github.io/tags/hosting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hypervisor</title>
-      <link>lony.github.io/tags/hypervisor/</link>
+      <link>http://lony.github.io/tags/hypervisor/</link>
       <pubDate>Tue, 19 Dec 2017 20:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/hypervisor/</guid>
+      <guid>http://lony.github.io/tags/hypervisor/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Init</title>
-      <link>lony.github.io/tags/init/</link>
+      <link>http://lony.github.io/tags/init/</link>
       <pubDate>Mon, 06 Jun 2016 18:06:30 +0200</pubDate>
       
-      <guid>lony.github.io/tags/init/</guid>
+      <guid>http://lony.github.io/tags/init/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Ipv6</title>
-      <link>lony.github.io/tags/ipv6/</link>
+      <link>http://lony.github.io/tags/ipv6/</link>
       <pubDate>Wed, 22 Aug 2018 11:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/ipv6/</guid>
+      <guid>http://lony.github.io/tags/ipv6/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Law</title>
-      <link>lony.github.io/tags/law/</link>
+      <link>http://lony.github.io/tags/law/</link>
       <pubDate>Sun, 10 Dec 2017 00:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/law/</guid>
+      <guid>http://lony.github.io/tags/law/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>lony.github.io/tags/linux/</link>
+      <link>http://lony.github.io/tags/linux/</link>
       <pubDate>Sat, 25 Feb 2017 18:02:52 +0200</pubDate>
       
-      <guid>lony.github.io/tags/linux/</guid>
+      <guid>http://lony.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mac</title>
-      <link>lony.github.io/tags/mac/</link>
+      <link>http://lony.github.io/tags/mac/</link>
       <pubDate>Sat, 01 Oct 2016 18:02:52 +0200</pubDate>
       
-      <guid>lony.github.io/tags/mac/</guid>
+      <guid>http://lony.github.io/tags/mac/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Network</title>
-      <link>lony.github.io/tags/network/</link>
+      <link>http://lony.github.io/tags/network/</link>
       <pubDate>Wed, 22 Aug 2018 11:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/network/</guid>
+      <guid>http://lony.github.io/tags/network/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Os</title>
-      <link>lony.github.io/tags/os/</link>
+      <link>http://lony.github.io/tags/os/</link>
       <pubDate>Tue, 19 Dec 2017 20:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/os/</guid>
+      <guid>http://lony.github.io/tags/os/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Osi</title>
-      <link>lony.github.io/tags/osi/</link>
+      <link>http://lony.github.io/tags/osi/</link>
       <pubDate>Wed, 22 Aug 2018 11:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/osi/</guid>
+      <guid>http://lony.github.io/tags/osi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Politics</title>
-      <link>lony.github.io/tags/politics/</link>
+      <link>http://lony.github.io/tags/politics/</link>
       <pubDate>Sun, 24 Sep 2017 14:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/politics/</guid>
+      <guid>http://lony.github.io/tags/politics/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Privacy</title>
-      <link>lony.github.io/tags/privacy/</link>
+      <link>http://lony.github.io/tags/privacy/</link>
       <pubDate>Sun, 10 Dec 2017 00:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/privacy/</guid>
+      <guid>http://lony.github.io/tags/privacy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Programming</title>
-      <link>lony.github.io/tags/programming/</link>
+      <link>http://lony.github.io/tags/programming/</link>
       <pubDate>Wed, 22 Aug 2018 11:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/programming/</guid>
+      <guid>http://lony.github.io/tags/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Security</title>
-      <link>lony.github.io/tags/security/</link>
+      <link>http://lony.github.io/tags/security/</link>
       <pubDate>Sun, 11 Mar 2018 19:24:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/security/</guid>
+      <guid>http://lony.github.io/tags/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Setup</title>
-      <link>lony.github.io/tags/setup/</link>
+      <link>http://lony.github.io/tags/setup/</link>
       <pubDate>Sat, 07 Oct 2017 15:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/setup/</guid>
+      <guid>http://lony.github.io/tags/setup/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Virtualization</title>
-      <link>lony.github.io/tags/virtualization/</link>
+      <link>http://lony.github.io/tags/virtualization/</link>
       <pubDate>Tue, 19 Dec 2017 20:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/tags/virtualization/</guid>
+      <guid>http://lony.github.io/tags/virtualization/</guid>
       <description></description>
     </item>
     

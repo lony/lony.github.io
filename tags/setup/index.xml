@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Setup on [x]</title>
-    <link>lony.github.io/tags/setup/</link>
+    <link>http://lony.github.io/tags/setup/</link>
     <description>Recent content in Setup on [x]</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>&lt;a href=&#34;lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
+    <copyright>&lt;a href=&#34;http://lony.github.io/post/2017/cli-commands/&#34;&gt;&amp;copy;&lt;/a&gt; &lt;a href=&#34;https://getgoetz.com&#34;&gt;Goetz Epperlein&lt;/a&gt; 2016 - 2018</copyright>
     <lastBuildDate>Sat, 07 Oct 2017 15:00:00 +0200</lastBuildDate>
     
-	<atom:link href="lony.github.io/tags/setup/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://lony.github.io/tags/setup/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Setup Reloaded - Ansible to the rescue</title>
-      <link>lony.github.io/post/2017/setup-reloaded/</link>
+      <link>http://lony.github.io/post/2017/setup-reloaded/</link>
       <pubDate>Sat, 07 Oct 2017 15:00:00 +0200</pubDate>
       
-      <guid>lony.github.io/post/2017/setup-reloaded/</guid>
+      <guid>http://lony.github.io/post/2017/setup-reloaded/</guid>
       <description>Last year I tried to &amp;ldquo;semi-automate&amp;rdquo; my OSX setup, as described in the Mac OS X Setup post. This weekend I enhanced the deployment using Ansible.
 If you are interested have a look into my dotfile repository.</description>
     </item>
     
     <item>
       <title>Mac OS X Setup</title>
-      <link>lony.github.io/post/2016/mac-osx-setup/</link>
+      <link>http://lony.github.io/post/2016/mac-osx-setup/</link>
       <pubDate>Sat, 01 Oct 2016 18:02:52 +0200</pubDate>
       
-      <guid>lony.github.io/post/2016/mac-osx-setup/</guid>
+      <guid>http://lony.github.io/post/2016/mac-osx-setup/</guid>
       <description>This post contains information about how I tweak a new Mac when I first get it. As things change I constantly update this post and adjust it. If you find a bug or want to recommend something, please feel free to open an issue and help me get better.</description>
     </item>
     
