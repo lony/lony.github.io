@@ -1,39 +1,16 @@
-baseurl = "https://lony.github.io/"
+baseurl = "lony.github.io"
 languageCode = "en"
 title = "[x]"
-copyright = "&copy; <a href=\"https://github.com/lony\">Goetz Epperlein</a> 2016 - 2018"
+copyright = "<a href=\"/post/2017/cli-commands/\">&copy;</a> <a href=\"https://getgoetz.com\">Goetz Epperlein</a> 2016 - 2018"
 googleAnalytics = "UA-83817537-1"
-theme = "hemingway3"
+theme = "bulmera"
+paginate = 3
+summarylength = 30
 
 [taxonomies]
 tag = "tags"
-category = "categories"
 
 [params.meta]
 keywords = [ "tech", "it", "politics", "europe" ]
 description = "Private blog about tech, politics and europe"
 name = "Goetz Epperlein"
-
-[params.highlight]
-style = "github"
-languages = ["go", "dockerfile"]
-
-[[params.social]]
-url = "https://de.linkedin.com/in/goetzepperlein"
-fa_icon = "fa-linkedin"
-
-[[params.social]]
-url = "https://www.xing.com/profile/Goetz_Epperlein"
-fa_icon = "fa-xing"
-
-[[params.social]]
-url = "https://github.com/lony"
-fa_icon = "fa-github"
-
-[[params.social]]
-url = "/post/2017/cli-commands/"
-fa_icon = "fa-terminal"
-
-[[params.social]]
-url = "/index.xml"
-fa_icon = "fa-rss"

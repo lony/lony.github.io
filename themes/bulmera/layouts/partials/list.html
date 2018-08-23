@@ -1,0 +1,35 @@
+    <section class="section">
+        <div class="container">
+            {{ $currentPage := . }}
+            {{ $list := (sort .Paginator.Pages) }}
+            {{ $len := (len $list) }}
+
+            {{ range $index, $element := $list }}
+                <article {{ if eq (add $index 1) $len }}{{ else }}class="article-margin"{{ end }}>
+                    <h1 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if .Draft }} ::Draft{{ end }}</h1>
+                    <h2 class="subtitle is-6">{{ dateFormat "2006-01-02 Monday 15:04 UTC" .Date.UTC }}</h2>
+                    {{ if .Params.tags }}
+                        <div class="tags">
+                            {{ range .Params.tags }}
+                                <a class="tag is-light" href="{{ "/tags/" | relURL }}{{ . | urlize }}">
+                                    {{ . }}
+                                </a>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                    <div class="content">
+                    {{ .Summary | plainify | safeHTML }}
+                    {{ if .Truncated }}
+                        ...
+                        <a class="button is-small" href="{{ .Permalink }}" style="height:28px">
+                            Read more&nbsp;&nbsp;
+                            <span class="icon is-small">
+                                <i class="fas fa-angle-double-right"></i>
+                            </span>
+                        </a>
+                    {{ end }}
+                    </div>
+                </article>
+            {{ end }}
+        </div>
+      </section>

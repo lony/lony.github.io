@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-GB" dir="ltr">
+  <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <title>{{ .Title }}{{ if eq .IsHome false }} - {{ .Site.Title }}{{ end }}</title>
+        <meta name="description" content="Test">
+        <meta name="keywords" content="{{ if .Params.Tags }}{{ delimit .Params.Tags "," }}{{ else }} {{ delimit .Site.Params.Meta.Keywords "," }}{{ end }}">
+        {{ with .Site.Params.Meta.Name }}<meta name="author" content="{{ . }}">{{ end }}
+
+        {{ range .AlternativeOutputFormats -}}
+          {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+        {{ end }}
+      
+        <meta name="geo.region" content="DE-BY" />
+        <meta name="geo.placename" content="M&uuml;nchen" />
+        <meta name="geo.position" content="48.135125;11.58198" />
+        <meta name="ICBM" content="48.135125, 11.58198" />
+            
+        <meta property="og:title" content="{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}">
+        <meta property="og:description" content="{{ if eq .Title .Site.Title }}{{ .Site.Params.Meta.Description }}{{ else }}{{ .Title }}{{ end }}">
+        <meta property="og:url" content="{{ .Site.BaseURL }}" />
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="{{ .Site.BaseURL }}" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
+            integrity="sha256-zIG416V1ynj3Wgju/scU80KAEWOsO5rRLfVyRDuOv7Q="
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+            integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+            crossorigin="anonymous">
+        <style type="text/css">
+            a {
+                color: #F86B61;
+            }
+            .article-margin {
+                padding-bottom: 50px;
+            }
+            .pagination-link.is-current {
+                background-color: #F86B61;
+                border-color: #F86B61;
+            }
+            #box--hire {
+                z-index: 10;
+                position: absolute;
+                top: 1em;
+                right: 1em;
+            }
+        </style>
+
+        {{ if eq .IsHome false }}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"
+            integrity="sha256-Zd1icfZ72UBmsId/mUcagrmN7IN5Qkrvh75ICHIQVTk="
+            crossorigin="anonymous" />
+        {{ end }}
+            
+        <!--<link rel="stylesheet" href="{{ .Site.BaseURL }}/css/style.css">-->
+
+        <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js"
+            integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a"
+            crossorigin="anonymous"
+            async></script>
+
+        {{ if eq .IsHome false }}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
+            integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw="
+            crossorigin="anonymous"
+            async></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        {{ end }}
+
+        {{ if .Site.GoogleAnalytics }}
+          {{ template "_internal/google_analytics_async.html" . }}
+        {{ end }}
+  </head>
+  <body>
+
+        <div id="box--hire">
+            <a href="https://getgoetz.com/">
+                <span class="icon is-small">
+                <i class="fa fa-envelope"></i>
+                </span>
+                Hire!
+            </a>
+        </div>
+      
