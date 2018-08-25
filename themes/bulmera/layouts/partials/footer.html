@@ -1,6 +1,20 @@
     <section class="section">
         <div class="container has-text-centered">
-            <p>{{ .Site.Copyright | safeHTML }}</p>
+            <p>
+                {{ .Site.Copyright | safeHTML }}
+                &nbsp;
+                <a href="{{ .Site.BaseURL }}/imprint" alt="Link to imprint">
+                    Imprint
+                </a>
+                &nbsp;
+                <span class="icon is-small">
+                    <i class="fas fa-balance-scale"></i>
+                </span>
+                &nbsp;
+                <a href="{{ .Site.BaseURL }}/privacy" alt="Link to privacy policy">
+                    Privacy
+                </a>
+            </p>
         </div>
     </section>
 

@@ -5,11 +5,11 @@ date = "2017-10-07T15:00:00+02:00"
 slug = "setup-reloaded"
 +++
 
-Last year I tried to "semi-automate" my OSX setup, as described in the [Mac OS X Setup post](/post/2016/mac-osx-setup/). This weekend I enhanced the deployment using Ansible.
+Last year I tried to "semi-automate" my OSX setup, as described in the [Mac OS X Setup post](/blog/2016/mac-osx-setup/). This weekend I enhanced the deployment using Ansible.
 
 If you are interested have a look into my [dotfile repository](https://github.com/lony/dotFiles). The setup for now only supports OSX, but is already a big step forward for me.
 
-![Sample cli setup](/img/2017/setup-reloaded/image.png)	
+![Sample cli setup](/img/blog/2017/setup-reloaded/image.png)	
 
 # Usage
 

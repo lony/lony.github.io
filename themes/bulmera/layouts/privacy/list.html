@@ -5,30 +5,18 @@
             <h1 class="title">
                 {{ .Title }}
                 &nbsp;
-                <a href="{{ .Site.BaseURL }}/blog">
+                <a href="{{ .Site.BaseURL }}">
                     <span class="icon">
                         <i class="fas fa-undo"></i>
                     </span>
                 </a>
             </h1>
 
-
-            
-            <h2 class="subtitle is-6">{{ dateFormat "2006-01-02 Monday 15:04 UTC" .Date.UTC }}</h2>
-            {{ if .Params.tags }}
-                <div class="tags">
-                    {{ range .Params.tags }}
-                        <a class="tag is-light" href="{{ "/tags/" | relURL }}{{ . | urlize }}">
-                            {{ . }}
-                        </a>
-                    {{ end }}
-                </div>
-            {{ end }}
             <div class="content">
                 {{ .Content }}
             </div>
             <div class="is-pulled-right" >
-                <a href="{{ .Site.BaseURL }}/blog">
+                <a href="{{ .Site.BaseURL }}">
                     <span class="icon">
                         <i class="fas fa-undo"></i>
                     </span>

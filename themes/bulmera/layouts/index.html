@@ -1,4 +1,86 @@
 {{ define "main" }}
-  {{- partial "list.html" . -}}
-  {{- partial "pager.html" . -}}
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+
+        <img class="profile--image" src="{{ .Site.BaseURL }}/img/profile_goetz.jpg" alt="Mug shot of Goetz" height="50%">
+
+        <h1 class="title">
+          Goetz Epperlein
+        </h1>
+
+        <h2 class="subtitle">
+          AWS Data Engineer
+        </h2>
+
+        <div class="box">
+          <article class="media">
+            <div class="media-content">
+
+              <div class="content">
+                <p>
+                  Data Engineer with experience in data processing using Python ETL and Java. AWS certified solutions architect with strong DevOps mind-set, using state of the art tools for continuous delivery on AWS. Experienced in simulation and optimisation techniques for discrete and event-based systems. Vast experience in languages and technologies for web, mobile, and system development. University educated graduate with an MSc degree from Technische Universität München.
+                </p>
+              </div>
+
+              <div class="has-text-centered">
+              <nav class="level is-mobile">
+                <div class="level-left">
+
+                  <a class="level-item" href="https://de.linkedin.com/in/goetzepperlein" alt="Link to LinkedIn profile of Goetz" target="_blank" rel="noopener">
+                    <span class="icon is-small">
+                      <i class="fab fa-linkedin-in"></i>
+                    </span>
+                  </a>
+
+                  <a class="level-item" href="https://www.xing.com/profile/Goetz_Epperlein" alt="Link to Xing profile of Goetz" target="_blank" rel="noopener">
+                    <span class="icon is-small">
+                      <i class="fab fa-xing"></i>
+                    </span>
+                  </a>
+
+                  <a class="level-item" href="https://github.com/lony" alt="Link to Github profile of Goetz" target="_blank" rel="noopener">
+                    <span class="icon is-small">
+                      <i class="fab fa-github"></i>
+                    </span>
+                  </a>
+
+                  <a class="level-item" href="https://stackoverflow.com/users/227821/lony" alt="Link to Stackoverflow profile of Goetz" target="_blank" rel="noopener">
+                    <span class="icon is-small">
+                      <i class="fab fa-stack-overflow"></i>
+                    </span>
+                  </a>
+
+                  <a class="level-item" href="https://twitter.com/getgoetz" alt="Link to Twitter profile of Goetz" target="_blank" rel="noopener">
+                    <span class="icon is-small">
+                      <i class="fab fa-twitter"></i>
+                    </span>
+                  </a>
+
+                  <a class="level-item" href="{{ .Site.BaseURL }}/blog" alt="Link to blog overview">
+                    <span class="icon is-small">
+                      <i class="fab fa-blogger-b"></i>
+                    </span>
+                  </a>
+
+                  <a class="level-item" href="https://www.instagram.com/getgoetz" alt="Link to Instagram profile of Goetz" target="_blank" rel="noopener">
+                    <span class="icon is-small">
+                      <i class="fab fa-instagram"></i>
+                    </span>
+                  </a>
+
+                </div>
+              </nav>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {{- partial "footer.html" . -}}
+
 {{ end }}

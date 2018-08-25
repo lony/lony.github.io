@@ -9,7 +9,7 @@ This German election is the first time since World War II that a racist and hist
 
 Looking at the predications from Süddeutsche Zeitung just 2 pm on election day (UTC+1) the predictions show a 10+ % yield for the AfD, easily reaching the 5 % threshold for entry.
 
-![Süddeutsche-Zeitung Wahlzentrale](/img/2017/election/sz-umfrage.png)
+![Süddeutsche-Zeitung Wahlzentrale](/img/blog/2017/election/sz-umfrage.png)
 
 (Source: [www.sueddeutsche.de "Wahlzentrale"](http://www.sueddeutsche.de/thema/Bundestagswahl) from 2017-09-24 14:00 UTC+1)
 
@@ -17,7 +17,7 @@ Looking at the predications from Süddeutsche Zeitung just 2 pm on election day 
 
 The result for the AfD reached 12,6 %, close to the forecast maximum of 13 %.
 
-![Bundestagswahl 2017 Wikipedia Result](/img/2017/election/wiki-result.png)
+![Bundestagswahl 2017 Wikipedia Result](/img/blog/2017/election/wiki-result.png)
 
 (Source: [de.wikipedia.org "Bundestagswahl 2017"](https://de.wikipedia.org/wiki/Bundestagswahl_2017) from 2017-09-28 16:00 UTC+1)
 

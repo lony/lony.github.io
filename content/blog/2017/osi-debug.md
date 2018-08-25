@@ -23,7 +23,7 @@ As things change I constantly update this post and adjust it. If you find a bug 
 
 To have a common ground for debugging I sketch a scenario which I will use for the debugging journey later on. To keep it simple we have a web application written in Go which runs behind an nginx and is accessed through Chrome. It is delivering static HTML and runs on a remote server.
 
-![Scenario sketch](/img/2017/osi-debug/scenario.png)	
+![Scenario sketch](/img/blog/2017/osi-debug/scenario.png)	
 
 # OSI model
 

@@ -1,16 +1,35 @@
 baseurl = "http://lony.github.io"
-languageCode = "en"
-title = "[x]"
-copyright = "<a href=\"/post/2017/cli-commands/\">&copy;</a> <a href=\"https://getgoetz.com\">Goetz Epperlein</a> 2016 - 2018"
+languageCode = "en_GB"
+title = "GetGoetz.com"
+copyright = "<a href=\"/blog/2017/cli-commands/\" alt=\"Link to CLI command blog post\">&copy;</a> <span class=\"has-text-weight-semibold\">Goetz Epperlein</span> 2016 - 2018"
 googleAnalytics = "UA-83817537-1"
 theme = "bulmera"
 paginate = 3
 summarylength = 30
 
+[author]
+name = "Goetz Epperlein"
+email = "now@getgoetz.com"
+
 [taxonomies]
 tag = "tags"
 
 [params.meta]
-keywords = [ "tech", "it", "politics", "europe" ]
-description = "Private blog about tech, politics and europe"
-name = "Goetz Epperlein"
+keywords = [ "aws", "devops", "serverless", "amazon web service", "it consultant", "munich", "consultanting", "consultancy", "goetz", "epperlein", "goetz epperlein", "europe" ]
+
+[params.design]
+color = "#F86B61"
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+  [privacy.instagram]
+    simple = true
+  [privacy.twitter]
+    enableDNT = true
+    simple = true
+  [privacy.vimeo]
+    simple = true
+  [privacy.youtube]
+    privacyEnhanced = true
